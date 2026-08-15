@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """assert_tables.py — 性质断言（不抄表内容）+ 锚点抽查。输出 report/assert_report.txt。"""
 import csv, os, sys
+from datetime import datetime, timedelta
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from rules import GAN, ZHI
 
@@ -85,6 +86,72 @@ for d, want in {"2000-01-01": "戊午", "2024-02-10": "甲辰", "1900-01-01": "�
 # ---- 模板 ----
 check("solar_terms_template 空模板", read("solar_terms_template.csv") == [])
 check("shuowang_template 空模板", read("shuowang_template.csv") == [])
+# ---- shuowang（L0 农历面朔日表，锚点经 HKO 官方+易安居三层对拍确认） ----
+sw = read("shuowang.csv")
+sw_years = sorted(set(r["year"] for r in sw))
+check("shuowang 行数=1905（1948-2101 公历年内全部农历月，含闰月）", len(sw) == 1905, str(len(sw)))
+check("shuowang 公历年 1948-2101 连续", sw_years == [str(y) for y in range(1948, 2102)],
+      f"{sw_years[0]}~{sw_years[-1]} {len(sw_years)} 年")
+check("shuowang 每年 12-13 行", all(12 <= sum(1 for r in sw if r["year"] == y) <= 13 for y in sw_years))
+check("shuowang month 值域 1-12 且 is_ruen ∈{0,1}",
+      all(r["month"] in [str(m) for m in range(1, 13)] and r["is_ruen"] in ("0", "1") for r in sw))
+# 主键 (year,month,is_ruen,lunar_year)：公历年头/年尾可各有「腊月」朔日（分属上/本农历年），干支列区分
+check("shuowang 主键 (year,month,is_ruen,lunar_year) 唯一",
+      len({(r["year"], r["month"], r["is_ruen"], r["lunar_year"]) for r in sw}) == len(sw))
+check("shuowang 每年闰月至多 1 个",
+      all(sum(1 for r in sw if r["year"] == y and r["is_ruen"] == "1") <= 1 for y in sw_years))
+shuo_dates = [r["shuo_time"][:16] for r in sw]
+check("shuowang shuo_time 严格递增且无重复",
+      all(a < b for a, b in zip(shuo_dates, shuo_dates[1:])) and len(set(shuo_dates)) == len(shuo_dates))
+check("shuowang shuo_time/wang_time 格式 ISO8601+08:00",
+      all(r["shuo_time"] and r["wang_time"] and r["shuo_time"][-6:] == "+08:00" and r["wang_time"][-6:] == "+08:00" for r in sw))
+check("shuowang 望时刻在朔与次朔之间",
+      all(r["wang_time"] > r["shuo_time"] and (i == len(sw) - 1 or r["wang_time"] < sw[i + 1]["shuo_time"]) for i, r in enumerate(sw)))
+check("shuowang lunar_year 均属 60 甲子", set(r["lunar_year"] for r in sw) <= set(JIAZI))
+check("shuowang source_ref 值域", set(r["source_ref"] for r in sw) <= {"hko+lunar", "lunar"})
+check("shuowang 1948-2100 source_ref=hko+lunar",
+      all(r["source_ref"] == "hko+lunar" for r in sw if r["year"] != "2101"))
+check("shuowang 2101 source_ref=lunar 且 notes 标算法值",
+      all(r["source_ref"] == "lunar" and "算法值" in r["notes"] for r in sw if r["year"] == "2101"))
+check("shuowang 闰月行 notes 记闰月",
+      all(("闰" in r["notes"]) == (r["is_ruen"] == "1") for r in sw if r["year"] != "2101"))
+sw_find = lambda year, month, ruen: find(sw, year=year, month=month, is_ruen=ruen)
+for (year, month, ruen), want, gz in [
+        (("1948", "12", "0"), "1948-01-11", "丁亥"),  # 农历 1947 腊月（朔日落公历 1948）
+        (("1949", "1", "0"), "1949-01-29", "己丑"),
+        (("2000", "1", "0"), "2000-02-05", "庚辰"),
+        (("2023", "2", "1"), "2023-03-22", "癸卯"),  # 2023 闰二月初一（HKO 官方「閏二月」锚点）
+        (("2024", "1", "0"), "2024-02-10", "甲辰"),  # 甲辰年正月初一（HKO 官方「正月」锚点）
+        (("2025", "1", "0"), "2025-01-29", "乙巳"),
+        (("2101", "11", "0"), "2101-12-20", "辛酉")]:  # 表界末行
+    r = sw_find(year, month, ruen)
+    check(f"shuowang 锚点 {year}-{month}月{'闰' if ruen == '1' else ''}={want}（{gz}）",
+          r is not None and r["shuo_time"][:10] == want and r["lunar_year"] == gz,
+          (r or {}).get("shuo_time", "缺失")[:10])
+check("shuowang 锚点 2024-02-10 朔时刻 06:59（HKO/官方历表）",
+      (r := sw_find("2024", "1", "0")) is not None and r["shuo_time"] == "2024-02-10T06:59+08:00",
+      (r or {}).get("shuo_time", "缺失"))
+check("shuowang status 值域", set(r["status"] for r in sw) <= {"pending", "confirmed", "arbitrated"})
+# 全量防回归：每行 shuo_time 日期 = lunar-python 该农历月初一（防「shuo_time≠初一」类错误，如 sw-2097-07 取反侧）
+from lunar_python import LunarYear
+_ly_cache = {}
+
+def _jd2date(jd):
+    return (datetime(2000, 1, 1, 12, 0) + timedelta(days=jd - 2451545)).date().isoformat()
+
+def _lunar_first_ok(year, month, ruen, want):
+    for y in range(int(year) - 1, int(year) + 2):  # 朔日公历年±1 内必有该农历月
+        if y not in _ly_cache:
+            _ly_cache[y] = [m for m in LunarYear.fromYear(y).getMonths() if m.getYear() == y]
+        for m in _ly_cache[y]:
+            mo = m.getMonth()
+            if (mo if mo > 0 else -mo) == int(month) and (1 if m.isLeap() else 0) == int(ruen):
+                if _jd2date(m.getFirstJulianDay()) == want:  # 跨年同名月多个候选，命中才返回
+                    return True
+    return False
+
+check("shuowang 全表 shuo_time 日期=lunar 该月初一（1905 行全量）",
+      all(_lunar_first_ok(r["year"], r["month"], r["is_ruen"], r["shuo_time"][:10]) for r in sw))
 # ---- solar_terms ----
 st = read("solar_terms.csv")
 TERMS24 = ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至",
@@ -110,7 +177,6 @@ check("solar_terms 2101 全年 notes 算法值标注",
       all(r["notes"] == "算法值（lunar-python，无官方锚点）" for r in st if r["year"] == "2101"))
 check("solar_terms 非 2101 notes 为空", all(r["notes"] == "" for r in st if r["year"] != "2101"))
 # ---- M1b 年柱/月柱锚点（r3 立春换年 / r4 节换月，手算+五虎遁；经度 120 北京时，值经 lunar-python 互核） ----
-from datetime import datetime
 import m1
 
 def ym_case(y, mo, d, h, mi):

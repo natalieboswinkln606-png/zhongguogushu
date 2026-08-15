@@ -11,7 +11,8 @@ SCHEMA = {  # csv: 主键列（元组=复合主键）
     "nayin.csv": "id", "canggan.csv": "dizhi", "bagong.csv": ("palace", "gua_name"),
     "najia.csv": "gua", "changsheng.csv": ("tiangan", "stage"),
     "solar_terms_template.csv": ("year", "term_index"),
-    "shuowang_template.csv": ("year", "month"), "ganzhi_days.csv": "date",
+    "shuowang_template.csv": ("year", "month", "is_ruen", "lunar_year"),
+    "shuowang.csv": ("year", "month", "is_ruen", "lunar_year"), "ganzhi_days.csv": "date",
 }
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 db = sqlite3.connect(os.path.join(DATA, "shushu.db"))

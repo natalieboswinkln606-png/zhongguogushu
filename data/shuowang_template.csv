@@ -1,2 +1,2 @@
-year,month,is_ruen,shuo_time,wang_time,lunar_year,status,source_ref
-# 空模板：朔望时刻留待人工录入，is_ruen=1 表示闰月，shuo_time/wang_time 为 ISO8601 带时区；lunar_year=农历年（干支纪年）；status: pending=待核, confirmed=已核入, arbitrated=仲裁中
+year,month,is_ruen,shuo_time,wang_time,lunar_year,status,source_ref,notes
+# 空模板：year=朔日公历日期所在公历年；month=农历月序 1-12（闰月记被闰月序）；is_ruen=1 表示闰月；shuo_time/wang_time 为 ISO8601 带时区（UTC+8）；lunar_year=农历年（干支纪年）；status: pending=待核, confirmed=已核入, arbitrated=仲裁中；notes=闰月与异常
