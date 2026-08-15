@@ -1,0 +1,9 @@
+L3 五运六气对拍（l3_wuyunliuqi.py）：20 例（5 手工锚点+15 随机干支年 1949-2100 年中日期）+fate-craft 2026 丙午页面锚点
+字段：岁运干支/太过不及名、司天、在泉、相合五类、客气六步全序列——一致 21/21；分歧 0
+oracle 1=fate-craft 五运六气（profound.fate-craft.com，页面锚点+JS 算法逆读：$e 函数天符/岁会/太一天符/同天符/同岁会、he 函数客气轮排）
+oracle 2=WYLQ（GitHub Carrie-HuYY/WYLQ 读码：calculate_qi/calculate_relationship 表与轮排）
+分歧申报 5 条（wylq-001~005）：口径类 3 条（岁首大寒 vs 立春；六步起点大寒 vs 立春；定气历表 vs 60 日近似）+值分歧 2 条（WYLQ 表缺戊申天符/癸巳同岁会，自研+fate-craft 算法补遗）
+底本：《黄帝内经·素问》运气七篇（天元纪大论/五运行大论/六微旨大论/气交变大论/五常政大论/六元正纪大论/至真要大论）；节点权威=solar_terms.csv 定气中气时刻
+异文标注：水运不及「涸流」（通行本）一作「涫流」；岁会=四正+四季 8 年（四孟同气不算，fate-craft/WYLQ 60 甲子图互证）；客气轮排有李阳波「司天在泉起首气」少数派
+边界声明：运气推演为理论体系，非医学诊断，不构成任何诊疗建议
+申报：arbitration_log.csv wylq- 新增 5 条；boundary_cases.csv wylq- 新增 5 条（幂等）
