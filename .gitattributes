@@ -1,0 +1,2 @@
+# 全仓库统一 LF：CSV/脚本/文档均以 LF 入库与检出，杜绝 autocrlf 导致的哈希漂移
+* text=auto eol=lf

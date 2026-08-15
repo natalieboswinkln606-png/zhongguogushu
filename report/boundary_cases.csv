@@ -1,2 +1,5 @@
 case_id,category,sample_date,expected,actual,status,note
 # 空表：F-1 边界样本逐例申报载体；category: 1900交界/2100边界/子正边界/甲子轮日/闰月/节气±2h/1500前古代段；status: pending/fail/arbitrated/pass；fail 与 arbitrated 必填 note 并挂 arbitration_log（见 preregister.md F-1 边界样本逐例申报）
+F1-001,子正边界,2000-01-01 22:30,归当日（戊午）,归当日（戊午）,arbitrated,换日界口径差异：oracle 23:00 子初 vs 自研 0:00 子正，M1 时柱按真太阳时子正实现
+F1-002,子正边界,2000-01-01 23:30,归次日（己未）,归当日（戊午）,arbitrated,换日界口径差异：oracle 23:00 子初 vs 自研 0:00 子正，M1 时柱按真太阳时子正实现
+F1-003,子正边界,2000-01-01 00:30,归当日（戊午）,归当日（戊午）,arbitrated,换日界口径差异：oracle 23:00 子初 vs 自研 0:00 子正，M1 时柱按真太阳时子正实现

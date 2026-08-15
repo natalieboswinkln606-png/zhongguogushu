@@ -57,10 +57,12 @@ for fn, pk in SCHEMA.items():
                 problems.append(f"changsheng 非法 {r['tiangan']} {r['dizhi']}")
 db.commit()
 db.close()
-with open(os.path.join(DATA, "arbitration_log.csv"), "w", newline="", encoding="utf-8") as f:
-    w = csv.writer(f)
-    w.writerow(["case_id", "field", "value_a", "value_b", "arbiter", "decision", "reason"])
-    w.writerow(["# 空表：仲裁记录载体（剔除三态：拒绝/alt 标注/schema 缺省）"])
+log = os.path.join(DATA, "arbitration_log.csv")
+if not os.path.exists(log):  # 只建缺失文件；已存在则保留 M1 起累积的仲裁记录，绝不重写清空
+    with open(log, "w", newline="", encoding="utf-8") as f:
+        w = csv.writer(f)
+        w.writerow(["case_id", "field", "value_a", "value_b", "arbiter", "decision", "reason"])
+        w.writerow(["# 空表：仲裁记录载体（剔除三态：拒绝/alt 标注/schema 缺省）"])
 print("problems:", len(problems))
 for p in problems[:20]:
     print(" ", p)

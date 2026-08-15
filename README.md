@@ -16,7 +16,7 @@
 
 ## 当前状态
 
-**M0 数据基座已完成（v0.2），docs 为预注册契约**：8 张表（nayin/canggan/bagong/najia/changsheng/ganzhi_days + 节气/朔望空模板）；日干支已与 lunar-python 全区间对拍；属性断言 25 项全过；快照/勘误/白名单增补/转录协议见 docs/preregister.md。运行：`python gen_ganzhi.py && python compare.py && python validate.py && python assert_tables.py`。
+**M0 数据基座已完成（v0.2），docs 为预注册契约**：8 张表（nayin/canggan/bagong/najia/changsheng/ganzhi_days + 节气/朔望空模板）；日干支已与 lunar-python 全区间对拍；属性断言 39 项全过；快照/勘误/白名单增补/转录协议见 docs/preregister.md。运行：`python gen_ganzhi.py && python compare.py && python validate.py && python assert_tables.py`。
 
 ## 目录
 
