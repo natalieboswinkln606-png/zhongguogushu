@@ -3,5 +3,5 @@
 一、日期级（3672 点）：一致 3671/3672；舍入跨日边界（rounding boundary）1 条：1979-大寒 lunar 原始 01-20 23:59:56 四舍五入进位至 01-21 00:00，与 HKO 官方日期 01-21 终值一致，无底本错；transcription 0。
 二、分钟级（去重 336 点）：一致 336/336，入仲裁 0。
 三、交叉样例 5 立春（HKO日/分，括号=lunar秒）：2026 2-4 04:02(04:02:08)；2025 2-3 22:10(22:10:28)；2033 2-3(20:41:36)；1948 2-5(05:42:00)；2101 无HKO(02-04 08:39:53)。
-四、分类：transcription=0/source=0/algorithm=0/out_of_scope=0；舍入跨日边界（rounding boundary）1 条；仲裁新增 0（st-，22 去重）。
-结论：互校一致。solar_terms.csv 3696 行：2015-2028 官方分钟、其余 lunar 舍入、2101 算法值；断言 PASS 61/61（FAIL 0）；gen_solar_terms.py 49 行。
+四、分类：transcription=0/source=0/algorithm=0/out_of_scope=0；舍入跨日边界（rounding boundary）1 条；仲裁新增 0（st-，41 去重）。
+结论：互校一致。solar_terms.csv 3696 行：2015-2028 官方分钟、其余 lunar 舍入、2101 算法值；断言 PASS 70/70（FAIL 0）；gen_solar_terms.py 49 行。

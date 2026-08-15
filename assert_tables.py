@@ -136,6 +136,18 @@ for (y, mo, d, h, mi), emsg in [((1948, 12, 31, 12, 0), "out_of_range"),
 for y, mo, d, h, mi in [(1949, 1, 1, 3, 30), (2100, 12, 31, 20, 30)]:
     r = m1.compute(datetime(y, mo, d, h, mi), 120.0)
     check(f"M1b RANGE 边界 {y}-{mo:02d}-{d:02d} {h:02d}:{mi:02d} 在界内", "error" not in r)
+# ---- 十神（L2, r5：以日干为「我」，rel(他,我) 定动态——生=生我→印、泄=我生→食伤、克=克我→官杀、耗=我克→财；阴阳同异定偏正） ----
+for dm, og, want in [("甲", "丙", "食神"), ("甲", "戊", "偏财"), ("甲", "庚", "七杀"), ("甲", "壬", "偏印"),
+                     ("乙", "丁", "食神"), ("乙", "己", "偏财"), ("乙", "丙", "伤官"), ("甲", "癸", "正印")]:
+    got = m1.ten_god(dm, og)
+    check(f"十神锚点 {dm}见{og}={want}", got == want, got)
+r = m1.compute(datetime(2024, 2, 10, 8, 0), 120.0)
+tg = r["ten_gods"]
+cc = [{"gan": "戊", "god": "偏财"}, {"gan": "乙", "god": "劫财"}, {"gan": "癸", "god": "正印"}]
+ok = tg["day_master"] == "甲" and tg["stems"] == {"year": "比肩", "month": "食神", "hour": "偏财"} \
+    and tg["branches"]["year"] == cc and tg["branches"]["day"] == cc
+check("十神 2024-02-10 完整四柱锚点（甲日干 年比肩/月食神/时偏财；辰支藏干戊乙癸=偏财/劫财/正印，序与 canggan.csv 一致）",
+      ok, f"stems={tg['stems']}" if not ok else "")
 
 with open(os.path.join(BASE, "report", "assert_report.txt"), "w", encoding="utf-8") as f:
     f.write("断言报告（性质断言，不抄表内容）\n\n")

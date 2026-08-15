@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-"""m1.py — M1b 四柱内核：四柱全实算。输入=北京时间(UTC+8)+东经经度；真太阳时=北京时+(经度−120)×4分+NOAA均时差；
-换日界=真太阳时子正，日柱时柱同轨真太阳时；年柱=立春换年(r3)、月柱=节换月(r4)，节气唯一权威=solar_terms.csv。"""
+"""m1.py — M1b 四柱内核：四柱全实算+十神(L2)。输入=北京时间(UTC+8)+东经经度；真太阳时=北京时+(经度−120)×4分+NOAA均时差；
+换日界=真太阳时子正，日柱时柱同轨真太阳时；年柱=立春换年(r3)、月柱=节换月(r4)，节气唯一权威=solar_terms.csv；十神=r5。"""
 import argparse, bisect, csv, json, math, os, sys
 from datetime import datetime, timedelta
 from functools import lru_cache
+from rules import rel, wx_of_gan
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 GAN, ZHI = "甲乙丙丁戊己庚辛壬癸", "子丑寅卯辰巳午未申酉戌亥"
@@ -42,6 +43,25 @@ def hour_pillar(day_ganzhi, hour):
     z = shichen(hour)
     return GAN[(2 * g + z) % 10] + ZHI[z]
 
+TEN = {"比和": ("比肩", "劫财"), "生": ("偏印", "正印"), "泄": ("食神", "伤官"),
+       "克": ("七杀", "正官"), "耗": ("偏财", "正财")}  # r5 十神表：五行动态 + 阴阳同异（同=第一字）
+
+def ten_god(day_master, other_gan):
+    """r5 十神：以日干为「我」；rel(他干五行, 日干五行) 定动态——生=生我→印、泄=我生→食伤、
+    克=克我→官杀、耗=我克→财；阴阳同异定偏正（甲见丙=食神、甲见庚=七杀、甲见壬=偏印…）。"""
+    r = rel(wx_of_gan(other_gan), wx_of_gan(day_master))
+    return TEN[r][GAN.index(day_master) % 2 != GAN.index(other_gan) % 2]  # False(同)=0、True(异)=1
+
+@lru_cache(maxsize=None)
+def load_canggan():
+    """canggan.csv → {地支: 藏干串}；lru_cache 缓存，藏干序以 CSV 为权威。"""
+    with open(os.path.join(BASE, "data", "canggan.csv"), encoding="utf-8") as f:
+        return {r["dizhi"]: r["canggan_list"] for r in csv.DictReader(f)}
+
+def branch_gods(day_master, zhi, canggan):
+    """地支十神（r5）：藏干逐个对日干取名，序与 canggan.csv 一致；日支同按藏干十神（日支=日元所坐）。"""
+    return [{"gan": g, "god": ten_god(day_master, g)} for g in canggan[zhi]]
+
 def year_pillar(ts, terms):
     """r3 立春换年：真太阳时≥当年立春→当年年干支，否则上年；年干支=(year-4)%60（甲子=0，1900=庚子）。"""
     lc = next(r["datetime"] for r in terms if r["year"] == str(ts.year) and r["term"] == "立春")
@@ -70,15 +90,24 @@ def compute(dt, lon, days=None):
         return {"error": f"错误: 真太阳时 {ds} 落 ganzhi_days 表外 1900-01-01~2100-12-31（out_of_range）"}
     terms = load_terms()
     ygz = year_pillar(ts, terms)
-    dg = days[ds]
+    mgz = month_pillar(ts, terms, GAN.index(ygz[0]))
+    dgz = days[ds]
+    hgz = hour_pillar(dgz, ts.hour)
+    cg = load_canggan()
+    dm = dgz[0]
+    tg = {"day_master": dm, "rule_id": "r5", "source": "rules.py 五行关系 + canggan.csv 藏干",
+          "stems": {"year": ten_god(dm, ygz[0]), "month": ten_god(dm, mgz[0]), "hour": ten_god(dm, hgz[0])},
+          "branches": {k: branch_gods(dm, gz[1], cg) for k, gz in
+                       (("year", ygz), ("month", mgz), ("day", dgz), ("hour", hgz))}}
     return {
         "input": {"datetime": s, "lon": lon, "tz": "UTC+8 北京时间"},
         "pillars": {
             "year":  {"ganzhi": ygz, "rule_id": "r3", "source": "solar_terms.csv"},
-            "month": {"ganzhi": month_pillar(ts, terms, GAN.index(ygz[0])), "rule_id": "r4", "source": "solar_terms.csv"},
-            "day":   {"ganzhi": dg, "rule_id": "r1", "source": "ganzhi_days.csv"},
-            "hour":  {"ganzhi": hour_pillar(dg, ts.hour), "rule_id": "r2"},
+            "month": {"ganzhi": mgz, "rule_id": "r4", "source": "solar_terms.csv"},
+            "day":   {"ganzhi": dgz, "rule_id": "r1", "source": "ganzhi_days.csv"},
+            "hour":  {"ganzhi": hgz, "rule_id": "r2"},
         },
+        "ten_gods": tg,
         "true_solar_time": ts.strftime("%Y-%m-%dT%H:%M:%S"),
         "notes": [f"均时差 EOT={eot_minutes(dt):+.2f} 分（NOAA 公式，输入日期）",
                   "换日界=真太阳时子正；年柱立春换年(r3)、月柱节换月(r4)，节气唯一权威=solar_terms.csv"],
@@ -107,6 +136,10 @@ def main():
         print(f"月柱: {p['month']['ganzhi']}（rule {p['month']['rule_id']}，{p['month']['source']}）")
         print(f"日柱: {p['day']['ganzhi']}（rule {p['day']['rule_id']}，{p['day']['source']}）")
         print(f"时柱: {p['hour']['ganzhi']}（rule {p['hour']['rule_id']}）")
+        tg = r["ten_gods"]
+        print(f"十神(r5，日干 {tg['day_master']}）：年干 {tg['stems']['year']} 月干 {tg['stems']['month']} 时干 {tg['stems']['hour']}")
+        for k, v in tg["branches"].items():
+            print(f"  {k}支藏干十神: " + " ".join(f"{b['gan']}:{b['god']}" for b in v))
         for n in r["notes"]:
             print(f"  · {n}")
 
