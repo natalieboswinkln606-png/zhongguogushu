@@ -1,15 +1,14 @@
 # -*- coding: utf-8 -*-
-"""m1.py — M1a 四柱内核：日柱/时柱实算；年柱/月柱 anchor_missing（solar_terms 未录满）。
-输入=北京时间(UTC+8)+东经经度；真太阳时=北京时+(经度−120)×4分+NOAA均时差；
-换日界=真太阳时子正，日柱时柱同轨真太阳时。数据权威=ganzhi_days.csv。"""
-import argparse, csv, json, math, os, sys
+"""m1.py — M1b 四柱内核：四柱全实算。输入=北京时间(UTC+8)+东经经度；真太阳时=北京时+(经度−120)×4分+NOAA均时差；
+换日界=真太阳时子正，日柱时柱同轨真太阳时；年柱=立春换年(r3)、月柱=节换月(r4)，节气唯一权威=solar_terms.csv。"""
+import argparse, bisect, csv, json, math, os, sys
 from datetime import datetime, timedelta
 from functools import lru_cache
 
 BASE = os.path.dirname(os.path.abspath(__file__))
 GAN, ZHI = "甲乙丙丁戊己庚辛壬癸", "子丑寅卯辰巳午未申酉戌亥"
-RANGE_LO, RANGE_HI = "1900-01-01 03:30", "2100-12-31 20:30"  # M1 有效输入（宁紧勿松，越界 out_of_range）
-ANCHOR_MSG = "solar_terms 表未录满，按 preregister M1 节气策略裁决禁回退"
+RANGE_LO, RANGE_HI = "1949-01-01 03:30", "2100-12-31 20:30"  # M1 有效输入（真太阳时须落表内，越界 out_of_range）
+JIE = ["立春", "惊蛰", "清明", "立夏", "芒种", "小暑", "立秋", "白露", "寒露", "立冬", "大雪", "小寒"]  # 12 节月支序：寅=0…丑=11
 
 def eot_minutes(dt):
     """NOAA 均时差（分钟）：B=2π/365·(N−81)，EOT=9.87·sin2B−7.53·cosB−1.5·sinB，N=年日序。"""
@@ -26,6 +25,13 @@ def load_days():
     with open(os.path.join(BASE, "data", "ganzhi_days.csv"), encoding="utf-8") as f:
         return {r["date"]: r["ganzhi"] for r in csv.DictReader(f)}
 
+@lru_cache(maxsize=None)
+def load_terms():
+    """solar_terms.csv → 12 节行按 datetime 排序（年柱立春/月柱节换月的最近上一节池；表 1948-2101 录满，唯一运行期权威）。"""
+    with open(os.path.join(BASE, "data", "solar_terms.csv"), encoding="utf-8") as f:
+        rows = [r for r in csv.DictReader(f) if r["jie_zhong"] == "节"]
+    return sorted(rows, key=lambda r: r["datetime"])
+
 def shichen(hour):
     """时辰地支序：23/0→子(0)…22→亥(11)。23:00-24:00 子时归当日、0:00-1:00 归次日（子正口径）。"""
     return (hour + 1) // 2 % 12
@@ -35,6 +41,18 @@ def hour_pillar(day_ganzhi, hour):
     g = GAN.index(day_ganzhi[0])
     z = shichen(hour)
     return GAN[(2 * g + z) % 10] + ZHI[z]
+
+def year_pillar(ts, terms):
+    """r3 立春换年：真太阳时≥当年立春→当年年干支，否则上年；年干支=(year-4)%60（甲子=0，1900=庚子）。"""
+    lc = next(r["datetime"] for r in terms if r["year"] == str(ts.year) and r["term"] == "立春")
+    y = ts.year if ts.strftime("%Y-%m-%d %H:%M") >= lc else ts.year - 1
+    return GAN[(y - 4) % 10] + ZHI[(y - 4) % 12]
+
+def month_pillar(ts, terms, year_gan):
+    """r4 节换月：datetime≤ts 的最近上一 12 节（二分）→ 月支序 m（寅=0…丑=11）；月干五虎遁=(2·年干+2+m)%10。"""
+    i = bisect.bisect_right([r["datetime"] for r in terms], ts.strftime("%Y-%m-%d %H:%M")) - 1
+    m = JIE.index(terms[i]["term"])
+    return GAN[(2 * year_gan + 2 + m) % 10] + ZHI[(2 + m) % 12]
 
 def compute(dt, lon, days=None):
     """(北京时 datetime, 东经 float) → 四柱 JSON dict；非法输入返回 {"error": ...}。"""
@@ -50,22 +68,24 @@ def compute(dt, lon, days=None):
     days = days if days is not None else load_days()
     if ds not in days:
         return {"error": f"错误: 真太阳时 {ds} 落 ganzhi_days 表外 1900-01-01~2100-12-31（out_of_range）"}
+    terms = load_terms()
+    ygz = year_pillar(ts, terms)
     dg = days[ds]
     return {
         "input": {"datetime": s, "lon": lon, "tz": "UTC+8 北京时间"},
         "pillars": {
-            "year":  {"ganzhi": None, "status": "anchor_missing", "reason": ANCHOR_MSG},
-            "month": {"ganzhi": None, "status": "anchor_missing", "reason": ANCHOR_MSG},
+            "year":  {"ganzhi": ygz, "rule_id": "r3", "source": "solar_terms.csv"},
+            "month": {"ganzhi": month_pillar(ts, terms, GAN.index(ygz[0])), "rule_id": "r4", "source": "solar_terms.csv"},
             "day":   {"ganzhi": dg, "rule_id": "r1", "source": "ganzhi_days.csv"},
             "hour":  {"ganzhi": hour_pillar(dg, ts.hour), "rule_id": "r2"},
         },
         "true_solar_time": ts.strftime("%Y-%m-%dT%H:%M:%S"),
         "notes": [f"均时差 EOT={eot_minutes(dt):+.2f} 分（NOAA 公式，输入日期）",
-                  "换日界=真太阳时子正，日柱时柱同轨真太阳时"],
+                  "换日界=真太阳时子正；年柱立春换年(r3)、月柱节换月(r4)，节气唯一权威=solar_terms.csv"],
     }
 
 def main():
-    ap = argparse.ArgumentParser(description="四柱内核 M1a：日柱/时柱实算（年柱/月柱 anchor_missing）")
+    ap = argparse.ArgumentParser(description="四柱内核 M1b：四柱全实算（年柱立春换年、月柱节换月）")
     ap.add_argument("--datetime", required=True, help="北京时间，格式 YYYY-MM-DD HH:MM")
     ap.add_argument("--lon", type=float, default=120.0, help="东经经度（东经为正），默认 120")
     ap.add_argument("--json", action="store_true", help="输出 JSON")
@@ -83,8 +103,8 @@ def main():
         p = r["pillars"]
         print(f"输入: {r['input']['datetime']}  东经 {r['input']['lon']}°（UTC+8）")
         print(f"真太阳时: {r['true_solar_time']}")
-        print(f"年柱: 待定 — {p['year']['reason']}")
-        print(f"月柱: 待定 — {p['month']['reason']}")
+        print(f"年柱: {p['year']['ganzhi']}（rule {p['year']['rule_id']}，{p['year']['source']}）")
+        print(f"月柱: {p['month']['ganzhi']}（rule {p['month']['rule_id']}，{p['month']['source']}）")
         print(f"日柱: {p['day']['ganzhi']}（rule {p['day']['rule_id']}，{p['day']['source']}）")
         print(f"时柱: {p['hour']['ganzhi']}（rule {p['hour']['rule_id']}）")
         for n in r["notes"]:
