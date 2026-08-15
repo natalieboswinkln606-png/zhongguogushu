@@ -85,6 +85,57 @@ for d, want in {"2000-01-01": "戊午", "2024-02-10": "甲辰", "1900-01-01": "�
 # ---- 模板 ----
 check("solar_terms_template 空模板", read("solar_terms_template.csv") == [])
 check("shuowang_template 空模板", read("shuowang_template.csv") == [])
+# ---- solar_terms ----
+st = read("solar_terms.csv")
+TERMS24 = ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至",
+           "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"]
+ys = sorted(set(r["year"] for r in st))
+check("solar_terms 行数=3696", len(st) == 3696, str(len(st)))
+check("solar_terms 年份范围 1948-2101 连续", ys == [str(y) for y in range(1948, 2102)], f"{ys[0]}~{ys[-1]} {len(ys)} 年")
+check("solar_terms 每年恰 24 行", all(sum(1 for r in st if r["year"] == y) == 24 for y in ys))
+check("solar_terms term 属 24 节气全集", all(r["term"] in TERMS24 for r in st) and set(r["term"] for r in st) == set(TERMS24))
+check("solar_terms jie_zhong 值域合法", all(r["jie_zhong"] in ("节", "中气") for r in st))
+check("solar_terms 每年节 12/中气 12",
+      all((sum(1 for r in st if r["year"] == y and r["jie_zhong"] == "节"),
+           sum(1 for r in st if r["year"] == y and r["jie_zhong"] == "中气")) == (12, 12) for y in ys))
+dts = [r["datetime"] for r in st]
+check("solar_terms datetime 严格递增", all(a < b for a, b in zip(dts, dts[1:])))
+check("solar_terms datetime 无重复", len(set(dts)) == len(dts))
+check("solar_terms 2015-2028 source_ref 含 hko", all("hko" in r["source_ref"] for r in st if 2015 <= int(r["year"]) <= 2028))
+check("solar_terms 其余年份 source_ref=lunar", all(r["source_ref"] == "lunar" for r in st if not 2015 <= int(r["year"]) <= 2028))
+r = find(st, year="2026", term="立春")
+check("solar_terms 锚点 2026 立春=02-04 04:02", r is not None and r["datetime"] == "2026-02-04 04:02",
+      (r or {}).get("datetime", "缺失"))
+check("solar_terms 2101 全年 notes 算法值标注",
+      all(r["notes"] == "算法值（lunar-python，无官方锚点）" for r in st if r["year"] == "2101"))
+check("solar_terms 非 2101 notes 为空", all(r["notes"] == "" for r in st if r["year"] != "2101"))
+# ---- M1b 年柱/月柱锚点（r3 立春换年 / r4 节换月，手算+五虎遁；经度 120 北京时，值经 lunar-python 互核） ----
+from datetime import datetime
+import m1
+
+def ym_case(y, mo, d, h, mi):
+    r = m1.compute(datetime(y, mo, d, h, mi), 120.0)
+    if "error" in r:
+        return ("ERR", "ERR")
+    return r["pillars"]["year"]["ganzhi"], r["pillars"]["month"]["ganzhi"]
+
+for (y, mo, d, h, mi), ey, em in [
+        ((2024, 2, 10, 8, 0), "甲辰", "丙寅"),   # 立春 02-04 16:27 后、惊蛰 03-05 前 → 甲年寅月
+        ((2024, 2, 3, 8, 0), "癸卯", "乙丑"),    # 立春前 → 上年癸卯，小寒后丑月
+        ((2000, 2, 4, 12, 0), "己卯", "丁丑"),   # 立春 20:40 前（真太阳时刻判界）→ 1999 己卯年丑月
+        ((2000, 2, 4, 21, 0), "庚辰", "戊寅"),   # 立春 20:40 后 → 庚辰年寅月
+        ((1949, 10, 1, 12, 0), "己丑", "癸酉")]:  # 寒露 10-08 23:11 前 → 白露后酉月（五虎遁己年癸酉）
+    got = ym_case(y, mo, d, h, mi)
+    check(f"M1b 锚点 {y}-{mo:02d}-{d:02d} {h:02d}:{mi:02d}={ey}年{em}月",
+          got == (ey, em), f"得 {got[0]}{got[1]} 期望 {ey}{em}")
+for (y, mo, d, h, mi), emsg in [((1948, 12, 31, 12, 0), "out_of_range"),
+                                ((1900, 1, 1, 12, 0), "out_of_range")]:
+    r = m1.compute(datetime(y, mo, d, h, mi), 120.0)
+    check(f"M1b RANGE_LO 改后 {y}-{mo:02d}-{d:02d} {h:02d}:{mi:02d} out_of_range",
+          "error" in r and emsg in r["error"], r.get("error", "")[:60])
+for y, mo, d, h, mi in [(1949, 1, 1, 3, 30), (2100, 12, 31, 20, 30)]:
+    r = m1.compute(datetime(y, mo, d, h, mi), 120.0)
+    check(f"M1b RANGE 边界 {y}-{mo:02d}-{d:02d} {h:02d}:{mi:02d} 在界内", "error" not in r)
 
 with open(os.path.join(BASE, "report", "assert_report.txt"), "w", encoding="utf-8") as f:
     f.write("断言报告（性质断言，不抄表内容）\n\n")
