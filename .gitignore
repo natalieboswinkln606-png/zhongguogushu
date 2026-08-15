@@ -1,0 +1,5 @@
+data/shushu.db
+__pycache__/
+
+# 生成型中间文件（stdout 转储等），不跟踪；审计类文件（compare_report.txt / assert_report.txt / boundary_cases.csv / SHA256SUMS.txt / errata）保留在版本库
+report/*_stdout.txt

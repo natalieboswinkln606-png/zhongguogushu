@@ -1,0 +1,2 @@
+case_id,field,value_a,value_b,arbiter,decision,reason
+# 空表：仲裁记录载体（剔除三态：拒绝/alt 标注/schema 缺省）

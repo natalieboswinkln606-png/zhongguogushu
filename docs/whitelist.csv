@@ -1,0 +1,2 @@
+case_id,output_item,value_a,value_b,diff_value,attribution,source_page
+# 空表：白名单实例注册表（存异文并存/边缘差异的归因记录，不用于豁免错误）；value_a/value_b 承载双值差异（如「覆灯火/佛灯火」）；增补须 3 源仲裁+全量回归+审计记录（见 preregister.md 白名单增补流程）

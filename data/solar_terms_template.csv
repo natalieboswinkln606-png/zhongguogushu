@@ -1,0 +1,2 @@
+year,term_index,term_name,gmt_time,lunar_year,status,source_ref
+# 空模板：节气表留待人工录入（紫台快照：GB/T 33661-2017+国家授时中心逐年数据，分钟级），gmt_time 为 ISO8601 带时区；year 1900-2100；lunar_year=农历年；status: pending=待核, confirmed=已核入, arbitrated=仲裁中

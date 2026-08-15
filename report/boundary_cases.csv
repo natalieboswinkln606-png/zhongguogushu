@@ -1,0 +1,2 @@
+case_id,category,sample_date,expected,actual,status,note
+# 空表：F-1 边界样本逐例申报载体；category: 1900交界/2100边界/子正边界/甲子轮日/闰月/节气±2h/1500前古代段；status: pending/fail/arbitrated/pass；fail 与 arbitrated 必填 note 并挂 arbitration_log（见 preregister.md F-1 边界样本逐例申报）
