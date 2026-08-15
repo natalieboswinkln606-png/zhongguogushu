@@ -1,0 +1,175 @@
+rule_id,module,source,description
+r1,m1.py,ganzhi_days.csv（gen_ganzhi.py 儒略日公式）,日柱：真太阳时日期查表
+r2,m1.py,rules.py 五鼠遁（甲己甲子…戊癸壬子）,时柱：真太阳时时支起五鼠遁（子正口径 23/0→子）
+r3,m1.py,solar_terms.csv（立春权威）,年柱：立春换年（真太阳时≥当年立春）
+r4,m1.py,solar_terms.csv（12 节权威）,月柱：节换月（五虎遁定月干）
+r5,m1.py,rules.py 五行关系 + canggan.csv 藏干,十神：日干对四干四支藏干取比肩/印/官杀/财/食伤
+bd-01,l3_bazi_daliu.py,《渊海子平》大运排法（阳男阴女顺/阴男阳女逆，月柱起）,大运排法：顺逆+一步十年
+bd-02,l3_bazi_daliu.py,起运岁数=顺逆最近节间隔÷3（1天=4月/1时辰=10天）,起运岁数：真太阳时至最近节分钟精度折算
+bd-03,l3_bazi_daliu.py,m1 r3 立春换年 + r5 十神,流年：立春换年逐流年十神
+bd-04,l3_bazi_daliu.py,m1 r4 节换月（五虎遁）+ r5 十神,流月：节换月逐流月十神
+bd-05,l3_bazi_daliu.py,rules.py 干支五行 + canggan.csv 藏干 +《三命通会》旺衰,大运流年五行旺衰分布
+cg-01,l3_chenggu.py,《称骨歌》骨重表（卜易居+astrologybazi 两 oracle 互证）,年月日时四值骨重（农历口径）
+cg-02,l3_chenggu.py,《称骨歌》总量合成,四值骨重合计（两/钱）
+cg-03,l3_chenggu.py,《称骨歌》断语（男命/女命 51 档）,断语检索（性别分档）
+hlyl-01,l3_heluolishu.py,网传太玄数起卦派（干支同数表）,《太玄数》干支取数（天/地数）
+hlyl-02,l3_heluolishu.py,先天八卦数（乾1…坤8），余0取坤,天数÷8上卦、地数÷8下卦→命卦
+hlyl-03,l3_heluolishu.py,按数取爻（男天数/女地数÷6）,元堂（动爻）定位
+hlyl-04,l3_heluolishu.py,元堂爻动变卦（shen_gua）,身卦与命卦对照（后天卦）
+hlyl-05,l3_heluolishu.py,《河洛理数》断语体系（化炁/卦辞推演）,断语推演（规则启发式）
+hp-00,l3_hepan.py,《渊海子平》《三命通会》《滴天髓》,合盘总容器：全字段带 rule_id/source/alt
+hp-01,l3_hepan.py,《渊海子平》十干合/论三刑《三命通会》论六合/论冲/论三合/论六害,结构互动：天干五合/相克、地支六合/三合半合/六冲/三刑/六害
+hp-02,l3_hepan.py,r5 十神互定位,十神互定位：双方十神互补/比劫
+hp-03,l3_hepan.py,《渊海子平》《三命通会》婚配口诀 + nayin.csv,夫妻宫：日支六合/六冲/三刑+生肖六合三合六冲+纳音
+hp-04,l3_hepan.py,四场景规则（婚姻/事业/合作/健康）,四场景合盘评估
+hp-05,l3_hepan.py,流年干支引动（hp-01 规则+桃花红鸾天喜）,流年合盘：应期窗口
+hp-06,l3_hepan.py,l3_liuyao 六爻测事（官鬼/妻财/兄弟用神）,六爻测事接线（代占）
+hp-07,l3_hepan.py,单盘代占（对象八字未知）,《渊海子平》用神表,代占直断（单盘）
+hl-01,l3_huangli.py,《协纪辨方书》卷三建除（节气月建）,建除十二神（节气月建口径）
+hl-02,l3_huangli.py,《协纪辨方书》卷五黄黑道引《考原》,日黄黑道值神（青龙…勾陈）
+hl-02b,l3_huangli.py,《协纪辨方书》卷七按语（除危定执成开为黄道）,建除配黄黑道（与值神并存）
+hl-02h,l3_huangli.py,《协纪辨方书》卷五『日起时则子日申时起青龙』,时黄黑道（按日支起）
+hl-03,l3_huangli.py,15 项择日神煞（《协纪辨方书》+《渊海子平》《三命通会》）,每日宜忌神煞 15 项容器
+hl-03-01,l3_huangli.py,《协纪辨方书》月德条（三合局）,月德
+hl-03-02,l3_huangli.py,《协纪辨方书》天德条,天德
+hl-03-03,l3_huangli.py,《协纪辨方书》月恩条（月建所生之干）,月恩
+hl-03-04,l3_huangli.py,《协纪辨方书》天赦条,天赦
+hl-03-05,l3_huangli.py,《协纪辨方书》驿马条（《历例》）,驿马
+hl-03-06,l3_huangli.py,《协纪辨方书》咸池条（《历例》）,咸池（桃花）
+hl-03-07,l3_huangli.py,《渊海子平·论红艳煞》,红艳
+hl-03-08,l3_huangli.py,《协纪辨方书》劫煞条,劫煞
+hl-03-09,l3_huangli.py,《协纪辨方书》亡神条,亡神
+hl-03-10,l3_huangli.py,《协纪辨方书》四废条,四废
+hl-03-11,l3_huangli.py,《三命通会·论十恶大败》（黄历择日同用）,十恶大败
+hl-03-12,l3_huangli.py,《协纪辨方书》天德合条,天德合
+hl-03-13,l3_huangli.py,《协纪辨方书》月德合条,月德合
+hl-03-14,l3_huangli.py,《协纪辨方书》归忌条（《玉匣记》同）,归忌
+hl-03-15,l3_huangli.py,《协纪辨方书》往亡条,往亡
+hl-03b,l3_huangli.py,建除吉凶属性+神煞组合规则,宜忌生成
+hl-04,l3_huangli.py,黄历择日接口（避忌组合规则）,择日接口
+nr-01,l3_liuren.py,《六壬大全》月将·太阳过宫（中气换将）,月将：中气→月将（雨水亥…大寒子）
+nr-01/nr-02,l3_liuren.py,月将加时布天盘；贵神加临布天将,天地盘合成（月将+贵人双规则复合）
+nr-02,l3_liuren.py,《六壬大全》贵人歌诀（易安居实测校正壬癸夜贵=亥）,贵人：昼夜贵（旦暮分界卯酉）
+nr-03,l3_liuren.py,《六壬大全》日干寄宫口诀,四课：干上神/支上神两两相生
+nr-04,l3_liuren.py,《六壬大全》九宗门（贼克/比用/涉害/遥克/昴星/别责/八专/伏吟/返吟）,三传：九宗门起三传
+nr-04（行年）,l3_liuren.py,易安居 oracle 实测公式（男+2/女+4，底本出处待考）,行年起法
+ly-01,l3_liuyao.py,《梅花易数》时间/数字起卦（÷8÷6）,起卦：时间/数字/单数
+ly-02,l3_liuyao.py,data/najia.csv（京房纳甲歌推算存表）,纳甲：装卦地支与六亲卦宫
+ly-03,l3_liuyao.py,本宫五行 vs 爻纳支五行,六亲：兄弟/父母/子孙/官鬼/妻财
+ly-04,l3_liuyao.py,日干起六神（甲乙青龙…壬癸玄武）,六神：自初爻起六神
+ly-05,l3_liuyao.py,《增删卜易》世应诀,世应定位
+ly-06,l3_liuyao.py,月建日辰对爻支五行生克冲合,旺衰：月建日辰（止于排卦不作断卦 I-7）
+mh-01,l3_meihua.py,《梅花易数》时间起卦（农历法）,时间起卦：年支序+农历月日÷8÷6
+mh-02,l3_meihua.py,《梅花易数》报数起卦,报数起卦（2 数/3 数）
+mh-03,l3_meihua.py,《梅花易数》字数起卦（奇数上少下多）,字数起卦
+mh-04,l3_meihua.py,《梅花易数》卦象展开,本卦/互卦/变卦展开
+mh-05,l3_meihua.py,《梅花易数·体用生克》+四季旺衰,体用生克五态+旺衰加权
+mh-06,l3_meihua.py,规则启发式（I-7 非神断）,断事接口
+qm-01,l3_qimen.py,《奇门遁甲统宗》72 局口诀+张志春《神奇之门》拆补法,定局：节气→阴阳遁/上中下/局数
+qm-02,l3_qimen.py,三奇六仪布九宫（阳顺阴逆）,三奇六仪排布
+qm-03,l3_qimen.py,星随干转（天禽随芮）,九星落宫
+qm-04,l3_qimen.py,门随时转（值使数宫，门整体平移）,八门落宫
+qm-05,l3_qimen.py,值符随星余沿环排（中宫无神）,八神落宫
+qm-06,l3_qimen.py,《奇门遁甲统宗》旬首隐仪（甲子戊…甲寅癸）,值符值使：旬首/六仪
+qd-01,l3_qimen_duanju.py,《奇门遁甲统宗》用神篇,用神容器（qd-01-01..04 具体判定）
+qd-01-01,l3_qimen_duanju.py,《奇门遁甲统宗》用神篇,用神：日干类象
+qd-01-02,l3_qimen_duanju.py,《奇门遁甲统宗》用神篇,用神：时干类象
+qd-01-03,l3_qimen_duanju.py,《奇门遁甲统宗》用神篇,用神：落宫与门神星
+qd-01-04,l3_qimen_duanju.py,《奇门遁甲统宗》用神篇,用神：方位与时空（九宫断事）
+qd-02,l3_qimen_duanju.py,《烟波钓叟歌》《奇门遁甲统宗》格局口诀,格局判定容器（qd-g-/qd-x- 表驱动）
+qd-03,l3_qimen_duanju.py,格局吉凶+用神组合规则,吉凶初步容器（qd-03-01 具体判定）
+qd-03-01,l3_qimen_duanju.py,格局吉凶+用神组合规则,吉凶初步（规则启发式）
+qd-g-01,l3_qimen_duanju.py,《烟波钓叟歌》·戊加丙,青龙返首（吉）
+qd-g-01b,l3_qimen_duanju.py,用神落宫汇总（并入格局清单作主宫信息）,用神落宫汇总条目
+qd-g-02,l3_qimen_duanju.py,《烟波钓叟歌》·丙加戊,飞鸟跌穴（吉）
+qd-g-03,l3_qimen_duanju.py,《奇门遁甲统宗》三遁,天遁（吉）
+qd-g-04,l3_qimen_duanju.py,《奇门遁甲统宗》三遁,地遁（吉）
+qd-g-05,l3_qimen_duanju.py,《奇门遁甲统宗》三遁,人遁（吉）
+qd-g-06,l3_qimen_duanju.py,《奇门遁甲统宗》三遁,神遁（吉）
+qd-g-07,l3_qimen_duanju.py,《奇门遁甲统宗》三遁,鬼遁（吉）
+qd-g-08,l3_qimen_duanju.py,《奇门遁甲统宗》·玉女守门,玉女守门（吉）
+qd-g-09,l3_qimen_duanju.py,《奇门遁甲统宗》·三奇升殿,三奇升殿（吉）
+qd-g-10,l3_qimen_duanju.py,《奇门遁甲统宗》·天乙三奇,天乙三奇（吉）
+qd-g-11,l3_qimen_duanju.py,《奇门遁甲统宗》三诈,真诈（吉）
+qd-g-12,l3_qimen_duanju.py,《奇门遁甲统宗》三诈,休诈（吉）
+qd-g-13,l3_qimen_duanju.py,《奇门遁甲统宗》三诈,重诈（吉）
+qd-g-14,l3_qimen_duanju.py,《奇门遁甲统宗》五假,天假（吉）
+qd-g-15,l3_qimen_duanju.py,《奇门遁甲统宗》五假,地假（吉）
+qd-g-16,l3_qimen_duanju.py,《奇门遁甲统宗》五假,人假（吉）
+qd-g-17,l3_qimen_duanju.py,《奇门遁甲统宗》五假,神假（吉）
+qd-g-18,l3_qimen_duanju.py,《奇门遁甲统宗》五假,鬼假（吉）
+qd-x-01,l3_qimen_duanju.py,《奇门遁甲统宗》·伏吟,直符伏吟（凶）
+qd-x-01b,l3_qimen_duanju.py,九星伏吟（直符伏吟补充条目）,九星伏吟（凶）
+qd-x-02,l3_qimen_duanju.py,《奇门遁甲统宗》·反吟,九星反吟（凶）
+qd-x-03,l3_qimen_duanju.py,《奇门遁甲统宗》·伏吟,八门伏吟（凶）
+qd-x-04,l3_qimen_duanju.py,《奇门遁甲统宗》·反吟,八门反吟（凶）
+qd-x-05,l3_qimen_duanju.py,《奇门遁甲统宗》·六仪击刑,六仪击刑（凶）
+qd-x-06,l3_qimen_duanju.py,《奇门遁甲统宗》·三奇入墓,三奇入墓（凶）
+qd-x-07,l3_qimen_duanju.py,《奇门遁甲统宗》·悖格,悖格（凶）
+qd-x-08,l3_qimen_duanju.py,《奇门遁甲统宗》·荧惑入白,荧惑入白（凶）
+qd-x-09,l3_qimen_duanju.py,《奇门遁甲统宗》·太白入荧,太白入荧（凶）
+qd-x-10,l3_qimen_duanju.py,《奇门遁甲统宗》·青龙逃走,青龙逃走（凶）
+qd-x-11,l3_qimen_duanju.py,《奇门遁甲统宗》·白虎猖狂,白虎猖狂（凶）
+qd-x-12,l3_qimen_duanju.py,《奇门遁甲统宗》·朱雀入江,朱雀入江（凶）
+qd-x-13,l3_qimen_duanju.py,《奇门遁甲统宗》·蛇夭矫,蛇夭矫（凶）
+qd-x-14,l3_qimen_duanju.py,《奇门遁甲统宗》·大格,大格（凶）
+qd-x-15,l3_qimen_duanju.py,《奇门遁甲统宗》·上格,上格（凶）
+qd-x-16,l3_qimen_duanju.py,《奇门遁甲统宗》·刑格,刑格（凶）
+qd-x-17,l3_qimen_duanju.py,《奇门遁甲统宗》·月格,月格（凶）
+qd-x-18,l3_qimen_duanju.py,《奇门遁甲统宗》·天乙飞宫,天乙飞宫（凶）
+qd-x-19,l3_qimen_duanju.py,《奇门遁甲统宗》·天乙伏宫,天乙伏宫（凶）
+qd-x-20,l3_qimen_duanju.py,《奇门遁甲统宗》·戏格,戏格（凶）
+qd-x-21,l3_qimen_duanju.py,《奇门遁甲统宗》·地网遮蔽,地网遮蔽（凶）
+qd-x-22,l3_qimen_duanju.py,《奇门遁甲统宗》·天网四张,天网四张（凶）
+qd-x-23,l3_qimen_duanju.py,《奇门遁甲统宗》·五不遇时,五不遇时（凶）
+qd-x-24,l3_qimen_duanju.py,《奇门遁甲统宗》·门迫,门迫（凶）
+qd-x-25,l3_qimen_duanju.py,《奇门遁甲统宗》·时格,时格（凶）
+qd-x-26,l3_qimen_duanju.py,《奇门遁甲统宗》·风遁,风遁（凶）
+ss-00,l3_shensha.py,《渊海子平》《三命通会》（ss-01..23 容器）,神煞聚合容器
+ss-01,l3_shensha.py,《三命通会·论天乙贵人》（易安居实测口径）,天乙贵人
+ss-02,l3_shensha.py,民间口诀（据《协纪辨方书》日表类整理）,文昌贵人
+ss-03,l3_shensha.py,《渊海子平·论咸池》,桃花（咸池）
+ss-04,l3_shensha.py,《渊海子平·论驿马》,驿马
+ss-05,l3_shensha.py,《渊海子平·论华盖》,华盖
+ss-06,l3_shensha.py,《渊海子平·论羊刃》,羊刃
+ss-07,l3_shensha.py,《渊海子平·论将星》,将星
+ss-08,l3_shensha.py,《渊海子平·论禄》,禄神
+ss-09,l3_shensha.py,《三命通会·论金舆》,金舆
+ss-10,l3_shensha.py,民间口诀（据《协纪辨方书》嫁娶类整理）,红鸾
+ss-11,l3_shensha.py,民间口诀（红鸾对宫，据《协纪辨方书》整理）,天喜
+ss-12,l3_shensha.py,《渊海子平·论孤辰寡宿》,孤辰
+ss-13,l3_shensha.py,《渊海子平·论孤辰寡宿》,寡宿
+ss-14,l3_shensha.py,《三命通会·论国印》,国印
+ss-15,l3_shensha.py,《渊海子平·论劫煞》,劫煞
+ss-16,l3_shensha.py,《渊海子平·论亡神》,亡神
+ss-17,l3_shensha.py,《渊海子平·论灾煞》,灾煞
+ss-18,l3_shensha.py,《渊海子平·论天罗地网》（日干五行论）,天罗
+ss-19,l3_shensha.py,《渊海子平·论天罗地网》（日干五行论）,地网
+ss-20,l3_shensha.py,《渊海子平·论魁罡》,魁罡
+ss-21,l3_shensha.py,《渊海子平·论天德贵人》,天德贵人
+ss-22,l3_shensha.py,《渊海子平·论月德贵人》,月德贵人
+ss-23,l3_shensha.py,《三命通会·论十恶大败》,十恶大败
+ws-01,l3_wangshuai.py,《三命通会·论五行旺相休囚死》（月支=m1 r4，本气=canggan.csv）,月令旺衰（旺相休囚死）
+ws-02,l3_wangshuai.py,data/changsheng.csv 十二长生表,得地：四支十二长生分段计分
+ws-03,l3_wangshuai.py,rules.py 五行关系（比劫=同、印=生我）,得势：天干+藏干清点
+ws-04,l3_wangshuai.py,权重 得令40/得地35/得势25（《子平真诠》专求月令）,综合五级判定+扶抑结论
+wylq-01,l3_wuyunliuqi.py,《素问·天元纪大论》天干化运+《五常政大论》十纪,岁运（中运）：天干化运与太过不及
+wylq-02,l3_wuyunliuqi.py,《六微旨大论》六步,《类经》注初之气起于大寒,主气六步
+wylq-03,l3_wuyunliuqi.py,《五运行大论》地支化气（司天在泉）,客气六步：司天/在泉
+wylq-04,l3_wuyunliuqi.py,《素问·六微旨大论》天符/岁会/太一天符+《六元正纪大论》同天符/同岁会,运气相合
+wylq-05,l3_wuyunliuqi.py,solar_terms.csv 定气中气时刻,六气节点（大寒/春分/小满/大暑/秋分/小雪）
+xlr-01,l3_xiaoliuren.py,data/shuowang.csv 朔日表 + ganzhi_days.csv,农历月日时转化（30 日循环，23 点子初归次日）
+xlr-02,l3_xiaoliuren.py,通行口诀六宫掌诀（木派主表；水派异文）,六宫掌诀与五行
+xlr-03,l3_xiaoliuren.py,通行口诀逐宫顺数,月/日/时三宫顺数推演
+xlr-04,l3_xiaoliuren.py,通行口诀要点整理（异文存见）,断事（规则启发式）
+zw-01,l3_ziwei.py,m1 真太阳时/时辰/年柱 + shuowang.csv 农历,农历日与年柱时辰基座
+zw-02,l3_ziwei.py,命宫=寅起正月顺数生月逆数生时（身宫顺数）,命宫身宫
+zw-03,l3_ziwei.py,命宫干支纳音（nayin.csv）→五行局,五行局
+zw-04,l3_ziwei.py,紫微定位口诀（寅起子时顺数生时）,紫微落宫
+zw-05,l3_ziwei.py,紫微星系偏移口诀+天府星系顺逆（中州派底本）,十四主星排布
+zw-06,l3_ziwei.py,辅星表（左辅右弼=月系星随闰月顺延）,辅星排布（左辅右弼/文昌文曲/天魁天钺/禄存/擎羊陀罗/火铃/天马）
+zw-07,l3_ziwei.py,生年干四化表,四化（禄权科忌）
+zl-01,l3_ziwei_liunian.py,《紫微斗数全书》大限起法（阳男阴女顺行）,大限
+zl-02,l3_ziwei_liunian.py,小限起法（男寅午戌…），斗君前一年,小限
+zl-03,l3_ziwei_liunian.py,流年干支（shuowang.csv 年号+m1 立春）,流年干支与四化
+zl-04,l3_ziwei_liunian.py,《紫微斗数全书》卷二·安斗君诀,斗君（流年正月建）

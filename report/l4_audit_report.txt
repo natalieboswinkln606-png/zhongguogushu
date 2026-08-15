@@ -1,0 +1,157 @@
+L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
+一、固定锚点 1985-06-15 10:00 北京时(120E) 全链路
+  -- 锚点 1985-06-15 10:00 lon=120.0 四柱={'year': '乙丑', 'month': '壬午', 'day': '乙酉', 'hour': '辛巳'} 真太阳时=1985-06-15T09:59:48
+  PASS [锚点] 六爻可算
+  PASS [锚点] 六爻月建=m1 r4  壬午 vs 壬午
+  PASS [锚点] 六爻日辰=m1 r1  乙酉 vs 乙酉
+  PASS [锚点] 旺衰四柱=m1  {'year': {'ganzhi': '乙丑', 'rule_id': 'r3', 'source': 'solar_terms.csv'}, 'month': {'ganzhi': '壬午', 'rule_id': 'r4', 'source': 'solar_terms.csv'}, 'day': {'ganzhi': '乙酉', 'rule_id': 'r1', 'source': 'ganzhi_days.csv'}, 'hour': {'ganzhi': '辛巳', 'rule_id': 'r2'}}
+  PASS [锚点] 梅花可算
+  PASS [锚点] 梅花农历=shuowang  4月27日 vs 4月27日
+  PASS [锚点] 小六壬可算
+  PASS [锚点] 小六壬农历=shuowang  4月27日
+  PASS [锚点] 小六壬日柱=ganzhi_days(北京时当日)  乙酉 vs 乙酉
+  PASS [锚点] 称骨可算
+  PASS [锚点] 称骨农历=shuowang  四月27日 vs 4月27日
+  PASS [锚点] 紫微可算
+  PASS [锚点] 紫微农历=shuowang  四月27日
+  PASS [锚点] 大运流年四柱=m1
+  PASS [锚点] 神煞四柱=m1
+  PASS [锚点] 奇门四柱=m1
+  PASS [锚点] 奇门定局节=月柱节  芒种 vs 芒种
+  PASS [锚点] 奇门断局四柱=m1
+  PASS [锚点] 黄历干支=ganzhi_days  乙酉 vs 乙酉
+  PASS [锚点] 五运六气可算
+  PASS [锚点] 五运六气岁运年=m1(界外两口径一致)  乙丑 vs 乙丑
+  PASS [锚点] 六壬可算
+  PASS [锚点] 六壬日柱=m1(非跨子时窗口一致)  乙酉
+  PASS [锚点] 紫微大限流年可算
+  PASS [锚点] 紫微大限农历=称骨农历  四月
+  PASS [锚点] 合盘可算
+  PASS [锚点] 合盘A四柱=m1  {'year': '乙丑', 'month': '壬午', 'day': '乙酉', 'hour': '辛巳'}
+  PASS [锚点] 合盘 hp-01/hp-04 带 Rule-ID
+二、确定性随机 3 例（seed=20260816）
+  -- R1 2099-08-12 22:10 lon=120.0 四柱={'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'} 真太阳时=2099-08-12T22:05:15
+  PASS [R1] 六爻可算
+  PASS [R1] 六爻月建=m1 r4  壬申 vs 壬申
+  PASS [R1] 六爻日辰=m1 r1  辛巳 vs 辛巳
+  PASS [R1] 旺衰四柱=m1  {'year': {'ganzhi': '己未', 'rule_id': 'r3', 'source': 'solar_terms.csv'}, 'month': {'ganzhi': '壬申', 'rule_id': 'r4', 'source': 'solar_terms.csv'}, 'day': {'ganzhi': '辛巳', 'rule_id': 'r1', 'source': 'ganzhi_days.csv'}, 'hour': {'ganzhi': '己亥', 'rule_id': 'r2'}}
+  PASS [R1] 梅花可算
+  PASS [R1] 梅花农历=shuowang  6月26日 vs 6月26日
+  PASS [R1] 小六壬可算
+  PASS [R1] 小六壬农历=shuowang  6月26日
+  PASS [R1] 小六壬日柱=ganzhi_days(北京时当日)  辛巳 vs 辛巳
+  PASS [R1] 称骨可算
+  PASS [R1] 称骨农历=shuowang  六月26日 vs 6月26日
+  PASS [R1] 紫微可算
+  PASS [R1] 紫微农历=shuowang  六月26日
+  PASS [R1] 大运流年四柱=m1
+  PASS [R1] 神煞四柱=m1
+  PASS [R1] 奇门四柱=m1
+  PASS [R1] 奇门定局节=月柱节  立秋 vs 立秋
+  PASS [R1] 奇门断局四柱=m1
+  PASS [R1] 黄历干支=ganzhi_days  辛巳 vs 辛巳
+  PASS [R1] 五运六气可算
+  PASS [R1] 五运六气岁运年=m1(界外两口径一致)  己未 vs 己未
+  PASS [R1] 六壬可算
+  PASS [R1] 六壬日柱=m1(非跨子时窗口一致)  辛巳
+  PASS [R1] 紫微大限流年可算
+  PASS [R1] 紫微大限农历=称骨农历  六月
+  PASS [R1] 合盘可算
+  PASS [R1] 合盘A四柱=m1  {'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'}
+  PASS [R1] 合盘 hp-01/hp-04 带 Rule-ID
+  -- R2 1952-12-12 18:00 lon=120.0 四柱={'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'} 真太阳时=1952-12-12T18:05:05
+  PASS [R2] 六爻可算
+  PASS [R2] 六爻月建=m1 r4  壬子 vs 壬子
+  PASS [R2] 六爻日辰=m1 r1  壬辰 vs 壬辰
+  PASS [R2] 旺衰四柱=m1  {'year': {'ganzhi': '壬辰', 'rule_id': 'r3', 'source': 'solar_terms.csv'}, 'month': {'ganzhi': '壬子', 'rule_id': 'r4', 'source': 'solar_terms.csv'}, 'day': {'ganzhi': '壬辰', 'rule_id': 'r1', 'source': 'ganzhi_days.csv'}, 'hour': {'ganzhi': '己酉', 'rule_id': 'r2'}}
+  PASS [R2] 梅花可算
+  PASS [R2] 梅花农历=shuowang  10月26日 vs 10月26日
+  PASS [R2] 小六壬可算
+  PASS [R2] 小六壬农历=shuowang  10月26日
+  PASS [R2] 小六壬日柱=ganzhi_days(北京时当日)  壬辰 vs 壬辰
+  PASS [R2] 称骨可算
+  PASS [R2] 称骨农历=shuowang  十月26日 vs 10月26日
+  PASS [R2] 紫微可算
+  PASS [R2] 紫微农历=shuowang  十月26日
+  PASS [R2] 大运流年四柱=m1
+  PASS [R2] 神煞四柱=m1
+  PASS [R2] 奇门四柱=m1
+  PASS [R2] 奇门定局节=月柱节  大雪 vs 大雪
+  PASS [R2] 奇门断局四柱=m1
+  PASS [R2] 黄历干支=ganzhi_days  壬辰 vs 壬辰
+  PASS [R2] 五运六气可算
+  PASS [R2] 五运六气岁运年=m1(界外两口径一致)  壬辰 vs 壬辰
+  PASS [R2] 六壬可算
+  PASS [R2] 六壬日柱=m1(非跨子时窗口一致)  壬辰
+  PASS [R2] 紫微大限流年可算
+  PASS [R2] 紫微大限农历=称骨农历  十月
+  PASS [R2] 合盘可算
+  PASS [R2] 合盘A四柱=m1  {'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'}
+  PASS [R2] 合盘 hp-01/hp-04 带 Rule-ID
+  -- R3 2041-08-11 22:10 lon=120.0 四柱={'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'} 真太阳时=2041-08-11T22:05:05
+  PASS [R3] 六爻可算
+  PASS [R3] 六爻月建=m1 r4  丙申 vs 丙申
+  PASS [R3] 六爻日辰=m1 r1  丙子 vs 丙子
+  PASS [R3] 旺衰四柱=m1  {'year': {'ganzhi': '辛酉', 'rule_id': 'r3', 'source': 'solar_terms.csv'}, 'month': {'ganzhi': '丙申', 'rule_id': 'r4', 'source': 'solar_terms.csv'}, 'day': {'ganzhi': '丙子', 'rule_id': 'r1', 'source': 'ganzhi_days.csv'}, 'hour': {'ganzhi': '己亥', 'rule_id': 'r2'}}
+  PASS [R3] 梅花可算
+  PASS [R3] 梅花农历=shuowang  7月15日 vs 7月15日
+  PASS [R3] 小六壬可算
+  PASS [R3] 小六壬农历=shuowang  7月15日
+  PASS [R3] 小六壬日柱=ganzhi_days(北京时当日)  丙子 vs 丙子
+  PASS [R3] 称骨可算
+  PASS [R3] 称骨农历=shuowang  七月15日 vs 7月15日
+  PASS [R3] 紫微可算
+  PASS [R3] 紫微农历=shuowang  七月15日
+  PASS [R3] 大运流年四柱=m1
+  PASS [R3] 神煞四柱=m1
+  PASS [R3] 奇门四柱=m1
+  PASS [R3] 奇门定局节=月柱节  立秋 vs 立秋
+  PASS [R3] 奇门断局四柱=m1
+  PASS [R3] 黄历干支=ganzhi_days  丙子 vs 丙子
+  PASS [R3] 五运六气可算
+  PASS [R3] 五运六气岁运年=m1(界外两口径一致)  辛酉 vs 辛酉
+  PASS [R3] 六壬可算
+  PASS [R3] 六壬日柱=m1(非跨子时窗口一致)  丙子
+  PASS [R3] 紫微大限流年可算
+  PASS [R3] 紫微大限农历=称骨农历  七月
+  PASS [R3] 合盘可算
+  PASS [R3] 合盘A四柱=m1  {'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'}
+  PASS [R3] 合盘 hp-01/hp-04 带 Rule-ID
+三、跨子时/西部经度分歧锚点（预期差异方向验证）
+  PASS 分歧A 2024-02-10 00:00 120E：m1 子正归前日(2-9)  m1=癸卯(真太阳时2024-02-09T23:45:27) vs 小六壬=甲辰
+  PASS 分歧A 六壬/小六壬 北京时 0 点换日归 2-10  小六壬=甲辰 六壬=甲辰
+  PASS 分歧B 拉萨91E：m1 真太阳时跨日归前日夜  m1=丁巳(真太阳时1999-12-31T22:30:17) vs 六壬=戊午
+  PASS 分歧B 六壬北京时口径归 1-1  六壬=戊午
+  PASS 分歧C 2024-02-10 23:30：两口径一致  m1=六壬=甲辰
+四、Rule-ID 注册表双向校验（data/rule_registry.csv）
+  PASS 注册表条目数≥150  实 174 条
+  PASS 代码字面量全部在注册表  缺 []
+  PASS 注册表条目全部在代码中存在  多 []
+  PASS 申报编号 wylq-001..005/qd-b-01..21 在 arbitration_log.csv 有载体  缺 []
+  NOTE 审计注记 qd-x-27: docstring 旧编号残留（风遁正式 id=qd-x-26，GE_RULES 表驱动；L4 审计发现，功能无影响）
+五、奇门定局 18 例手工核对（归档自 temp/qm_audit.py，独立推算）
+  PASS 定局 2024-01-01 12:00  期望 ('冬至', '阳遁', '上元', 1) 实得 ('冬至', '阳遁', '上元', 1)
+  PASS 定局 2024-01-06 03:00  期望 ('冬至', '阳遁', '中元', 7) 实得 ('冬至', '阳遁', '中元', 7)
+  PASS 定局 2024-01-06 12:00  期望 ('小寒', '阳遁', '中元', 8) 实得 ('小寒', '阳遁', '中元', 8)
+  PASS 定局 2024-02-04 16:00  期望 ('大寒', '阳遁', '上元', 3) 实得 ('大寒', '阳遁', '上元', 3)
+  PASS 定局 2024-02-04 18:00  期望 ('立春', '阳遁', '上元', 8) 实得 ('立春', '阳遁', '上元', 8)
+  PASS 定局 2024-02-10 12:00  期望 ('立春', '阳遁', '下元', 2) 实得 ('立春', '阳遁', '下元', 2)
+  PASS 定局 2024-03-05 09:00  期望 ('雨水', '阳遁', '上元', 9) 实得 ('雨水', '阳遁', '上元', 9)
+  PASS 定局 2024-03-05 12:00  期望 ('惊蛰', '阳遁', '上元', 1) 实得 ('惊蛰', '阳遁', '上元', 1)
+  PASS 定局 2024-03-11 12:00  期望 ('惊蛰', '阳遁', '下元', 4) 实得 ('惊蛰', '阳遁', '下元', 4)
+  PASS 定局 2024-05-20 21:30  期望 ('小满', '阳遁', '中元', 2) 实得 ('小满', '阳遁', '中元', 2)
+  PASS 定局 2024-06-21 04:00  期望 ('芒种', '阳遁', '中元', 3) 实得 ('芒种', '阳遁', '中元', 3)
+  PASS 定局 2024-06-21 12:00  期望 ('夏至', '阴遁', '中元', 3) 实得 ('夏至', '阴遁', '中元', 3)
+  PASS 定局 2024-06-24 12:00  期望 ('夏至', '阴遁', '下元', 6) 实得 ('夏至', '阴遁', '下元', 6)
+  PASS 定局 2024-07-01 12:00  期望 ('夏至', '阴遁', '上元', 9) 实得 ('夏至', '阴遁', '上元', 9)
+  PASS 定局 2024-08-07 12:00  期望 ('立秋', '阴遁', '中元', 5) 实得 ('立秋', '阴遁', '中元', 5)
+  PASS 定局 2024-09-07 12:00  期望 ('白露', '阴遁', '下元', 6) 实得 ('白露', '阴遁', '下元', 6)
+  PASS 定局 2024-12-21 16:00  期望 ('大雪', '阴遁', '下元', 1) 实得 ('大雪', '阴遁', '下元', 1)
+  PASS 定局 2024-12-21 18:00  期望 ('冬至', '阳遁', '下元', 4) 实得 ('冬至', '阳遁', '下元', 4)
+六、归档抽查 l4_audit_ziwei.py（紫微 oracle 缓存独立解析）
+  退出码 0
+  庚辰申子辰组 (2000, 2, 5, 12, 0): 紫微 oracle=丑 火星=申 铃星=辰 天魁=丑 禄存=申 差异=无
+  丙申申子辰组 (2016, 1, 23, 14, 0): 紫微 oracle=巳 火星=辰 铃星=巳 天魁=子 禄存=卯 差异=无
+  独立解析抽查: PASS
+  PASS l4_audit_ziwei.py 独立解析抽查 PASS
+合计：PASS 140 / FAIL 0
