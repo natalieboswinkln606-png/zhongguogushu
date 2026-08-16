@@ -60,6 +60,24 @@ def load_daygz():
         return {r["date"]: r["ganzhi"] for r in csv.DictReader(f)}
 
 
+GAN2 = "甲乙丙丁戊己庚辛壬癸"
+ZHI2 = "子丑寅卯辰巳午未申酉戌亥"
+
+
+def wylq_dahan_gz(dt):
+    """独立推算运气岁运干支：最近 ≤dt 大寒节点所在公历年 → (y-4)%60（甲子=0，大寒岁首口径）。
+
+    与 l3_wuyunliuqi._luck_year 同口径但独立实现（各自读 solar_terms.csv），对拍防同错；
+    不依赖 m1 立春年柱，故大寒~立春窗口内差异（已申报 wylq-001）也不会假 FAIL，任何随机输入鲁棒。"""
+    y = dt.year
+    with open(os.path.join(BASE, "data", "solar_terms.csv"), encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            if r["term"] == "大寒" and r["datetime"] <= dt.strftime("%Y-%m-%d %H:%M"):
+                y = int(r["datetime"][:4])
+    idx = (y - 4) % 60
+    return GAN2[idx % 10] + ZHI2[idx % 12]
+
+
 JIE_BY_ZHI = {"寅": "立春", "卯": "惊蛰", "辰": "清明", "巳": "立夏", "午": "芒种", "未": "小暑",
               "申": "立秋", "酉": "白露", "戌": "寒露", "亥": "立冬", "子": "大雪", "丑": "小寒"}
 
@@ -93,6 +111,14 @@ def e2e_audit(dt, lon, tag, rows, dgz):
     check("error" not in ws and all(ws["pillars"][k]["ganzhi"] == P[k] for k in P),
           f"[{tag}] 旺衰四柱=m1", "" if "error" in ws else str(ws["pillars"]))
 
+    hl = l3_heluolishu.compute(dt, "男", lon)
+    check("error" not in hl, f"[{tag}] 河洛理数可算")
+    if "error" not in hl:
+        check(all(hl["pillars"][k]["ganzhi"] == P[k] for k in P),
+              f"[{tag}] 河洛四柱=m1", str({k: hl["pillars"][k]["ganzhi"] for k in P}))
+        check(all(k in hl for k in ("hlyl01", "hlyl02", "hlyl03", "hlyl04", "hlyl05")),
+              f"[{tag}] 河洛五层 hlyl01..05 齐全")
+
     mh = l3_meihua.compute_time(dt, lon)
     check("error" not in mh, f"[{tag}] 梅花可算")
     if "error" not in mh:
@@ -124,17 +150,25 @@ def e2e_audit(dt, lon, tag, rows, dgz):
               f"[{tag}] 紫微农历=shuowang", f"{zw['lunar']['month_name']}{zw['lunar']['day']}日")
 
     bd = l3_bazi_daliu.compute(dt, lon)
-    check("error" not in bd and all(bd["pillars"][k]["ganzhi"] == P[k] for k in P),
-          f"[{tag}] 大运流年四柱=m1")
+    if "error" in bd:
+        check(False, f"[{tag}] 大运流年可算", bd["error"])
+    else:
+        check(all(bd["pillars"][k]["ganzhi"] == P[k] for k in P),
+              f"[{tag}] 大运流年四柱=m1", str({k: bd["pillars"][k]["ganzhi"] for k in P}))
 
     ss = l3_shensha.compute(dt, lon)
-    check("error" not in ss and all(ss["pillars"][k]["ganzhi"] == P[k] for k in P),
-          f"[{tag}] 神煞四柱=m1")
+    if "error" in ss:
+        check(False, f"[{tag}] 神煞可算", ss["error"])
+    else:
+        check(all(ss["pillars"][k]["ganzhi"] == P[k] for k in P),
+              f"[{tag}] 神煞四柱=m1", str({k: ss["pillars"][k]["ganzhi"] for k in P}))
 
     qm = l3_qimen.compute(dt, lon)
-    check("error" not in qm and all(qm["pillars"][k]["ganzhi"] == P[k] for k in P),
-          f"[{tag}] 奇门四柱=m1")
-    if "error" not in qm:
+    if "error" in qm:
+        check(False, f"[{tag}] 奇门可算", qm["error"])
+    else:
+        check(all(qm["pillars"][k]["ganzhi"] == P[k] for k in P),
+              f"[{tag}] 奇门四柱=m1", str({k: qm["pillars"][k]["ganzhi"] for k in P}))
         check(qm["dingju"]["term"] == JIE_BY_ZHI[P["month"][1]], f"[{tag}] 奇门定局节=月柱节",
               f"{qm['dingju']['term']} vs {JIE_BY_ZHI[P['month'][1]]}")
 
@@ -148,19 +182,29 @@ def e2e_audit(dt, lon, tag, rows, dgz):
     wy = l3_wuyunliuqi.compute(dt)
     check("error" not in wy, f"[{tag}] 五运六气可算")
     if "error" not in wy:
-        # 6 月中/随机日远离大寒与立春界：运气岁首（大寒）与立春年柱两口径一致
-        check(wy["sui_yun"]["ganzhi"] == P["year"], f"[{tag}] 五运六气岁运年=m1(界外两口径一致)",
-              f"{wy['sui_yun']['ganzhi']} vs {P['year']}")
+        luck = wylq_dahan_gz(dt)
+        check(wy["sui_yun"]["ganzhi"] == luck, f"[{tag}] 五运六气岁运=大寒口径(独立推算)",
+              f"{wy['sui_yun']['ganzhi']} vs {luck}")
+        # 界外（非大寒~立春窗口）：大寒岁首=立春换年，两口径一致；界内差异已申报 wylq-001（预期，豁免）
+        check(luck != P["year"] or wy["sui_yun"]["ganzhi"] == P["year"],
+              f"[{tag}] 五运六气岁运年=m1(界外两口径一致)", f"{wy['sui_yun']['ganzhi']} vs {P['year']}")
 
     nr = l3_liuren.compute(dt, lon)
     check("error" not in nr, f"[{tag}] 六壬可算")
     if "error" not in nr:
-        # 非跨子时窗口：六壬北京时口径与 m1 真太阳时口径日柱相同；跨子时窗口见分歧锚点段
+        # 六壬日柱=北京时当日（W2 易安居口径）；m1 日柱=真太阳时日期（r1）。跨子时窗口=真太阳时日期≠北京时日期
+        ts_d = datetime.strptime(r["true_solar_time"], "%Y-%m-%dT%H:%M:%S").date()
         same = nr["pillars"]["day"] == P["day"]
-        if same:
+        if same and ts_d == d:
             check(True, f"[{tag}] 六壬日柱=m1(非跨子时窗口一致)", f"{nr['pillars']['day']}")
+        elif not same and ts_d != d:
+            # 窗口内差异为预期（先例 F1-003）：六壬=北京时当日柱、m1=真太阳时日柱，方向须正确
+            check(nr["pillars"]["day"] == dgz.get(d.isoformat()),
+                  f"[{tag}] 六壬日柱≠m1(跨子时窗口差异方向正确)",
+                  f"六壬={nr['pillars']['day']}(北京时{d}) vs m1={P['day']}(真太阳时{ts_d})")
         else:
-            LINES.append(f"  NOTE [{tag}] 六壬日柱≠m1（跨子时窗口，预期差异待分歧段核实） {nr['pillars']['day']} vs {P['day']}")
+            check(False, f"[{tag}] 六壬日柱=m1",
+                  f"六壬={nr['pillars']['day']} vs m1={P['day']}（真太阳时日期={ts_d}，北京时日期={d}）")
 
     zln = l3_ziwei_liunian.compute(dt, lon, target_year=min(dt.year + 5, 2100))
     check("error" not in zln, f"[{tag}] 紫微大限流年可算")
@@ -168,14 +212,20 @@ def e2e_audit(dt, lon, tag, rows, dgz):
         check(zln["lunar"]["month_name"] == cg["lunar"]["month_name"] if "error" not in cg else True,
               f"[{tag}] 紫微大限农历=称骨农历", f"{zln['lunar']['month_name']}")
 
-    # 合盘（双盘）：A=当前日、B=随机另一日
+    # 合盘（双盘）：A=当前日、B=随机另一日；B 盘四柱与大运流年模块独立对拍（assert_l3_hepan.py 未覆盖此项）
     b_dt = dt + timedelta(days=137, hours=3)
     hp = l3_hepan.compute(dt.strftime("%Y-%m-%d %H:%M"), b_dt.strftime("%Y-%m-%d %H:%M"))
     check("error" not in hp, f"[{tag}] 合盘可算")
     if "error" not in hp:
         pa = {k: v["ganzhi"] for k, v in r["pillars"].items()}
-        pb = l3_bazi_daliu.compute(b_dt, lon) if "error" in hp else None
         check(hp["persons"][0]["pillars"] == pa, f"[{tag}] 合盘A四柱=m1", str(hp["persons"][0]["pillars"]))
+        bd_b = l3_bazi_daliu.compute(b_dt, lon)
+        if "error" in bd_b:
+            check(False, f"[{tag}] 合盘B可算", bd_b["error"])
+        else:
+            pb = {k: v["ganzhi"] for k, v in bd_b["pillars"].items()}
+            check(hp["persons"][1]["pillars"] == pb, f"[{tag}] 合盘B四柱=大运流年模块",
+                  str(hp["persons"][1]["pillars"]))
         check("rule_id" in hp.get("hp-01", {}) and "rule_id" in hp.get("hp-04", {}),
               f"[{tag}] 合盘 hp-01/hp-04 带 Rule-ID")
     return (PASS - n0[0], FAIL - n0[1])

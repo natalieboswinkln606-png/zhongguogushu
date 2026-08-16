@@ -5,6 +5,9 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [锚点] 六爻月建=m1 r4  壬午 vs 壬午
   PASS [锚点] 六爻日辰=m1 r1  乙酉 vs 乙酉
   PASS [锚点] 旺衰四柱=m1  {'year': {'ganzhi': '乙丑', 'rule_id': 'r3', 'source': 'solar_terms.csv'}, 'month': {'ganzhi': '壬午', 'rule_id': 'r4', 'source': 'solar_terms.csv'}, 'day': {'ganzhi': '乙酉', 'rule_id': 'r1', 'source': 'ganzhi_days.csv'}, 'hour': {'ganzhi': '辛巳', 'rule_id': 'r2'}}
+  PASS [锚点] 河洛理数可算
+  PASS [锚点] 河洛四柱=m1  {'year': '乙丑', 'month': '壬午', 'day': '乙酉', 'hour': '辛巳'}
+  PASS [锚点] 河洛五层 hlyl01..05 齐全
   PASS [锚点] 梅花可算
   PASS [锚点] 梅花农历=shuowang  4月27日 vs 4月27日
   PASS [锚点] 小六壬可算
@@ -14,13 +17,14 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [锚点] 称骨农历=shuowang  四月27日 vs 4月27日
   PASS [锚点] 紫微可算
   PASS [锚点] 紫微农历=shuowang  四月27日
-  PASS [锚点] 大运流年四柱=m1
-  PASS [锚点] 神煞四柱=m1
-  PASS [锚点] 奇门四柱=m1
+  PASS [锚点] 大运流年四柱=m1  {'year': '乙丑', 'month': '壬午', 'day': '乙酉', 'hour': '辛巳'}
+  PASS [锚点] 神煞四柱=m1  {'year': '乙丑', 'month': '壬午', 'day': '乙酉', 'hour': '辛巳'}
+  PASS [锚点] 奇门四柱=m1  {'year': '乙丑', 'month': '壬午', 'day': '乙酉', 'hour': '辛巳'}
   PASS [锚点] 奇门定局节=月柱节  芒种 vs 芒种
   PASS [锚点] 奇门断局四柱=m1
   PASS [锚点] 黄历干支=ganzhi_days  乙酉 vs 乙酉
   PASS [锚点] 五运六气可算
+  PASS [锚点] 五运六气岁运=大寒口径(独立推算)  乙丑 vs 乙丑
   PASS [锚点] 五运六气岁运年=m1(界外两口径一致)  乙丑 vs 乙丑
   PASS [锚点] 六壬可算
   PASS [锚点] 六壬日柱=m1(非跨子时窗口一致)  乙酉
@@ -28,6 +32,7 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [锚点] 紫微大限农历=称骨农历  四月
   PASS [锚点] 合盘可算
   PASS [锚点] 合盘A四柱=m1  {'year': '乙丑', 'month': '壬午', 'day': '乙酉', 'hour': '辛巳'}
+  PASS [锚点] 合盘B四柱=大运流年模块  {'year': '乙丑', 'month': '丙戌', 'day': '壬寅', 'hour': '丁未'}
   PASS [锚点] 合盘 hp-01/hp-04 带 Rule-ID
 二、确定性随机 3 例（seed=20260816）
   -- R1 2099-08-12 22:10 lon=120.0 四柱={'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'} 真太阳时=2099-08-12T22:05:15
@@ -35,6 +40,9 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [R1] 六爻月建=m1 r4  壬申 vs 壬申
   PASS [R1] 六爻日辰=m1 r1  辛巳 vs 辛巳
   PASS [R1] 旺衰四柱=m1  {'year': {'ganzhi': '己未', 'rule_id': 'r3', 'source': 'solar_terms.csv'}, 'month': {'ganzhi': '壬申', 'rule_id': 'r4', 'source': 'solar_terms.csv'}, 'day': {'ganzhi': '辛巳', 'rule_id': 'r1', 'source': 'ganzhi_days.csv'}, 'hour': {'ganzhi': '己亥', 'rule_id': 'r2'}}
+  PASS [R1] 河洛理数可算
+  PASS [R1] 河洛四柱=m1  {'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'}
+  PASS [R1] 河洛五层 hlyl01..05 齐全
   PASS [R1] 梅花可算
   PASS [R1] 梅花农历=shuowang  6月26日 vs 6月26日
   PASS [R1] 小六壬可算
@@ -44,13 +52,14 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [R1] 称骨农历=shuowang  六月26日 vs 6月26日
   PASS [R1] 紫微可算
   PASS [R1] 紫微农历=shuowang  六月26日
-  PASS [R1] 大运流年四柱=m1
-  PASS [R1] 神煞四柱=m1
-  PASS [R1] 奇门四柱=m1
+  PASS [R1] 大运流年四柱=m1  {'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'}
+  PASS [R1] 神煞四柱=m1  {'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'}
+  PASS [R1] 奇门四柱=m1  {'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'}
   PASS [R1] 奇门定局节=月柱节  立秋 vs 立秋
   PASS [R1] 奇门断局四柱=m1
   PASS [R1] 黄历干支=ganzhi_days  辛巳 vs 辛巳
   PASS [R1] 五运六气可算
+  PASS [R1] 五运六气岁运=大寒口径(独立推算)  己未 vs 己未
   PASS [R1] 五运六气岁运年=m1(界外两口径一致)  己未 vs 己未
   PASS [R1] 六壬可算
   PASS [R1] 六壬日柱=m1(非跨子时窗口一致)  辛巳
@@ -58,12 +67,16 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [R1] 紫微大限农历=称骨农历  六月
   PASS [R1] 合盘可算
   PASS [R1] 合盘A四柱=m1  {'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'}
+  PASS [R1] 合盘B四柱=大运流年模块  {'year': '己未', 'month': '丙子', 'day': '己亥', 'hour': '乙丑'}
   PASS [R1] 合盘 hp-01/hp-04 带 Rule-ID
   -- R2 1952-12-12 18:00 lon=120.0 四柱={'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'} 真太阳时=1952-12-12T18:05:05
   PASS [R2] 六爻可算
   PASS [R2] 六爻月建=m1 r4  壬子 vs 壬子
   PASS [R2] 六爻日辰=m1 r1  壬辰 vs 壬辰
   PASS [R2] 旺衰四柱=m1  {'year': {'ganzhi': '壬辰', 'rule_id': 'r3', 'source': 'solar_terms.csv'}, 'month': {'ganzhi': '壬子', 'rule_id': 'r4', 'source': 'solar_terms.csv'}, 'day': {'ganzhi': '壬辰', 'rule_id': 'r1', 'source': 'ganzhi_days.csv'}, 'hour': {'ganzhi': '己酉', 'rule_id': 'r2'}}
+  PASS [R2] 河洛理数可算
+  PASS [R2] 河洛四柱=m1  {'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'}
+  PASS [R2] 河洛五层 hlyl01..05 齐全
   PASS [R2] 梅花可算
   PASS [R2] 梅花农历=shuowang  10月26日 vs 10月26日
   PASS [R2] 小六壬可算
@@ -73,13 +86,14 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [R2] 称骨农历=shuowang  十月26日 vs 10月26日
   PASS [R2] 紫微可算
   PASS [R2] 紫微农历=shuowang  十月26日
-  PASS [R2] 大运流年四柱=m1
-  PASS [R2] 神煞四柱=m1
-  PASS [R2] 奇门四柱=m1
+  PASS [R2] 大运流年四柱=m1  {'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'}
+  PASS [R2] 神煞四柱=m1  {'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'}
+  PASS [R2] 奇门四柱=m1  {'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'}
   PASS [R2] 奇门定局节=月柱节  大雪 vs 大雪
   PASS [R2] 奇门断局四柱=m1
   PASS [R2] 黄历干支=ganzhi_days  壬辰 vs 壬辰
   PASS [R2] 五运六气可算
+  PASS [R2] 五运六气岁运=大寒口径(独立推算)  壬辰 vs 壬辰
   PASS [R2] 五运六气岁运年=m1(界外两口径一致)  壬辰 vs 壬辰
   PASS [R2] 六壬可算
   PASS [R2] 六壬日柱=m1(非跨子时窗口一致)  壬辰
@@ -87,12 +101,16 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [R2] 紫微大限农历=称骨农历  十月
   PASS [R2] 合盘可算
   PASS [R2] 合盘A四柱=m1  {'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'}
+  PASS [R2] 合盘B四柱=大运流年模块  {'year': '癸巳', 'month': '丙辰', 'day': '己酉', 'hour': '乙亥'}
   PASS [R2] 合盘 hp-01/hp-04 带 Rule-ID
   -- R3 2041-08-11 22:10 lon=120.0 四柱={'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'} 真太阳时=2041-08-11T22:05:05
   PASS [R3] 六爻可算
   PASS [R3] 六爻月建=m1 r4  丙申 vs 丙申
   PASS [R3] 六爻日辰=m1 r1  丙子 vs 丙子
   PASS [R3] 旺衰四柱=m1  {'year': {'ganzhi': '辛酉', 'rule_id': 'r3', 'source': 'solar_terms.csv'}, 'month': {'ganzhi': '丙申', 'rule_id': 'r4', 'source': 'solar_terms.csv'}, 'day': {'ganzhi': '丙子', 'rule_id': 'r1', 'source': 'ganzhi_days.csv'}, 'hour': {'ganzhi': '己亥', 'rule_id': 'r2'}}
+  PASS [R3] 河洛理数可算
+  PASS [R3] 河洛四柱=m1  {'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'}
+  PASS [R3] 河洛五层 hlyl01..05 齐全
   PASS [R3] 梅花可算
   PASS [R3] 梅花农历=shuowang  7月15日 vs 7月15日
   PASS [R3] 小六壬可算
@@ -102,13 +120,14 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [R3] 称骨农历=shuowang  七月15日 vs 7月15日
   PASS [R3] 紫微可算
   PASS [R3] 紫微农历=shuowang  七月15日
-  PASS [R3] 大运流年四柱=m1
-  PASS [R3] 神煞四柱=m1
-  PASS [R3] 奇门四柱=m1
+  PASS [R3] 大运流年四柱=m1  {'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'}
+  PASS [R3] 神煞四柱=m1  {'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'}
+  PASS [R3] 奇门四柱=m1  {'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'}
   PASS [R3] 奇门定局节=月柱节  立秋 vs 立秋
   PASS [R3] 奇门断局四柱=m1
   PASS [R3] 黄历干支=ganzhi_days  丙子 vs 丙子
   PASS [R3] 五运六气可算
+  PASS [R3] 五运六气岁运=大寒口径(独立推算)  辛酉 vs 辛酉
   PASS [R3] 五运六气岁运年=m1(界外两口径一致)  辛酉 vs 辛酉
   PASS [R3] 六壬可算
   PASS [R3] 六壬日柱=m1(非跨子时窗口一致)  丙子
@@ -116,6 +135,7 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [R3] 紫微大限农历=称骨农历  七月
   PASS [R3] 合盘可算
   PASS [R3] 合盘A四柱=m1  {'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'}
+  PASS [R3] 合盘B四柱=大运流年模块  {'year': '辛酉', 'month': '庚子', 'day': '甲午', 'hour': '乙丑'}
   PASS [R3] 合盘 hp-01/hp-04 带 Rule-ID
 三、跨子时/西部经度分歧锚点（预期差异方向验证）
   PASS 分歧A 2024-02-10 00:00 120E：m1 子正归前日(2-9)  m1=癸卯(真太阳时2024-02-09T23:45:27) vs 小六壬=甲辰
@@ -154,4 +174,4 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   丙申申子辰组 (2016, 1, 23, 14, 0): 紫微 oracle=巳 火星=辰 铃星=巳 天魁=子 禄存=卯 差异=无
   独立解析抽查: PASS
   PASS l4_audit_ziwei.py 独立解析抽查 PASS
-合计：PASS 140 / FAIL 0
+合计：PASS 160 / FAIL 0

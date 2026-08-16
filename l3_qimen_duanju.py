@@ -480,6 +480,7 @@ def _g_wubuyu(r):
 def _g_yuege(r):
     """qd-x-25 月格：天盘庚+地盘=月干（易安居实测 3/3；月干=庚时庚+庚 1 例不报，
     已申报 qd-b-13；2026-01-07 与刑格/时格同宫并存）。"""
+    # docstring 旧编号残留：月格正式 id=qd-x-17，qd-x-25 实为时格正式 id（GE_RULES 表驱动；L4 审计注记）
     mg = r["pillars"]["month"]["ganzhi"][0]
     if mg == "庚":
         return None  # 实测 1 反例：月干庚+地盘庚不报月格（1988-09-02）
@@ -493,6 +494,7 @@ def _g_yuege(r):
 def _g_shige(r):
     """qd-x-26 时格：天盘庚+地盘=时干（易安居实测 3/3，含庚+庚；dump 7 个庚时盘
     地盘均非时干故 0 报，自洽；2026-01-07 与刑格/月格同宫并存）。"""
+    # docstring 旧编号残留：时格正式 id=qd-x-25，qd-x-26 实为风遁正式 id（GE_RULES 表驱动；L4 审计注记）
     hg = r["pillars"]["hour"]["ganzhi"][0]
     for g in "123456789":
         c = _cell(r, g)
