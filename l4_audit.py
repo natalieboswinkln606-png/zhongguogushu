@@ -9,9 +9,10 @@
    - 2000-01-01 00:30 拉萨 91E：m1 真太阳时前日夜 vs 六壬北京时当日（preregister 拉萨案例）
    - 2024-02-10 23:30：两口径一致锚点
 ③ Rule-ID 注册表双向校验：data/rule_registry.csv ↔ m1.py/l3_*.py 代码字面量全覆盖（缺一即报）。
-④ 快照重签：--resign 按 git ls-files 全量重算 SHA256SUMS.txt（L4 范围，含自身行沿用 M1 格式）。
+④ 快照重签/校验：--resign 按 git ls-files 全量重算 SHA256SUMS.txt（L4 范围，含自身行沿用 M1 格式）；
+   --verify 只读逐文件哈希比对（SHA256SUMS.txt 自身行自引用跳过），全一致 exit 0、任一失配列文件 exit 1。
 ⑤ 归档抽查：l4_audit_ziwei.py（紫微 oracle 缓存独立解析）+ 奇门定局 18 例手工核对。
-幂等：默认模式全只读；--resign 显式才写清单；报告 report/l4_audit_report.txt 重跑覆盖不重复申报。
+幂等：默认模式全只读；--resign 显式才写清单；--verify 只读；报告 report/l4_audit_report.txt 重跑覆盖不重复申报。
 """
 import argparse, csv, glob, hashlib, os, random, re, subprocess, sys
 from datetime import datetime, timezone, date, timedelta
@@ -303,7 +304,25 @@ def registry_check():
     return n
 
 
-# ---------------------------------------------------------------- ④ 快照重签
+# ---------------------------------------------------------------- ④ 快照重签/校验
+def boundary_check():
+    """边界用例载体残留检查：report/boundary_cases.csv 无 pending 残留；fail 行必须带非空 note 定性（防审计盲区复发）。"""
+    global PASS, FAIL
+    pending, bare_fail = [], []
+    with open(os.path.join(BASE, "report", "boundary_cases.csv"), encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            if not r.get("case_id") or r["case_id"].lstrip().startswith("#"):
+                continue  # 表头/注释行
+            st = (r.get("status") or "").strip()
+            if st == "pending":
+                pending.append(r["case_id"])
+            elif st == "fail" and not (r.get("note") or "").strip():
+                bare_fail.append(r["case_id"])
+    check(not pending and not bare_fail, "boundary_cases.csv 无 pending/fail 盲区残留",
+          f"pending={pending} 裸fail(无note定性)={bare_fail}")
+    return pending, bare_fail
+
+
 def resign():
     """L4 重签：git ls-files 全量 sha256 → SHA256SUMS.txt（含自身行沿用 M1 格式）。"""
     files = subprocess.run(["git", "ls-files"], cwd=BASE, capture_output=True, text=True,
@@ -326,12 +345,48 @@ def resign():
     print(f"已重签 {n} 个文件（含 SHA256SUMS.txt 自身行）→ SHA256SUMS.txt")
 
 
+def verify():
+    """快照校验（只读）：读 SHA256SUMS.txt 逐文件 sha256 比对；全一致 exit 0，任一失配列文件 exit 1。
+    SHA256SUMS.txt 自身行记录的是重签前内容哈希（M1 同法，自引用），跳过并注明。"""
+    mism, missing, n = [], [], 0
+    with open(os.path.join(BASE, "SHA256SUMS.txt"), encoding="utf-8") as f:
+        for line in f:
+            line = line.strip()
+            if not line or line.startswith("#") or " *" not in line:
+                continue
+            want, path = line.split(" *", 1)
+            if path == "SHA256SUMS.txt":
+                continue  # 自引用行（重签记录重签前内容哈希），无法自洽校验
+            n += 1
+            fp = os.path.join(BASE, path)
+            if not os.path.exists(fp):
+                missing.append(path)
+                continue
+            if hashlib.sha256(open(fp, "rb").read()).hexdigest() != want:
+                mism.append(path)
+    if not mism and not missing:
+        print(f"快照校验通过：{n} 个文件哈希全部一致（SHA256SUMS.txt 自身行自引用跳过）")
+        return 0
+    if mism:
+        print("快照失配（文件已变未重签）:")
+        for x in mism:
+            print("  *", x)
+    if missing:
+        print("快照文件缺失:")
+        for x in missing:
+            print("  -", x)
+    return 1
+
+
 # ---------------------------------------------------------------- 主流程
 def main():
     ap = argparse.ArgumentParser(description="L4 审计层统一端到端抽查（只读）+ 注册表校验 + 快照重签")
     ap.add_argument("--resign", action="store_true", help="重签 SHA256SUMS.txt（唯一写操作）")
+    ap.add_argument("--verify", action="store_true", help="只读校验 SHA256SUMS.txt 快照（全一致 exit 0）")
     ap.add_argument("--seed", type=int, default=20260816)
     a = ap.parse_args()
+    if a.verify:
+        sys.exit(verify())
     if a.resign:
         resign()
         return
@@ -357,10 +412,13 @@ def main():
     LINES.append("四、Rule-ID 注册表双向校验（data/rule_registry.csv）")
     n = registry_check()
 
-    LINES.append("五、奇门定局 18 例手工核对（归档自 temp/qm_audit.py，独立推算）")
+    LINES.append("五、boundary_cases.csv 边界用例残留检查（无 pending/裸 fail）")
+    boundary_check()
+
+    LINES.append("六、奇门定局 18 例手工核对（归档自 temp/qm_audit.py，独立推算）")
     qimen_check()
 
-    LINES.append("六、归档抽查 l4_audit_ziwei.py（紫微 oracle 缓存独立解析）")
+    LINES.append("七、归档抽查 l4_audit_ziwei.py（紫微 oracle 缓存独立解析）")
     zr = subprocess.run([sys.executable, os.path.join(BASE, "l4_audit_ziwei.py")],
                         capture_output=True, text=True, encoding="utf-8")
     tail = (zr.stdout or "").strip().splitlines()

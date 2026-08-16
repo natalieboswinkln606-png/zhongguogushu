@@ -69,10 +69,13 @@ PYTHONIOENCODING=utf-8 python assert_l3_meihua.py          # 梅花易数
 PYTHONIOENCODING=utf-8 python assert_l3_xiaoliuren.py      # 小六壬
 PYTHONIOENCODING=utf-8 python assert_l3_chenggu.py         # 称骨
 PYTHONIOENCODING=utf-8 python assert_l3_wuyunliuqi.py      # 五运六气
-# L4 审计层：端到端抽查 + 注册表校验（只读）；--resign 重签 SHA256SUMS.txt（唯一写操作）
+# L4 审计层：端到端抽查 + 注册表校验（只读）；--resign 重签 SHA256SUMS.txt（唯一写操作）；--verify 只读校验快照
 python l4_audit.py
 python l4_audit.py --resign
+python l4_audit.py --verify
 ```
+
+> 重跑任何断言/对拍脚本会改写报告时间戳导致快照失配——重跑后执行 `python l4_audit.py --resign` 重新冻结，或 `python l4_audit.py --verify` 校验当前快照。
 
 ## 目录
 
