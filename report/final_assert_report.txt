@@ -1,0 +1,40 @@
+shushu 全量最终断言报告
+生成时间：2026-08-16（UTC+8）
+执行方式：逐脚本独立运行，PYTHONIOENCODING=utf-8
+
+一、基座（M0）
+  脚本              结果
+  validate.py       problems: 0（校验通过）
+  assert_tables.py  PASS 94 / FAIL 0（8 张基座表 + 十神锚点）
+
+二、L2 层（十神/大运流年/旺衰/神煞）
+  脚本                      断言数  PASS  FAIL  SKIP
+  assert_l3_bazi_daliu.py   35      35    0     0   大运流年（顺逆/起运/流年）
+  assert_l3_wangshuai.py    10      10    0     0   五行旺衰（月令/季节/状态）
+  assert_l3_shensha.py      31      31    0     0   神煞（5 锚点全命中 + 规则边界）
+
+三、L3 术种层（12 术种断言脚本）
+  脚本                        断言数  PASS  FAIL  SKIP  说明
+  assert_l3_ziwei.py          16      16    0     0    紫微斗数排盘
+  assert_l3_ziwei_liunian.py  16      16    0     0    紫微大限/小限/流年/斗君
+  assert_l3_liuyao.py         85      85    0     0    六爻（oracle 缓存命中，PASS 85/FAIL 0/SKIP 0）
+  assert_l3_liuren.py         87      87    0     0    六壬四课三传
+  assert_l3_qimen.py          28      28    0     0    奇门排盘（转盘法/拆补定局）
+  assert_l3_qimen_duanju.py   27      27    0     0    奇门断局（用神/格局/吉凶）
+  assert_l3_huangli.py        27      27    0     0    黄历择吉
+  assert_l3_hepan.py          48      48    0     0    人际合盘
+  assert_l3_heluolishu.py     13      13    0     0    河洛理数（网传太玄数派口径如实声明）
+  assert_l3_meihua.py         23      23    0     0    梅花易数
+  assert_l3_xiaoliuren.py     10      10    0     0    小六壬
+  assert_l3_chenggu.py        65      65    0     0    称骨（《称骨歌》异文口径）
+  assert_l3_wuyunliuqi.py     12      12    0     0    五运六气
+
+四、L4 审计层
+  l4_audit.py                 160     160   0     0    端到端抽查（六壬/合盘/奇门/梅花/小六壬/称骨/紫微等全链路）+ Rule-ID 注册表双向校验（174 条）+ 申报编号载体复核 + 归档抽查（l4_audit_ziwei.py 独立解析、奇门定局 18 例手工核对）
+
+五、汇总
+  全部脚本 PASS 787 / FAIL 0 / SKIP 0
+  未入库临时产物（_*.html、temp/、oracle 缓存等）不参与断言
+
+六、结案声明
+  sw-2057-09 已结案；m1.py 与 l3_*.py 冻结；SHA256SUMS.txt 最终重签见该文件头部时间戳。
