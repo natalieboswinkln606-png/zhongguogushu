@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国传统术数现代工程化排盘系统 (Shushu Engineering)</title>
+    <style>
+        :root {
+            --bg-main: #0f172a;
+            --bg-card: #1e293b;
+            --bg-card-sub: #334155;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-color: #334155;
+            --gold: #f59e0b;
+            --gold-bright: #fbbf24;
+            --green: #10b981;
+            --red: #ef4444;
+            --blue: #3b82f6;
+            --purple: #a855f7;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.5;
+            min-height: 100vh;
+        }
+
+        /* 顶部导航与控制区 */
+        header {
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid #b45309;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 14px 24px;
+        }
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .brand-logo {
+            font-size: 28px;
+            filter: drop-shadow(0 0 6px rgba(245, 158, 11, 0.5));
+        }
+        .brand-text h1 {
+            font-size: 20px;
+            font-weight: 800;
+            color: var(--gold-bright);
+            letter-spacing: 0.5px;
+        }
+        .brand-text p {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
+
+        /* 输入控制条 */
+        .controls-form {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            background: rgba(30, 41, 59, 0.8);
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+        .form-group {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .form-group label {
+            font-size: 12px;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+        .form-input {
+            background: #0f172a;
+            border: 1px solid #475569;
+            color: #f8fafc;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .form-input:focus {
+            border-color: var(--gold);
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #d97706 0%, #b45309 100%);
+            color: #ffffff;
+            border: none;
+            padding: 7px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .btn-primary:hover {
+            filter: brightness(1.1);
+            transform: translateY(-1px);
+        }
+        .btn-secondary {
+            background: #334155;
+            color: #e2e8f0;
+            border: 1px solid #475569;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .btn-secondary:hover {
+            background: #475569;
+        }
+
+        /* 标签导航 */
+        .tabs-nav-bar {
+            max-width: 1400px;
+            margin: 18px auto 0;
+            padding: 0 24px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+        }
+        .tab-btn {
+            background: transparent;
+            border: 1px solid transparent;
+            color: var(--text-muted);
+            padding: 8px 18px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .tab-btn:hover {
+            color: #f8fafc;
+            background: rgba(255,255,255,0.05);
+        }
+        .tab-btn.active {
+            color: var(--gold-bright);
+            background: #1e293b;
+            border-color: #d97706;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+
+        /* 内容主面板 */
+        main {
+            max-width: 1400px;
+            margin: 20px auto;
+            padding: 0 24px;
+        }
+        .status-alert {
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid #2563eb;
+            color: #93c5fd;
+            padding: 10px 16px;
+            border-radius: 8px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .status-alert.error {
+            background: rgba(239, 68, 68, 0.1);
+            border-color: #ef4444;
+            color: #fca5a5;
+        }
+
+        .panel-container {
+            display: none;
+        }
+        .panel-container.active {
+            display: block;
+            animation: fadeIn 0.25s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(4px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 卡片通用 */
+        .card-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
+        }
+        .card-box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+            margin-bottom: 18px;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .card-box-header h2 {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--gold-bright);
+            border-left: 3px solid var(--gold);
+            padding-left: 10px;
+        }
+
+        /* 八字四柱网格 */
+        .bazi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 24px;
+        }
+        @media (max-width: 768px) {
+            .bazi-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        .bazi-pillar {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 10px;
+            padding: 16px;
+            text-align: center;
+            transition: all 0.2s;
+        }
+        .bazi-pillar:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .pillar-title-tag {
+            font-size: 12px;
+            color: #cbd5e1;
+            background: #334155;
+            display: inline-block;
+            padding: 2px 10px;
+            border-radius: 12px;
+            margin-bottom: 8px;
+        }
+        .pillar-stem-god {
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--gold-bright);
+            margin-bottom: 8px;
+            min-height: 20px;
+        }
+        .pillar-char-box {
+            background: #1e293b;
+            border: 2px solid #475569;
+            border-radius: 8px;
+            padding: 8px 4px;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        .pillar-char-large {
+            font-size: 34px;
+            font-weight: 900;
+            line-height: 1.1;
+            display: block;
+        }
+        .pillar-wx-badge {
+            position: absolute;
+            bottom: 4px;
+            right: 6px;
+            font-size: 10px;
+            padding: 1px 5px;
+            border-radius: 4px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .pillar-nayin {
+            background: #1e293b;
+            border: 1px dashed #475569;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #e2e8f0;
+            margin-bottom: 10px;
+        }
+        .pillar-cg-box {
+            background: #1e293b;
+            border-radius: 6px;
+            padding: 8px;
+            font-size: 11px;
+            text-align: left;
+        }
+        .pillar-cg-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 2px 0;
+            border-bottom: 1px solid #334155;
+        }
+        .pillar-cg-row:last-child { border-bottom: none; }
+
+        /* 紫微 4x4 回字盘 */
+        .zw-board-container {
+            overflow-x: auto;
+            padding: 6px 0;
+        }
+        .zw-board {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(230px, 1fr));
+            grid-template-rows: repeat(4, minmax(170px, auto));
+            gap: 8px;
+            background: #0f172a;
+            border: 2px solid #b45309;
+            padding: 8px;
+            border-radius: 12px;
+        }
+        .zw-box {
+            background: #1e293b;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        .zw-box:hover {
+            border-color: #38bdf8;
+            box-shadow: 0 0 12px rgba(56, 189, 248, 0.25);
+            transform: scale(1.01);
+            z-index: 10;
+        }
+        .zw-box.sanfang-highlight {
+            background: #1e3a5f !important;
+            border: 2px solid #38bdf8 !important;
+            box-shadow: 0 0 16px rgba(56, 189, 248, 0.4) !important;
+        }
+        .zw-box.current-focus {
+            background: #2d2616 !important;
+            border: 2px solid #fbbf24 !important;
+        }
+        .zw-box-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 6px;
+            margin-bottom: 6px;
+        }
+        .zw-palace-name {
+            font-size: 15px;
+            font-weight: 800;
+            color: #f8fafc;
+        }
+        .zw-shen-pill {
+            background: #dc2626;
+            color: #fff;
+            font-size: 10px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            font-weight: bold;
+            margin-left: 4px;
+        }
+        .zw-gz-pill {
+            font-size: 13px;
+            font-weight: 700;
+            color: var(--gold-bright);
+            background: #0f172a;
+            padding: 1px 6px;
+            border-radius: 4px;
+        }
+        .zw-main-star-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 3px;
+            font-size: 15px;
+            font-weight: 800;
+            color: #fef08a;
+            margin-right: 6px;
+        }
+        .zw-sh-tag {
+            font-size: 10px;
+            padding: 1px 4px;
+            border-radius: 3px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .zw-ji-tag { font-size: 12px; color: #34d399; font-weight: 600; margin-right: 4px; }
+        .zw-sha-tag { font-size: 12px; color: #f87171; font-weight: 600; margin-right: 4px; }
+        .zw-box-footer {
+            border-top: 1px solid #334155;
+            padding-top: 4px;
+            margin-top: 6px;
+            font-size: 11px;
+            color: #64748b;
+            text-align: right;
+        }
+
+        .zw-center-box {
+            background: linear-gradient(135deg, #090e17 0%, #1e293b 100%);
+            border: 2px solid #d97706;
+            border-radius: 10px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            box-shadow: inset 0 0 16px rgba(0,0,0,0.5);
+        }
+        .zw-center-header {
+            font-size: 20px;
+            font-weight: 900;
+            color: var(--gold-bright);
+            text-align: center;
+            margin-bottom: 14px;
+        }
+        .zw-meta-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            font-size: 13px;
+        }
+        .zw-meta-item {
+            background: rgba(255,255,255,0.03);
+            padding: 6px 10px;
+            border-radius: 6px;
+        }
+        .zw-meta-item span { color: var(--text-muted); }
+        .zw-meta-item strong { color: #f8fafc; }
+
+        /* 奇门九宫网格 */
+        .qm-container {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 20px;
+        }
+        @media (max-width: 900px) {
+            .qm-container { grid-template-columns: 1fr; }
+        }
+        .qm-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .qm-cell-box {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 12px;
+            min-height: 150px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .qm-cell-box.zf-highlight {
+            border: 2px solid var(--gold);
+            background: #1c1917;
+        }
+        .qm-cell-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 700;
+            border-bottom: 1px solid #334155;
+            padding-bottom: 4px;
+        }
+        .qm-role-pill {
+            font-size: 10px;
+            padding: 1px 5px;
+            border-radius: 3px;
+            color: #ffffff;
+            font-weight: bold;
+        }
+        .qm-gan-wrap {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .qm-t-gan, .qm-d-gan { font-size: 12px; color: var(--text-muted); }
+        .qm-t-gan span, .qm-d-gan span { font-size: 22px; font-weight: 900; color: #f8fafc; margin-left: 2px; }
+        .qm-cell-bottom {
+            text-align: center;
+            border-top: 1px solid #334155;
+            padding-top: 4px;
+        }
+        .qm-door-badge {
+            display: inline-block;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 2px 14px;
+            border-radius: 4px;
+        }
+        .jimen { background: #064e3b; color: #34d399; border: 1px solid #059669; }
+        .xiongmen { background: #7f1d1d; color: #f87171; border: 1px solid #b91c1c; }
+        .zhongmen { background: #334155; color: #cbd5e1; border: 1px solid #475569; }
+
+        /* 对账防幻觉面板 */
+        .reconcile-input-area {
+            width: 100%;
+            height: 140px;
+            background: #0f172a;
+            border: 1px solid #475569;
+            color: #f8fafc;
+            padding: 12px;
+            border-radius: 8px;
+            font-size: 13px;
+            resize: vertical;
+            outline: none;
+            margin-bottom: 12px;
+        }
+        .reconcile-input-area:focus { border-color: var(--gold); }
+        .rec-results-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 16px;
+            margin-top: 16px;
+        }
+        @media (max-width: 800px) {
+            .rec-results-grid { grid-template-columns: 1fr; }
+        }
+        .rec-card {
+            background: #0f172a;
+            border-radius: 8px;
+            padding: 14px;
+            border: 1px solid #334155;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .rec-card h4 {
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .rec-item {
+            background: #1e293b;
+            border-radius: 6px;
+            padding: 8px 10px;
+            margin-bottom: 8px;
+            font-size: 12px;
+            line-height: 1.4;
+        }
+
+        /* 原始 JSON 预览 */
+        pre.json-viewer {
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 8px;
+            padding: 16px;
+            font-family: Consolas, Monaco, monospace;
+            font-size: 12px;
+            color: #38bdf8;
+            max-height: 600px;
+            overflow: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部状态栏 -->
+    <header>
+        <div class="header-container">
+            <div class="brand">
+                <span class="brand-logo">☯️</span>
+                <div class="brand-text">
+                    <h1>中国传统术数现代工程化系统</h1>
+                    <p>Standardized Schema & RESTful Engine v1.0</p>
+                </div>
+            </div>
+
+            <form class="controls-form" id="mainForm" onsubmit="event.preventDefault(); runAllPaiPan();">
+                <div class="form-group">
+                    <label>公历时间</label>
+                    <input type="text" id="inputDatetime" class="form-input" value="2006-06-25 00:30" placeholder="YYYY-MM-DD HH:MM">
+                </div>
+                <div class="form-group">
+                    <label>性别</label>
+                    <select id="inputGender" class="form-input">
+                        <option value="女" selected>女命</option>
+                        <option value="男">男命</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>东经</label>
+                    <input type="number" id="inputLon" class="form-input" style="width: 76px;" value="120.0" step="0.1">
+                </div>
+                <button type="submit" class="btn-primary" id="btnSubmit">
+                    <span>⚡ 全盘排盘</span>
+                </button>
+            </form>
+        </div>
+    </header>
+
+    <!-- 标签切换 -->
+    <div class="tabs-nav-bar">
+        <button class="tab-btn active" onclick="switchTab('bazi', this)">八字四柱与大运</button>
+        <button class="tab-btn" onclick="switchTab('ziwei', this)">紫微斗数 (4x4 回字盘)</button>
+        <button class="tab-btn" onclick="switchTab('qimen', this)">时家奇门 (3x3 洛书盘)</button>
+        <button class="tab-btn" onclick="switchTab('liuyao', this)">周易六爻排卦</button>
+        <button class="tab-btn" onclick="switchTab('reconcile', this)">结论对账防幻觉</button>
+        <button class="tab-btn" onclick="switchTab('json', this)">规范 JSON Schema</button>
+    </div>
+
+    <!-- 主展示区 -->
+    <main>
+        <div id="statusAlert" class="status-alert" style="display: none;"></div>
+
+        <!-- 1. 八字面板 -->
+        <div id="panel-bazi" class="panel-container active">
+            <div class="card-box">
+                <div class="card-box-header">
+                    <h2>四柱神煞与十神藏干</h2>
+                    <div id="baziMeta" style="font-size: 13px; color: var(--gold-bright);"></div>
+                </div>
+                <div class="bazi-grid" id="baziPillarsGrid">
+                    <!-- 动态注入四柱 -->
+                </div>
+                <div id="baziWangshuaiAndDayun">
+                    <!-- 动态注入旺衰与大运 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 紫微面板 -->
+        <div id="panel-ziwei" class="panel-container">
+            <div class="card-box">
+                <div class="card-box-header">
+                    <h2>紫微斗数 4x4 回字形天盘</h2>
+                    <div id="ziweiMeta" style="font-size: 13px; color: #94a3b8;">💡 悬停/点击任意宫位，实时高亮三方四正关联宫</div>
+                </div>
+                <div class="zw-board-container">
+                    <div class="zw-board" id="zwBoard">
+                        <!-- 动态注入 12 宫 + 中心天盘 -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3. 奇门面板 -->
+        <div id="panel-qimen" class="panel-container">
+            <div class="card-box">
+                <div class="card-box-header">
+                    <h2>时家奇门遁甲 (3x3 洛书转盘法)</h2>
+                    <div id="qimenMeta" style="font-size: 13px; color: #94a3b8;"></div>
+                </div>
+                <div class="qm-container">
+                    <div class="qm-grid" id="qmGrid">
+                        <!-- 动态注入九宫 -->
+                    </div>
+                    <div class="rec-card" style="max-height: 480px;">
+                        <h4 style="color: var(--gold-bright);">🚩 命中吉凶格局清单</h4>
+                        <div id="qmGejuList" style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 4. 六爻面板 -->
+        <div id="panel-liuyao" class="panel-container">
+            <div class="card-box">
+                <div class="card-box-header">
+                    <h2>周易六爻排盘与动爻纳甲</h2>
+                    <div id="liuyaoMeta" style="font-size: 13px; color: #94a3b8;"></div>
+                </div>
+                <div id="liuyaoContent">
+                    <!-- 动态注入六爻 -->
+                </div>
+            </div>
+        </div>
+
+        <!-- 5. 结论对账面板 -->
+        <div id="panel-reconcile" class="panel-container">
+            <div class="card-box">
+                <div class="card-box-header">
+                    <h2>文本对账防幻觉审计 (L4 Reconcile)</h2>
+                    <button class="btn-secondary" onclick="loadSampleDraft()">载入典型事故样本</button>
+                </div>
+                <p style="font-size: 13px; color: #94a3b8; margin-bottom: 10px;">
+                    将 AI 生成的测算分析草稿粘贴至下方，系统将对照底层全量快照进行机械溯源，抓出凭记忆手推的干支、张冠李戴的大运年份与分值漂移。
+                </p>
+                <textarea id="reconcileText" class="reconcile-input-area" placeholder="粘贴待审核的推断文本草稿..."></textarea>
+                <button class="btn-primary" onclick="runReconcile()">🔍 执行对账审计</button>
+
+                <div class="rec-results-grid">
+                    <div class="rec-card" style="border-top: 3px solid var(--green);">
+                        <h4 style="color: var(--green);">✅ 机械溯源成功 (<span id="countMatched">0</span>)</h4>
+                        <div id="listMatched"></div>
+                    </div>
+                    <div class="rec-card" style="border-top: 3px solid var(--gold);">
+                        <h4 style="color: var(--gold);">⚠️ 未知项/无法溯源 (<span id="countUnverified">0</span>)</h4>
+                        <div id="listUnverified"></div>
+                    </div>
+                    <div class="rec-card" style="border-top: 3px solid var(--red);">
+                        <h4 style="color: var(--red);">🚨 冲突与手推错位 (<span id="countConflicts">0</span>)</h4>
+                        <div id="listConflicts"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 6. JSON Schema 规范面板 -->
+        <div id="panel-json" class="panel-container">
+            <div class="card-box">
+                <div class="card-box-header">
+                    <h2>标准 JSON Schema 与实时快照</h2>
+                    <div style="display: flex; gap: 8px;">
+                        <button class="btn-secondary" onclick="loadSchemas()">刷新 Schemas</button>
+                    </div>
+                </div>
+                <pre class="json-viewer" id="jsonViewer">点击右上角按钮获取服务器导出的规范 JSON Schema...</pre>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const WX_COLORS = {
+            "木": { bg: "#064e3b", text: "#34d399", border: "#059669" },
+            "火": { bg: "#7f1d1d", text: "#f87171", border: "#dc2626" },
+            "土": { bg: "#78350f", text: "#fbbf24", border: "#d97706" },
+            "金": { bg: "#713f12", text: "#fde047", border: "#ca8a04" },
+            "水": { bg: "#1e3a8a", text: "#60a5fa", border: "#2563eb" },
+        };
+
+        const SIHUA_COLORS = {
+            "禄": "#16a34a",
+            "权": "#9333ea",
+            "科": "#0284c7",
+            "忌": "#ea580c"
+        };
+
+        const ZIWEI_COORDS = {
+            "巳": [0, 0], "午": [0, 1], "未": [0, 2], "申": [0, 3],
+            "辰": [1, 0],                               "酉": [1, 3],
+            "卯": [2, 0],                               "戌": [2, 3],
+            "寅": [3, 0], "丑": [3, 1], "子": [3, 2], "亥": [3, 3],
+        };
+
+        const QIMEN_COORDS = {
+            4: [0, 0], 9: [0, 1], 2: [0, 2],
+            3: [1, 0], 5: [1, 1], 7: [1, 2],
+            8: [2, 0], 1: [2, 1], 6: [2, 2],
+        };
+
+        function switchTab(target, btn) {
+            document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+            document.querySelectorAll('.panel-container').forEach(p => p.classList.remove('active'));
+            btn.classList.add('active');
+            const targetPanel = document.getElementById('panel-' + target);
+            if (targetPanel) targetPanel.classList.add('active');
+        }
+
+        function showAlert(msg, isError = false) {
+            const el = document.getElementById('statusAlert');
+            el.style.display = 'block';
+            el.className = 'status-alert' + (isError ? ' error' : '');
+            el.innerHTML = (isError ? '⚠️ ' : 'ℹ️ ') + msg;
+            setTimeout(() => { el.style.display = 'none'; }, 6000);
+        }
+
+        // ==========================================
+        // API 请求与渲染驱动
+        // ==========================================
+        let latestSnapshot = null;
+
+        async function runAllPaiPan() {
+            const dt = document.getElementById('inputDatetime').value;
+            const gender = document.getElementById('inputGender').value;
+            const lon = parseFloat(document.getElementById('inputLon').value) || 120.0;
+
+            showAlert("正在请求 API Server 排盘中...");
+
+            try {
+                // 并发请求各端点
+                const [rBazi, rZiwei, rQimen, rLiuyao] = await Promise.all([
+                    fetch('/api/v1/bazi', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ datetime: dt, gender: gender, lon: lon })
+                    }),
+                    fetch('/api/v1/ziwei', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ datetime: dt, gender: gender, lon: lon })
+                    }),
+                    fetch('/api/v1/qimen', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ datetime: dt, lon: lon })
+                    }),
+                    fetch('/api/v1/liuyao', {
+                        method: 'POST',
+                        headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ datetime: dt, lon: lon, mode: 'lunar' })
+                    })
+                ]);
+
+                if (!rBazi.ok) throw new Error("八字排盘失败：" + (await rBazi.text()));
+                const baziData = await rBazi.json();
+                const ziweiData = await rZiwei.json();
+                const qimenData = await rQimen.json();
+                const liuyaoData = await rLiuyao.json();
+
+                renderBazi(baziData);
+                renderZiwei(ziweiData);
+                renderQimen(qimenData);
+                renderLiuyao(liuyaoData);
+
+                showAlert("✅ 全量排盘渲染完成！");
+            } catch (err) {
+                showAlert("请求 API 发生错误：" + err.message, true);
+            }
+        }
+
+        // 渲染八字
+        function renderBazi(data) {
+            document.getElementById('baziMeta').innerText = `日主：${data.day_master} | 旺衰等级：${data.wangshuai.level} (${data.wangshuai.score}分)`;
+            const keys = ["year", "month", "day", "hour"];
+            const pGrid = document.getElementById('baziPillarsGrid');
+            pGrid.innerHTML = '';
+
+            keys.forEach(k => {
+                const p = data.pillars[k];
+                const colG = WX_COLORS[p.wx_gan] || WX_COLORS["金"];
+                const colZ = WX_COLORS[p.wx_zhi] || WX_COLORS["土"];
+
+                let cgRows = '';
+                p.hidden_stems.forEach(cg => {
+                    const cgw = WX_COLORS[cg.wx] || WX_COLORS["金"];
+                    cgRows += `
+                        <div class="pillar-cg-row">
+                            <span style="color:${cgw.text}; font-weight:bold;">${cg.gan}</span>
+                            <span style="color:#cbd5e1;">${cg.god}</span>
+                            <span style="color:${cgw.text};">${cg.wx}</span>
+                        </div>
+                    `;
+                });
+
+                pGrid.innerHTML += `
+                    <div class="bazi-pillar">
+                        <div class="pillar-title-tag">${p.name}</div>
+                        <div class="pillar-stem-god">${p.stem_god || ''}</div>
+                        <div class="pillar-char-box" style="border-color:${colG.border};">
+                            <span class="pillar-char-large" style="color:${colG.text};">${p.gan}</span>
+                            <span class="pillar-wx-badge" style="background:${colG.border};">${p.wx_gan}</span>
+                        </div>
+                        <div class="pillar-char-box" style="border-color:${colZ.border};">
+                            <span class="pillar-char-large" style="color:${colZ.text};">${p.zhi}</span>
+                            <span class="pillar-wx-badge" style="background:${colZ.border};">${p.wx_zhi}</span>
+                        </div>
+                        <div class="pillar-nayin">纳音：${p.nayin}</div>
+                        <div class="pillar-cg-box">
+                            <div style="font-size:10px; color:#64748b; margin-bottom:4px;">地支藏干</div>
+                            ${cgRows}
+                        </div>
+                    </div>
+                `;
+            });
+
+            // 旺衰与大运卡片
+            const dy = data.dayun;
+            let dyCards = '';
+            dy.steps.forEach(s => {
+                dyCards += `
+                    <div style="background:#0f172a; border:1px solid #334155; border-radius:6px; padding:8px; text-align:center; min-width:80px;">
+                        <div style="font-size:11px; color:#64748b;">第${s.index}步</div>
+                        <div style="font-size:16px; font-weight:bold; color:var(--gold-bright);">${s.ganzhi}</div>
+                        <div style="font-size:12px; color:#cbd5e1;">${s.god}</div>
+                        <div style="font-size:10px; color:#94a3b8;">${s.start_year}-${s.end_year}</div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('baziWangshuaiAndDayun').innerHTML = `
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:16px;">
+                    <div style="background:#0f172a; border:1px solid #334155; border-radius:8px; padding:16px;">
+                        <h4 style="color:var(--gold); margin-bottom:8px;">日主旺衰：${data.wangshuai.level} (${data.wangshuai.score}分)</h4>
+                        <p style="font-size:13px; color:#94a3b8; margin-bottom:10px;">${data.wangshuai.advice}</p>
+                        <div style="font-size:12px; color:#cbd5e1; line-height:1.6;">
+                            <div>得令：${data.wangshuai.de_ling.ben_qi_wx} (${data.wangshuai.de_ling.status}) — ${data.wangshuai.de_ling.score}分</div>
+                            <div>得地：得分 ${data.wangshuai.de_di.score}/${data.wangshuai.de_di.max_score} (${data.wangshuai.de_di.score_pct}%)</div>
+                            <div>得势：得分 ${data.wangshuai.de_shi.score}/${data.wangshuai.de_shi.max_score} (${data.wangshuai.de_shi.score_pct}%)</div>
+                        </div>
+                    </div>
+                    <div style="background:#0f172a; border:1px solid #334155; border-radius:8px; padding:16px;">
+                        <h4 style="color:var(--gold); margin-bottom:4px;">大运起运：${dy.direction}排 (${dy.qiyun.text})</h4>
+                        <p style="font-size:11px; color:#64748b; margin-bottom:10px;">交运时刻：${dy.qiyun.jiao_time}</p>
+                        <div style="display:flex; gap:8px; overflow-x:auto; padding-bottom:6px;">
+                            ${dyCards}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 渲染紫微 4x4
+        function renderZiwei(data) {
+            const board = document.getElementById('zwBoard');
+            board.innerHTML = '';
+
+            const byZhi = {};
+            data.palaces.forEach(p => byZhi[p.zhi] = p);
+
+            // 中心天盘
+            let sihuaBadges = '';
+            data.sihua.forEach(sh => {
+                const c = SIHUA_COLORS[sh.hua] || "#d97706";
+                sihuaBadges += `<span style="background:${c}; color:#fff; padding:2px 6px; border-radius:4px; font-size:11px; font-weight:bold;">${sh.star}·${sh.hua}</span> `;
+            });
+
+            const centerHtml = `
+                <div class="zw-center-box" style="grid-row: 2 / span 2; grid-column: 2 / span 2;">
+                    <div class="zw-center-header">紫微天盘元信息</div>
+                    <div class="zw-meta-grid">
+                        <div class="zw-meta-item"><span>农历：</span><strong>${data.lunar.year}年 ${data.lunar.month_name}${data.lunar.day}日</strong></div>
+                        <div class="zw-meta-item"><span>生时：</span><strong>${data.shichen_zhi}时</strong></div>
+                        <div class="zw-meta-item"><span>命宫：</span><strong>${data.minggong.gan}${data.minggong.zhi}</strong></div>
+                        <div class="zw-meta-item"><span>身宫：</span><strong>${data.shengong.zhi}</strong></div>
+                        <div class="zw-meta-item"><span>局象：</span><strong style="color:var(--gold);">${data.wuxing_ju.name}</strong></div>
+                        <div class="zw-meta-item"><span>紫微星：</span><strong>${data.ziwei_star.zhi}宫</strong></div>
+                    </div>
+                    <div style="margin-top:12px; font-size:12px; color:#94a3b8;">
+                        <span style="display:block; margin-bottom:4px;">生年四化：</span>
+                        <div>${sihuaBadges}</div>
+                    </div>
+                </div>
+            `;
+            board.innerHTML = centerHtml;
+
+            // 12 宫
+            Object.keys(ZIWEI_COORDS).forEach(zhi => {
+                const [r, c] = ZIWEI_COORDS[zhi];
+                const p = byZhi[zhi];
+                if (!p) return;
+
+                let mainStarsHtml = '';
+                p.stars.forEach(st => {
+                    let sh = '';
+                    data.sihua.forEach(item => {
+                        if (item.star === st) {
+                            sh = `<span class="zw-sh-tag" style="background:${SIHUA_COLORS[item.hua]};">${item.hua}</span>`;
+                        }
+                    });
+                    mainStarsHtml += `<span class="zw-main-star-tag">${st}${sh}</span>`;
+                });
+
+                let jiHtml = p.ji_stars.map(s => `<span class="zw-ji-tag">${s}</span>`).join('');
+                let shaHtml = p.sha_stars.map(s => `<span class="zw-sha-tag">${s}</span>`).join('');
+
+                const isShen = p.shen ? '<span class="zw-shen-pill">身</span>' : '';
+                const sanfangStr = p.sanfang_sizheng.join(',');
+
+                board.innerHTML += `
+                    <div class="zw-box" data-zhi="${zhi}" data-name="${p.name}" data-sanfang="${sanfangStr}" style="grid-row:${r+1}; grid-column:${c+1};">
+                        <div class="zw-box-header">
+                            <span class="zw-palace-name">${p.name}${isShen}</span>
+                            <span class="zw-gz-pill">${p.gan}${p.zhi}</span>
+                        </div>
+                        <div style="flex-grow:1; display:flex; flex-direction:column; gap:4px;">
+                            <div>${mainStarsHtml || '<span style="color:#64748b; font-size:12px;">无主星</span>'}</div>
+                            <div>${jiHtml}</div>
+                            <div>${shaHtml}</div>
+                        </div>
+                        <div class="zw-box-footer">
+                            四正：${p.sanfang_sizheng[3]}
+                        </div>
+                    </div>
+                `;
+            });
+
+            // 绑定三方四正悬停高亮
+            bindZiweiHover();
+        }
+
+        function bindZiweiHover() {
+            const boxes = document.querySelectorAll('.zw-box');
+            boxes.forEach(box => {
+                box.addEventListener('mouseenter', () => {
+                    const sf = (box.getAttribute('data-sanfang') || '').split(',');
+                    boxes.forEach(b => {
+                        const name = b.getAttribute('data-name');
+                        if (b === box) {
+                            b.classList.add('current-focus');
+                        } else if (sf.includes(name)) {
+                            b.classList.add('sanfang-highlight');
+                        } else {
+                            b.classList.remove('sanfang-highlight', 'current-focus');
+                        }
+                    });
+                });
+                box.addEventListener('mouseleave', () => {
+                    boxes.forEach(b => b.classList.remove('sanfang-highlight', 'current-focus'));
+                });
+            });
+        }
+
+        // 渲染奇门
+        function renderQimen(data) {
+            document.getElementById('qimenMeta').innerText = `节气：${data.dingju.term} | 遁元：${data.dingju.dun}${data.dingju.ju}局 (${data.dingju.yuan}) | 旬首：${data.zhifu_zhishi.xunshou} (${data.zhifu_zhishi.yiyi})`;
+            const grid = document.getElementById('qmGrid');
+            grid.innerHTML = '';
+
+            Object.keys(QIMEN_COORDS).forEach(pNum => {
+                const [r, c] = QIMEN_COORDS[pNum];
+                const cell = data.pan[pNum];
+                if (!cell) return;
+
+                const isZf = (data.zhifu_zhishi.zhifu_palace === parseInt(pNum));
+                const isZs = (data.zhifu_zhishi.zhishi_palace === parseInt(pNum));
+
+                let badge = '';
+                if (isZf) badge += '<span class="qm-role-pill" style="background:#d97706">值符</span> ';
+                if (isZs) badge += '<span class="qm-role-pill" style="background:#2563eb">值使</span>';
+
+                const doorClass = ["开门","休门","生门"].includes(cell.door) ? "jimen" : (["死门","伤门","惊门"].includes(cell.door) ? "xiongmen" : "zhongmen");
+
+                grid.innerHTML += `
+                    <div class="qm-cell-box ${isZf ? 'zf-highlight' : ''}" style="grid-row:${r+1}; grid-column:${c+1};">
+                        <div class="qm-cell-top">
+                            <span>${cell.palace} ${cell.gua}</span>
+                            <span>${badge}</span>
+                        </div>
+                        <div style="display:flex; justify-content:space-between; font-size:12px; color:#a855f7; margin-top:4px;">
+                            <span>神：${cell.shen || '—'}</span>
+                            <span style="color:#38bdf8">星：${cell.star || '—'}</span>
+                        </div>
+                        <div class="qm-gan-wrap">
+                            <div class="qm-t-gan">天 <span>${cell.tianpan_gan}</span></div>
+                            <div class="qm-d-gan">地 <span>${cell.dipan_gan}</span></div>
+                        </div>
+                        <div class="qm-cell-bottom">
+                            <span class="qm-door-badge ${doorClass}">${cell.door || '—'}</span>
+                        </div>
+                    </div>
+                `;
+            });
+
+            // 格局清单
+            const gejuBox = document.getElementById('qmGejuList');
+            gejuBox.innerHTML = '';
+            data.geju.forEach(g => {
+                const isJi = (g.type === "吉");
+                gejuBox.innerHTML += `
+                    <div style="background:#1e293b; border-left:4px solid ${isJi ? 'var(--green)' : 'var(--red)'}; border-radius:4px; padding:8px 10px;">
+                        <div style="display:flex; justify-content:space-between; font-size:13px; font-weight:bold; margin-bottom:2px;">
+                            <span style="color:#f8fafc;">${g.name}</span>
+                            <span style="color:${isJi ? 'var(--green)' : 'var(--red)'};">${g.type} (${g.palace}宫)</span>
+                        </div>
+                        <div style="font-size:11px; color:#94a3b8;">${g.basis}</div>
+                    </div>
+                `;
+            });
+        }
+
+        // 渲染六爻
+        function renderLiuyao(data) {
+            document.getElementById('liuyaoMeta').innerText = `起卦：${data.method.label || ''} | 月建：${data.yue_jian.ganzhi} | 日辰：${data.ri_chen.ganzhi}`;
+            const box = document.getElementById('liuyaoContent');
+
+            let linesHtml = '';
+            [...data.lines].reverse().forEach(l => {
+                const isY = (l.yao === "九");
+                const isBY = (l.bian_yao === "九");
+                const dongClass = l.dong ? "style='background:rgba(239,68,68,0.15);'" : "";
+
+                const barBen = isY ? "<div style='width:60px; height:8px; background:#f8fafc;'></div>" : "<div style='width:60px; height:8px; display:flex; justify-content:space-between;'><span style='width:26px; height:100%; background:#f8fafc;'></span><span style='width:26px; height:100%; background:#f8fafc;'></span></div>";
+                const barBian = isBY ? "<div style='width:60px; height:8px; background:#f8fafc;'></div>" : "<div style='width:60px; height:8px; display:flex; justify-content:space-between;'><span style='width:26px; height:100%; background:#f8fafc;'></span><span style='width:26px; height:100%; background:#f8fafc;'></span></div>";
+
+                linesHtml += `
+                    <tr ${dongClass}>
+                        <td style="padding:8px; text-align:center; color:#c084fc;">${l.shen}</td>
+                        <td style="padding:8px; text-align:center; color:#f8fafc;">${l.qin}</td>
+                        <td style="padding:8px; text-align:center; color:var(--gold);">${l.gan}${l.zhi}</td>
+                        <td style="padding:8px; text-align:center; color:#ef4444; font-weight:bold;">${l.shi_ying}</td>
+                        <td style="padding:8px; display:flex; justify-content:center;">${barBen}</td>
+                        <td style="padding:8px; text-align:center; font-weight:bold;">${l.pos}爻 ${l.dong ? '●' : ''}</td>
+                        <td style="padding:8px; display:flex; justify-content:center;">${barBian}</td>
+                        <td style="padding:8px; text-align:center; color:#ef4444; font-weight:bold;">${l.bian_shi_ying}</td>
+                        <td style="padding:8px; text-align:center; color:var(--gold);">${l.bian_gan}${l.bian_zhi}</td>
+                        <td style="padding:8px; text-align:center; color:#f8fafc;">${l.bian_qin}</td>
+                    </tr>
+                `;
+            });
+
+            box.innerHTML = `
+                <div style="display:flex; justify-content:space-around; text-align:center; margin-bottom:16px;">
+                    <div>
+                        <h3 style="color:var(--gold-bright); font-size:18px;">本卦：【${data.ben_gua.name}】</h3>
+                        <p style="font-size:12px; color:#94a3b8;">${data.ben_gua.palace}宫 (${data.ben_gua.guaci})</p>
+                    </div>
+                    <div style="font-size:20px; color:#d97706; font-weight:bold; align-self:center;">➔ 变 ➔</div>
+                    <div>
+                        <h3 style="color:var(--gold-bright); font-size:18px;">变卦：【${data.bian_gua.name}】</h3>
+                        <p style="font-size:12px; color:#94a3b8;">${data.bian_gua.palace}宫 (${data.bian_gua.guaci})</p>
+                    </div>
+                </div>
+                <table style="width:100%; border-collapse:collapse; background:#0f172a; border-radius:8px; overflow:hidden; font-size:13px;">
+                    <thead style="background:#1e293b; color:#94a3b8;">
+                        <tr>
+                            <th style="padding:8px;">六神</th>
+                            <th style="padding:8px;">六亲</th>
+                            <th style="padding:8px;">本卦干支</th>
+                            <th style="padding:8px;">世应</th>
+                            <th style="padding:8px;">本卦象</th>
+                            <th style="padding:8px;">爻位</th>
+                            <th style="padding:8px;">变卦象</th>
+                            <th style="padding:8px;">变世应</th>
+                            <th style="padding:8px;">变卦干支</th>
+                            <th style="padding:8px;">变卦六亲</th>
+                        </tr>
+                    </thead>
+                    <tbody>${linesHtml}</tbody>
+                </table>
+            `;
+        }
+
+        // 对账审计执行
+        async function runReconcile() {
+            const text = document.getElementById('reconcileText').value;
+            const dt = document.getElementById('inputDatetime').value;
+            const gender = document.getElementById('inputGender').value;
+
+            if (!text.trim()) {
+                showAlert("请输入待对账的文本内容", true);
+                return;
+            }
+
+            showAlert("正在对账中...");
+            try {
+                const res = await fetch('/api/v1/reconcile', {
+                    method: 'POST',
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ text: text, datetime: dt, gender: gender })
+                });
+                if (!res.ok) throw new Error(await res.text());
+                const r = await res.json();
+
+                document.getElementById('countMatched').innerText = r.matched.length;
+                document.getElementById('countUnverified').innerText = r.unverified.length;
+                document.getElementById('countConflicts').innerText = r.conflicts.length;
+
+                const renderItems = (items) => items.map(it => `<div class="rec-item">${JSON.stringify(it, null, 1)}</div>`).join('');
+                document.getElementById('listMatched').innerHTML = renderItems(r.matched);
+                document.getElementById('listUnverified').innerHTML = renderItems(r.unverified);
+                document.getElementById('listConflicts').innerHTML = renderItems(r.conflicts);
+
+                showAlert(`对账完成：匹配 ${r.matched.length}，未知 ${r.unverified.length}，严重冲突 ${r.conflicts.length}`);
+            } catch (err) {
+                showAlert("对账执行出错：" + err.message, true);
+            }
+        }
+
+        function loadSampleDraft() {
+            document.getElementById('reconcileText').value = `
+【命造初步测算草稿】
+命主生于丙戌年甲午月壬辰日。
+大运推演：甲午(2012-2021)→癸巳(2022-2031)走财官大运。
+日主旺衰得分 21分偏弱。
+紫微命宫天相，会天钺、陀罗于命宫。
+            `.trim();
+        }
+
+        async function loadSchemas() {
+            try {
+                const res = await fetch('/api/v1/schemas');
+                const data = await res.json();
+                document.getElementById('jsonViewer').innerText = JSON.stringify(data, null, 2);
+            } catch (err) {
+                document.getElementById('jsonViewer').innerText = "加载 Schema 出错: " + err.message;
+            }
+        }
+
+        // 页面初始化
+        window.addEventListener('DOMContentLoaded', () => {
+            runAllPaiPan();
+        });
+    </script>
+</body>
+</html>

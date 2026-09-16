@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """l3_bazi_daliu.py — 八字大运流年流月五行模块：大运排法(bd-01 阳男阴女顺/阴男阳女逆，月柱起每步10年)、
-起运岁数(bd-02 出生真太阳时→顺逆最近节间隔÷3，余数折算 1天=4月/1时辰=10天，分钟精度)、
+起运岁数(bd-02 出生北京时→顺逆最近节间隔（两侧同域，2026-09-15 修复时制混用）÷3，余数折算 1天=4月/1时辰=10天，分钟精度)、
 流年(bd-03 立春换年同 m1 r3，流年干对日干十神 r5)、流月(bd-04 12节换月同 m1 r4，月干十神 r5)、
 五行统计(bd-05 干支+藏干五行计数、缺行、季节旺相休囚死)。
 底本：《渊海子平》大运起运口诀（阳男阴女顺行、阴男阳女逆行；三天一岁、一天四月、一时辰十天）、
@@ -26,7 +26,7 @@ def _terms():
     return m1.load_terms()  # 12 节行，datetime 升序
 
 def direction(dt, lon, sex):
-    """bd-01 顺逆：年干阳×男=顺。年干取立春口径年柱（m1.year_pillar，真太阳时判界）。"""
+    """bd-01 顺逆：年干阳×男=顺。年干取立春口径年柱（m1 r3，北京时判界，2026-09-15 修复时制混用）。"""
     r = m1.compute(dt, lon)
     if "error" in r:
         return None, r
@@ -34,26 +34,22 @@ def direction(dt, lon, sex):
     return ("顺" if (yg in YANG_GAN) == (sex == "男") else "逆"), r
 
 def qiyun(dt, lon, sex):
-    """bd-02 起运：顺→下 12 节、逆→上 12 节；间隔分钟÷4320=岁、÷360=月、÷12=天、余×2=时（真太阳时口径）。
+    """bd-02 起运：顺→下 12 节、逆→上 12 节；间隔分钟÷4320=岁、÷360=月、÷12=天、余×2=时。
+    间隔=出生到节气的绝对时长，两侧同域相减（m1 r3/r4 同口径=北京时域；solar_terms.csv=UTC+8。
+    2026-09-15 修复时制混用：原实现单边取真太阳时与节气表相减，经度修正+EOT 被计入间隔。
     返回 (岁,月,天,时, 节时刻, 交运时刻, 顺逆)。"""
     fwd, r = direction(dt, lon, sex)
-    ts = datetime.strptime(m1.true_solar(dt, lon).strftime("%Y-%m-%d %H:%M"), "%Y-%m-%d %H:%M")
-    ts_str = ts.strftime("%Y-%m-%d %H:%M")
+    bj = datetime.strptime(dt.strftime("%Y-%m-%d %H:%M"), "%Y-%m-%d %H:%M")
+    bj_str = bj.strftime("%Y-%m-%d %H:%M")
     times = [x["datetime"] for x in _terms()]
-    i = bisect.bisect_right(times, ts_str)
+    i = bisect.bisect_right(times, bj_str)
     jie = _terms()[i if fwd == "顺" else i - 1]["datetime"]  # 顺=其后第一个节，逆=其前最后一个节
     jdt = datetime.strptime(jie, "%Y-%m-%d %H:%M")
-    minutes = int((jdt - ts).total_seconds() // 60)
+    minutes = int(((jdt - bj) if fwd == "顺" else (bj - jdt)).total_seconds() // 60)
     y, minutes = minutes // MIN_YEAR, minutes % MIN_YEAR
     mo, minutes = minutes // HOUR, minutes % HOUR
     d, minutes = minutes // 12, minutes % 12
     h = minutes * 2  # 余 12 分=1 天，再余分钟×2=时
-    if fwd == "逆":
-        minutes2 = int((ts - jdt).total_seconds() // 60)
-        y, minutes2 = minutes2 // MIN_YEAR, minutes2 % MIN_YEAR
-        mo, minutes2 = minutes2 // HOUR, minutes2 % HOUR
-        d, minutes2 = minutes2 // 12, minutes2 % 12
-        h = minutes2 * 2
     jiao = jiao_dt(dt, y, mo, d, h)
     return y, mo, d, h, jie, jiao, fwd
 
@@ -155,7 +151,7 @@ def compute(dt, lon, sex="男"):
             "liunian": {"rule_id": "bd-03", "source": "立春换年=m1 r3；十神=r5", "list": ln},
             "liuyue": ly,
             "wuxing": wuxing_stats(r),
-            "notes": ["换日界/立春/节判界均真太阳时（同 m1 契约）；起运节=真太阳时最近 12 节之一"]}
+            "notes": ["换日界=真太阳时（日/时柱同 m1 契约）；立春/节判界=m1 r3/r4 北京时域（solar_terms.csv 同域）；起运=出生到节气绝对时长，两侧同域相减（2026-09-15 修复时制混用）"]}
 
 # ============================ 对拍（--compare） ============================
 URL = "https://www.zhouyi.cc/bazi/pp/Bazi.php"
@@ -218,7 +214,7 @@ def compare():
     手工复算 3 例（独立 datetime 算术）。分歧申报 data/arbitration_log.csv(bd-前缀)+report/boundary_cases.csv（幂等）。"""
     out = []
     ANCHORS = [((2024, 2, 10, 8, 0), "男"), ((2000, 2, 5, 12, 0), "男"), ((1990, 1, 1, 10, 0), "女"),
-               ((2024, 6, 15, 12, 0), "女"), ((2024, 2, 4, 16, 30), "男")]  # 末例=立春+3分边界(真太阳时跨年)
+               ((2024, 6, 15, 12, 0), "女"), ((2024, 2, 4, 16, 30), "男")]  # 末例=立春+3分边界(北京时判界 r3；修复前 ts 口径误跨年)
     random.seed(20260816)
     tds = [datetime.strptime(x["datetime"], "%Y-%m-%d %H:%M") for x in m1.load_terms()]
     rnd, sexs = [], []
@@ -233,7 +229,7 @@ def compare():
     cases = ANCHORS + list(zip(rnd, sexs))
     D = {"same": 0, "qiyun_day_diff": 0, "other": 0}
     arbs, brows, lnd, manual_notes = [], [], [], []
-    day_cases = []  # 仅起运"天"差 1-2 的案例（EOT 口径，合并申报 bd-q01）
+    day_cases = []  # 起运"天"差（第三 oracle 远期节表偏差×12 分/天边界敏感；2026-09-15 实证裁定，申报 bd-q02）
     for i, (t, sex) in enumerate(cases):
         dt0 = datetime(*t)
         r = compute(dt0, 120.0, sex)
@@ -257,33 +253,36 @@ def compare():
         if o_dg == my_dg and o_god == my_god and o["qiyun"][:2] == dq[:2] and 1 <= abs(o["qiyun"][2] - dq[2]) <= 2 \
                 and o["years"][0] == dl["list"][0]["start_year"] and o["wx16"] == r["wuxing"]["gan_cang_16"] \
                 and _daydiff(o["jiao"], jiao_my) <= 2:
-            D["qiyun_day_diff"] += 1  # 仅起运"天"差 1-2：真太阳时 vs 北京时（EOT ≤16.4 分 > 12 分/天，最多 2 天）口径差
+            D["qiyun_day_diff"] += 1  # 起运"天"差：易安居其自表远期偏 ±5~14 分×边界敏感（申报 bd-q02）；自研==lunar==skyfield ≤2 分为放行基线
             day_cases.append((cid, _fmt(t), sex, o["qiyun"], dq, dl["jie_time"]))
         elif same:
             D["same"] += 1
         else:
             D["other"] += 1  # 真实分歧 → 逐例申报（下）
-            note = (f"连锁分歧 {_fmt(t)} {sex}：oracle（北京时）大运首步 {o['dayun_gz'][0]}起 大运 {' '.join(o_dg)} "
-                    f"起运{o['qiyun']} vs 自研（真太阳时）{r['pillars']['year']['ganzhi']}年 大运 {' '.join(my_dg)} 起运{dq}，"
+            note = (f"连锁分歧 {_fmt(t)} {sex}：oracle 大运首步 {o['dayun_gz'][0]}起 大运 {' '.join(o_dg)} "
+                    f"起运{o['qiyun']} vs 自研（北京时域）{r['pillars']['year']['ganzhi']}年 大运 {' '.join(my_dg)} 起运{dq}，"
                     f"大运顺逆相反（年干阴阳×性别随年柱判界连锁）；五行16 oracle{o['wx16']} vs 自研{r['wuxing']['gan_cang_16']}")
-            arbs.append([cid, "年柱判界连锁", "oracle 北京时口径", "自研真太阳时口径", "复核者", "alt",
+            arbs.append([cid, "年柱判界连锁", "oracle 口径", "自研北京时域口径", "复核者", "alt",
                          note, "oracle 对拍", "自研 l3_bazi_daliu.py(bd-01/02)", "易安居 zhouyi.cc"])
-            brows.append([cid, "立春判界连锁", _fmt(t), "oracle 北京时判界", "自研真太阳时判界", "pending", note])
-            if lu["dayun_gz"] != my_dg:  # 第二 oracle 同步连锁（lunar 亦北京时口径）
+            brows.append([cid, "立春判界连锁", _fmt(t), "oracle 判界", "自研北京时域判界", "pending", note])
+            if lu["dayun_gz"] != my_dg:  # 第二 oracle 同步连锁
                 arbs.append([cid, "大运干支(第二oracle)", " ".join(lu["dayun_gz"]), " ".join(my_dg), "复核者", "alt",
-                             f"lunar-python sect=2 亦按北京时判年柱，与自研真太阳时连锁分歧 {_fmt(t)} {sex}",
+                             f"lunar-python sect=2 与自研北京时域连锁分歧 {_fmt(t)} {sex}",
                              "第二 oracle 对拍", "自研 l3_bazi_daliu.py", "lunar-python(6tail)"])
-    if day_cases:  # 合并申报起运"天"口径差（EOT 真太阳时 vs 北京时，逐例差异同源同类）
+    if day_cases:  # 起运"天"差（第三 oracle 远期节表偏差×边界敏感；2026-09-15 实证裁定，申报 bd-q02）
         cids = ",".join(x[0] for x in day_cases)
         ex = day_cases[0]
-        note = (f"起运『天』口径差 {len(day_cases)} 例（{cids}）：oracle 按北京时、自研按真太阳时（preregister M1 输入语义），"
-                f"EOT ±16.4 分 > 12 分/天 → 天差 1-2（双向），岁/月/大运干支/十神/年份/五行16 全一致；"
-                f"例 {ex[1]} {ex[2]}：oracle {ex[3]} vs 自研 {ex[4]}（{ex[5]} 节）")
-        arbs.append(["bd-q01", "起运天数", "oracle 北京时口径", "自研真太阳时口径", "复核者", "alt",
-                     note, "oracle 对拍（逐例清单见 report/boundary_cases.csv bd-q01 行）",
-                     "自研 l3_bazi_daliu.py(bd-02)", "易安居 zhouyi.cc"])
-        brows.append(["bd-q01", "起运口径(合并)", f"{len(day_cases)} 例: " + ", ".join(x[1] for x in day_cases),
-                      "oracle 北京时", "自研真太阳时", "pending", note])
+        note = (f"起运『天』差 {len(day_cases)} 例（{cids}）：2026-09-15 实证——自研（北京时域 solar_terms）与 lunar-python 25/25（岁/月/天对拍字段口径）一致、"
+                f"与 skyfield DE440s 天文真值 ≤2 分；易安居起运=其自表口径，逐例复核其页节时刻（分钟制）重算与其 oracle 天位 9/10 相等，"
+                f"bd-r06 反例：页显 08:36（=我方表）重算=17 天而 oracle=16 天（页显与其起运自身不自洽，其内部精度高于页显 δ∈(0,60s]）；"
+                f"其页节表远期年对天文真值（skyfield 基线）偏差 ±5~14 分（r04 −13、r13 −11、r19 −11、r09 +9、r16 +8 等），"
+                f"余分距 12 分/天边界 ≤|表偏| 的例天位差 1（双向）；判为第三 oracle 远期表精度/内部精度不透明所致，非本引擎缺陷（bd-q01 旧口径差形态随修复消解）；"
+                f"例 {ex[1]}：oracle {ex[3]} vs 自研 {ex[4]}（{ex[5]} 节）")
+        arbs.append(["bd-q02", "起运天数", "易安居其自表口径", "自研北京时域口径", "复核者", "alt",
+                     note, "oracle 对拍（逐例清单见 report/boundary_cases.csv bd-q02 行）",
+                     "自研 l3_bazi_daliu.py(bd-02)", "易安居 zhouyi.cc / lunar-python / skyfield DE440s"])
+        brows.append(["bd-q02", "起运口径(合并)", f"{len(day_cases)} 例: " + ", ".join(x[1] for x in day_cases),
+                      "易安居其自表", "自研北京时域", "pending", note])
     # 流年/流月（全 25 例）：首步大运 10 年各流年全段（lunar-python 逐年立春口径）+ 交运年 12 流月
     lny_ok = lym_ok = lny_total = 0
     for t, sex, o, dl, lu, dq in lnd:
@@ -296,7 +295,9 @@ def compare():
         ly = [x["ganzhi"] for x in liuyue(sy, yg, dm)]
         if ly == lu["liuyue"]:
             lym_ok += 1
-    # 手工复算 3 例（独立 datetime 算术）：节时刻取自易安居页面（北京时）→ 与自研真太阳时口径分别核对
+    # 手工复算 3 例（独立 datetime 算术×北京时域，2026-09-15 qiyun 修复后同域）：节时刻取易安居页
+    # 2024 惊蛰 10:23=本表；2000 惊蛰页 14:45 vs 本表 14:43（2 分差仅『时』位 ±4，岁/月/天不变；
+    # 本表口径 [9,8,13,14] vs 页口径 [9,8,13,18]，见报告）
     M3 = [((2024, 2, 10, 8, 0), "男", "2024-03-05 10:23"), ((2000, 2, 5, 12, 0), "男", "2000-03-05 14:45"),
           ((2024, 6, 15, 12, 0), "女", "2024-06-05 12:10")]  # 女=阳年女逆排，上节 芒种 2024-06-05 12:10
     for t, sex, jie in M3:
@@ -311,19 +312,21 @@ def compare():
                     if x.get("case_id") and not x["case_id"].startswith("#")}
         except FileNotFoundError:
             return set()
+    written = {}
     for fn, rows in (("data/arbitration_log.csv", arbs), ("report/boundary_cases.csv", brows)):
         seen = existing(fn)
         rows = [x for x in rows if x[0] not in seen]
+        written[fn] = len(rows)  # 实际追加数（幂等过滤后）；打印计数须用此值，非待申报数
         if rows:
             with open(os.path.join(BASE, fn), "a", encoding="utf-8", newline="") as f:
                 csv.writer(f).writerows(rows)
     report = [
         f"L3-3 八字大运流年流月五行对拍（l3_bazi_daliu.py）：{len(cases)} 例（5 锚点 2男2女+1 立春+3分边界；20 随机 1949-2100 男女各半，避 23-24 时/12 节±30 分/立春日）",
-        f"主 oracle 易安居 bazi.php：大运干支+十神+起运岁/月+岁数年份+五行16 全一致 {D['same']}；仅起运『天』差 1-2（真太阳时 vs 北京时 EOT 口径）{D['qiyun_day_diff']}；真实分歧 {D['other']}",
+        f"主 oracle 易安居 bazi.php：大运干支+十神+起运岁/月+岁数年份+五行16 全一致 {D['same']}；起运『天』差（第三 oracle 远期节表偏差×边界敏感，实证见 bd-q02）{D['qiyun_day_diff']}；真实分歧 {D['other']}",
         f"第二 oracle lunar-python(sect=2)：大运干支一致 {sum(1 for t, sex, o, dl, lu, dq in lnd if lu['dayun_gz'] == [x['ganzhi'] for x in dl['list']])}/{len(lnd)}；",
         f"  流年干支(立春口径，首步大运 10 年全段)一致 {lny_ok}/{len(lnd)} 例（{lny_total} 年次）；流月 12 节月干支一致 {lym_ok}/{len(lnd)} 例",
         f"手工复算 3 例（独立 datetime 算术，节时刻取自易安居页面北京时）：{manual_notes}",
-        f"申报：arbitration_log.csv bd- 新增 {len(arbs)} 条；boundary_cases.csv bd- 新增 {len(brows)} 条（幂等）",
+        f"申报：arbitration_log.csv bd- 实际新增 {written['data/arbitration_log.csv']} 条（待申报 {len(arbs)}，幂等过滤）；boundary_cases.csv bd- 实际新增 {written['report/boundary_cases.csv']} 条（待申报 {len(brows)}）",
     ]
     for x in [y for y in arbs if y[5] == "alt" and "分歧" in y[6]][:6]:
         report.append(f"  分歧：{x[6]}")

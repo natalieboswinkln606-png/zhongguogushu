@@ -1,0 +1,28 @@
+{
+  "oracle": "astrologybazi.com/chenggu（纯前端计算：公历→农历→四值骨重→总和→断语，浏览器 DevTools 驱动 2026-08-16）",
+  "anchors": [
+    {"case": "锚点1", "date": "1984-02-02", "shichen": "巳", "oracle_total": "3两9钱", "year": "甲子年 1两2钱", "month": "农历1月 6钱", "day": "农历1日 5钱", "hour": "巳时 1两6钱", "local_expect": "3两9钱", "match": true},
+    {"case": "锚点2", "date": "1984-02-01", "shichen": "卯", "oracle_total": "2两7钱", "year": "癸亥年 6钱", "month": "农历12月 5钱", "day": "农历30日 6钱", "hour": "卯时 1两", "local_expect": "2两7钱", "match": true},
+    {"case": "锚点3", "date": "1990-06-07", "shichen": "未", "oracle_total": "3两2钱", "year": "庚午年 9钱", "month": "农历5月 5钱", "day": "农历15日 1两", "hour": "未时 8钱", "local_expect": "3两2钱", "match": true},
+    {"case": "锚点4", "date": "2000-08-02", "shichen": "丑", "oracle_total": "3两5钱", "year": "庚辰年 1两2钱", "month": "农历7月 9钱", "day": "农历3日 8钱", "hour": "丑时 6钱", "local_expect": "3两5钱", "match": true},
+    {"case": "锚点5", "date": "1963-04-13", "shichen": "酉", "oracle_total": "4两9钱", "year": "癸卯年 1两2钱", "month": "农历3月 1两8钱", "day": "农历20日 1两", "hour": "酉时 9钱", "local_expect": "5两4钱", "match": false, "note": "分歧=二十日骨重：astrologybazi 取 1两，本地通行版取 1两5钱"}
+  ],
+  "random_samples": [
+    {"no": 1, "date": "2098-08-12", "shichen": "未", "lunar": "戊午年七月16日", "oracle_total": "4两4钱", "local_expect": "4两4钱", "match": true},
+    {"no": 2, "date": "2022-01-24", "shichen": "午", "lunar": "辛丑年腊月22日", "oracle_total": "3两1钱", "local_expect": "3两1钱", "match": true},
+    {"no": 3, "date": "2051-03-22", "shichen": "午", "lunar": "辛未年二月10日", "oracle_total": "4两1钱", "local_expect": "4两1钱", "match": true},
+    {"no": 4, "date": "2073-06-26", "shichen": "未", "lunar": "癸巳年五月21日", "oracle_total": "3两", "local_expect": "3两", "match": true},
+    {"no": 5, "date": "2051-04-02", "shichen": "巳", "lunar": "辛未年二月21日", "oracle_total": "4两1钱", "local_expect": "4两1钱", "match": true},
+    {"no": 6, "date": "1982-07-06", "shichen": "午", "lunar": "壬戌年五月16日", "oracle_total": "3两3钱", "local_expect": "3两3钱", "match": true},
+    {"no": 7, "date": "2023-10-14", "shichen": "辰", "lunar": "癸卯年八月30日", "oracle_total": "4两2钱", "local_expect": "4两2钱", "match": true},
+    {"no": 8, "date": "1985-01-09", "shichen": "午", "lunar": "甲子年冬月19日", "oracle_total": "3两6钱", "local_expect": "3两6钱", "match": true, "note": "断语异文：oracle 3.6档=此命终身运不通…（卜易居通行版=不须劳碌过平生…，对调异文实锤）"},
+    {"no": 9, "date": "2085-01-25", "shichen": "巳", "lunar": "甲辰年腊月30日", "oracle_total": "3两5钱", "local_expect": "3两5钱", "match": true},
+    {"no": 10, "date": "2029-01-20", "shichen": "巳", "lunar": "戊申年腊月6日", "oracle_total": "5两", "local_expect": "5两", "match": true},
+    {"no": 11, "date": "1966-01-19", "shichen": "申", "lunar": "乙巳年腊月28日", "oracle_total": "2两8钱", "local_expect": "2两8钱", "match": true},
+    {"no": 12, "date": "2051-06-17", "shichen": "巳", "lunar": "辛未年五月9日", "oracle_total": "3两7钱", "local_expect": "3两7钱", "match": true},
+    {"no": 13, "date": "2056-05-18", "shichen": "申", "lunar": "丙子年四月4日", "oracle_total": "4两8钱", "local_expect": "4两8钱", "match": true},
+    {"no": 14, "date": "2041-04-01", "shichen": "申", "lunar": "辛酉年三月1日", "oracle_total": "4两7钱", "local_expect": "4两7钱", "match": true},
+    {"no": 15, "date": "2010-09-18", "shichen": "辰", "lunar": "庚寅年八月11日", "oracle_total": "4两2钱", "local_expect": "4两2钱", "match": true}
+  ],
+  "summary": "锚点 5 例：4 例全字段一致，1 例（锚点5 二十日骨重）分歧；随机 15 例全部一致。断语异文（3.6/3.9 对调）在样本8 实锤。"
+}

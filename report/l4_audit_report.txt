@@ -34,6 +34,15 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [锚点] 合盘A四柱=m1  {'year': '乙丑', 'month': '壬午', 'day': '乙酉', 'hour': '辛巳'}
   PASS [锚点] 合盘B四柱=大运流年模块  {'year': '乙丑', 'month': '丙戌', 'day': '壬寅', 'hour': '丁未'}
   PASS [锚点] 合盘 hp-01/hp-04 带 Rule-ID
+  PASS [锚点] 流日可算
+  PASS [锚点] 流日原局=m1  {'year': '乙丑', 'month': '壬午', 'day': '乙酉', 'hour': '辛巳'}
+  PASS [锚点] 流日日柱=ganzhi_days(正午)  乙酉 vs 乙酉
+  PASS [锚点] 流日黄历层=流日日柱(双源同值)
+  PASS [锚点] 铁板查表可算
+  PASS [锚点] 铁板四柱=m1  {'year': '乙丑', 'month': '壬午', 'day': '乙酉', 'hour': '辛巳'}
+  PASS [锚点] 铁板太玄数键=8 数和
+  PASS [锚点] 铁板八刻候选=8
+  PASS [锚点] 铁板候选日柱=ganzhi_days(真太阳日期)+时支=真太阳时辰  8/8 候选有四柱（空集亦判 FAIL，防 all([]) 空真）
 二、确定性随机 3 例（seed=20260816）
   -- R1 2099-08-12 22:10 lon=120.0 四柱={'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'} 真太阳时=2099-08-12T22:05:15
   PASS [R1] 六爻可算
@@ -69,6 +78,15 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [R1] 合盘A四柱=m1  {'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'}
   PASS [R1] 合盘B四柱=大运流年模块  {'year': '己未', 'month': '丙子', 'day': '己亥', 'hour': '乙丑'}
   PASS [R1] 合盘 hp-01/hp-04 带 Rule-ID
+  PASS [R1] 流日可算
+  PASS [R1] 流日原局=m1  {'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'}
+  PASS [R1] 流日日柱=ganzhi_days(正午)  辛巳 vs 辛巳
+  PASS [R1] 流日黄历层=流日日柱(双源同值)
+  PASS [R1] 铁板查表可算
+  PASS [R1] 铁板四柱=m1  {'year': '己未', 'month': '壬申', 'day': '辛巳', 'hour': '己亥'}
+  PASS [R1] 铁板太玄数键=8 数和
+  PASS [R1] 铁板八刻候选=8
+  PASS [R1] 铁板候选日柱=ganzhi_days(真太阳日期)+时支=真太阳时辰  8/8 候选有四柱（空集亦判 FAIL，防 all([]) 空真）
   -- R2 1952-12-12 18:00 lon=120.0 四柱={'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'} 真太阳时=1952-12-12T18:05:05
   PASS [R2] 六爻可算
   PASS [R2] 六爻月建=m1 r4  壬子 vs 壬子
@@ -103,6 +121,15 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [R2] 合盘A四柱=m1  {'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'}
   PASS [R2] 合盘B四柱=大运流年模块  {'year': '癸巳', 'month': '丙辰', 'day': '己酉', 'hour': '乙亥'}
   PASS [R2] 合盘 hp-01/hp-04 带 Rule-ID
+  PASS [R2] 流日可算
+  PASS [R2] 流日原局=m1  {'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'}
+  PASS [R2] 流日日柱=ganzhi_days(正午)  壬辰 vs 壬辰
+  PASS [R2] 流日黄历层=流日日柱(双源同值)
+  PASS [R2] 铁板查表可算
+  PASS [R2] 铁板四柱=m1  {'year': '壬辰', 'month': '壬子', 'day': '壬辰', 'hour': '己酉'}
+  PASS [R2] 铁板太玄数键=8 数和
+  PASS [R2] 铁板八刻候选=8
+  PASS [R2] 铁板候选日柱=ganzhi_days(真太阳日期)+时支=真太阳时辰  8/8 候选有四柱（空集亦判 FAIL，防 all([]) 空真）
   -- R3 2041-08-11 22:10 lon=120.0 四柱={'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'} 真太阳时=2041-08-11T22:05:05
   PASS [R3] 六爻可算
   PASS [R3] 六爻月建=m1 r4  丙申 vs 丙申
@@ -137,6 +164,15 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS [R3] 合盘A四柱=m1  {'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'}
   PASS [R3] 合盘B四柱=大运流年模块  {'year': '辛酉', 'month': '庚子', 'day': '甲午', 'hour': '乙丑'}
   PASS [R3] 合盘 hp-01/hp-04 带 Rule-ID
+  PASS [R3] 流日可算
+  PASS [R3] 流日原局=m1  {'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'}
+  PASS [R3] 流日日柱=ganzhi_days(正午)  丙子 vs 丙子
+  PASS [R3] 流日黄历层=流日日柱(双源同值)
+  PASS [R3] 铁板查表可算
+  PASS [R3] 铁板四柱=m1  {'year': '辛酉', 'month': '丙申', 'day': '丙子', 'hour': '己亥'}
+  PASS [R3] 铁板太玄数键=8 数和
+  PASS [R3] 铁板八刻候选=8
+  PASS [R3] 铁板候选日柱=ganzhi_days(真太阳日期)+时支=真太阳时辰  8/8 候选有四柱（空集亦判 FAIL，防 all([]) 空真）
 三、跨子时/西部经度分歧锚点（预期差异方向验证）
   PASS 分歧A 2024-02-10 00:00 120E：m1 子正归前日(2-9)  m1=癸卯(真太阳时2024-02-09T23:45:27) vs 小六壬=甲辰
   PASS 分歧A 六壬/小六壬 北京时 0 点换日归 2-10  小六壬=甲辰 六壬=甲辰
@@ -144,10 +180,11 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   PASS 分歧B 六壬北京时口径归 1-1  六壬=戊午
   PASS 分歧C 2024-02-10 23:30：两口径一致  m1=六壬=甲辰
 四、Rule-ID 注册表双向校验（data/rule_registry.csv）
-  PASS 注册表条目数≥150  实 174 条
+  PASS 注册表条目数≥150  实 181 条
   PASS 代码字面量全部在注册表  缺 []
   PASS 注册表条目全部在代码中存在  多 []
   PASS 申报编号 wylq-001..005/qd-b-01..21 在 arbitration_log.csv 有载体  缺 []
+  PASS CSV 表结构锁：arbitration_log 10 列 / rule_registry 4 列  异常 []
   NOTE 审计注记 qd-x-27: docstring 旧编号残留（风遁正式 id=qd-x-26，GE_RULES 表驱动；L4 审计发现，功能无影响）
 五、boundary_cases.csv 边界用例残留检查（无 pending/裸 fail）
   PASS boundary_cases.csv 无 pending/fail 盲区残留  pending=[] 裸fail(无note定性)=[]
@@ -176,4 +213,4 @@ L4 审计层端到端抽查报告（l4_audit.py，UTC+8）
   丙申申子辰组 (2016, 1, 23, 14, 0): 紫微 oracle=巳 火星=辰 铃星=巳 天魁=子 禄存=卯 差异=无
   独立解析抽查: PASS
   PASS l4_audit_ziwei.py 独立解析抽查 PASS
-合计：PASS 161 / FAIL 0
+合计：PASS 198 / FAIL 0

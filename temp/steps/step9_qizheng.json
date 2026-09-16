@@ -1,0 +1,117 @@
+{
+  "utc_time": "1996-01-22 04:10:00",
+  "jdn": 2450104.6736,
+  "stars": {
+    "太阳": {
+      "longitude": 301.414,
+      "palace": "子",
+      "zodiac": "水瓶宫",
+      "degree_in_palace": 1.41,
+      "mansion": "斗",
+      "constellation": "北方玄武",
+      "degree_in_mansion": 13.08
+    },
+    "太阴": {
+      "longitude": 324.481,
+      "palace": "子",
+      "zodiac": "水瓶宫",
+      "degree_in_palace": 24.48,
+      "mansion": "女",
+      "constellation": "北方玄武",
+      "degree_in_mansion": 2.61
+    },
+    "木星": {
+      "longitude": 274.177,
+      "palace": "丑",
+      "zodiac": "摩羯宫",
+      "degree_in_palace": 4.18,
+      "mansion": "尾",
+      "constellation": "东方苍龙",
+      "degree_in_mansion": 13.93
+    },
+    "火星": {
+      "longitude": 308.937,
+      "palace": "子",
+      "zodiac": "水瓶宫",
+      "degree_in_palace": 8.94,
+      "mansion": "斗",
+      "constellation": "北方玄武",
+      "degree_in_mansion": 20.61
+    },
+    "土星": {
+      "longitude": 357.149,
+      "palace": "亥",
+      "zodiac": "双鱼宫",
+      "degree_in_palace": 27.15,
+      "mansion": "室",
+      "constellation": "北方玄武",
+      "degree_in_mansion": 3.67
+    },
+    "金星": {
+      "longitude": 338.45,
+      "palace": "亥",
+      "zodiac": "双鱼宫",
+      "degree_in_palace": 8.45,
+      "mansion": "虚",
+      "constellation": "北方玄武",
+      "degree_in_mansion": 5.05
+    },
+    "水星": {
+      "longitude": 291.042,
+      "palace": "丑",
+      "zodiac": "摩羯宫",
+      "degree_in_palace": 21.04,
+      "mansion": "斗",
+      "constellation": "北方玄武",
+      "degree_in_mansion": 2.71
+    },
+    "罗睺": {
+      "longitude": 201.315,
+      "palace": "辰",
+      "zodiac": "天秤宫",
+      "degree_in_palace": 21.31,
+      "mansion": "轸",
+      "constellation": "南方朱雀",
+      "degree_in_mansion": 10.88
+    },
+    "计都": {
+      "longitude": 21.315,
+      "palace": "戌",
+      "zodiac": "白羊宫",
+      "degree_in_palace": 21.32,
+      "mansion": "壁",
+      "constellation": "北方玄武",
+      "degree_in_mansion": 12.17
+    },
+    "月孛": {
+      "longitude": 282.896,
+      "palace": "丑",
+      "zodiac": "摩羯宫",
+      "degree_in_palace": 12.9,
+      "mansion": "箕",
+      "constellation": "东方苍龙",
+      "degree_in_mansion": 4.32
+    },
+    "紫气": {
+      "longitude": 229.277,
+      "palace": "卯",
+      "zodiac": "天蝎宫",
+      "degree_in_palace": 19.28,
+      "mansion": "氐",
+      "constellation": "东方苍龙",
+      "degree_in_mansion": 4.2
+    }
+  },
+  "source": "果老星宗七政四余 IAU J2000 真黄道引擎",
+  "context": {
+    "wall_time": "1996-01-22 12:10",
+    "beijing_time": "1996-01-22 12:10",
+    "true_solar_time": "1996-01-22 11:32",
+    "four_pillars": [
+      "乙亥",
+      "己丑",
+      "戊午",
+      "戊午"
+    ]
+  }
+}

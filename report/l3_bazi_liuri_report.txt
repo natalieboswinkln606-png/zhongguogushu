@@ -1,0 +1,3 @@
+l3_bazi_liuri 对拍（lunar-python oracle，seed=20260915）
+样本 68 日（含 8 边界），检查项 198，差异 0，节交接日年/月柱跳过 3 日
+口径：day=日柱（全样本）；year=立春换年、month=节换月（节交接日 oracle 按日期粒度、不对比）

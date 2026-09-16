@@ -1,0 +1,353 @@
+{
+  "input": {
+    "datetime": "1996-01-22 12:10",
+    "longitude": 113.27
+  },
+  "pillars": {
+    "year": {
+      "ganzhi": "乙亥",
+      "rule_id": "r3",
+      "source": "solar_terms.csv"
+    },
+    "month": {
+      "ganzhi": "己丑",
+      "rule_id": "r4",
+      "source": "solar_terms.csv"
+    },
+    "day": {
+      "ganzhi": "戊午",
+      "rule_id": "r1",
+      "source": "ganzhi_days.csv"
+    },
+    "hour": {
+      "ganzhi": "戊午",
+      "rule_id": "r2"
+    }
+  },
+  "true_solar_time": "1996-01-22T11:31:32",
+  "dingju": {
+    "term": "大寒",
+    "term_time": "1996-01-21 02:53",
+    "dun": "阳遁",
+    "yuan": "中元",
+    "ju": 9,
+    "rule_id": "qm-01",
+    "source": "《奇门遁甲统宗》72局口诀(转盘) + 张志春《神奇之门》拆补法(残日=符头元前一元,易安居实测校准)"
+  },
+  "month_jiang": "子",
+  "zhifu_zhishi": {
+    "xunshou": "甲寅",
+    "yiyi": "癸",
+    "zhifu_star": "天禽",
+    "zhifu_palace": 9,
+    "zhishi_door": "死门",
+    "zhishi_palace": 9,
+    "rule_id": "qm-06",
+    "source": "《奇门遁甲统宗》旬首隐仪(甲子戊…甲寅癸)+值时星/门"
+  },
+  "sanqi_liuyi": {
+    "layout": {
+      "9": "戊",
+      "1": "己",
+      "2": "庚",
+      "3": "辛",
+      "4": "壬",
+      "5": "癸",
+      "6": "丁",
+      "7": "丙",
+      "8": "乙"
+    },
+    "rule_id": "qm-02",
+    "source": "《奇门遁甲统宗》阳顺阴逆布(戊己庚辛壬癸丁丙乙)"
+  },
+  "nine_stars": {
+    "1": "天任",
+    "2": "天柱",
+    "3": "天辅",
+    "4": "天英",
+    "5": null,
+    "6": "天蓬",
+    "7": "天心",
+    "8": "天冲",
+    "9": "天芮"
+  },
+  "eight_doors": {
+    "1": "生门",
+    "2": "惊门",
+    "3": "杜门",
+    "4": "景门",
+    "5": null,
+    "6": "休门",
+    "7": "开门",
+    "8": "伤门",
+    "9": "死门"
+  },
+  "eight_gods": {
+    "1": "白虎",
+    "2": "腾蛇",
+    "3": "九地",
+    "4": "九天",
+    "5": null,
+    "6": "六合",
+    "7": "太阴",
+    "8": "玄武",
+    "9": "值符"
+  },
+  "pan": {
+    "1": {
+      "palace": 1,
+      "gua": "坎宫",
+      "direction": "正北方",
+      "dipan_gan": "己",
+      "tianpan_gan": "乙",
+      "star": "天任",
+      "door": "生门",
+      "shen": "白虎"
+    },
+    "2": {
+      "palace": 2,
+      "gua": "坤宫",
+      "direction": "西南方",
+      "dipan_gan": "庚",
+      "tianpan_gan": "丙",
+      "star": "天柱",
+      "door": "惊门",
+      "shen": "腾蛇"
+    },
+    "3": {
+      "palace": 3,
+      "gua": "震宫",
+      "direction": "正东方",
+      "dipan_gan": "辛",
+      "tianpan_gan": "壬",
+      "star": "天辅",
+      "door": "杜门",
+      "shen": "九地"
+    },
+    "4": {
+      "palace": 4,
+      "gua": "巽宫",
+      "direction": "东南方",
+      "dipan_gan": "壬",
+      "tianpan_gan": "戊",
+      "star": "天英",
+      "door": "景门",
+      "shen": "九天"
+    },
+    "5": {
+      "palace": 5,
+      "gua": "中宫",
+      "direction": "中央方",
+      "dipan_gan": "癸",
+      "tianpan_gan": "癸",
+      "star": null,
+      "door": null,
+      "shen": null
+    },
+    "6": {
+      "palace": 6,
+      "gua": "乾宫",
+      "direction": "西北方",
+      "dipan_gan": "丁",
+      "tianpan_gan": "己",
+      "star": "天蓬",
+      "door": "休门",
+      "shen": "六合"
+    },
+    "7": {
+      "palace": 7,
+      "gua": "兑宫",
+      "direction": "正西方",
+      "dipan_gan": "丙",
+      "tianpan_gan": "丁",
+      "star": "天心",
+      "door": "开门",
+      "shen": "太阴"
+    },
+    "8": {
+      "palace": 8,
+      "gua": "艮宫",
+      "direction": "东北方",
+      "dipan_gan": "乙",
+      "tianpan_gan": "辛",
+      "star": "天冲",
+      "door": "伤门",
+      "shen": "玄武"
+    },
+    "9": {
+      "palace": 9,
+      "gua": "离宫",
+      "direction": "正南方",
+      "dipan_gan": "戊",
+      "tianpan_gan": "庚癸",
+      "star": "天芮",
+      "door": "死门",
+      "shen": "值符"
+    }
+  },
+  "duanju": {
+    "yongshen": [
+      {
+        "use": "日干",
+        "gan": "戊",
+        "role": "己方（求测人）",
+        "fall": "4",
+        "detail": {
+          "palace": "4",
+          "gua": "巽宫",
+          "direction": "东南方",
+          "star": "天英",
+          "door": "景门",
+          "shen": "九天",
+          "tianpan_gan": "戊",
+          "dipan_gan": "壬"
+        },
+        "mean": "高山·城墙·资本",
+        "rule_id": "qd-01-01",
+        "source": "《奇门遁甲统宗》用神篇"
+      },
+      {
+        "use": "时干",
+        "gan": "戊",
+        "role": "事体（所测之事）",
+        "fall": "4",
+        "detail": {
+          "palace": "4",
+          "gua": "巽宫",
+          "direction": "东南方",
+          "star": "天英",
+          "door": "景门",
+          "shen": "九天",
+          "tianpan_gan": "戊",
+          "dipan_gan": "壬"
+        },
+        "mean": "高山·城墙·资本",
+        "rule_id": "qd-01-02",
+        "source": "《奇门遁甲统宗》用神篇"
+      },
+      {
+        "use": "值符",
+        "gan": "癸",
+        "role": "领导·首脑·统御者",
+        "fall": "9",
+        "detail": {
+          "palace": 9,
+          "gua": "离宫",
+          "direction": "正南方",
+          "star": "天芮",
+          "door": "死门",
+          "shen": "值符",
+          "tianpan_gan": "庚癸",
+          "dipan_gan": "戊"
+        },
+        "mean": "天乙·尊贵·统御；廉贞·中正·统摄",
+        "rule_id": "qd-01-03",
+        "source": "《奇门遁甲统宗》用神篇"
+      },
+      {
+        "use": "值使",
+        "gan": "",
+        "role": "执行·门户·下属",
+        "fall": "9",
+        "detail": {
+          "palace": 9,
+          "gua": "离宫",
+          "direction": "正南方",
+          "star": "天芮",
+          "door": "死门",
+          "shen": "值符",
+          "tianpan_gan": "庚癸",
+          "dipan_gan": "戊"
+        },
+        "mean": "死亡·丧葬·绝地",
+        "rule_id": "qd-01-04",
+        "source": "《奇门遁甲统宗》用神篇"
+      }
+    ],
+    "geju": [
+      {
+        "id": "qd-g-09",
+        "name": "三奇升殿",
+        "type": "吉",
+        "palace": "7",
+        "basis": "丁奇升殿临7宫",
+        "source": "《奇门遁甲统宗》·三奇升殿",
+        "yichwen": "40 盘实测 19/19（乙3丙9丁7）"
+      },
+      {
+        "id": "qd-g-11",
+        "name": "真诈",
+        "type": "吉",
+        "palace": "7",
+        "basis": "三奇+开门+太阴",
+        "source": "《奇门遁甲统宗》三诈",
+        "yichwen": "40 盘实测 7/7"
+      },
+      {
+        "id": "qd-x-07",
+        "name": "悖格",
+        "type": "凶",
+        "palace": "2",
+        "basis": "宫含丙（天盘/地盘）",
+        "source": "近似口径（《统宗》悖格）",
+        "yichwen": "已申报 qd-b-06：oracle 悖格含盘外逻辑无法还原，自研用宫含丙近似"
+      },
+      {
+        "id": "qd-x-07",
+        "name": "悖格",
+        "type": "凶",
+        "palace": "7",
+        "basis": "宫含丙（天盘/地盘）",
+        "source": "近似口径（《统宗》悖格）",
+        "yichwen": "已申报 qd-b-06：oracle 悖格含盘外逻辑无法还原，自研用宫含丙近似"
+      },
+      {
+        "id": "qd-x-08",
+        "name": "荧惑入白",
+        "type": "凶",
+        "palace": "2",
+        "basis": "天盘丙加地盘庚",
+        "source": "《烟波钓叟歌》·丙加庚",
+        "yichwen": "40 盘实测 3/3"
+      },
+      {
+        "id": "qd-x-11",
+        "name": "白虎猖狂",
+        "type": "凶",
+        "palace": "8",
+        "basis": "天盘辛加地盘乙",
+        "source": "《烟波钓叟歌》·辛加乙",
+        "yichwen": "40 盘实测 2/2"
+      },
+      {
+        "id": "qd-x-25",
+        "name": "时格",
+        "type": "凶",
+        "palace": "9",
+        "basis": "天盘庚加地盘时干戊",
+        "source": "《奇门遁甲统宗》庚格·庚加时干",
+        "yichwen": "易安居实测 3/3（含庚+庚；dump 庚时盘 0 反例，已申报 qd-b-14）"
+      },
+      {
+        "id": "qd-x-22",
+        "name": "天网四张",
+        "type": "凶",
+        "palace": "9",
+        "basis": "值符宫天盘癸（无八门伏吟）",
+        "source": "《奇门遁甲统宗》·天网四张",
+        "yichwen": "40 盘实测 8/8（值符宫天盘癸且无八门伏吟）"
+      }
+    ],
+    "chubu": {
+      "verdict": "差",
+      "level": 3,
+      "ji_count": 2,
+      "xiong_count": 6,
+      "xiong_palaces": [
+        "9"
+      ],
+      "note": "规则启发式（qd-03）：吉凶数为规则统计，非神断；门迫/入墓/击刑/网张宫位见 xiong_palaces",
+      "rule_id": "qd-03-01"
+    }
+  }
+}

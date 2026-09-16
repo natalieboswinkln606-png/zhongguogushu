@@ -1,0 +1,74 @@
+L4 输出审计层报告（l4_audit_output.py）— 让手推数据无处遁形
+========================================================================
+背景：AI 会话输出测算结论曾犯 4 个真实错误（最严重=A 命造大运凭记忆错位一位；
+另有 B 盘奇门值符死门双写中五宫/艮八宫等）。本层提供 snapshot/check_invariants/reconcile 三件套。
+
+一、新增文件（未改任何既有引擎文件）
+  l4_audit_output.py            审计模块：snapshot/dump/check_invariants/reconcile + CLI
+  assert_l4_audit_output.py     回归断言 40 条（含历史事故回放 T1-T4 与篡改必被抓 X1-X7）
+  CLAUDE.md                     审计层使用铁律五条 + 真实事故反面教材 + 命令模板
+  report/l4_audit_output_report.txt  本报告
+  temp/_snap_a.json             A 盘全量快照（2006-06-25 00:30 女 120E，引擎直出+provenance sha256）
+  temp/_inv_a.json              A 盘五条不变量结果
+  temp/_rec_old.json/_rec_new.json  两段演示文本对账明细
+  temp/_audit_demo.json         演示证据汇总（旧文本 CAUGHT / 新文本 CLEAN）
+
+二、引擎 API 实证确认（读码+实测，非猜测）
+  rules.py: gan_idx(g)/zhi_idx(z) 干支序号（甲=0/子=0）
+  m1.compute(dt, lon) -> {pillars{year/month/day/hour.ganzhi}, ten_gods{day_master,stems,branches}, true_solar_time}
+  l3_bazi_daliu.dayun(dt, lon, sex, steps=8) -> (steps[{index,ganzhi,gan,zhi,god,start_year,end_year}], 岁,月,天,时, jie, jiao, fwd)
+  l3_bazi_daliu.year_gz(year) -> GAN[(y-4)%10]+ZHI[(y-4)%12]
+  l3_ziwei.compute(dt, lon=120.0) -> {palaces[12]{name,zhi,gan,stars,aux,sihua,shen}, minggong, lunar, sihua}
+  l3_qimen.compute(dt, lon=120.0) -> {dingju, zhifu_zhishi{xunshou,yiyi,zhifu_star,zhifu_palace,zhishi_door,zhishi_palace}, pan{"1".."9"}{dipan_gan,tianpan_gan,star,door,shen}, nine_stars, eight_doors, eight_gods}
+  l3_chenggu.compute(dt, lon=120.0, gender="男") -> {lunar, bones, total, poem}
+
+三、A 盘引擎实证与五条不变量（全部 ok=True）
+  [PASS] aud-inv-01  direction=逆 月柱=甲午(序30) 首步=癸巳(序29) 期望序29(月柱-1)
+  [PASS] aud-inv-02  链=癸巳→壬辰→辛卯→庚寅→己丑→戊子→丁亥→丙戌 起年=2012..2082 期望每步干支序-1、起年差+10
+  [PASS] aud-inv-03  流年 2020-2040 共 21 年，(y-4)%60 独立复算全查全部一致
+  [PASS] aud-inv-04  12 时辰命宫地支 午→巳→辰→卯→寅→丑→子→亥→戌→酉→申→未（每时辰 11 位即逆/顺一位，方向一致）；十二宫名齐全唯一
+  [PASS] aud-inv-05  中五宫star/door/shen=[None, None, None] 值符天芮实落2宫/申报5宫 值使死门实落9宫/申报9宫 值符宫天盘「己丙」含旬首仪「己」=True
+
+四、回归测试真实通过数（PYTHONIOENCODING=utf-8 实跑，非估算）
+  assert_l3_bazi_daliu.py: 35 PASS
+  assert_l3_chenggu.py: 65 PASS
+  assert_l3_heluolishu.py: 13 PASS
+  assert_l3_hepan.py: 48 PASS
+  assert_l3_huangli.py: 27 PASS
+  assert_l3_liuren.py: 87 PASS
+  assert_l3_liuyao.py: 85 PASS
+  assert_l3_meihua.py: 23 PASS
+  assert_l3_qimen.py: 28 PASS
+  assert_l3_qimen_duanju.py: 27 PASS
+  assert_l3_shensha.py: 31 PASS
+  assert_l3_wangshuai.py: 10 PASS
+  assert_l3_wuyunliuqi.py: 12 PASS
+  assert_l3_xiaoliuren.py: 10 PASS
+  assert_l3_ziwei.py: 16 PASS
+  assert_l3_ziwei_liunian.py: 16 PASS
+  assert_tables.py: 94 PASS
+  （既有脚本小计 627，全部 rc=0）
+  assert_l4_audit_output.py: 40/40 PASS（T1 大运陷阱/T2 流年/T3 B奇门/T4 对账元测试/S 快照不变量/X 篡改必被抓/D dump/C CLI）
+  l4_audit.py（L4 统一审计）: 161 PASS / 0 FAIL（注册表双向校验未受影响）
+  l4_audit_ziwei.py: PASS（rc=0）
+  合计数值断言: 627 + 40 + 161 = 708 PASS / 0 FAIL
+
+五、历史错误回放对账（reconcile 实战演示，详见 temp/_audit_demo.json）
+  旧错误文本判定: CAUGHT  matched=7 unverified=0 conflicts=6
+    - 命中 [not_in_dayun] 甲午 文中配 (2012-2021) : 甲午 不在本命大运序列（仅见于四柱·month柱），文中却配十年区间 (2012-2021) 冒充大运步骤
+    - 命中 [shifted] 癸巳 文中配 (2022-2031) : 癸巳 实为大运第1步(2012-2021)，文中写作 (2022-2031) —— 疑似序列错位/张冠李戴
+    - 命中 [shifted] 壬辰 文中配 (2032-2041) : 壬辰 实为大运第2步(2022-2031)，文中写作 (2032-2041) —— 疑似序列错位/张冠李戴
+    - 命中 [shifted] 辛卯 文中配 (2042-2051) : 辛卯 实为大运第3步(2032-2041)，文中写作 (2042-2051) —— 疑似序列错位/张冠李戴
+    - 命中 [shifted] 庚寅 文中配 (2052-2061) : 庚寅 实为大运第4步(2042-2051)，文中写作 (2052-2061) —— 疑似序列错位/张冠李戴
+    - 命中 [shifted] 己丑 文中配 (2062-2071) : 己丑 实为大运第5步(2052-2061)，文中写作 (2062-2071) —— 疑似序列错位/张冠李戴
+  修正文本判定: CLEAN  matched=13（含大运配年 6 条全对） unverified=0 conflicts=0
+
+六、注册表注记（重要）
+  按指示实测把 aud-inv-01..05 追加进 data/rule_registry.csv 后，l4_audit.registry_check()
+  立即报 FAIL「注册表条目全部在代码中存在 多 [...]」——其扫描范围仅 l3_*.py+m1.py，且正则
+  [a-z]{2,4}-\d{2,4}... 抓不到 aud-inv-* 三段整词。为不破坏既有 L4 断言基线，已回滚至原状
+  （回滚后 registry_check 4 PASS / 0 FAIL、174 条）。aud-inv id 改由 INVARIANTS 常量 + 断言 S-02 锁定。
+
+七、快照重签
+  已重签 107 个文件（含 SHA256SUMS.txt 自身行）→ SHA256SUMS.txt
+  --verify: 快照校验通过：106 个文件哈希全部一致（SHA256SUMS.txt 自身行自引用跳过）（exit 0）

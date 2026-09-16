@@ -1,0 +1,62 @@
+{
+  "taixuan_total": 57,
+  "taixuan_breakdown": {
+    "年柱": {
+      "gan": "乙",
+      "gan_num": 8,
+      "zhi": "亥",
+      "zhi_num": 4,
+      "subtotal": 12
+    },
+    "月柱": {
+      "gan": "己",
+      "gan_num": 9,
+      "zhi": "丑",
+      "zhi_num": 8,
+      "subtotal": 17
+    },
+    "日柱": {
+      "gan": "戊",
+      "gan_num": 5,
+      "zhi": "午",
+      "zhi_num": 9,
+      "subtotal": 14
+    },
+    "时柱": {
+      "gan": "戊",
+      "gan_num": 5,
+      "zhi": "午",
+      "zhi_num": 9,
+      "subtotal": 14
+    }
+  },
+  "ke_index": 1,
+  "deduced_items": [
+    {
+      "category": "考父母生肖",
+      "tiaowen_id": 1552,
+      "text": "【铁板条文第 1552 条】考刻数理契合，定数详见全函。"
+    },
+    {
+      "category": "考婚姻配偶",
+      "tiaowen_id": 1438,
+      "text": "【铁板条文第 1438 条】考刻数理契合，定数详见全函。"
+    },
+    {
+      "category": "考兄弟姊妹",
+      "tiaowen_id": 1324,
+      "text": "【铁板条文第 1324 条】考刻数理契合，定数详见全函。"
+    },
+    {
+      "category": "考功名事业",
+      "tiaowen_id": 1495,
+      "text": "【铁板条文第 1495 条】考刻数理契合，定数详见全函。"
+    },
+    {
+      "category": "考寿元定数",
+      "tiaowen_id": 1153,
+      "text": "【铁板条文第 1153 条】考刻数理契合，定数详见全函。"
+    }
+  ],
+  "source": "《邵子铁板神数》算盘滚雪球推数法定本"
+}

@@ -1,0 +1,2501 @@
+{
+  "meta": {
+    "tool": "l4_audit_output.py",
+    "generated_at": "2026-08-26T01:05:14",
+    "note": "全部数据由冻结引擎直出（m1/l3_bazi_daliu/l3_ziwei/l3_qimen/l3_chenggu），无任何手算补充",
+    "provenance": {
+      "m1.py": "6476d8b3e9e6892c041ac2db7d60e2b4f1891939bac31f7a222792cf59be7059",
+      "rules.py": "a6df7859d0628445c306170e629af2d363e0dd32774f0d2983b80f1c56992595",
+      "l3_bazi_daliu.py": "34aead0f881e321dd7e058e7f7071abb2a7695d96f343d9cca94f6b6f0dfb061",
+      "l3_ziwei.py": "e5f9889c643aebf941e401f10f567360a398e5c8f2bc2125e4050c24077bc443",
+      "l3_qimen.py": "33d93982c511492ab2208193fd45ca168d49fed8aced8d3b9a9680e292458ec8",
+      "l3_chenggu.py": "20c7218d791c40eea0d6972668d950153e7fcc3440ce20ae226e038ded17d218"
+    }
+  },
+  "input": {
+    "datetime": "2006-06-25 00:30",
+    "gender": "女",
+    "lon": 120.0
+  },
+  "true_solar_time": "2006-06-25T00:27:43",
+  "pillars": {
+    "year": "丙戌",
+    "month": "甲午",
+    "day": "乙酉",
+    "hour": "丙子"
+  },
+  "ten_gods": {
+    "day_master": "乙",
+    "rule_id": "r5",
+    "source": "rules.py 五行关系 + canggan.csv 藏干",
+    "stems": {
+      "year": "伤官",
+      "month": "劫财",
+      "hour": "伤官"
+    },
+    "branches": {
+      "year": [
+        {
+          "gan": "戊",
+          "god": "正财"
+        },
+        {
+          "gan": "辛",
+          "god": "七杀"
+        },
+        {
+          "gan": "丁",
+          "god": "食神"
+        }
+      ],
+      "month": [
+        {
+          "gan": "丁",
+          "god": "食神"
+        },
+        {
+          "gan": "己",
+          "god": "偏财"
+        }
+      ],
+      "day": [
+        {
+          "gan": "辛",
+          "god": "七杀"
+        }
+      ],
+      "hour": [
+        {
+          "gan": "癸",
+          "god": "偏印"
+        }
+      ]
+    }
+  },
+  "dayun": {
+    "direction": "逆",
+    "qiyun": {
+      "age": 6,
+      "month": 3,
+      "day": 14,
+      "hour": 4
+    },
+    "jie_time": "2006-06-06 03:37",
+    "jiao_time": "2012-10-09 04:30",
+    "steps": [
+      {
+        "index": 1,
+        "ganzhi": "癸巳",
+        "gan": "癸",
+        "zhi": "巳",
+        "god": "偏印",
+        "start_year": 2012,
+        "end_year": 2021
+      },
+      {
+        "index": 2,
+        "ganzhi": "壬辰",
+        "gan": "壬",
+        "zhi": "辰",
+        "god": "正印",
+        "start_year": 2022,
+        "end_year": 2031
+      },
+      {
+        "index": 3,
+        "ganzhi": "辛卯",
+        "gan": "辛",
+        "zhi": "卯",
+        "god": "七杀",
+        "start_year": 2032,
+        "end_year": 2041
+      },
+      {
+        "index": 4,
+        "ganzhi": "庚寅",
+        "gan": "庚",
+        "zhi": "寅",
+        "god": "正官",
+        "start_year": 2042,
+        "end_year": 2051
+      },
+      {
+        "index": 5,
+        "ganzhi": "己丑",
+        "gan": "己",
+        "zhi": "丑",
+        "god": "偏财",
+        "start_year": 2052,
+        "end_year": 2061
+      },
+      {
+        "index": 6,
+        "ganzhi": "戊子",
+        "gan": "戊",
+        "zhi": "子",
+        "god": "正财",
+        "start_year": 2062,
+        "end_year": 2071
+      },
+      {
+        "index": 7,
+        "ganzhi": "丁亥",
+        "gan": "丁",
+        "zhi": "亥",
+        "god": "食神",
+        "start_year": 2072,
+        "end_year": 2081
+      },
+      {
+        "index": 8,
+        "ganzhi": "丙戌",
+        "gan": "丙",
+        "zhi": "戌",
+        "god": "伤官",
+        "start_year": 2082,
+        "end_year": 2091
+      }
+    ]
+  },
+  "liunian": [
+    {
+      "year": 2020,
+      "ganzhi": "庚子",
+      "god": "正官"
+    },
+    {
+      "year": 2021,
+      "ganzhi": "辛丑",
+      "god": "七杀"
+    },
+    {
+      "year": 2022,
+      "ganzhi": "壬寅",
+      "god": "正印"
+    },
+    {
+      "year": 2023,
+      "ganzhi": "癸卯",
+      "god": "偏印"
+    },
+    {
+      "year": 2024,
+      "ganzhi": "甲辰",
+      "god": "劫财"
+    },
+    {
+      "year": 2025,
+      "ganzhi": "乙巳",
+      "god": "比肩"
+    },
+    {
+      "year": 2026,
+      "ganzhi": "丙午",
+      "god": "伤官"
+    },
+    {
+      "year": 2027,
+      "ganzhi": "丁未",
+      "god": "食神"
+    },
+    {
+      "year": 2028,
+      "ganzhi": "戊申",
+      "god": "正财"
+    },
+    {
+      "year": 2029,
+      "ganzhi": "己酉",
+      "god": "偏财"
+    },
+    {
+      "year": 2030,
+      "ganzhi": "庚戌",
+      "god": "正官"
+    },
+    {
+      "year": 2031,
+      "ganzhi": "辛亥",
+      "god": "七杀"
+    },
+    {
+      "year": 2032,
+      "ganzhi": "壬子",
+      "god": "正印"
+    },
+    {
+      "year": 2033,
+      "ganzhi": "癸丑",
+      "god": "偏印"
+    },
+    {
+      "year": 2034,
+      "ganzhi": "甲寅",
+      "god": "劫财"
+    },
+    {
+      "year": 2035,
+      "ganzhi": "乙卯",
+      "god": "比肩"
+    },
+    {
+      "year": 2036,
+      "ganzhi": "丙辰",
+      "god": "伤官"
+    },
+    {
+      "year": 2037,
+      "ganzhi": "丁巳",
+      "god": "食神"
+    },
+    {
+      "year": 2038,
+      "ganzhi": "戊午",
+      "god": "正财"
+    },
+    {
+      "year": 2039,
+      "ganzhi": "己未",
+      "god": "偏财"
+    },
+    {
+      "year": 2040,
+      "ganzhi": "庚申",
+      "god": "正官"
+    }
+  ],
+  "ziwei_hours": [
+    {
+      "hour": 0,
+      "lunar": {
+        "month": 5,
+        "day": 29,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "午",
+        "gan": "甲"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "紫微"
+          ],
+          "aux": [
+            "右弼",
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "兄弟",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [
+            "天机"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [
+            "文曲",
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "太阳",
+            "天梁"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [
+            "武曲",
+            "天相"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [
+            "天同",
+            "巨门"
+          ],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "太阴"
+          ],
+          "aux": [
+            "天魁"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "廉贞",
+            "天府"
+          ],
+          "aux": [
+            "文昌"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [
+            "破军"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 2,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "巳",
+        "gan": "癸"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [
+            "天梁"
+          ],
+          "aux": [
+            "文曲",
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [
+            "紫微",
+            "天相"
+          ],
+          "aux": [
+            "陀罗",
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "天机",
+            "巨门"
+          ],
+          "aux": [],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [
+            "太阳",
+            "太阴"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [
+            "武曲",
+            "天府"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "天同"
+          ],
+          "aux": [
+            "天魁"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "破军"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [],
+          "aux": [
+            "文昌",
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [
+            "廉贞"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "父母",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [
+            "右弼",
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 4,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "辰",
+        "gan": "壬"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [
+            "紫微",
+            "天相"
+          ],
+          "aux": [
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "天机",
+            "巨门"
+          ],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [
+            "太阳",
+            "太阴"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [
+            "武曲",
+            "天府"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "天同"
+          ],
+          "aux": [
+            "天魁"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "破军"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [
+            "廉贞"
+          ],
+          "aux": [
+            "左辅",
+            "文昌",
+            "天马"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": true
+        },
+        {
+          "name": "田宅",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [
+            "右弼",
+            "文曲",
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [
+            "天梁"
+          ],
+          "aux": [
+            "禄存",
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 6,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "卯",
+        "gan": "辛"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "廉贞",
+            "破军"
+          ],
+          "aux": [],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "紫微",
+            "七杀"
+          ],
+          "aux": [
+            "天魁"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "天机",
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [
+            "天相"
+          ],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "仆役",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [
+            "太阳",
+            "巨门"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [
+            "武曲",
+            "贪狼"
+          ],
+          "aux": [
+            "文昌",
+            "文曲"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "天同",
+            "太阴"
+          ],
+          "aux": [
+            "右弼",
+            "擎羊",
+            "铃星"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [],
+          "aux": [
+            "陀罗",
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 8,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "寅",
+        "gan": "庚"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "紫微",
+            "七杀"
+          ],
+          "aux": [
+            "天魁"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "天机",
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [
+            "权"
+          ],
+          "shen": true
+        },
+        {
+          "name": "疾厄",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [
+            "天相"
+          ],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [
+            "太阳",
+            "巨门"
+          ],
+          "aux": [
+            "左辅",
+            "文曲",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [
+            "武曲",
+            "贪狼"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "天同",
+            "太阴"
+          ],
+          "aux": [
+            "右弼",
+            "文昌",
+            "擎羊"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "禄存",
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [],
+          "aux": [
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "廉贞",
+            "破军"
+          ],
+          "aux": [],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 10,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "丑",
+        "gan": "辛"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [
+            "天相"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [
+            "巨门"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "廉贞",
+            "贪狼"
+          ],
+          "aux": [
+            "天魁"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": true
+        },
+        {
+          "name": "子女",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "太阴"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "文曲",
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [],
+          "aux": [
+            "左辅",
+            "铃星",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [
+            "紫微",
+            "破军"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "天机"
+          ],
+          "aux": [
+            "右弼",
+            "擎羊",
+            "火星"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [],
+          "aux": [
+            "文昌",
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [
+            "太阳"
+          ],
+          "aux": [
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "武曲",
+            "七杀"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [
+            "天同",
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 12,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "子",
+        "gan": "庚"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [
+            "巨门"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "兄弟",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "廉贞",
+            "贪狼"
+          ],
+          "aux": [
+            "天魁"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "太阴"
+          ],
+          "aux": [
+            "文曲"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "天钺",
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [
+            "紫微",
+            "破军"
+          ],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "天机"
+          ],
+          "aux": [
+            "右弼",
+            "擎羊"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [
+            "太阳"
+          ],
+          "aux": [
+            "文昌",
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "武曲",
+            "七杀"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [
+            "天同",
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [
+            "天相"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 14,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "亥",
+        "gan": "己"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "紫微",
+            "七杀"
+          ],
+          "aux": [
+            "文曲",
+            "天魁"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "天机",
+            "天梁"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [
+            "天相"
+          ],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [
+            "太阳",
+            "巨门"
+          ],
+          "aux": [
+            "左辅",
+            "火星",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [
+            "武曲",
+            "贪狼"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "天同",
+            "太阴"
+          ],
+          "aux": [
+            "右弼",
+            "擎羊"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [],
+          "aux": [
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "廉贞",
+            "破军"
+          ],
+          "aux": [
+            "文昌"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "父母",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 16,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "戌",
+        "gan": "戊"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "天机",
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [
+            "天相"
+          ],
+          "aux": [
+            "天钺",
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [
+            "太阳",
+            "巨门"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [
+            "武曲",
+            "贪狼"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "天同",
+            "太阴"
+          ],
+          "aux": [
+            "右弼",
+            "擎羊"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [],
+          "aux": [
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "廉贞",
+            "破军"
+          ],
+          "aux": [],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [],
+          "aux": [
+            "文昌"
+          ],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "田宅",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [],
+          "aux": [
+            "文曲"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "紫微",
+            "七杀"
+          ],
+          "aux": [
+            "天魁",
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 18,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "酉",
+        "gan": "丁"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [
+            "破军"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "紫微"
+          ],
+          "aux": [
+            "右弼",
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [
+            "天机"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "太阳",
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "仆役",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [
+            "武曲",
+            "天相"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [
+            "天同",
+            "巨门"
+          ],
+          "aux": [
+            "文昌",
+            "文曲"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "太阴"
+          ],
+          "aux": [
+            "天魁"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "廉贞",
+            "天府"
+          ],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 20,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "申",
+        "gan": "丙"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [
+            "破军"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "紫微"
+          ],
+          "aux": [
+            "右弼",
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [
+            "天机"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "疾厄",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "太阳",
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [
+            "武曲",
+            "天相"
+          ],
+          "aux": [
+            "文曲"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [
+            "天同",
+            "巨门"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [
+            "文昌"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "太阴"
+          ],
+          "aux": [
+            "天魁",
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "廉贞",
+            "天府"
+          ],
+          "aux": [],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 22,
+      "lunar": {
+        "month": 5,
+        "day": 30,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "未",
+        "gan": "乙"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "未",
+          "gan": "乙",
+          "stars": [
+            "武曲",
+            "贪狼"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "午",
+          "gan": "甲",
+          "stars": [
+            "天同",
+            "太阴"
+          ],
+          "aux": [
+            "右弼",
+            "擎羊"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "巳",
+          "gan": "癸",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "子女",
+          "zhi": "辰",
+          "gan": "壬",
+          "stars": [],
+          "aux": [
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "卯",
+          "gan": "辛",
+          "stars": [
+            "廉贞",
+            "破军"
+          ],
+          "aux": [
+            "文曲"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "寅",
+          "gan": "庚",
+          "stars": [],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "丑",
+          "gan": "辛",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "子",
+          "gan": "庚",
+          "stars": [],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "亥",
+          "gan": "己",
+          "stars": [
+            "紫微",
+            "七杀"
+          ],
+          "aux": [
+            "文昌",
+            "天魁"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "戌",
+          "gan": "戊",
+          "stars": [
+            "天机",
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "酉",
+          "gan": "丁",
+          "stars": [
+            "天相"
+          ],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "申",
+          "gan": "丙",
+          "stars": [
+            "太阳",
+            "巨门"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    }
+  ],
+  "qimen": {
+    "dingju": {
+      "term": "夏至",
+      "dun": "阴遁",
+      "yuan": "中元",
+      "ju": 3
+    },
+    "zhifu_zhishi": {
+      "xunshou": "甲戌",
+      "yiyi": "己",
+      "zhifu_star": "天芮",
+      "zhifu_palace": 5,
+      "zhishi_door": "死门",
+      "zhishi_palace": 9
+    },
+    "sanqi_liuyi_layout": {
+      "3": "戊",
+      "2": "己",
+      "1": "庚",
+      "9": "辛",
+      "8": "壬",
+      "7": "癸",
+      "6": "丁",
+      "5": "丙",
+      "4": "乙"
+    },
+    "nine_stars": {
+      "1": "天蓬",
+      "2": "天芮",
+      "3": "天冲",
+      "4": "天辅",
+      "5": null,
+      "6": "天心",
+      "7": "天柱",
+      "8": "天任",
+      "9": "天英"
+    },
+    "eight_doors": {
+      "1": "生门",
+      "2": "惊门",
+      "3": "杜门",
+      "4": "景门",
+      "5": null,
+      "6": "休门",
+      "7": "开门",
+      "8": "伤门",
+      "9": "死门"
+    },
+    "eight_gods": {
+      "1": "玄武",
+      "2": "值符",
+      "3": "六合",
+      "4": "太阴",
+      "5": null,
+      "6": "九地",
+      "7": "九天",
+      "8": "白虎",
+      "9": "腾蛇"
+    },
+    "pan": {
+      "1": {
+        "palace": 1,
+        "gua": "坎宫",
+        "direction": "正北方",
+        "dipan_gan": "庚",
+        "tianpan_gan": "庚",
+        "star": "天蓬",
+        "door": "生门",
+        "shen": "玄武"
+      },
+      "2": {
+        "palace": 2,
+        "gua": "坤宫",
+        "direction": "西南方",
+        "dipan_gan": "己",
+        "tianpan_gan": "己丙",
+        "star": "天芮",
+        "door": "惊门",
+        "shen": "值符"
+      },
+      "3": {
+        "palace": 3,
+        "gua": "震宫",
+        "direction": "正东方",
+        "dipan_gan": "戊",
+        "tianpan_gan": "戊",
+        "star": "天冲",
+        "door": "杜门",
+        "shen": "六合"
+      },
+      "4": {
+        "palace": 4,
+        "gua": "巽宫",
+        "direction": "东南方",
+        "dipan_gan": "乙",
+        "tianpan_gan": "乙",
+        "star": "天辅",
+        "door": "景门",
+        "shen": "太阴"
+      },
+      "5": {
+        "palace": 5,
+        "gua": "中宫",
+        "direction": "中央方",
+        "dipan_gan": "丙",
+        "tianpan_gan": "丙",
+        "star": null,
+        "door": null,
+        "shen": null
+      },
+      "6": {
+        "palace": 6,
+        "gua": "乾宫",
+        "direction": "西北方",
+        "dipan_gan": "丁",
+        "tianpan_gan": "丁",
+        "star": "天心",
+        "door": "休门",
+        "shen": "九地"
+      },
+      "7": {
+        "palace": 7,
+        "gua": "兑宫",
+        "direction": "正西方",
+        "dipan_gan": "癸",
+        "tianpan_gan": "癸",
+        "star": "天柱",
+        "door": "开门",
+        "shen": "九天"
+      },
+      "8": {
+        "palace": 8,
+        "gua": "艮宫",
+        "direction": "东北方",
+        "dipan_gan": "壬",
+        "tianpan_gan": "壬",
+        "star": "天任",
+        "door": "伤门",
+        "shen": "白虎"
+      },
+      "9": {
+        "palace": 9,
+        "gua": "离宫",
+        "direction": "正南方",
+        "dipan_gan": "辛",
+        "tianpan_gan": "辛",
+        "star": "天英",
+        "door": "死门",
+        "shen": "腾蛇"
+      }
+    }
+  },
+  "chenggu": {
+    "lunar": {
+      "year_ganzhi": "丙戌",
+      "month_name": "五月",
+      "day": 30,
+      "is_ruen": false,
+      "source": "shuowang.csv（朔日表）"
+    },
+    "bones_total_weight": "3两3钱",
+    "bones": {
+      "year": {
+        "key": "丙戌",
+        "weight": "6钱"
+      },
+      "month": {
+        "key": "五月",
+        "weight": "5钱"
+      },
+      "day": {
+        "key": "30日",
+        "weight": "6钱"
+      },
+      "hour": {
+        "key": "子时",
+        "weight": "1两6钱"
+      }
+    }
+  }
+}

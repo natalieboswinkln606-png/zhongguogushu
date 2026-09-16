@@ -1,0 +1,58 @@
+{
+  "day_gan": "戊",
+  "hour_zhi": "午",
+  "month_jiang_zhi": "子",
+  "difen": "卯",
+  "month_zhi": "丑",
+  "four_positions": {
+    "renyuan": {
+      "gan": "乙",
+      "wuxing": "木"
+    },
+    "guishen": {
+      "name": "朱雀",
+      "gan": "戊",
+      "zhi": "午",
+      "wuxing": "火"
+    },
+    "jiangshen": {
+      "gan": "辛",
+      "zhi": "酉",
+      "wuxing": "金"
+    },
+    "difen": {
+      "zhi": "卯",
+      "wuxing": "木"
+    }
+  },
+  "wangxiang": {
+    "renyuan": "囚",
+    "guishen": "休",
+    "jiangshen": "相",
+    "difen": "囚"
+  },
+  "interactions": [
+    {
+      "type": "六破",
+      "desc": "贵神午与地分卯卯午相破"
+    },
+    {
+      "type": "六冲",
+      "desc": "将神酉与地分卯卯酉相冲"
+    }
+  ],
+  "wudong": [
+    {
+      "name": "妻动",
+      "relation": "贵神火克将神金",
+      "desc": "神克将为妻动，主妻妾之灾、内外不和、求谋艰难，下人反逆。"
+    },
+    {
+      "name": "子动",
+      "relation": "将神金克人元木",
+      "desc": "将克干为子动，主子孙喜庆、外出通达、求名得遂、田宅添益。"
+    }
+  ],
+  "sandong": [],
+  "source": "《大六壬金口诀》古籍定本"
+}

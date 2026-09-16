@@ -1,0 +1,156 @@
+{
+  "report_path": "D:\\shushu\\report\\p_1974_female\\report.md",
+  "report_size": 23173,
+  "report_lines": 484,
+  "violations": {
+    "rule1_snap_ref": [],
+    "rule2_l3_coverage": {
+      "n_hit": 13,
+      "n_total": 13,
+      "detail": [
+        {
+          "module": "l3_bazi_daliu.py",
+          "hit": true,
+          "found_tokens": [
+            "大运",
+            "日柱",
+            "月柱",
+            "流年",
+            "十神",
+            "起运"
+          ]
+        },
+        {
+          "module": "l3_ziwei.py",
+          "hit": true,
+          "found_tokens": [
+            "命宫",
+            "紫微",
+            "天相",
+            "破军"
+          ]
+        },
+        {
+          "module": "l3_qimen.py",
+          "hit": true,
+          "found_tokens": [
+            "奇门",
+            "值符",
+            "值使",
+            "天芮",
+            "死门"
+          ]
+        },
+        {
+          "module": "l3_chenggu.py",
+          "hit": true,
+          "found_tokens": [
+            "称骨",
+            "骨重",
+            "两",
+            "钱",
+            "两1钱"
+          ]
+        },
+        {
+          "module": "l3_wangshuai.py",
+          "hit": true,
+          "found_tokens": [
+            "旺衰",
+            "得令",
+            "得地",
+            "得势"
+          ]
+        },
+        {
+          "module": "l3_shensha.py",
+          "hit": true,
+          "found_tokens": [
+            "神煞",
+            "驿马",
+            "将星",
+            "华盖"
+          ]
+        },
+        {
+          "module": "l3_wuyunliuqi.py",
+          "hit": true,
+          "found_tokens": [
+            "五运六气",
+            "少阴",
+            "司天",
+            "在泉"
+          ]
+        },
+        {
+          "module": "l3_xiaoliuren.py",
+          "hit": true,
+          "found_tokens": [
+            "小六壬"
+          ]
+        },
+        {
+          "module": "l3_meihua.py",
+          "hit": true,
+          "found_tokens": [
+            "梅花易数",
+            "体卦",
+            "用卦",
+            "互卦"
+          ]
+        },
+        {
+          "module": "l3_heluolishu.py",
+          "hit": true,
+          "found_tokens": [
+            "河图",
+            "洛书",
+            "理数"
+          ]
+        },
+        {
+          "module": "l3_liuyao.py",
+          "hit": true,
+          "found_tokens": [
+            "六爻",
+            "世爻",
+            "应爻",
+            "六亲"
+          ]
+        },
+        {
+          "module": "l3_liuren.py",
+          "hit": true,
+          "found_tokens": [
+            "大六壬",
+            "四课",
+            "三传",
+            "月将",
+            "贵人"
+          ]
+        },
+        {
+          "module": "l3_qimen_duanju.py",
+          "hit": true,
+          "found_tokens": [
+            "奇门断局"
+          ]
+        }
+      ]
+    },
+    "rule3_pseudo_poem": [],
+    "rule4_double_source": [],
+    "rule5_conclusion_chain": [],
+    "rule6_placeholder": [],
+    "rule7_strict_basics": [],
+    "rule8_reconcile": [],
+    "rule9_age_year": []
+  },
+  "summary": {
+    "n_violations": 0,
+    "n_l3_modules_hit": 13,
+    "n_l3_modules_total": 13,
+    "l3_coverage_pct": 100.0
+  },
+  "verdict": "PASS"
+}

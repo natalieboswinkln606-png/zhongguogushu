@@ -1,0 +1,5597 @@
+{
+  "meta": {
+    "tool": "l4_audit_output.py",
+    "generated_at": "2026-09-15T22:32:18",
+    "note": "全部数据由冻结引擎直出（m1/l3_bazi_daliu/l3_ziwei/l3_qimen/l3_chenggu/l3_wuyunliuqi/l3_liuyao/l3_liuren/l3_meihua/l3_xiaoliuren/l3_heluolishu/l3_huangli/l3_hepan/l3_qimen_duanju/l3_shensha/l3_ziwei_liunian），无任何手算补充",
+    "provenance": {
+      "m1.py": "fe75470af92b9821f4e6223aa630314e2a100e5f6e5bc7f53d08a640489a78b0",
+      "rules.py": "a6df7859d0628445c306170e629af2d363e0dd32774f0d2983b80f1c56992595",
+      "l3_bazi_daliu.py": "970b995f65b0f76a6e00b131667929c95940b3f6e44d8013e42c8e79f4af857d",
+      "l3_ziwei.py": "e5f9889c643aebf941e401f10f567360a398e5c8f2bc2125e4050c24077bc443",
+      "l3_qimen.py": "33d93982c511492ab2208193fd45ca168d49fed8aced8d3b9a9680e292458ec8",
+      "l3_chenggu.py": "20c7218d791c40eea0d6972668d950153e7fcc3440ce20ae226e038ded17d218",
+      "l3_wuyunliuqi.py": "f074f202f247604c6238292d1ca602f18cc32894c1f20c8a8de1684d2ecdf6b6",
+      "l3_liuyao.py": "61c1437be1c0905be7147b8a293c4c15af101f6bb6214f2e552a4b46241a115d",
+      "l3_liuren.py": "26007d92606b4f87220f467711438727d93de25b493f08e4c9b22dfc4cbcb1b1",
+      "l3_meihua.py": "7e819e4aa594a4a24a80b63f3b25bb33a139752075537e179cf7ab20a0c04d42",
+      "l3_xiaoliuren.py": "cbf2bdcdd67eaf74c34547c7588f250651511b471626ff186fffcec327868fd6",
+      "l3_heluolishu.py": "262074498984b7a0701b2e6bbbbfa7f60aefda0b8860f031105237b250dc916d",
+      "l3_huangli.py": "224afa04b766cbe3e6b6fb2d502aa27d476c63697ff0870f8a523a4e4ae32dfc",
+      "l3_hepan.py": "2db5004d298cfcda2be2310139f2769ec2fec3a568dcc3dff1a8aa2586bc544e",
+      "l3_qimen_duanju.py": "42bb66cc5db4b90e771c1bdffde76037a19753125dd3a72a36c98d972127a49d",
+      "l3_shensha.py": "818f3c9f8f3297e8eee0ec9febd7658e994fdf9c46ae0936b91fd91bfe4210b5",
+      "l3_ziwei_liunian.py": "a17008a448fb07d35a33b7624819fa372f5f588291186fb8221ac204cc1a5b76"
+    }
+  },
+  "input": {
+    "datetime": "1974-07-05 22:13",
+    "gender": "女",
+    "lon": 87.6
+  },
+  "true_solar_time": "1974-07-05T19:59:12",
+  "pillars": {
+    "year": "甲寅",
+    "month": "庚午",
+    "day": "丁未",
+    "hour": "庚戌"
+  },
+  "ten_gods": {
+    "day_master": "丁",
+    "rule_id": "r5",
+    "source": "rules.py 五行关系 + canggan.csv 藏干",
+    "stems": {
+      "year": "正印",
+      "month": "正财",
+      "hour": "正财"
+    },
+    "branches": {
+      "year": [
+        {
+          "gan": "甲",
+          "god": "正印"
+        },
+        {
+          "gan": "丙",
+          "god": "劫财"
+        },
+        {
+          "gan": "戊",
+          "god": "伤官"
+        }
+      ],
+      "month": [
+        {
+          "gan": "丁",
+          "god": "比肩"
+        },
+        {
+          "gan": "己",
+          "god": "食神"
+        }
+      ],
+      "day": [
+        {
+          "gan": "己",
+          "god": "食神"
+        },
+        {
+          "gan": "丁",
+          "god": "比肩"
+        },
+        {
+          "gan": "乙",
+          "god": "偏印"
+        }
+      ],
+      "hour": [
+        {
+          "gan": "戊",
+          "god": "伤官"
+        },
+        {
+          "gan": "辛",
+          "god": "偏财"
+        },
+        {
+          "gan": "丁",
+          "god": "比肩"
+        }
+      ]
+    }
+  },
+  "dayun": {
+    "direction": "逆",
+    "qiyun": {
+      "age": 9,
+      "month": 10,
+      "day": 1,
+      "hour": 18
+    },
+    "jie_time": "1974-06-06 09:52",
+    "jiao_time": "1984-05-07 16:13",
+    "steps": [
+      {
+        "index": 1,
+        "ganzhi": "己巳",
+        "gan": "己",
+        "zhi": "巳",
+        "god": "食神",
+        "start_year": 1984,
+        "end_year": 1993
+      },
+      {
+        "index": 2,
+        "ganzhi": "戊辰",
+        "gan": "戊",
+        "zhi": "辰",
+        "god": "伤官",
+        "start_year": 1994,
+        "end_year": 2003
+      },
+      {
+        "index": 3,
+        "ganzhi": "丁卯",
+        "gan": "丁",
+        "zhi": "卯",
+        "god": "比肩",
+        "start_year": 2004,
+        "end_year": 2013
+      },
+      {
+        "index": 4,
+        "ganzhi": "丙寅",
+        "gan": "丙",
+        "zhi": "寅",
+        "god": "劫财",
+        "start_year": 2014,
+        "end_year": 2023
+      },
+      {
+        "index": 5,
+        "ganzhi": "乙丑",
+        "gan": "乙",
+        "zhi": "丑",
+        "god": "偏印",
+        "start_year": 2024,
+        "end_year": 2033
+      },
+      {
+        "index": 6,
+        "ganzhi": "甲子",
+        "gan": "甲",
+        "zhi": "子",
+        "god": "正印",
+        "start_year": 2034,
+        "end_year": 2043
+      },
+      {
+        "index": 7,
+        "ganzhi": "癸亥",
+        "gan": "癸",
+        "zhi": "亥",
+        "god": "七杀",
+        "start_year": 2044,
+        "end_year": 2053
+      },
+      {
+        "index": 8,
+        "ganzhi": "壬戌",
+        "gan": "壬",
+        "zhi": "戌",
+        "god": "正官",
+        "start_year": 2054,
+        "end_year": 2063
+      }
+    ]
+  },
+  "liunian": [
+    {
+      "year": 2020,
+      "ganzhi": "庚子",
+      "god": "正财"
+    },
+    {
+      "year": 2021,
+      "ganzhi": "辛丑",
+      "god": "偏财"
+    },
+    {
+      "year": 2022,
+      "ganzhi": "壬寅",
+      "god": "正官"
+    },
+    {
+      "year": 2023,
+      "ganzhi": "癸卯",
+      "god": "七杀"
+    },
+    {
+      "year": 2024,
+      "ganzhi": "甲辰",
+      "god": "正印"
+    },
+    {
+      "year": 2025,
+      "ganzhi": "乙巳",
+      "god": "偏印"
+    },
+    {
+      "year": 2026,
+      "ganzhi": "丙午",
+      "god": "劫财"
+    },
+    {
+      "year": 2027,
+      "ganzhi": "丁未",
+      "god": "比肩"
+    },
+    {
+      "year": 2028,
+      "ganzhi": "戊申",
+      "god": "伤官"
+    },
+    {
+      "year": 2029,
+      "ganzhi": "己酉",
+      "god": "食神"
+    },
+    {
+      "year": 2030,
+      "ganzhi": "庚戌",
+      "god": "正财"
+    },
+    {
+      "year": 2031,
+      "ganzhi": "辛亥",
+      "god": "偏财"
+    },
+    {
+      "year": 2032,
+      "ganzhi": "壬子",
+      "god": "正官"
+    },
+    {
+      "year": 2033,
+      "ganzhi": "癸丑",
+      "god": "七杀"
+    },
+    {
+      "year": 2034,
+      "ganzhi": "甲寅",
+      "god": "正印"
+    },
+    {
+      "year": 2035,
+      "ganzhi": "乙卯",
+      "god": "偏印"
+    },
+    {
+      "year": 2036,
+      "ganzhi": "丙辰",
+      "god": "劫财"
+    },
+    {
+      "year": 2037,
+      "ganzhi": "丁巳",
+      "god": "比肩"
+    },
+    {
+      "year": 2038,
+      "ganzhi": "戊午",
+      "god": "伤官"
+    },
+    {
+      "year": 2039,
+      "ganzhi": "己未",
+      "god": "食神"
+    },
+    {
+      "year": 2040,
+      "ganzhi": "庚申",
+      "god": "正财"
+    }
+  ],
+  "ziwei_hours": [
+    {
+      "hour": 0,
+      "lunar": {
+        "month": 5,
+        "day": 15,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "未",
+        "gan": "辛"
+      },
+      "shengong": {
+        "zhi": "巳",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "土五局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 辛未 纳音 → 土（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [
+            "右弼"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "子女",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "紫微",
+            "天相"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [
+            "天机",
+            "巨门"
+          ],
+          "aux": [
+            "文曲",
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [
+            "禄存",
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "太阳",
+            "太阴"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "武曲",
+            "天府"
+          ],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [
+            "科"
+          ],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "天同"
+          ],
+          "aux": [
+            "文昌"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [
+            "破军"
+          ],
+          "aux": [],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [
+            "廉贞"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 2,
+      "lunar": {
+        "month": 5,
+        "day": 15,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "午",
+        "gan": "庚"
+      },
+      "shengong": {
+        "zhi": "午",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "土五局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 庚午 纳音 → 土（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [
+            "右弼"
+          ],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "兄弟",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "紫微",
+            "天相"
+          ],
+          "aux": [
+            "文曲"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [
+            "天机",
+            "巨门"
+          ],
+          "aux": [
+            "擎羊",
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "太阳",
+            "太阴"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗",
+            "火星"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "武曲",
+            "天府"
+          ],
+          "aux": [],
+          "sihua": [
+            "科"
+          ],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "天同"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [
+            "破军"
+          ],
+          "aux": [
+            "文昌"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [
+            "廉贞"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 4,
+      "lunar": {
+        "month": 5,
+        "day": 16,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "巳",
+        "gan": "己"
+      },
+      "shengong": {
+        "zhi": "未",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "木三局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 己巳 纳音 → 木（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "武曲",
+            "破军"
+          ],
+          "aux": [
+            "文曲"
+          ],
+          "sihua": [
+            "权",
+            "科"
+          ],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "天同"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [],
+          "aux": [
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [],
+          "aux": [
+            "禄存",
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "廉贞",
+            "七杀"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "天相"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [
+            "巨门"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [
+            "紫微",
+            "贪狼"
+          ],
+          "aux": [
+            "文昌"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [
+            "天机",
+            "太阴"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "父母",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [
+            "太阳"
+          ],
+          "aux": [
+            "右弼"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 6,
+      "lunar": {
+        "month": 5,
+        "day": 16,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "辰",
+        "gan": "戊"
+      },
+      "shengong": {
+        "zhi": "申",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "木三局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 戊辰 纳音 → 木（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "天同"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [],
+          "aux": [
+            "擎羊",
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "廉贞",
+            "七杀"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "天相"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [
+            "巨门"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [
+            "紫微",
+            "贪狼"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [
+            "天机",
+            "太阴"
+          ],
+          "aux": [
+            "左辅",
+            "文昌",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "田宅",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [
+            "太阳"
+          ],
+          "aux": [
+            "右弼",
+            "文曲"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "武曲",
+            "破军"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [
+            "权",
+            "科"
+          ],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 8,
+      "lunar": {
+        "month": 5,
+        "day": 16,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "卯",
+        "gan": "丁"
+      },
+      "shengong": {
+        "zhi": "酉",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "火六局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 丁卯 纳音 → 火（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [
+            "太阳",
+            "天梁"
+          ],
+          "aux": [
+            "擎羊"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [
+            "武曲",
+            "天相"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [
+            "科"
+          ],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "天同",
+            "巨门"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "太阴"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [
+            "廉贞",
+            "天府"
+          ],
+          "aux": [],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "仆役",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [
+            "破军"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [],
+          "aux": [
+            "文昌",
+            "文曲",
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [
+            "紫微"
+          ],
+          "aux": [
+            "右弼",
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "天机"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 10,
+      "lunar": {
+        "month": 5,
+        "day": 16,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "寅",
+        "gan": "丙"
+      },
+      "shengong": {
+        "zhi": "戌",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "火六局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 丙寅 纳音 → 火（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [
+            "武曲",
+            "天相"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [
+            "科"
+          ],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "天同",
+            "巨门"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "太阴"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [
+            "廉贞",
+            "天府"
+          ],
+          "aux": [],
+          "sihua": [
+            "禄"
+          ],
+          "shen": true
+        },
+        {
+          "name": "疾厄",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [
+            "破军"
+          ],
+          "aux": [
+            "左辅",
+            "文曲",
+            "天马"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [],
+          "aux": [
+            "天钺",
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [
+            "紫微"
+          ],
+          "aux": [
+            "右弼",
+            "文昌"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "天机"
+          ],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [
+            "太阳",
+            "天梁"
+          ],
+          "aux": [
+            "擎羊"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 12,
+      "lunar": {
+        "month": 5,
+        "day": 16,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "丑",
+        "gan": "丁"
+      },
+      "shengong": {
+        "zhi": "亥",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "水二局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 丁丑 纳音 → 水（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "廉贞",
+            "七杀"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "天相"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "子女",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [
+            "巨门"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [
+            "紫微",
+            "贪狼"
+          ],
+          "aux": [
+            "文曲"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [
+            "天机",
+            "太阴"
+          ],
+          "aux": [
+            "左辅",
+            "铃星",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [
+            "太阳"
+          ],
+          "aux": [
+            "右弼",
+            "火星"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "武曲",
+            "破军"
+          ],
+          "aux": [
+            "文昌"
+          ],
+          "sihua": [
+            "权",
+            "科"
+          ],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "天同"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [],
+          "aux": [
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 14,
+      "lunar": {
+        "month": 5,
+        "day": 16,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "子",
+        "gan": "丙"
+      },
+      "shengong": {
+        "zhi": "子",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "水二局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 丙子 纳音 → 水（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "兄弟",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "天相"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [
+            "巨门"
+          ],
+          "aux": [
+            "文曲"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [
+            "紫微",
+            "贪狼"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [
+            "天机",
+            "太阴"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "天钺",
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [
+            "太阳"
+          ],
+          "aux": [
+            "右弼"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "武曲",
+            "破军"
+          ],
+          "aux": [],
+          "sihua": [
+            "权",
+            "科"
+          ],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "天同"
+          ],
+          "aux": [
+            "文昌"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [],
+          "aux": [
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "廉贞",
+            "七杀"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 16,
+      "lunar": {
+        "month": 5,
+        "day": 16,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "亥",
+        "gan": "乙"
+      },
+      "shengong": {
+        "zhi": "丑",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "火六局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 乙亥 纳音 → 火（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "太阴"
+          ],
+          "aux": [
+            "文曲"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [
+            "廉贞",
+            "天府"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [
+            "破军"
+          ],
+          "aux": [
+            "左辅",
+            "火星",
+            "天马"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [
+            "紫微"
+          ],
+          "aux": [
+            "右弼"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "天机"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [
+            "太阳",
+            "天梁"
+          ],
+          "aux": [
+            "文昌",
+            "擎羊"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [
+            "武曲",
+            "天相"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [
+            "科"
+          ],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "天同",
+            "巨门"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "父母",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 18,
+      "lunar": {
+        "month": 5,
+        "day": 16,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "戌",
+        "gan": "甲"
+      },
+      "shengong": {
+        "zhi": "寅",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "火六局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 甲戌 纳音 → 火（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [
+            "廉贞",
+            "天府"
+          ],
+          "aux": [],
+          "sihua": [
+            "禄"
+          ],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [
+            "破军"
+          ],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [
+            "紫微"
+          ],
+          "aux": [
+            "右弼"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "天机"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "七杀"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [
+            "太阳",
+            "天梁"
+          ],
+          "aux": [
+            "擎羊"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [
+            "武曲",
+            "天相"
+          ],
+          "aux": [
+            "文昌",
+            "禄存"
+          ],
+          "sihua": [
+            "科"
+          ],
+          "shen": true
+        },
+        {
+          "name": "田宅",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "天同",
+            "巨门"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "贪狼"
+          ],
+          "aux": [
+            "文曲"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "太阴"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 20,
+      "lunar": {
+        "month": 5,
+        "day": 16,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "酉",
+        "gan": "癸"
+      },
+      "shengong": {
+        "zhi": "卯",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "金四局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 癸酉 纳音 → 金（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [
+            "廉贞",
+            "破军"
+          ],
+          "aux": [],
+          "sihua": [
+            "禄",
+            "权"
+          ],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [],
+          "aux": [
+            "右弼"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "紫微",
+            "七杀"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "疾厄",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "天机",
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [
+            "天相"
+          ],
+          "aux": [
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "仆役",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [
+            "太阳",
+            "巨门"
+          ],
+          "aux": [
+            "禄存"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "武曲",
+            "贪狼"
+          ],
+          "aux": [
+            "文昌",
+            "文曲",
+            "天魁",
+            "陀罗"
+          ],
+          "sihua": [
+            "科"
+          ],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "天同",
+            "太阴"
+          ],
+          "aux": [
+            "铃星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "天府"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        }
+      ]
+    },
+    {
+      "hour": 22,
+      "lunar": {
+        "month": 5,
+        "day": 16,
+        "is_ruen": false
+      },
+      "minggong": {
+        "zhi": "申",
+        "gan": "壬"
+      },
+      "shengong": {
+        "zhi": "辰",
+        "rule_id": "zw-02"
+      },
+      "wuxing_ju": {
+        "name": "金四局",
+        "rule_id": "zw-03",
+        "source": "命宫干支 壬申 纳音 → 金（nayin.csv），oracle 对拍一致"
+      },
+      "sihua": {
+        "items": [
+          {
+            "star": "廉贞",
+            "hua": "禄"
+          },
+          {
+            "star": "破军",
+            "hua": "权"
+          },
+          {
+            "star": "武曲",
+            "hua": "科"
+          },
+          {
+            "star": "太阳",
+            "hua": "忌"
+          }
+        ],
+        "rule_id": "zw-07",
+        "source": "生年四化（甲 干）表，oracle 图例对拍一致"
+      },
+      "palaces": [
+        {
+          "name": "命宫",
+          "zhi": "申",
+          "gan": "壬",
+          "stars": [],
+          "aux": [
+            "左辅",
+            "天马"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "兄弟",
+          "zhi": "未",
+          "gan": "辛",
+          "stars": [],
+          "aux": [
+            "天钺"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "夫妻",
+          "zhi": "午",
+          "gan": "庚",
+          "stars": [],
+          "aux": [
+            "右弼"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "子女",
+          "zhi": "巳",
+          "gan": "己",
+          "stars": [
+            "紫微",
+            "七杀"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "财帛",
+          "zhi": "辰",
+          "gan": "戊",
+          "stars": [
+            "天机",
+            "天梁"
+          ],
+          "aux": [],
+          "sihua": [],
+          "shen": true
+        },
+        {
+          "name": "疾厄",
+          "zhi": "卯",
+          "gan": "丁",
+          "stars": [
+            "天相"
+          ],
+          "aux": [
+            "擎羊"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "迁移",
+          "zhi": "寅",
+          "gan": "丙",
+          "stars": [
+            "太阳",
+            "巨门"
+          ],
+          "aux": [
+            "文曲",
+            "禄存"
+          ],
+          "sihua": [
+            "忌"
+          ],
+          "shen": false
+        },
+        {
+          "name": "仆役",
+          "zhi": "丑",
+          "gan": "丁",
+          "stars": [
+            "武曲",
+            "贪狼"
+          ],
+          "aux": [
+            "天魁",
+            "陀罗",
+            "铃星"
+          ],
+          "sihua": [
+            "科"
+          ],
+          "shen": false
+        },
+        {
+          "name": "官禄",
+          "zhi": "子",
+          "gan": "丙",
+          "stars": [
+            "天同",
+            "太阴"
+          ],
+          "aux": [
+            "文昌"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "田宅",
+          "zhi": "亥",
+          "gan": "乙",
+          "stars": [
+            "天府"
+          ],
+          "aux": [
+            "火星"
+          ],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "福德",
+          "zhi": "戌",
+          "gan": "甲",
+          "stars": [],
+          "aux": [],
+          "sihua": [],
+          "shen": false
+        },
+        {
+          "name": "父母",
+          "zhi": "酉",
+          "gan": "癸",
+          "stars": [
+            "廉贞",
+            "破军"
+          ],
+          "aux": [],
+          "sihua": [
+            "禄",
+            "权"
+          ],
+          "shen": false
+        }
+      ]
+    }
+  ],
+  "qimen": {
+    "dingju": {
+      "term": "夏至",
+      "dun": "阴遁",
+      "yuan": "下元",
+      "ju": 6
+    },
+    "zhifu_zhishi": {
+      "xunshou": "甲辰",
+      "yiyi": "壬",
+      "zhifu_star": "天芮",
+      "zhifu_palace": 4,
+      "zhishi_door": "死门",
+      "zhishi_palace": 5
+    },
+    "sanqi_liuyi_layout": {
+      "6": "戊",
+      "5": "己",
+      "4": "庚",
+      "3": "辛",
+      "2": "壬",
+      "1": "癸",
+      "9": "丁",
+      "8": "丙",
+      "7": "乙"
+    },
+    "nine_stars": {
+      "1": "天冲",
+      "2": "天心",
+      "3": "天英",
+      "4": "天芮",
+      "5": null,
+      "6": "天任",
+      "7": "天蓬",
+      "8": "天辅",
+      "9": "天柱"
+    },
+    "eight_doors": {
+      "1": "休门",
+      "2": "死门",
+      "3": "伤门",
+      "4": "杜门",
+      "5": null,
+      "6": "开门",
+      "7": "惊门",
+      "8": "生门",
+      "9": "景门"
+    },
+    "eight_gods": {
+      "1": "六合",
+      "2": "九地",
+      "3": "腾蛇",
+      "4": "值符",
+      "5": null,
+      "6": "白虎",
+      "7": "玄武",
+      "8": "太阴",
+      "9": "九天"
+    },
+    "pan": {
+      "1": {
+        "palace": 1,
+        "gua": "坎宫",
+        "direction": "正北方",
+        "dipan_gan": "癸",
+        "tianpan_gan": "辛",
+        "star": "天冲",
+        "door": "休门",
+        "shen": "六合"
+      },
+      "2": {
+        "palace": 2,
+        "gua": "坤宫",
+        "direction": "西南方",
+        "dipan_gan": "壬",
+        "tianpan_gan": "戊",
+        "star": "天心",
+        "door": "死门",
+        "shen": "九地"
+      },
+      "3": {
+        "palace": 3,
+        "gua": "震宫",
+        "direction": "正东方",
+        "dipan_gan": "辛",
+        "tianpan_gan": "丁",
+        "star": "天英",
+        "door": "伤门",
+        "shen": "腾蛇"
+      },
+      "4": {
+        "palace": 4,
+        "gua": "巽宫",
+        "direction": "东南方",
+        "dipan_gan": "庚",
+        "tianpan_gan": "壬己",
+        "star": "天芮",
+        "door": "杜门",
+        "shen": "值符"
+      },
+      "5": {
+        "palace": 5,
+        "gua": "中宫",
+        "direction": "中央方",
+        "dipan_gan": "己",
+        "tianpan_gan": "己",
+        "star": null,
+        "door": null,
+        "shen": null
+      },
+      "6": {
+        "palace": 6,
+        "gua": "乾宫",
+        "direction": "西北方",
+        "dipan_gan": "戊",
+        "tianpan_gan": "丙",
+        "star": "天任",
+        "door": "开门",
+        "shen": "白虎"
+      },
+      "7": {
+        "palace": 7,
+        "gua": "兑宫",
+        "direction": "正西方",
+        "dipan_gan": "乙",
+        "tianpan_gan": "癸",
+        "star": "天蓬",
+        "door": "惊门",
+        "shen": "玄武"
+      },
+      "8": {
+        "palace": 8,
+        "gua": "艮宫",
+        "direction": "东北方",
+        "dipan_gan": "丙",
+        "tianpan_gan": "庚",
+        "star": "天辅",
+        "door": "生门",
+        "shen": "太阴"
+      },
+      "9": {
+        "palace": 9,
+        "gua": "离宫",
+        "direction": "正南方",
+        "dipan_gan": "丁",
+        "tianpan_gan": "乙",
+        "star": "天柱",
+        "door": "景门",
+        "shen": "九天"
+      }
+    }
+  },
+  "chenggu": {
+    "lunar": {
+      "year_ganzhi": "甲寅",
+      "month_name": "五月",
+      "day": 16,
+      "is_ruen": false,
+      "source": "shuowang.csv（朔日表）"
+    },
+    "bones_total_weight": "3两1钱",
+    "grade": "3两1钱",
+    "bones": {
+      "year": {
+        "key": "甲寅",
+        "weight": "1两2钱"
+      },
+      "month": {
+        "key": "五月",
+        "weight": "5钱"
+      },
+      "day": {
+        "key": "16日",
+        "weight": "8钱"
+      },
+      "hour": {
+        "key": "戌时",
+        "weight": "6钱"
+      }
+    },
+    "poem": {
+      "level": "3两1钱",
+      "text": "早年行运在忙碌，劳碌奔波苦中求。自奔自愁把家立，后来晚景无忧愁。"
+    }
+  },
+  "shensha": {
+    "rule_id": "ss-00",
+    "source": "23 项主流神煞，Rule-ID ss-01..ss-23；底本《渊海子平》《三命通会》，口径易安居实测裁定（见各项 source/diff）",
+    "groups": {
+      "年上": [
+        {
+          "name": "亡神",
+          "rule_id": "ss-16",
+          "source": "《渊海子平·论亡神》",
+          "method": "寅午戌见巳，申子辰见亥，巳酉丑见申，亥卯未见寅；年支+日支双起查四支",
+          "diff": "异文：按年支/日支单起派；易安居实测双起"
+        },
+        {
+          "name": "国印",
+          "rule_id": "ss-14",
+          "source": "《三命通会·论国印》",
+          "method": "日干起：甲戌乙亥丙丑丁寅戊丑己寅庚辰辛巳壬未癸申（查四支）",
+          "diff": "异文：版本一致，无重大分歧"
+        }
+      ],
+      "月上": [
+        {
+          "name": "将星",
+          "rule_id": "ss-07",
+          "source": "《渊海子平·论将星》",
+          "method": "寅午戌见午，申子辰见子，巳酉丑见酉，亥卯未见卯；年支+日支双起，排除起法支自身",
+          "diff": "异文：按年支/日支单起派；易安居实测双起且排除起法支自身"
+        },
+        {
+          "name": "禄神",
+          "rule_id": "ss-08",
+          "source": "《渊海子平·论禄》",
+          "method": "日干起：甲禄寅乙禄卯丙戊禄巳丁己禄午庚禄申辛禄酉壬禄亥癸禄子（查四支）",
+          "diff": "异文：亦按年干起（岁禄），易安居按日干起"
+        }
+      ],
+      "日上": [
+        {
+          "name": "天喜",
+          "rule_id": "ss-11",
+          "source": "民间口诀，无专篇；据《协纪辨方书》嫁娶类整理（红鸾对宫，年支起，异文见 diff）",
+          "method": "年支起：红鸾对宫（子酉丑申寅未卯午辰巳巳辰午卯未寅申丑酉子戌亥亥戌）",
+          "diff": "异文：亦有按日支起派；易安居四柱神煞不报天喜，按民间口诀年支起，对拍申报不覆盖"
+        }
+      ],
+      "时上": [
+        {
+          "name": "华盖",
+          "rule_id": "ss-05",
+          "source": "《渊海子平·论华盖》",
+          "method": "寅午戌见戌，申子辰见辰，巳酉丑见丑，亥卯未见未；年支+日支双起，排除起法支自身",
+          "diff": "异文：按年支/日支单起派；「见」是否含自身各派不一（易安居实测排除起法支自身）"
+        },
+        {
+          "name": "天罗",
+          "rule_id": "ss-18",
+          "source": "《渊海子平·论天罗地网》（日干五行论，易安居实测口径）",
+          "method": "戌亥为天罗：日干丙丁（火命人）忌，查四支见戌亥",
+          "diff": "异文①《三命通会》同「火命人天罗、水土命人地网、金木命人无」；②一说按日柱纳音五行论；③一说辰为天罗戌为地网（男忌天罗女忌地网）"
+        }
+      ]
+    },
+    "hit_total": 7
+  },
+  "ziwei_liunian": {
+    "rule": "zl-01",
+    "source": "l3_ziwei.py 排盘（zw-01..07）+ shuowang.csv 朔日表（流年年号）",
+    "input": {
+      "datetime": "1974-07-05 22:13",
+      "lon": 87.6,
+      "sex": "女",
+      "target_year": 2026,
+      "tz": "UTC+8 北京时间"
+    },
+    "lunar": {
+      "year": "甲寅",
+      "month_name": "五月",
+      "is_ruen": false
+    },
+    "minggong": {
+      "zhi": "申",
+      "gan": "壬",
+      "rule_id": "zw-02",
+      "source": "命宫=寅起正月顺数生月、逆数生时（身宫顺数生时），oracle 对拍一致"
+    },
+    "wuxing_ju": {
+      "name": "金四局",
+      "rule_id": "zw-03",
+      "source": "命宫干支 壬申 纳音 → 金（nayin.csv），oracle 对拍一致"
+    },
+    "daxian": {
+      "start_age": 4,
+      "direction": "逆行",
+      "birth_ganzhi_sex": "阳女(甲寅)",
+      "items": [
+        {
+          "ages": "4-13",
+          "age_start": 4,
+          "age_end": 13,
+          "zhi": "申",
+          "gan": "壬",
+          "ganzhi": "壬申",
+          "palace": "命宫",
+          "sihua": [
+            {
+              "star": "天梁",
+              "hua": "禄"
+            },
+            {
+              "star": "紫微",
+              "hua": "权"
+            },
+            {
+              "star": "左辅",
+              "hua": "科"
+            },
+            {
+              "star": "武曲",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "1977(巳)",
+            "1978(午)",
+            "1979(未)",
+            "1980(申)",
+            "1981(酉)",
+            "1982(戌)",
+            "1983(亥)",
+            "1984(子)",
+            "1985(丑)",
+            "1986(寅)"
+          ]
+        },
+        {
+          "ages": "14-23",
+          "age_start": 14,
+          "age_end": 23,
+          "zhi": "未",
+          "gan": "辛",
+          "ganzhi": "辛未",
+          "palace": "兄弟",
+          "sihua": [
+            {
+              "star": "巨门",
+              "hua": "禄"
+            },
+            {
+              "star": "太阳",
+              "hua": "权"
+            },
+            {
+              "star": "文曲",
+              "hua": "科"
+            },
+            {
+              "star": "文昌",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "1987(卯)",
+            "1988(辰)",
+            "1989(巳)",
+            "1990(午)",
+            "1991(未)",
+            "1992(申)",
+            "1993(酉)",
+            "1994(戌)",
+            "1995(亥)",
+            "1996(子)"
+          ]
+        },
+        {
+          "ages": "24-33",
+          "age_start": 24,
+          "age_end": 33,
+          "zhi": "午",
+          "gan": "庚",
+          "ganzhi": "庚午",
+          "palace": "夫妻",
+          "sihua": [
+            {
+              "star": "太阳",
+              "hua": "禄"
+            },
+            {
+              "star": "武曲",
+              "hua": "权"
+            },
+            {
+              "star": "天同",
+              "hua": "科"
+            },
+            {
+              "star": "太阴",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "1997(丑)",
+            "1998(寅)",
+            "1999(卯)",
+            "2000(辰)",
+            "2001(巳)",
+            "2002(午)",
+            "2003(未)",
+            "2004(申)",
+            "2005(酉)",
+            "2006(戌)"
+          ]
+        },
+        {
+          "ages": "34-43",
+          "age_start": 34,
+          "age_end": 43,
+          "zhi": "巳",
+          "gan": "己",
+          "ganzhi": "己巳",
+          "palace": "子女",
+          "sihua": [
+            {
+              "star": "武曲",
+              "hua": "禄"
+            },
+            {
+              "star": "贪狼",
+              "hua": "权"
+            },
+            {
+              "star": "天梁",
+              "hua": "科"
+            },
+            {
+              "star": "文曲",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "2007(亥)",
+            "2008(子)",
+            "2009(丑)",
+            "2010(寅)",
+            "2011(卯)",
+            "2012(辰)",
+            "2013(巳)",
+            "2014(午)",
+            "2015(未)",
+            "2016(申)"
+          ]
+        },
+        {
+          "ages": "44-53",
+          "age_start": 44,
+          "age_end": 53,
+          "zhi": "辰",
+          "gan": "戊",
+          "ganzhi": "戊辰",
+          "palace": "财帛",
+          "sihua": [
+            {
+              "star": "贪狼",
+              "hua": "禄"
+            },
+            {
+              "star": "太阴",
+              "hua": "权"
+            },
+            {
+              "star": "右弼",
+              "hua": "科"
+            },
+            {
+              "star": "天机",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "2017(酉)",
+            "2018(戌)",
+            "2019(亥)",
+            "2020(子)",
+            "2021(丑)",
+            "2022(寅)",
+            "2023(卯)",
+            "2024(辰)",
+            "2025(巳)",
+            "2026(午)"
+          ]
+        },
+        {
+          "ages": "54-63",
+          "age_start": 54,
+          "age_end": 63,
+          "zhi": "卯",
+          "gan": "丁",
+          "ganzhi": "丁卯",
+          "palace": "疾厄",
+          "sihua": [
+            {
+              "star": "太阴",
+              "hua": "禄"
+            },
+            {
+              "star": "天同",
+              "hua": "权"
+            },
+            {
+              "star": "天机",
+              "hua": "科"
+            },
+            {
+              "star": "巨门",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "2027(未)",
+            "2028(申)",
+            "2029(酉)",
+            "2030(戌)",
+            "2031(亥)",
+            "2032(子)",
+            "2033(丑)",
+            "2034(寅)",
+            "2035(卯)",
+            "2036(辰)"
+          ]
+        },
+        {
+          "ages": "64-73",
+          "age_start": 64,
+          "age_end": 73,
+          "zhi": "寅",
+          "gan": "丙",
+          "ganzhi": "丙寅",
+          "palace": "迁移",
+          "sihua": [
+            {
+              "star": "天同",
+              "hua": "禄"
+            },
+            {
+              "star": "天机",
+              "hua": "权"
+            },
+            {
+              "star": "文昌",
+              "hua": "科"
+            },
+            {
+              "star": "廉贞",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "2037(巳)",
+            "2038(午)",
+            "2039(未)",
+            "2040(申)",
+            "2041(酉)",
+            "2042(戌)",
+            "2043(亥)",
+            "2044(子)",
+            "2045(丑)",
+            "2046(寅)"
+          ]
+        },
+        {
+          "ages": "74-83",
+          "age_start": 74,
+          "age_end": 83,
+          "zhi": "丑",
+          "gan": "丁",
+          "ganzhi": "丁丑",
+          "palace": "仆役",
+          "sihua": [
+            {
+              "star": "太阴",
+              "hua": "禄"
+            },
+            {
+              "star": "天同",
+              "hua": "权"
+            },
+            {
+              "star": "天机",
+              "hua": "科"
+            },
+            {
+              "star": "巨门",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "2047(卯)",
+            "2048(辰)",
+            "2049(巳)",
+            "2050(午)",
+            "2051(未)",
+            "2052(申)",
+            "2053(酉)",
+            "2054(戌)",
+            "2055(亥)",
+            "2056(子)"
+          ]
+        },
+        {
+          "ages": "84-93",
+          "age_start": 84,
+          "age_end": 93,
+          "zhi": "子",
+          "gan": "丙",
+          "ganzhi": "丙子",
+          "palace": "官禄",
+          "sihua": [
+            {
+              "star": "天同",
+              "hua": "禄"
+            },
+            {
+              "star": "天机",
+              "hua": "权"
+            },
+            {
+              "star": "文昌",
+              "hua": "科"
+            },
+            {
+              "star": "廉贞",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "2057(丑)",
+            "2058(寅)",
+            "2059(卯)",
+            "2060(辰)",
+            "2061(巳)",
+            "2062(午)",
+            "2063(未)",
+            "2064(申)",
+            "2065(酉)",
+            "2066(戌)"
+          ]
+        },
+        {
+          "ages": "94-103",
+          "age_start": 94,
+          "age_end": 103,
+          "zhi": "亥",
+          "gan": "乙",
+          "ganzhi": "乙亥",
+          "palace": "田宅",
+          "sihua": [
+            {
+              "star": "天机",
+              "hua": "禄"
+            },
+            {
+              "star": "天梁",
+              "hua": "权"
+            },
+            {
+              "star": "紫微",
+              "hua": "科"
+            },
+            {
+              "star": "太阴",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "2067(亥)",
+            "2068(子)",
+            "2069(丑)",
+            "2070(寅)",
+            "2071(卯)",
+            "2072(辰)",
+            "2073(巳)",
+            "2074(午)",
+            "2075(未)",
+            "2076(申)"
+          ]
+        },
+        {
+          "ages": "104-113",
+          "age_start": 104,
+          "age_end": 113,
+          "zhi": "戌",
+          "gan": "甲",
+          "ganzhi": "甲戌",
+          "palace": "福德",
+          "sihua": [
+            {
+              "star": "廉贞",
+              "hua": "禄"
+            },
+            {
+              "star": "破军",
+              "hua": "权"
+            },
+            {
+              "star": "武曲",
+              "hua": "科"
+            },
+            {
+              "star": "太阳",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "2077(酉)",
+            "2078(戌)",
+            "2079(亥)",
+            "2080(子)",
+            "2081(丑)",
+            "2082(寅)",
+            "2083(卯)",
+            "2084(辰)",
+            "2085(巳)",
+            "2086(午)"
+          ]
+        },
+        {
+          "ages": "114-123",
+          "age_start": 114,
+          "age_end": 123,
+          "zhi": "酉",
+          "gan": "癸",
+          "ganzhi": "癸酉",
+          "palace": "父母",
+          "sihua": [
+            {
+              "star": "破军",
+              "hua": "禄"
+            },
+            {
+              "star": "巨门",
+              "hua": "权"
+            },
+            {
+              "star": "太阴",
+              "hua": "科"
+            },
+            {
+              "star": "贪狼",
+              "hua": "忌"
+            }
+          ],
+          "liunian_years": [
+            "2087(未)",
+            "2088(申)",
+            "2089(酉)",
+            "2090(戌)",
+            "2091(亥)",
+            "2092(子)",
+            "2093(丑)",
+            "2094(寅)",
+            "2095(卯)",
+            "2096(辰)"
+          ]
+        }
+      ],
+      "rule_id": "zl-01",
+      "source": "大限=命宫起限、五行局数起岁（水二 2 岁…火六 6 岁）、阳男阴女顺行/阴男阳女逆行、每限 10 年，oracle（易安居紫微盘）对拍一致；大限四化=大限宫干四化（中州派《中州派紫微斗数》，王亭之系统）",
+      "alt": "异文：① 传统派（《紫微斗数全书》系统）大限/流年四化一律按生年干四化，不按大限干；② 流年支对应按公历干支纪年（立春换年）标注，非民俗年号"
+    },
+    "xiaoxian": {
+      "start_age": 1,
+      "start_palace": "辰",
+      "direction": "逆行",
+      "table": {
+        "1": "辰",
+        "2": "卯",
+        "3": "寅",
+        "4": "丑",
+        "5": "子",
+        "6": "亥",
+        "7": "戌",
+        "8": "酉",
+        "9": "申",
+        "10": "未",
+        "11": "午",
+        "12": "巳",
+        "13": "辰",
+        "14": "卯",
+        "15": "寅",
+        "16": "丑",
+        "17": "子",
+        "18": "亥",
+        "19": "戌",
+        "20": "酉",
+        "21": "申",
+        "22": "未",
+        "23": "午",
+        "24": "巳",
+        "25": "辰",
+        "26": "卯",
+        "27": "寅",
+        "28": "丑",
+        "29": "子",
+        "30": "亥",
+        "31": "戌",
+        "32": "酉",
+        "33": "申",
+        "34": "未",
+        "35": "午",
+        "36": "巳",
+        "37": "辰",
+        "38": "卯",
+        "39": "寅",
+        "40": "丑",
+        "41": "子",
+        "42": "亥",
+        "43": "戌",
+        "44": "酉",
+        "45": "申",
+        "46": "未",
+        "47": "午",
+        "48": "巳",
+        "49": "辰",
+        "50": "卯",
+        "51": "寅",
+        "52": "丑",
+        "53": "子",
+        "54": "亥",
+        "55": "戌",
+        "56": "酉",
+        "57": "申",
+        "58": "未",
+        "59": "午",
+        "60": "巳",
+        "61": "辰",
+        "62": "卯",
+        "63": "寅",
+        "64": "丑",
+        "65": "子",
+        "66": "亥",
+        "67": "戌",
+        "68": "酉",
+        "69": "申",
+        "70": "未",
+        "71": "午",
+        "72": "巳",
+        "73": "辰",
+        "74": "卯",
+        "75": "寅",
+        "76": "丑",
+        "77": "子",
+        "78": "亥",
+        "79": "戌",
+        "80": "酉",
+        "81": "申",
+        "82": "未",
+        "83": "午",
+        "84": "巳",
+        "85": "辰",
+        "86": "卯",
+        "87": "寅",
+        "88": "丑",
+        "89": "子",
+        "90": "亥",
+        "91": "戌",
+        "92": "酉",
+        "93": "申",
+        "94": "未",
+        "95": "午",
+        "96": "巳",
+        "97": "辰",
+        "98": "卯",
+        "99": "寅",
+        "100": "丑",
+        "101": "子",
+        "102": "亥",
+        "103": "戌",
+        "104": "酉",
+        "105": "申",
+        "106": "未",
+        "107": "午",
+        "108": "巳",
+        "109": "辰",
+        "110": "卯",
+        "111": "寅",
+        "112": "丑",
+        "113": "子",
+        "114": "亥",
+        "115": "戌",
+        "116": "酉",
+        "117": "申",
+        "118": "未",
+        "119": "午",
+        "120": "巳"
+      },
+      "rule_id": "zl-02",
+      "source": "《紫微斗数全书》定小限「先将生年分四局，墓库冲处小限起，男顺女逆一路行，不论阴阳各排比」：生年三合局墓库宫之对冲宫起 1 岁（寅午戌→辰、申子辰→戌、亥卯未→丑、巳酉丑→未），男顺女逆",
+      "alt": "异文：「子午卯酉人寅宫起、辰戌丑未人申宫起、寅申巳亥人午宫起」派（另传口诀，起点不同）；易安居紫微盘不显示小限，本表未对拍 oracle"
+    },
+    "liunian": {
+      "year": 2026,
+      "ganzhi": "丙午",
+      "zhi": "午",
+      "palace": "夫妻",
+      "palace_ganzhi": "庚午",
+      "sihua": [
+        {
+          "star": "天同",
+          "hua": "禄"
+        },
+        {
+          "star": "天机",
+          "hua": "权"
+        },
+        {
+          "star": "文昌",
+          "hua": "科"
+        },
+        {
+          "star": "廉贞",
+          "hua": "忌"
+        }
+      ],
+      "doujun_zhi": "子",
+      "rule_id": "zl-03",
+      "source": "流年=公历年→民俗农历年号（shuowang.csv 正月初一换年，同排盘判定层）；流年支落地支固定宫位；流年干四化=zw-07 生年四化表按流年干",
+      "alt": "异文：① 立春换年派流年（干支纪年），正月前差一干支；② oracle 静态盘不含流年层（JS 动态），未对拍"
+    },
+    "doujun": {
+      "zi_year_zhi": "午",
+      "birth_year_zhi": "申",
+      "formula": "斗君=(太岁支序−生月序+生时支序)mod12；本盘 生月=五月(序4) 生时=戌时",
+      "rule_id": "zl-04",
+      "source": "《紫微斗数全书》卷二·安斗君诀「大岁宫中便起正，逆寻生月即留停，又从生月宫轮子，顺至生时镇斗星」（太岁宫起正月逆数至生月，生月宫起子时顺数至生时）；oracle「子年斗君」全样对拍一致",
+      "alt": "任务书「正月起寅、按生时定斗君月建」描述与《全书》诀及 oracle 实测均不符，弃用；斗君为流年正月建，随流年太岁宫位而变（子年斗君即太岁=子之斗君），非固定宫"
+    },
+    "notes": [
+      "阴阳按民俗年干 甲（阳干）判定，同 l3_ziwei 判定层；大限起岁=金四局局 4 岁",
+      "大限四化按大限宫干（中州派）；传统派按生年干，两派并存，本模块以中州派为默认值",
+      "斗君与流年关系：流年 X 年太岁宫 = 流年支所在宫，斗君=(流年支序−生月序+生时支序)mod12；子年斗君即太岁=子"
+    ]
+  },
+  "day_master": "丁",
+  "wangshuai": {
+    "zonghe": {
+      "rule_id": "ws-04",
+      "source": "权重 得令 40/得地 35/得势 25：月令为提纲（《子平真诠》『八字用神，专求月令』）",
+      "alt": "异文权重：重令派 60/25/15（《滴天髓》『得时俱为旺』）、均权派 33/33/34",
+      "weights": {
+        "de_ling": 0.4,
+        "de_di": 0.35,
+        "de_shi": 0.25
+      },
+      "score": 68.6,
+      "level": "偏旺",
+      "advice": "日主偏旺，喜克泄耗以平衡",
+      "thresholds": {
+        "极旺": "≥75",
+        "偏旺": "60-74",
+        "中和": "40-59",
+        "偏弱": "25-39",
+        "极弱": "<25"
+      }
+    },
+    "de_ling": {
+      "rule_id": "ws-01",
+      "source": "《三命通会·论五行旺相休囚死》；月支=m1 r4 节换月，本气=data/canggan.csv",
+      "month_zhi": "午",
+      "ben_qi": "丁",
+      "ben_qi_wx": "火",
+      "status": "旺",
+      "score": 100,
+      "full_table": {
+        "木": "休",
+        "火": "旺",
+        "土": "相",
+        "金": "死",
+        "水": "囚"
+      }
+    },
+    "de_di": {
+      "rule_id": "ws-02",
+      "source": "data/changsheng.csv 十二长生（火土同宫阴生阳死通行表）；藏干=data/canggan.csv；日支×2（自定口径）",
+      "alt": "阴干按本表逆行位；异文『阴干从阳』派（乙同甲、丁己同丙戊）按阳干位查表；弱地含沐浴/衰/病/死/墓=0 分，冠带/胎/养=中地 1 分为自定补充档",
+      "items": [
+        {
+          "pillar": "year支",
+          "zhi": "寅",
+          "canggan": "甲丙戊",
+          "stage": "死",
+          "root": true,
+          "points": 0,
+          "weight": 1
+        },
+        {
+          "pillar": "month支",
+          "zhi": "午",
+          "canggan": "丁己",
+          "stage": "临官",
+          "root": true,
+          "points": 2,
+          "weight": 1
+        },
+        {
+          "pillar": "day支",
+          "zhi": "未",
+          "canggan": "己丁乙",
+          "stage": "冠带",
+          "root": true,
+          "points": 2,
+          "weight": 2
+        },
+        {
+          "pillar": "hour支",
+          "zhi": "戌",
+          "canggan": "戊辛丁",
+          "stage": "养",
+          "root": true,
+          "points": 1,
+          "weight": 1
+        }
+      ],
+      "score": 5,
+      "max_score": 10,
+      "score_pct": 50.0
+    },
+    "de_shi": {
+      "rule_id": "ws-03",
+      "source": "rules.py 五行关系（比劫=同、印=生我）逐干/逐藏干清点；天干每现=2、藏干每现=1（自定口径，异文：本中余气可按位降权）",
+      "stems": [
+        {
+          "pillar": "year干",
+          "gan": "甲",
+          "relation": "生我",
+          "points": 2
+        },
+        {
+          "pillar": "month干",
+          "gan": "庚",
+          "relation": "",
+          "points": 0
+        },
+        {
+          "pillar": "hour干",
+          "gan": "庚",
+          "relation": "",
+          "points": 0
+        }
+      ],
+      "branches": {
+        "year支": [
+          {
+            "gan": "甲",
+            "relation": "生我",
+            "points": 1
+          },
+          {
+            "gan": "丙",
+            "relation": "同",
+            "points": 1
+          },
+          {
+            "gan": "戊",
+            "relation": "",
+            "points": 0
+          }
+        ],
+        "month支": [
+          {
+            "gan": "丁",
+            "relation": "同",
+            "points": 1
+          },
+          {
+            "gan": "己",
+            "relation": "",
+            "points": 0
+          }
+        ],
+        "day支": [
+          {
+            "gan": "己",
+            "relation": "",
+            "points": 0
+          },
+          {
+            "gan": "丁",
+            "relation": "同",
+            "points": 1
+          },
+          {
+            "gan": "乙",
+            "relation": "生我",
+            "points": 1
+          }
+        ],
+        "hour支": [
+          {
+            "gan": "戊",
+            "relation": "",
+            "points": 0
+          },
+          {
+            "gan": "辛",
+            "relation": "",
+            "points": 0
+          },
+          {
+            "gan": "丁",
+            "relation": "同",
+            "points": 1
+          }
+        ]
+      },
+      "score": 8,
+      "max_score": 18,
+      "score_pct": 44.4
+    }
+  },
+  "wuyunliuqi": {
+    "input": {
+      "datetime": "1974-07-05 22:13",
+      "tz": "UTC+8 北京时间（运气历法按官方定气历表）"
+    },
+    "sui_yun": {
+      "ganzhi": "甲寅",
+      "yun": "土",
+      "level": "太过",
+      "name": "土运太过",
+      "ji": "敦阜之纪",
+      "rule_id": "wylq-01",
+      "source": "《素问·天元纪大论》天干化运「甲己之岁土运统之…戊癸之岁火运统之」+《五常政大论》十纪名目",
+      "alt": "异文①岁运交接有「大寒换年」（本实现，fate-craft 实测口径）与「立春换年」（干支纪年口径，WYLQ oracle）两派，大寒~立春间两口径岁运不同；②水运不及「涸流」（通行本）一作「涫流」"
+    },
+    "zhu_qi": {
+      "current": {
+        "step": "三之气",
+        "qi": "少阳相火",
+        "start": "1974-05-21 18:36",
+        "end": "1974-07-23 13:30",
+        "start_term": "小满",
+        "end_term": "大暑"
+      },
+      "steps": [
+        {
+          "step": "初之气",
+          "zhu_qi": "厥阴风木",
+          "ke_qi": "少阴君火",
+          "start": "1974-01-20 18:46",
+          "end": "1974-03-21 08:07",
+          "start_term": "大寒",
+          "end_term": "春分",
+          "si_tian": false,
+          "zai_quan": false
+        },
+        {
+          "step": "二之气",
+          "zhu_qi": "少阴君火",
+          "ke_qi": "太阴湿土",
+          "start": "1974-03-21 08:07",
+          "end": "1974-05-21 18:36",
+          "start_term": "春分",
+          "end_term": "小满",
+          "si_tian": false,
+          "zai_quan": false
+        },
+        {
+          "step": "三之气",
+          "zhu_qi": "少阳相火",
+          "ke_qi": "少阳相火",
+          "start": "1974-05-21 18:36",
+          "end": "1974-07-23 13:30",
+          "start_term": "小满",
+          "end_term": "大暑",
+          "si_tian": true,
+          "zai_quan": false
+        },
+        {
+          "step": "四之气",
+          "zhu_qi": "太阴湿土",
+          "ke_qi": "阳明燥金",
+          "start": "1974-07-23 13:30",
+          "end": "1974-09-23 17:58",
+          "start_term": "大暑",
+          "end_term": "秋分",
+          "si_tian": false,
+          "zai_quan": false
+        },
+        {
+          "step": "五之气",
+          "zhu_qi": "阳明燥金",
+          "ke_qi": "太阳寒水",
+          "start": "1974-09-23 17:58",
+          "end": "1974-11-23 00:38",
+          "start_term": "秋分",
+          "end_term": "小雪",
+          "si_tian": false,
+          "zai_quan": false
+        },
+        {
+          "step": "终之气",
+          "zhu_qi": "太阳寒水",
+          "ke_qi": "厥阴风木",
+          "start": "1974-11-23 00:38",
+          "end": "1975-01-21 00:36",
+          "start_term": "小雪",
+          "end_term": "大寒",
+          "si_tian": false,
+          "zai_quan": true
+        }
+      ],
+      "rule_id": "wylq-02",
+      "source": "《素问·六微旨大论》六步分治+《六元正纪大论》各岁六气叙列；每气 60.875 日=365.25/6，初之气起于大寒（《类经》注）",
+      "alt": "异文：六步起点「大寒」（本实现，运气学主流+fate-craft）vs「立春」（WYLQ oracle，立春+60 日近似）；节点时刻=定气历表（solar_terms.csv）vs 60 日等分近似（WYLQ）"
+    },
+    "ke_qi": {
+      "si_tian": "少阳相火",
+      "zai_quan": "厥阴风木",
+      "current": {
+        "step": "三之气",
+        "qi": "少阳相火",
+        "start": "1974-05-21 18:36",
+        "end": "1974-07-23 13:30"
+      },
+      "steps": [
+        {
+          "step": "初之气",
+          "zhu_qi": "厥阴风木",
+          "ke_qi": "少阴君火",
+          "start": "1974-01-20 18:46",
+          "end": "1974-03-21 08:07",
+          "start_term": "大寒",
+          "end_term": "春分",
+          "si_tian": false,
+          "zai_quan": false
+        },
+        {
+          "step": "二之气",
+          "zhu_qi": "少阴君火",
+          "ke_qi": "太阴湿土",
+          "start": "1974-03-21 08:07",
+          "end": "1974-05-21 18:36",
+          "start_term": "春分",
+          "end_term": "小满",
+          "si_tian": false,
+          "zai_quan": false
+        },
+        {
+          "step": "三之气",
+          "zhu_qi": "少阳相火",
+          "ke_qi": "少阳相火",
+          "start": "1974-05-21 18:36",
+          "end": "1974-07-23 13:30",
+          "start_term": "小满",
+          "end_term": "大暑",
+          "si_tian": true,
+          "zai_quan": false
+        },
+        {
+          "step": "四之气",
+          "zhu_qi": "太阴湿土",
+          "ke_qi": "阳明燥金",
+          "start": "1974-07-23 13:30",
+          "end": "1974-09-23 17:58",
+          "start_term": "大暑",
+          "end_term": "秋分",
+          "si_tian": false,
+          "zai_quan": false
+        },
+        {
+          "step": "五之气",
+          "zhu_qi": "阳明燥金",
+          "ke_qi": "太阳寒水",
+          "start": "1974-09-23 17:58",
+          "end": "1974-11-23 00:38",
+          "start_term": "秋分",
+          "end_term": "小雪",
+          "si_tian": false,
+          "zai_quan": false
+        },
+        {
+          "step": "终之气",
+          "zhu_qi": "太阳寒水",
+          "ke_qi": "厥阴风木",
+          "start": "1974-11-23 00:38",
+          "end": "1975-01-21 00:36",
+          "start_term": "小雪",
+          "end_term": "大寒",
+          "si_tian": false,
+          "zai_quan": true
+        }
+      ],
+      "rule_id": "wylq-03",
+      "source": "《素问·五运行大论》地支化气「子午之上少阴主之…巳亥之上厥阴主之」+《六微旨大论》三阴三阳序轮排；在泉=司天对宫（三之气↔终之气）",
+      "alt": "异文：客气轮排另有「以司天在泉起首气」等少数派（李阳波流派），主流=司天定三之气倒推（fate-craft/WYLQ 互证）"
+    },
+    "xiang_he": {
+      "types": [],
+      "rule_id": "wylq-04",
+      "source": "《素问·六微旨大论》《六元正纪大论》运气同化定义",
+      "alt": ""
+    },
+    "nodes": {
+      "year": "甲寅",
+      "current": {
+        "node": "小满",
+        "time": "1974-05-21 18:36"
+      },
+      "next": {
+        "node": "大暑",
+        "time": "1974-07-23 13:30"
+      },
+      "rule_id": "wylq-05",
+      "source": "solar_terms.csv 定气中气时刻（大寒/春分/小满/大暑/秋分/小雪 六节点）",
+      "alt": ""
+    },
+    "notes": [
+      "运气推演为理论体系，非医学诊断，不构成任何诊疗建议",
+      "岁首=大寒（运气岁首，fate-craft 实测裁定）；大寒~立春间与干支纪年（m1 立春换年）口径不同，已申报 wylq-001",
+      "六步分界按定气历表时刻（solar_terms.csv 权威），非 60 日等分（异文口径申报 wylq-002/003）"
+    ]
+  },
+  "liuyao": {
+    "input": {
+      "datetime": "1974-07-05 22:13",
+      "lon": 87.6
+    },
+    "method": {
+      "label": "时间起卦·农历（梅花）",
+      "rule_id": "ly-01",
+      "source": "《梅花易数》时间起卦/报数起卦（÷8÷6 余 0 取 8/6）；公历法口径同元亨利贞「按公历时间起卦」；时辰取真太阳时（m1 契约），oracle 元亨利贞按北京钟表时（I-8 口径分歧已申报 ly-smp04/05/13/15/19-l）",
+      "nums": {
+        "year": 3,
+        "month": 5,
+        "day": 16,
+        "hour": 22,
+        "minute": 13,
+        "label": "时间起卦·农历（梅花）"
+      }
+    },
+    "yue_jian": {
+      "zhi": "午",
+      "ganzhi": "庚午",
+      "rule_id": "r4",
+      "source": "m1 节换月（solar_terms.csv 节气月支）"
+    },
+    "ri_chen": {
+      "ganzhi": "丁未",
+      "rule_id": "r1",
+      "source": "m1 日柱（ganzhi_days.csv）"
+    },
+    "ben_gua": {
+      "name": "地火明夷",
+      "palace": "坎",
+      "palace_wx": "水",
+      "gua_order": 7,
+      "up": "坤",
+      "down": "离",
+      "yaoxiang": "阳阴阳阴阴阴",
+      "shi_pos": 4,
+      "ying_pos": 1,
+      "guaci": "明夷：利艰贞。",
+      "guaci_source": "《周易》通行本卦辞（本模块转录；元亨利贞网络电子版对拍复核，异文如实申报）"
+    },
+    "bian_gua": {
+      "name": "水火既济",
+      "palace": "坎",
+      "palace_wx": "水",
+      "gua_order": 4,
+      "up": "坎",
+      "down": "离",
+      "yaoxiang": "阳阴阳阴阳阴",
+      "shi_pos": 3,
+      "ying_pos": 6,
+      "guaci": "既济：亨小，利贞。初吉终乱。",
+      "guaci_source": "《周易》通行本卦辞（本模块转录；元亨利贞网络电子版对拍复核，异文如实申报）"
+    },
+    "lines": [
+      {
+        "pos": "初",
+        "yao": "九",
+        "shen": "朱雀",
+        "qin": "子孙",
+        "gan": "己",
+        "zhi": "卯",
+        "wx": "木",
+        "shi_ying": "应",
+        "dong": false,
+        "bian_yao": "九",
+        "bian_qin": "子孙",
+        "bian_gan": "己",
+        "bian_zhi": "卯",
+        "bian_wx": "木",
+        "bian_shi_ying": "",
+        "yue": {
+          "rel": "泄",
+          "chong": false,
+          "he": false
+        },
+        "ri": {
+          "rel": "耗",
+          "chong": false,
+          "he": false
+        }
+      },
+      {
+        "pos": "二",
+        "yao": "六",
+        "shen": "勾陈",
+        "qin": "官鬼",
+        "gan": "己",
+        "zhi": "丑",
+        "wx": "土",
+        "shi_ying": "",
+        "dong": false,
+        "bian_yao": "六",
+        "bian_qin": "官鬼",
+        "bian_gan": "己",
+        "bian_zhi": "丑",
+        "bian_wx": "土",
+        "bian_shi_ying": "",
+        "yue": {
+          "rel": "生",
+          "chong": false,
+          "he": false
+        },
+        "ri": {
+          "rel": "比和",
+          "chong": true,
+          "he": false
+        }
+      },
+      {
+        "pos": "三",
+        "yao": "九",
+        "shen": "螣蛇",
+        "qin": "兄弟",
+        "gan": "己",
+        "zhi": "亥",
+        "wx": "水",
+        "shi_ying": "",
+        "dong": false,
+        "bian_yao": "九",
+        "bian_qin": "兄弟",
+        "bian_gan": "己",
+        "bian_zhi": "亥",
+        "bian_wx": "水",
+        "bian_shi_ying": "世",
+        "yue": {
+          "rel": "耗",
+          "chong": false,
+          "he": false
+        },
+        "ri": {
+          "rel": "克",
+          "chong": false,
+          "he": false
+        }
+      },
+      {
+        "pos": "四",
+        "yao": "六",
+        "shen": "白虎",
+        "qin": "官鬼",
+        "gan": "癸",
+        "zhi": "丑",
+        "wx": "土",
+        "shi_ying": "世",
+        "dong": false,
+        "bian_yao": "六",
+        "bian_qin": "父母",
+        "bian_gan": "戊",
+        "bian_zhi": "申",
+        "bian_wx": "金",
+        "bian_shi_ying": "",
+        "yue": {
+          "rel": "生",
+          "chong": false,
+          "he": false
+        },
+        "ri": {
+          "rel": "比和",
+          "chong": true,
+          "he": false
+        }
+      },
+      {
+        "pos": "五",
+        "yao": "六",
+        "shen": "玄武",
+        "qin": "兄弟",
+        "gan": "癸",
+        "zhi": "亥",
+        "wx": "水",
+        "shi_ying": "",
+        "dong": true,
+        "bian_yao": "九",
+        "bian_qin": "官鬼",
+        "bian_gan": "戊",
+        "bian_zhi": "戌",
+        "bian_wx": "土",
+        "bian_shi_ying": "",
+        "yue": {
+          "rel": "耗",
+          "chong": false,
+          "he": false
+        },
+        "ri": {
+          "rel": "克",
+          "chong": false,
+          "he": false
+        }
+      },
+      {
+        "pos": "上",
+        "yao": "六",
+        "shen": "青龙",
+        "qin": "父母",
+        "gan": "癸",
+        "zhi": "酉",
+        "wx": "金",
+        "shi_ying": "",
+        "dong": false,
+        "bian_yao": "六",
+        "bian_qin": "兄弟",
+        "bian_gan": "戊",
+        "bian_zhi": "子",
+        "bian_wx": "水",
+        "bian_shi_ying": "应",
+        "yue": {
+          "rel": "克",
+          "chong": false,
+          "he": false
+        },
+        "ri": {
+          "rel": "生",
+          "chong": false,
+          "he": false
+        }
+      }
+    ],
+    "rules": [
+      {
+        "rule_id": "ly-01",
+        "source": "时间/数字起卦（《梅花易数》）"
+      },
+      {
+        "rule_id": "ly-02",
+        "source": "纳甲：data/najia.csv（京房纳甲歌推算存表）；变卦纳甲取变卦本表"
+      },
+      {
+        "rule_id": "ly-03",
+        "source": "六亲：本宫五行 vs 爻纳支五行（比和兄弟/爻生宫父母/宫生爻子孙/爻克宫官鬼/宫克爻妻财）；变卦六亲同按本卦宫"
+      },
+      {
+        "rule_id": "ly-04",
+        "source": "六神：日干起（甲乙青龙/丙丁朱雀/戊勾陈/己螣蛇/庚辛白虎/壬癸玄武），自初爻起六神"
+      },
+      {
+        "rule_id": "ly-05",
+        "source": "世应：《增删卜易》世应诀（八卦之首世六当，以下初爻轮上扬，游魂八位四爻立，归魂八卦三爻详）；应爻隔三位"
+      },
+      {
+        "rule_id": "ly-06",
+        "source": "旺衰：月建（节气月支）日辰（日干支）对爻支五行生克冲合关系（六冲六合表）；止于排卦不作断卦（I-7）"
+      }
+    ]
+  },
+  "liuren": {
+    "input": {
+      "datetime": "1974-07-05 22:13",
+      "lon": 87.6,
+      "tz": "UTC+8 北京时间",
+      "birth_year": null,
+      "sex": "女"
+    },
+    "pillars": {
+      "year": "甲寅",
+      "month": "庚午",
+      "day": "丁未",
+      "hour": "辛亥"
+    },
+    "month_jiang": {
+      "zhi": "未",
+      "rule_id": "nr-01",
+      "source": "《六壬大全》月将·太阳过宫（中气换将：雨水亥将…），solar_terms.csv 中气"
+    },
+    "gui_ren": {
+      "zhi": "酉",
+      "day_night": "夜",
+      "rule_id": "nr-02",
+      "source": "《六壬大全》贵人歌诀：甲戊庚牛羊，乙己鼠猴乡，丙丁猪鸡位，壬癸蛇兔藏，六辛逢马虎；贵神加于天盘贵人之支，落宫亥子丑寅卯辰顺布、巳午未申酉戌逆布（易安居口径）"
+    },
+    "tiandi_pan": {
+      "tian_pan": [
+        "申",
+        "酉",
+        "戌",
+        "亥",
+        "子",
+        "丑",
+        "寅",
+        "卯",
+        "辰",
+        "巳",
+        "午",
+        "未"
+      ],
+      "shen_jiang": [
+        "后",
+        "贵",
+        "蛇",
+        "雀",
+        "合",
+        "勾",
+        "龙",
+        "空",
+        "虎",
+        "常",
+        "玄",
+        "阴"
+      ],
+      "rule_id": "nr-01/nr-02",
+      "source": "月将加时布天盘；贵神加临布天将"
+    },
+    "si_ke": {
+      "ke": [
+        {
+          "upper": "卯",
+          "lower": "丁",
+          "jiang": "空"
+        },
+        {
+          "upper": "亥",
+          "lower": "卯",
+          "jiang": "雀"
+        },
+        {
+          "upper": "卯",
+          "lower": "未",
+          "jiang": "空"
+        },
+        {
+          "upper": "亥",
+          "lower": "卯",
+          "jiang": "雀"
+        }
+      ],
+      "rule_id": "nr-03",
+      "source": "《六壬大全》日干寄宫：甲课寅兮乙课辰…；一课干上神、二课干上之上、三课支上神、四课支上之上"
+    },
+    "san_chuan": {
+      "method": "元首课",
+      "chuan": [
+        {
+          "zhi": "卯",
+          "jiang": "空",
+          "liu_qin": "父母",
+          "dun_gan": null
+        },
+        {
+          "zhi": "亥",
+          "jiang": "雀",
+          "liu_qin": "官鬼",
+          "dun_gan": "辛"
+        },
+        {
+          "zhi": "未",
+          "jiang": "阴",
+          "liu_qin": "子孙",
+          "dun_gan": "丁"
+        }
+      ],
+      "rule_id": "nr-04",
+      "source": "《六壬大全》卷一起例：贼克（取课先从下贼呼）→比用（常将天日比神用）→涉害（涉害行来本家止）→遥克（蒿矢/弹射）→昴星（阳仰阴俯）→别责（刚日干合）→八专（顺行三连本位数）→伏吟（刑）→返吟（井栏射）"
+    },
+    "xing_nian": null,
+    "notes": [
+      "四柱=北京时易安居口径（日干支=北京时当日、年柱=北京时立春判界、月柱=北京时节换月、时柱=北京时时支五鼠遁；m1 真太阳时仅月将参考，跨 23-24 点子时窗口四柱不自相矛盾）",
+      "中末传=初传上神递推（《六壬大全》：初传之上名中次，中上加临是末居）"
+    ]
+  },
+  "meihua": {
+    "input": {
+      "datetime": "1974-07-05 22:13",
+      "lon": 87.6
+    },
+    "method": {
+      "label": "时间起卦·农历（梅花）",
+      "rule_id": "mh-01",
+      "source": "《梅花易数》起卦三法（先天八卦数 乾1兑2离3震4巽5坎6艮7坤8，÷8÷6 余 0 取整）",
+      "nums": {
+        "year_zhi": 3,
+        "lunar_month": 5,
+        "lunar_day": 16,
+        "hour_zhi": 11,
+        "sum_up": 24,
+        "sum_down": 35
+      }
+    },
+    "ben_gua": {
+      "name": "地火明夷",
+      "up": "坤",
+      "down": "离",
+      "yaoxiang": "阳阴阳阴阴阴",
+      "guaci": "明夷：利艰贞。",
+      "guaci_source": "《周易》通行本卦辞（模块内转录，同 l3_liuyao 底本）",
+      "images": {
+        "up": {
+          "nature": "地",
+          "family": "母",
+          "body": "腹",
+          "dir": "西南"
+        },
+        "down": {
+          "nature": "火",
+          "family": "中女",
+          "body": "目",
+          "dir": "南"
+        }
+      },
+      "rule_id": "mh-04",
+      "source": "《梅花易数》卦象展开（互卦取二三四爻为下、三四五爻为上；变卦动爻阴阳互变）"
+    },
+    "hu_gua": {
+      "name": "雷水解",
+      "up": "震",
+      "down": "坎",
+      "yaoxiang": "阳阴阴阴阳阴",
+      "guaci": "解：利西南。无所往，其来复吉。有攸往，夙吉。",
+      "guaci_source": "《周易》通行本卦辞（模块内转录，同 l3_liuyao 底本）",
+      "images": {
+        "up": {
+          "nature": "雷",
+          "family": "长男",
+          "body": "足",
+          "dir": "东"
+        },
+        "down": {
+          "nature": "水",
+          "family": "中男",
+          "body": "耳",
+          "dir": "北"
+        }
+      },
+      "rule_id": "mh-04",
+      "source": "《梅花易数》卦象展开（互卦取二三四爻为下、三四五爻为上；变卦动爻阴阳互变）"
+    },
+    "bian_gua": {
+      "name": "水火既济",
+      "up": "坎",
+      "down": "离",
+      "yaoxiang": "阳阴阳阴阳阴",
+      "guaci": "既济：亨小，利贞。初吉终乱。",
+      "guaci_source": "《周易》通行本卦辞（模块内转录，同 l3_liuyao 底本）",
+      "images": {
+        "up": {
+          "nature": "水",
+          "family": "中男",
+          "body": "耳",
+          "dir": "北"
+        },
+        "down": {
+          "nature": "火",
+          "family": "中女",
+          "body": "目",
+          "dir": "南"
+        }
+      },
+      "rule_id": "mh-04",
+      "source": "《梅花易数》卦象展开（互卦取二三四爻为下、三四五爻为上；变卦动爻阴阳互变）"
+    },
+    "dong": 5,
+    "ti_yong": {
+      "ti": {
+        "gua": "离",
+        "wx": "火",
+        "side": "下卦",
+        "wangshuai": "旺",
+        "weight": 2
+      },
+      "yong": {
+        "gua": "坤",
+        "wx": "土",
+        "side": "上卦",
+        "wangshuai": "相",
+        "weight": 1
+      },
+      "dong_in": "上卦",
+      "relation": "泄",
+      "name": "体生用",
+      "verdict": "耗泄",
+      "tone": "自身耗泄，事费力而迟成",
+      "season": "夏",
+      "season_wang": "火",
+      "status": {
+        "木": "休",
+        "火": "旺",
+        "土": "相",
+        "金": "死",
+        "水": "囚"
+      },
+      "weight_note": "四季旺衰加权为规则加权（旺2相1休0囚-1死-2；囚=克旺者、死=旺所克，《五行大义》四时休王通行定义），非《梅花易数》原著原文",
+      "rule_id": "mh-05",
+      "source": "《梅花易数·体用生克》：动爻所在卦为用，另一卦为体；体用比和吉、用生体吉、体克用中吉、体生用耗泄、用克体凶",
+      "alt": [
+        "动爻在初爻/上爻之体用判定异文：『初上无位』派（《增广校正梅花易数》注疏）以本卦为体、变卦为用；本模块主表仍按动爻所在卦为用"
+      ]
+    },
+    "duan": {
+      "category": "通用",
+      "ti_yong": "体生用",
+      "verdict": "耗泄",
+      "text": "事费心力，宜缓图。；用卦为坤（地），可参母、腹之象。",
+      "rule_id": "mh-06",
+      "source": "规则启发式（体用生克五态 × 用卦意象映射表），非神断；与 l3_liuyao 断卦契约 I-7 同"
+    },
+    "rules": [
+      {
+        "rule_id": "mh-01",
+        "source": "时间起卦（农历法）：上=(年支序+农历月+农历日)÷8、下=(+时支序)÷8、动=÷6；年支=节气年支(m1 r3)、农历月日=shuowang.csv、时支=m1 r2 真太阳时"
+      },
+      {
+        "rule_id": "mh-02",
+        "source": "报数起卦：2 数 上=n1 下=n2 动=(n1+n2)÷6；3 数 动=第三数÷6；加时辰派为异文(alt)"
+      },
+      {
+        "rule_id": "mh-03",
+        "source": "字数起卦：字数平分上下卦（主表奇数上少下多，原著『少一字为上卦』）、动=字数÷6；奇数取法异文(alt)"
+      },
+      {
+        "rule_id": "mh-04",
+        "source": "卦象展开：本卦/互卦（二三四爻为下、三四五爻为上）/变卦（动爻变）"
+      },
+      {
+        "rule_id": "mh-05",
+        "source": "体用生克五态（《梅花易数》）+ 四季旺衰加权（规则加权非原文）"
+      },
+      {
+        "rule_id": "mh-06",
+        "source": "断事接口：规则启发式，非神断（I-7）"
+      }
+    ],
+    "chain": {
+      "year_zhi": 3,
+      "lunar_year_zhi": 3,
+      "lunar_month": 5,
+      "lunar_day": 16,
+      "is_ruen": false,
+      "hour_zhi": 11,
+      "steps": [
+        {
+          "year_zhi": "m1 r3 节气年（立春换年）干支年支序——起卦年支；民俗农历年支（shuowang lunar_year）仅展示",
+          "lunar": "data/shuowang.csv 朔日表农历月日",
+          "hour_zhi": "m1 r2 时柱（真太阳时口径）"
+        },
+        {
+          "formula": "上=(年支序+农历月+农历日)÷8 余；下=(上卦总数+时支序)÷8 余；动=总÷6 余（0取8/6）"
+        }
+      ],
+      "sum_up": 24,
+      "sum_down": 35,
+      "year_ganzhi": "甲寅",
+      "month_ganzhi": "庚午",
+      "day_ganzhi": "丁未",
+      "hour_ganzhi": "庚戌"
+    }
+  },
+  "xiaoliuren": {
+    "input": {
+      "datetime": "1974-07-05 22:13",
+      "lon": 87.6,
+      "tz": "UTC+8 北京时间",
+      "late_zishi": false
+    },
+    "xlr-01": {
+      "rule_id": "xlr-01",
+      "source": "data/shuowang.csv 朔日表（UTC+8）+ data/ganzhi_days.csv",
+      "lunar": "农历5月16日",
+      "month": 5,
+      "day": 16,
+      "day_30_loop": 16,
+      "hour_ordinal": 12,
+      "shichen": "亥时",
+      "day_ganzhi": "丁未",
+      "alt": "日数按 30 日循环（超 30 减 30）；闰月沿用原月数；23 点子初归次日（x6ren 口径，与 M1 子正换日异）"
+    },
+    "xlr-02": {
+      "rule_id": "xlr-02",
+      "source": "五行木派主表（zhaosir 详解/江氏六神配属系）+ 江氏小六壬教程8六宫基础含义；口诀体系，无专篇；水派异文见 alt（xlr-a01）",
+      "liugong": [
+        {
+          "name": "大安",
+          "wx": "木",
+          "ji": "吉"
+        },
+        {
+          "name": "留连",
+          "wx": "水",
+          "ji": "凶"
+        },
+        {
+          "name": "速喜",
+          "wx": "火",
+          "ji": "吉"
+        },
+        {
+          "name": "赤口",
+          "wx": "金",
+          "ji": "凶"
+        },
+        {
+          "name": "小吉",
+          "wx": "木",
+          "ji": "吉"
+        },
+        {
+          "name": "空亡",
+          "wx": "土",
+          "ji": "凶"
+        }
+      ],
+      "alt": "主表为木派（zhaosir/江氏系）；水派异文同为通行：x6ren 吴炯版留连=火/速喜=阳土/小吉=水/空亡=阴土，XiaoLiuRen-MCP 版留连=土/小吉=水（见仲裁记录 xlr-a01）"
+    },
+    "xlr-03": {
+      "rule_id": "xlr-03",
+      "source": "通行口诀逐宫顺数（x6ren min.js 与 XiaoLiuRen-MCP 读码同构确认）",
+      "month_gong": "小吉",
+      "day_gong": "留连",
+      "final_gong": "大安",
+      "steps": [
+        "月数5→小吉",
+        "日数16→留连",
+        "时支序12→大安"
+      ]
+    },
+    "xlr-04": {
+      "rule_id": "xlr-04",
+      "source": "五行木派主表（zhaosir 详解/江氏六神配属系）+ 江氏小六壬教程8六宫基础含义；口诀体系，无专篇；水派异文见 alt（xlr-a01）",
+      "alt": "断语为通行口诀要点整理，异文存见（如小吉'行人立便至'句重见）",
+      "gong": "大安",
+      "ji": "吉",
+      "duan": "身未动时，问事主安宁。失物去不远，病者主无妨。行人立便至，谋事有贵人。求财随手得，占身安神方。",
+      "note": "规则启发式，非神断：断语为通行口诀要点整理，五行生克补充为模块自定规则，不作吉凶定论"
+    },
+    "notes": [
+      "小六壬为口诀体系，无专篇经典；六宫掌诀位诸家一致；五行两派并存：主表木派（zhaosir/江氏系），水派异文见 xlr-a01 alt",
+      "晚子时（23 点后）归次日：农历月日与时支同轨次日（x6ren.com 实测口径）；换日界与 M1 子正异，先例 F1-001",
+      "断事为规则启发式，非神断"
+    ]
+  },
+  "heluolishu": {
+    "input": {
+      "datetime": "1974-07-05 22:13",
+      "lon": 87.6,
+      "gender": "女"
+    },
+    "pillars": {
+      "year": {
+        "ganzhi": "甲寅",
+        "rule_id": "r3",
+        "source": "solar_terms.csv"
+      },
+      "month": {
+        "ganzhi": "庚午",
+        "rule_id": "r4",
+        "source": "solar_terms.csv"
+      },
+      "day": {
+        "ganzhi": "丁未",
+        "rule_id": "r1",
+        "source": "ganzhi_days.csv"
+      },
+      "hour": {
+        "ganzhi": "庚戌",
+        "rule_id": "r2"
+      }
+    },
+    "hlyl01": {
+      "tianshu": 30,
+      "dishu": 30,
+      "items": [
+        {
+          "pillar": "year",
+          "part": "天干",
+          "ganzhi": "甲寅",
+          "shu": 9,
+          "parity": "奇"
+        },
+        {
+          "pillar": "year",
+          "part": "地支",
+          "ganzhi": "甲寅",
+          "shu": 7,
+          "parity": "奇"
+        },
+        {
+          "pillar": "month",
+          "part": "天干",
+          "ganzhi": "庚午",
+          "shu": 8,
+          "parity": "偶"
+        },
+        {
+          "pillar": "month",
+          "part": "地支",
+          "ganzhi": "庚午",
+          "shu": 9,
+          "parity": "奇"
+        },
+        {
+          "pillar": "day",
+          "part": "天干",
+          "ganzhi": "丁未",
+          "shu": 6,
+          "parity": "偶"
+        },
+        {
+          "pillar": "day",
+          "part": "地支",
+          "ganzhi": "丁未",
+          "shu": 8,
+          "parity": "偶"
+        },
+        {
+          "pillar": "hour",
+          "part": "天干",
+          "ganzhi": "庚戌",
+          "shu": 8,
+          "parity": "偶"
+        },
+        {
+          "pillar": "hour",
+          "part": "地支",
+          "ganzhi": "庚戌",
+          "shu": 5,
+          "parity": "奇"
+        }
+      ],
+      "rule_id": "hlyl-01",
+      "source": "网传太玄数起卦派：太玄数干支同数 甲己子午9 乙庚丑未8 丙辛寅申7 丁壬卯酉6 戊癸辰戌5 巳亥4（古籍原书此数仅用于五行纳音，非起卦取数）",
+      "alt": "异文：天干河图生成数（甲3乙8丙7丁2戊5己10庚9辛4壬6癸1）；地支序数（子1..亥12）；古籍《河洛理数》原书起卦取数=纳甲洛书数+河图支双数（与 oracle 同派，本模块未采用，见 oracle_school）"
+    },
+    "hlyl02": {
+      "shang_gua": "坎",
+      "xia_gua": "坎",
+      "shang_shu": 6,
+      "xia_shu": 6,
+      "ming_gua": "坎为水",
+      "rule_id": "hlyl-02",
+      "source": "天数÷8 余数=上卦、地数÷8 余数=下卦（先天八卦序 乾1兑2离3震4巽5坎6艮7坤8，余 0 取坤）",
+      "alt": "古籍正法（oracle 同派）：天数减25/地数减30取个位配后天数（坎1坤2震3巽4中5乾6兑7艮8离9，余数配洛书后天图、余 5 寄中宫），本模块未采用；又有以天数卦为命、地数卦为身不重合之说"
+    },
+    "hlyl03": {
+      "yuan_yao": {
+        "pos": 6,
+        "rule_id": "hlyl-03",
+        "source": "按数取爻：男以天数、女以地数除 6，余数自初爻上数（余 0 取上爻）",
+        "alt": "异文：六爻飞支法（阳时飞阳爻/阴时飞阴爻，纪晓岚例=晋四爻）；世爻即元堂说（河洛理数论坛）；oracle 派男天数%9、女地数%6"
+      },
+      "shen_gua": {
+        "shen_gua": "风水涣",
+        "yao": [
+          0,
+          1,
+          0,
+          0,
+          1,
+          1
+        ],
+        "pos": 6
+      },
+      "ming_gua": "坎为水",
+      "note": "身卦=后天卦（元堂爻动变卦）；命卦=先天卦（天数上地数下）；异文：有以天数卦为命、地数卦为身之说"
+    },
+    "hlyl04": {
+      "dayun": {
+        "items": [
+          {
+            "pos": 6,
+            "yao": "六上",
+            "gua": "风水涣",
+            "years": 6,
+            "start": 1974,
+            "end": 1979
+          },
+          {
+            "pos": 5,
+            "yao": "九五",
+            "gua": "地水师",
+            "years": 9,
+            "start": 1980,
+            "end": 1988
+          },
+          {
+            "pos": 4,
+            "yao": "六四",
+            "gua": "泽水困",
+            "years": 6,
+            "start": 1989,
+            "end": 1994
+          },
+          {
+            "pos": 3,
+            "yao": "六三",
+            "gua": "水风井",
+            "years": 6,
+            "start": 1995,
+            "end": 2000
+          },
+          {
+            "pos": 2,
+            "yao": "九二",
+            "gua": "水地比",
+            "years": 9,
+            "start": 2001,
+            "end": 2009
+          },
+          {
+            "pos": 1,
+            "yao": "六初",
+            "gua": "水泽节",
+            "years": 6,
+            "start": 2010,
+            "end": 2015
+          }
+        ],
+        "rule_id": "hlyl-04",
+        "source": "以元堂爻进退取卦：男顺女逆逐爻，每运=该爻动变卦；阳爻 9 年、阴爻 6 年（起运自出生年，简化不分起运岁数）",
+        "alt": "异文：每运 10 年派；大运卦以命卦逐爻变之卦系而非独立变卦；起运以出生节令距立春日数/3 起岁"
+      },
+      "current": {
+        "pos": 6,
+        "yao": "六上",
+        "gua": "风水涣",
+        "years": 6,
+        "start": 1974,
+        "end": 1979
+      },
+      "liunian_10y": [
+        {
+          "year": 1974,
+          "ganzhi": "甲寅",
+          "gua": "坤为地",
+          "shang": "坤",
+          "xia": "坤"
+        },
+        {
+          "year": 1975,
+          "ganzhi": "乙卯",
+          "gua": "地水师",
+          "shang": "坤",
+          "xia": "坎"
+        },
+        {
+          "year": 1976,
+          "ganzhi": "丙辰",
+          "gua": "雷地豫",
+          "shang": "震",
+          "xia": "坤"
+        },
+        {
+          "year": 1977,
+          "ganzhi": "丁巳",
+          "gua": "地泽临",
+          "shang": "坤",
+          "xia": "兑"
+        },
+        {
+          "year": 1978,
+          "ganzhi": "戊午",
+          "gua": "水地比",
+          "shang": "坎",
+          "xia": "坤"
+        },
+        {
+          "year": 1979,
+          "ganzhi": "己未",
+          "gua": "天地否",
+          "shang": "乾",
+          "xia": "坤"
+        },
+        {
+          "year": 1980,
+          "ganzhi": "庚申",
+          "gua": "山地剥",
+          "shang": "艮",
+          "xia": "坤"
+        },
+        {
+          "year": 1981,
+          "ganzhi": "辛酉",
+          "gua": "山水蒙",
+          "shang": "艮",
+          "xia": "坎"
+        },
+        {
+          "year": 1982,
+          "ganzhi": "壬戌",
+          "gua": "风水涣",
+          "shang": "巽",
+          "xia": "坎"
+        },
+        {
+          "year": 1983,
+          "ganzhi": "癸亥",
+          "gua": "风雷益",
+          "shang": "巽",
+          "xia": "震"
+        }
+      ],
+      "note": "大运=元堂爻进退逐爻变卦，阳9阴6；流年=流年干支起卦（未来 10 年逐年）"
+    },
+    "hlyl05": {
+      "gua": "坎为水",
+      "guaci": "习坎，有孚，维心亨，行有尚",
+      "brief": "上下卦比和，五行同气，主顺遂",
+      "yao": "六上",
+      "rule_id": "hlyl-05",
+      "source": "《周易》卦辞（通行本）+ 河洛派上下卦五行生克简断；规则启发式，非神断",
+      "alt": "异文：各派另有爻辞断、河洛数断（化工/反化工）等层级，本模块仅取卦辞层"
+    }
+  },
+  "huangli": {
+    "date": "1974-07-05",
+    "ganzhi": "丁未",
+    "lunar": "甲寅年农历五月十六",
+    "jianchu": {
+      "name": "除",
+      "ji": "吉",
+      "yiji_yao": "宜扫舍、沐浴、治病、除旧布新",
+      "rule_id": "hl-01",
+      "source": "《协纪辨方书》卷三建除（节气月建：立春建寅…小寒建丑，节当天整天换月）",
+      "diff": "异文：民间黄历有按农历月建派（正月建寅，闰月同号）；oracle 实测节气口径（2026-08-07 立秋当日即申月）"
+    },
+    "huanghei": {
+      "name": "勾陈",
+      "dao": "黑道",
+      "rule_id": "hl-02",
+      "source": "《协纪辨方书》卷五黄黑道引《考原》：『寅申青龙起子、卯酉起寅、辰戌起辰、巳亥起午、子午起申、丑未起戌，顺行十二辰；月起日则建寅之月子日为青龙』",
+      "diff": "异文①任务书『寅日青龙起于申』系时辰口诀（日起时：子日申时起青龙）误植于日值神；②《玉匣记》日表派另有『辰戌起丑』传本，oracle 实测起辰"
+    },
+    "jianchu_huanghei": {
+      "name": "黄道",
+      "rule_id": "hl-02b",
+      "source": "《协纪辨方书》卷七按语：『今人以除危定执成开为黄道，建破平收满闭为黑道』（建除配黄黑道，与值神黄黑道并存）",
+      "diff": "民间两套黄黑道并存：值神（青龙…勾陈）按月建起；建除配黄黑道按建除神名"
+    },
+    "shensha": {
+      "rule_id": "hl-03",
+      "source": "15 项择日神煞（月德/天德/月恩/天赦/驿马/咸池/红艳/劫煞/亡神/四废/十恶大败/天德合/月德合/归忌/往亡），月系项按农历月（oracle 实测），四季项按节气",
+      "hits": [
+        {
+          "name": "红艳",
+          "rule_id": "hl-03-07",
+          "source": "《渊海子平·论红艳煞》",
+          "method": "日干起查日支：甲午乙申丙寅丁未戊辰己辰庚戌辛酉壬子癸申",
+          "diff": "异文：版本一致；黄历吉神凶煞多不列红艳，对拍不覆盖"
+        }
+      ]
+    },
+    "yi_ji": {
+      "yi": [
+        "会亲友",
+        "出行",
+        "扫舍",
+        "沐浴",
+        "祈福",
+        "祭祀"
+      ],
+      "ji": [
+        "远行"
+      ],
+      "rule_id": "hl-03b",
+      "source": "宜忌生成=建除吉凶属性（hl-01 表）+神煞组合规则（项目规则化，非古籍原文逐字；与 oracle 宜忌列表重合率见对拍报告）",
+      "diff": "各黄历宜忌条目有出入（本站/汉程/中华万年历互异），组合规则以建除+神煞为准"
+    }
+  },
+  "qimen_duanju": {
+    "input": {
+      "datetime": "1974-07-05 22:13",
+      "lon": 87.6,
+      "tz": "UTC+8 北京时间"
+    },
+    "pillars": {
+      "year": "甲寅",
+      "month": "庚午",
+      "day": "丁未",
+      "hour": "庚戌"
+    },
+    "dingju": {
+      "term": "夏至",
+      "dun": "阴遁",
+      "yuan": "下元",
+      "ju": 6,
+      "rule_id": "qm-01",
+      "source": "《奇门遁甲统宗》72局口诀(转盘) + 张志春《神奇之门》拆补法(残日=符头元前一元,易安居实测校准)"
+    },
+    "month_jiang": "未",
+    "zhifu_zhishi": {
+      "xunshou": "甲辰",
+      "yiyi": "壬",
+      "zhifu_star": "天芮",
+      "zhifu_palace": 4,
+      "zhishi_door": "死门",
+      "zhishi_palace": 5
+    },
+    "yongshen": [
+      {
+        "use": "日干",
+        "gan": "丁",
+        "role": "己方（求测人）",
+        "fall": "3",
+        "detail": {
+          "palace": "3",
+          "gua": "震宫",
+          "direction": "正东方",
+          "star": "天英",
+          "door": "伤门",
+          "shen": "腾蛇",
+          "tianpan_gan": "丁",
+          "dipan_gan": "辛"
+        },
+        "mean": "星火·希望·灵动",
+        "rule_id": "qd-01-01",
+        "source": "《奇门遁甲统宗》用神篇"
+      },
+      {
+        "use": "时干",
+        "gan": "庚",
+        "role": "事体（所测之事）",
+        "fall": "8",
+        "detail": {
+          "palace": "8",
+          "gua": "艮宫",
+          "direction": "东北方",
+          "star": "天辅",
+          "door": "生门",
+          "shen": "太阴",
+          "tianpan_gan": "庚",
+          "dipan_gan": "丙"
+        },
+        "mean": "刀剑·肃杀·阻碍",
+        "rule_id": "qd-01-02",
+        "source": "《奇门遁甲统宗》用神篇"
+      },
+      {
+        "use": "值符",
+        "gan": "壬",
+        "role": "领导·首脑·统御者",
+        "fall": "4",
+        "detail": {
+          "palace": 4,
+          "gua": "巽宫",
+          "direction": "东南方",
+          "star": "天芮",
+          "door": "杜门",
+          "shen": "值符",
+          "tianpan_gan": "壬己",
+          "dipan_gan": "庚"
+        },
+        "mean": "天乙·尊贵·统御；巨门·疾病·柔顺",
+        "rule_id": "qd-01-03",
+        "source": "《奇门遁甲统宗》用神篇"
+      },
+      {
+        "use": "值使",
+        "gan": "",
+        "role": "执行·门户·下属",
+        "fall": "2",
+        "detail": {
+          "palace": 2,
+          "gua": "坤宫",
+          "direction": "西南方",
+          "star": "天心",
+          "door": "死门",
+          "shen": "九地",
+          "tianpan_gan": "戊",
+          "dipan_gan": "壬"
+        },
+        "mean": "死亡·丧葬·绝地",
+        "rule_id": "qd-01-04",
+        "source": "《奇门遁甲统宗》用神篇"
+      }
+    ],
+    "geju": [
+      {
+        "id": "qd-g-02",
+        "name": "飞鸟跌穴",
+        "type": "吉",
+        "palace": "6",
+        "basis": "天盘丙加地盘戊",
+        "source": "《烟波钓叟歌》·丙加戊",
+        "yichwen": "无易安居实测，锚点验证"
+      },
+      {
+        "id": "qd-g-14",
+        "name": "天假",
+        "type": "吉",
+        "palace": "9",
+        "basis": "景门+九天",
+        "source": "《奇门遁甲统宗》五假",
+        "yichwen": "易安居 38 盘实测 5/5（三奇+景门+九天）"
+      },
+      {
+        "id": "qd-x-03",
+        "name": "八门伏吟",
+        "type": "凶",
+        "palace": "2",
+        "basis": "死门落本宫2",
+        "source": "《奇门遁甲统宗》·伏吟",
+        "yichwen": "40 盘实测 7/7（值使门落本宫）"
+      },
+      {
+        "id": "qd-x-05",
+        "name": "六仪击刑",
+        "type": "凶",
+        "palace": "4",
+        "basis": "天盘壬临4宫击刑",
+        "source": "《奇门遁甲统宗》·六仪击刑",
+        "yichwen": "40 盘实测 14/14（戊3己2庚8辛9壬4癸4）"
+      },
+      {
+        "id": "qd-x-05",
+        "name": "六仪击刑",
+        "type": "凶",
+        "palace": "8",
+        "basis": "天盘庚临8宫击刑",
+        "source": "《奇门遁甲统宗》·六仪击刑",
+        "yichwen": "40 盘实测 14/14（戊3己2庚8辛9壬4癸4）"
+      },
+      {
+        "id": "qd-x-06",
+        "name": "三奇入墓",
+        "type": "凶",
+        "palace": "6",
+        "basis": "天盘丙入6宫墓",
+        "source": "《奇门遁甲统宗》·三奇入墓",
+        "yichwen": "40 盘实测 12/12（乙丙入乾6、丁入艮8）"
+      },
+      {
+        "id": "qd-x-07",
+        "name": "悖格",
+        "type": "凶",
+        "palace": "6",
+        "basis": "宫含丙（天盘/地盘）",
+        "source": "近似口径（《统宗》悖格）",
+        "yichwen": "已申报 qd-b-06：oracle 悖格含盘外逻辑无法还原，自研用宫含丙近似"
+      },
+      {
+        "id": "qd-x-07",
+        "name": "悖格",
+        "type": "凶",
+        "palace": "8",
+        "basis": "宫含丙（天盘/地盘）",
+        "source": "近似口径（《统宗》悖格）",
+        "yichwen": "已申报 qd-b-06：oracle 悖格含盘外逻辑无法还原，自研用宫含丙近似"
+      },
+      {
+        "id": "qd-x-09",
+        "name": "太白入荧",
+        "type": "凶",
+        "palace": "8",
+        "basis": "天盘庚加地盘丙",
+        "source": "《烟波钓叟歌》·庚加丙",
+        "yichwen": "40 盘实测 6/6"
+      },
+      {
+        "id": "qd-x-18",
+        "name": "天乙飞宫",
+        "type": "凶",
+        "palace": "4",
+        "basis": "值符宫地盘庚",
+        "source": "《奇门遁甲统宗》·天乙飞宫",
+        "yichwen": "40 盘实测 9/10（值符宫地盘庚；异文 1 例值符落中宫寄坤亦报，已申报 qd-b-01）"
+      }
+    ],
+    "chubu": {
+      "verdict": "差",
+      "level": 3,
+      "ji_count": 2,
+      "xiong_count": 8,
+      "xiong_palaces": [
+        "4",
+        "6",
+        "8"
+      ],
+      "note": "规则启发式（qd-03）：吉凶数为规则统计，非神断；门迫/入墓/击刑/网张宫位见 xiong_palaces",
+      "rule_id": "qd-03-01"
+    },
+    "note": "断语层为规则启发式，非神断；每项带 Rule-ID/底本/异文（差异无处藏身）"
+  },
+  "hepan": {
+    "rule_id": "hp-00",
+    "source": "人际合盘模块 l3_hepan.py：底本《渊海子平》《三命通会》《滴天髓》（十神定位）；hp-01..07 各项见各自 source/alt",
+    "disclaimer": "规则启发式，非神断：合盘倾向/应期为规则计分综合，仅供文化参考",
+    "input": {
+      "a": {
+        "input": "1974-07-05 22:13",
+        "lon": 87.6,
+        "hour_unknown": false
+      },
+      "b": {
+        "input": "1952-01-17 17:20",
+        "lon": 108.9,
+        "hour_unknown": false
+      },
+      "scene": "婚姻"
+    },
+    "notes": [],
+    "persons": [
+      {
+        "name": "A",
+        "day_master": "丁",
+        "hour_unknown": false,
+        "nayin": "甲寅",
+        "hour_candidates": null,
+        "true_solar_time": "1974-07-05T19:59:12",
+        "pillars": {
+          "year": "甲寅",
+          "month": "庚午",
+          "day": "丁未",
+          "hour": "庚戌"
+        }
+      },
+      {
+        "name": "B",
+        "day_master": "壬",
+        "hour_unknown": false,
+        "nayin": "辛卯",
+        "hour_candidates": null,
+        "true_solar_time": "1952-01-17T16:25:34",
+        "pillars": {
+          "year": "辛卯",
+          "month": "辛丑",
+          "day": "壬戌",
+          "hour": "戊申"
+        }
+      }
+    ],
+    "hp-01": {
+      "rule_id": "hp-01",
+      "source": "《渊海子平》（十干合/论三刑）《三命通会》（论六合/论冲/论三合/论六害）",
+      "method": "A 四柱×B 四柱逐柱两两计数：天干五合（甲己合土…戊癸合火）、天干相克（同性相克：甲戊…癸丁）、地支六合（子丑合土…午未合土）、三合半合（申子辰…亥卯未同局）、六冲（子午…巳亥）、三刑（寅巳申无恩/丑戌未恃势/子卯无礼/辰午酉亥自刑）、六害（子未…酉戌）",
+      "alt": "异文①三刑口径（2026-08-16 修正）：《三命通会·论三刑》「寅巳申何以謂之無恩」「辰午酉亥何以謂之自刑——寅申巳亥有寅巳申互相刑，內有亥無刑」，三刑三字俱全方成刑（子卯无礼之刑仅两字、辰午酉亥同支自刑除外），寅巳申/丑戌未仅见两字不判刑，落入其他关系（寅巳两字按六害）；此口径经易安居 hehun.php 实测证实（两字寅巳报相害、三字寅巳申报无恩之刑）；旧口径「两字相见即刑」弃用；②天干相克亦作「七冲」（甲庚乙辛丙壬丁癸）仅四对，取十干同性相克十对口径；③三合两人间为半合（缺一字），全合须三支齐全（身内三支论）；④支关系优先级链（hp-01/03/05 一致）：六合>同支自刑>三合半合>六冲>三刑（三字俱全）>六害；hp-07 夫妻宫另为单盘链（六冲>六合>三刑>六害，无三合半合/自刑分支）；巳申取合、寅申/丑未取冲、寅巳两字取害（寅巳申三字俱全时寅巳取刑）",
+      "counts": {
+        "天干五合": 1,
+        "天干相克": 3,
+        "地支六合": 1,
+        "地支三合": 4,
+        "地支六冲": 2,
+        "地支三刑": 2,
+        "地支六害": 1
+      },
+      "pairs": {
+        "地支三合": [
+          {
+            "a": "甲年支寅",
+            "b": "乙日支戌",
+            "desc": "寅戌属火局（半合）",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论三合》"
+          },
+          {
+            "a": "甲月支午",
+            "b": "乙日支戌",
+            "desc": "午戌属火局（半合）",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论三合》"
+          },
+          {
+            "a": "甲日支未",
+            "b": "乙年支卯",
+            "desc": "未卯属木局（半合）",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论三合》"
+          },
+          {
+            "a": "甲时支戌",
+            "b": "乙日支戌",
+            "desc": "戌戌属火局（半合）",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论三合》"
+          }
+        ],
+        "天干相克": [
+          {
+            "a": "甲年干甲",
+            "b": "乙时干戊",
+            "desc": "甲戊同性相克",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论十干》"
+          },
+          {
+            "a": "甲日干丁",
+            "b": "乙年干辛",
+            "desc": "丁辛同性相克",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论十干》"
+          },
+          {
+            "a": "甲日干丁",
+            "b": "乙月干辛",
+            "desc": "丁辛同性相克",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论十干》"
+          }
+        ],
+        "地支六冲": [
+          {
+            "a": "甲年支寅",
+            "b": "乙时支申",
+            "desc": "寅申六冲",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论冲》"
+          },
+          {
+            "a": "甲日支未",
+            "b": "乙月支丑",
+            "desc": "未丑六冲",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论冲》"
+          }
+        ],
+        "地支六害": [
+          {
+            "a": "甲月支午",
+            "b": "乙月支丑",
+            "desc": "午丑六害",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论六害》"
+          }
+        ],
+        "天干五合": [
+          {
+            "a": "甲日干丁",
+            "b": "乙日干壬",
+            "desc": "丁壬合化木",
+            "rule_id": "hp-01",
+            "source": "《渊海子平·十干合》"
+          }
+        ],
+        "地支三刑": [
+          {
+            "a": "甲日支未",
+            "b": "乙日支戌",
+            "desc": "未戌相刑（恃势之刑）",
+            "rule_id": "hp-01",
+            "source": "《渊海子平·论三刑》"
+          },
+          {
+            "a": "甲时支戌",
+            "b": "乙月支丑",
+            "desc": "戌丑相刑（恃势之刑）",
+            "rule_id": "hp-01",
+            "source": "《渊海子平·论三刑》"
+          }
+        ],
+        "地支六合": [
+          {
+            "a": "甲时支戌",
+            "b": "乙年支卯",
+            "desc": "戌卯六合",
+            "rule_id": "hp-01",
+            "source": "《三命通会·论六合》"
+          }
+        ]
+      }
+    },
+    "hp-02": {
+      "rule_id": "hp-02",
+      "source": "《渊海子平·论十神》《三命通会》十神定位法（r5 十神表：生我印、我生食伤、克我官杀、我克财、同我比劫）",
+      "main": {
+        "a_in_b": {
+          "subject": "A 日干",
+          "dm": "丁",
+          "viewed_by": "B（日干壬）",
+          "god": "正财",
+          "role": "财星：利益合作倾向，务实互补（我克，财为妻/利源）",
+          "interpretation": "B 视 A 为正财：B 对 A 的关系立场（见 role）"
+        },
+        "b_in_a": {
+          "subject": "B 日干",
+          "dm": "壬",
+          "viewed_by": "A（日干丁）",
+          "god": "正官",
+          "role": "官星：约束/责任/管理倾向，对方持重（克我，官主规矩）",
+          "interpretation": "A 视 B 为正官：A 对 B 的关系立场（见 role）"
+        }
+      },
+      "brief": {
+        "a_in_b": [
+          {
+            "pos": "年干",
+            "gan": "甲",
+            "god": "食神",
+            "role": "食神：轻松相处/表达输出倾向（我生，食主享受）"
+          },
+          {
+            "pos": "月干",
+            "gan": "庚",
+            "god": "偏印",
+            "role": "印星：庇护/独思倾向（生我，枭神主偏执智谋）"
+          },
+          {
+            "pos": "日支主气",
+            "gan": "己",
+            "god": "正官",
+            "role": "官星：约束/责任/管理倾向，对方持重（克我，官主规矩）"
+          }
+        ],
+        "b_in_a": [
+          {
+            "pos": "年干",
+            "gan": "辛",
+            "god": "偏财",
+            "role": "财星：利益合作倾向，大方不拘（我克，偏财主横财/人脉）"
+          },
+          {
+            "pos": "月干",
+            "gan": "辛",
+            "god": "偏财",
+            "role": "财星：利益合作倾向，大方不拘（我克，偏财主横财/人脉）"
+          },
+          {
+            "pos": "日支主气",
+            "gan": "戊",
+            "god": "伤官",
+            "role": "伤官：挑剔消耗/创意对抗倾向（我生，伤主锋芒）"
+          }
+        ]
+      }
+    },
+    "hp-03": {
+      "rule_id": "hp-03",
+      "source": "《渊海子平》《三命通会》婚配口诀；data/nayin.csv 纳音",
+      "ri_zhi": {
+        "a_day_zhi": "未",
+        "b_day_zhi": "戌",
+        "relation": "三刑",
+        "note": "日支夫妻宫相刑（恃势之刑）：婚姻场景负项",
+        "rule_id": "hp-03",
+        "source": "《三命通会》论六合/论冲/论三刑（日支为夫妻宫）"
+      },
+      "sheng_xiao": {
+        "a_year_zhi": "寅",
+        "b_year_zhi": "卯",
+        "relation": "无特殊",
+        "note": "生肖寅卯无冲合刑害",
+        "rule_id": "hp-03",
+        "source": "《三命通会》生肖六合（子丑合…）、三合、六冲（子午…）"
+      },
+      "nayin": {
+        "a_year_gz": "甲寅",
+        "a_nayin": "大溪水",
+        "b_year_gz": "辛卯",
+        "b_nayin": "松柏木",
+        "relation": "相生",
+        "note": "大溪水（水）生 松柏木（木）：纳音相生，滋养对方",
+        "rule_id": "hp-03",
+        "source": "data/nayin.csv（《渊海子平》纳音表，30 对）"
+      },
+      "wuxing": {
+        "a_counts": {
+          "木": 2,
+          "火": 2,
+          "土": 2,
+          "金": 2,
+          "水": 0
+        },
+        "b_counts": {
+          "木": 1,
+          "火": 0,
+          "土": 3,
+          "金": 3,
+          "水": 1
+        },
+        "complementary": [
+          {
+            "b_missing": "火",
+            "a_strong": 2,
+            "desc": "B 缺火、A 火旺(2)：互补可取"
+          }
+        ],
+        "count_basis": "天干4+地支4=8 字（不含藏干）",
+        "rule_id": "hp-03",
+        "source": "五行互补统计（r5 五行表）"
+      }
+    },
+    "hp-04": {
+      "rule_id": "hp-04",
+      "source": "《渊海子平》《三命通会》合婚/关系判断综合；结构分+十神角色分+互补分 加权启发式",
+      "scores": {
+        "structure": -2,
+        "shishen": 3,
+        "complementary": 2,
+        "nayin": 1,
+        "day_branch(fqg)": -2,
+        "total": 2
+      },
+      "score_rule": "结构(五合+1/六合+1/三合+1/天干克-1/六冲-1/三刑-1/六害-1) + 十神(财+2 官+1 杀-1 印+2 比0 劫-1 食+1 伤-1，双向) + 互补每对+2 + 纳音生+1 克-1 + 日支(六合+2 三合+2 六冲-2 三刑-2 六害-1)",
+      "tendency": "平",
+      "disclaimer": "规则启发式，非神断：倾向结论为规则计分加权综合，仅供参考，不构成任何决策依据",
+      "scene_tendencies": {
+        "婚姻": {
+          "score": -3.0,
+          "tendency": "平",
+          "focus": "侧重：日支夫妻宫冲合（权重最高）、生肖六合三合、纳音互配"
+        },
+        "合作": {
+          "score": 7.0,
+          "tendency": "相合",
+          "focus": "侧重：十神互定位财官印（利益/管理角色）、五行互补、纳音生克"
+        },
+        "朋友": {
+          "score": -0.5,
+          "tendency": "平",
+          "focus": "侧重：天干五合/地支六合三合、比肩食神角色、生肖六合三合"
+        },
+        "相处": {
+          "score": -3.0,
+          "tendency": "平",
+          "focus": "侧重：六冲/三刑/六害（负面结构权重最高）、日支关系、七杀伤官角色"
+        }
+      },
+      "scene": "婚姻"
+    },
+    "hp-05": {
+      "rule_id": "hp-05",
+      "source": "《三命通会·论太岁》（流年太岁章）：流年干支对命局引动；规则启发式，非神断",
+      "target_year": "1974年",
+      "liunian_gz": "甲寅",
+      "tai_sui": {
+        "zhi": "寅",
+        "desc": "甲寅年值年太岁为寅（虎年），《三命通会·论太岁》：「太岁者，岁之君」，流年支与命局支冲合刑害为引动主轴"
+      },
+      "events": [
+        {
+          "target": "A",
+          "type": "流年干十神引动",
+          "desc": "1974年天干甲对A日干丁为正印：印星：庇护/支持倾向，长辈缘厚（生我，印主扶持）",
+          "score": 2
+        },
+        {
+          "target": "A",
+          "type": "流年支对年支",
+          "desc": "1974年地支寅 与 A 年支寅：三合1",
+          "score": 1
+        },
+        {
+          "target": "B",
+          "type": "流年干十神引动",
+          "desc": "1974年天干甲对B日干壬为食神：食神：轻松相处/表达输出倾向（我生，食主享受）",
+          "score": 1
+        },
+        {
+          "target": "B",
+          "type": "流年支对日支",
+          "desc": "1974年地支寅 与 B 日支戌：三合1",
+          "score": 1
+        }
+      ],
+      "score": 5,
+      "tendency": "顺",
+      "disclaimer": "规则启发式，非神断：流年倾向为十神引动+地支冲合加权综合"
+    }
+  }
+}

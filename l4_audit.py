@@ -9,7 +9,7 @@
    - 2000-01-01 00:30 拉萨 91E：m1 真太阳时前日夜 vs 六壬北京时当日（preregister 拉萨案例）
    - 2024-02-10 23:30：两口径一致锚点
 ③ Rule-ID 注册表双向校验：data/rule_registry.csv ↔ m1.py/l3_*.py 代码字面量全覆盖（缺一即报）。
-④ 快照重签/校验：--resign 按 git ls-files 全量重算 SHA256SUMS.txt（L4 范围，含自身行沿用 M1 格式）；
+④ 快照重签/校验：--resign 按 git ls-files 全量重算 SHA256SUMS.txt（L4 范围，含自身行沿用 M1 格式；文本按 LF 归一取哈希，与 .gitattributes eol=lf 对称，防 CRLF 检出伪失配）；
    --verify 只读逐文件哈希比对（SHA256SUMS.txt 自身行自引用跳过），全一致 exit 0、任一失配列文件 exit 1。
 ⑤ 归档抽查：l4_audit_ziwei.py（紫微 oracle 缓存独立解析）+ 奇门定局 18 例手工核对。
 幂等：默认模式全只读；--resign 显式才写清单；--verify 只读；报告 report/l4_audit_report.txt 重跑覆盖不重复申报。
@@ -99,6 +99,7 @@ def e2e_audit(dt, lon, tag, rows, dgz):
     import l3_liuyao, l3_wangshuai, l3_hepan, l3_heluolishu, l3_qimen, l3_meihua
     import l3_xiaoliuren, l3_chenggu, l3_ziwei, l3_bazi_daliu, l3_shensha
     import l3_liuren, l3_huangli, l3_wuyunliuqi, l3_ziwei_liunian, l3_qimen_duanju
+    import l3_bazi_liuri, l3_tieban
 
     ly = l3_liuyao.compute(dt, lon)
     check("error" not in ly, f"[{tag}] 六爻可算")
@@ -229,6 +230,33 @@ def e2e_audit(dt, lon, tag, rows, dgz):
                   str(hp["persons"][1]["pillars"]))
         check("rule_id" in hp.get("hp-01", {}) and "rule_id" in hp.get("hp-04", {}),
               f"[{tag}] 合盘 hp-01/hp-04 带 Rule-ID")
+
+    # 流日（v1.1）：原局=m1；流日日柱=ganzhi_days 表值（正午反解后真太阳日期=当日）；黄历层=流日日柱（双源同值）
+    lr = l3_bazi_liuri.compute(dt, lon, "男", d, 1, True)
+    check("error" not in lr, f"[{tag}] 流日可算", "" if "error" not in lr else lr["error"])
+    if "error" not in lr:
+        e = lr["days"][0]
+        check(lr["chart"]["pillars"] == P, f"[{tag}] 流日原局=m1", str(lr["chart"]["pillars"]))
+        check(e["shape"]["day"] == dgz.get(d.isoformat()), f"[{tag}] 流日日柱=ganzhi_days(正午)",
+              f"{e['shape']['day']} vs {dgz.get(d.isoformat())}")
+        check(e["huangli"]["ganzhi"] == e["shape"]["day"], f"[{tag}] 流日黄历层=流日日柱(双源同值)")
+
+    # 铁板（v1.1）：太玄数键 8 数；含刻候选四柱=m1；八刻候选=8
+    tb = l3_tieban.lookup(dt, lon)
+    check("error" not in tb, f"[{tag}] 铁板查表可算", "" if "error" not in tb else tb["error"])
+    if "error" not in tb:
+        check(tb["pillars"] == P, f"[{tag}] 铁板四柱=m1", str(tb["pillars"]))
+        check(len(tb["key"]["values"]) == 8 and tb["key"]["total"] == sum(tb["key"]["values"]),
+              f"[{tag}] 铁板太玄数键=8 数和")
+    zc = l3_tieban.ke_candidates(dt, lon, "8")
+    check("error" not in zc and len(zc["candidates"]) == 8, f"[{tag}] 铁板八刻候选=8")
+    if "error" not in zc and len(zc["candidates"]) == 8:
+        with_p = [c for c in zc["candidates"] if "pillars" in c]
+        ok = bool(with_p) and all(c["pillars"]["day"] == dgz[c["sample_true"][:10]]
+                                  and c["pillars"]["hour"][1] == l3_tieban.SHICHEN[m1.shichen(int(c["sample_true"][11:13]))]
+                                  for c in with_p)
+        check(ok, f"[{tag}] 铁板候选日柱=ganzhi_days(真太阳日期)+时支=真太阳时辰",
+              f"{len(with_p)}/8 候选有四柱（空集亦判 FAIL，防 all([]) 空真）")
     return (PASS - n0[0], FAIL - n0[1])
 
 
@@ -298,6 +326,13 @@ def registry_check():
     arb_refs = {w for w in REG_SKIP if w not in REG_SKIP_NOTE}
     check(all(w in arb_ids for w in arb_refs), "申报编号 wylq-001..005/qd-b-01..21 在 arbitration_log.csv 有载体",
           f"缺 {sorted(arb_refs - arb_ids)}")
+    # CSV 表结构锁：防未转义半角逗号致列数漂移（registry 5 列 / arbitration mh-b02 11 列，2026-09-15 审计修复轮加锁）
+    bad = []
+    for rel, ncol in [("data/arbitration_log.csv", 10), ("data/rule_registry.csv", 4)]:
+        with open(os.path.join(BASE, rel), encoding="utf-8") as fh:
+            bad += [f"{rel} 物理行 {i}" for i, r in enumerate(csv.DictReader(fh), start=2)
+                    if None in r or len(r) != ncol]
+    check(not bad, "CSV 表结构锁：arbitration_log 10 列 / rule_registry 4 列", f"异常 {bad}")
     if REG_SKIP_NOTE:
         for k, v in REG_SKIP_NOTE.items():
             LINES.append(f"  NOTE 审计注记 {k}: {v}")
@@ -323,12 +358,18 @@ def boundary_check():
     return pending, bare_fail
 
 
+def _norm_sha(path):
+    """文本字节 LF 归一后 sha256（.gitattributes eol=lf 口径）：CRLF 工作区/检出/归档字节同值，防伪失配。"""
+    return hashlib.sha256(open(path, "rb").read().replace(b"\r\n", b"\n")).hexdigest()
+
+
 def resign():
-    """L4 重签：git ls-files 全量 sha256 → SHA256SUMS.txt（含自身行沿用 M1 格式）。"""
+    """L4 重签：git ls-files 全量 sha256（文本按 LF 归一）→ SHA256SUMS.txt（含自身行沿用 M1 格式）。"""
     files = subprocess.run(["git", "ls-files"], cwd=BASE, capture_output=True, text=True,
                            encoding="utf-8").stdout.split()
     lines = [f"# generated: {datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}",
              "# L4 重签：M0-M3 全部冻结文件（git ls-files 全量，排除未入库临时产物）",
+             "# hash: sha256，文本按 LF 归一（与 .gitattributes eol=lf 对称）",
              "# signature: pending"]
     n = 0
     for f in sorted(files):
@@ -337,16 +378,16 @@ def resign():
             continue
         if f == "SHA256SUMS.txt":
             h = open(p, encoding="utf-8").read().encode("utf-8")  # 用重签前内容哈希（M1 同法）
+            lines.append(hashlib.sha256(h.replace(b"\r\n", b"\n")).hexdigest() + " *" + f)
         else:
-            h = open(p, "rb").read()
-        lines.append(hashlib.sha256(h).hexdigest() + " *" + f)
+            lines.append(_norm_sha(p) + " *" + f)
         n += 1
-    open(os.path.join(BASE, "SHA256SUMS.txt"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
+    open(os.path.join(BASE, "SHA256SUMS.txt"), "w", encoding="utf-8", newline="\n").write("\n".join(lines) + "\n")
     print(f"已重签 {n} 个文件（含 SHA256SUMS.txt 自身行）→ SHA256SUMS.txt")
 
 
 def verify():
-    """快照校验（只读）：读 SHA256SUMS.txt 逐文件 sha256 比对；全一致 exit 0，任一失配列文件 exit 1。
+    """快照校验（只读）：读 SHA256SUMS.txt 逐文件 sha256（文本按 LF 归一）比对；全一致 exit 0，任一失配列文件 exit 1。
     SHA256SUMS.txt 自身行记录的是重签前内容哈希（M1 同法，自引用），跳过并注明。"""
     mism, missing, n = [], [], 0
     with open(os.path.join(BASE, "SHA256SUMS.txt"), encoding="utf-8") as f:
@@ -362,7 +403,7 @@ def verify():
             if not os.path.exists(fp):
                 missing.append(path)
                 continue
-            if hashlib.sha256(open(fp, "rb").read()).hexdigest() != want:
+            if _norm_sha(fp) != want:
                 mism.append(path)
     if not mism and not missing:
         print(f"快照校验通过：{n} 个文件哈希全部一致（SHA256SUMS.txt 自身行自引用跳过）")

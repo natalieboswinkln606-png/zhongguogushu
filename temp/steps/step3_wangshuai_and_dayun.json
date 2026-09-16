@@ -1,0 +1,254 @@
+{
+  "wangshuai": {
+    "day_master": "戊",
+    "de_ling": {
+      "rule_id": "ws-01",
+      "source": "《三命通会·论五行旺相休囚死》；月支=m1 r4 节换月，本气=data/canggan.csv",
+      "month_zhi": "丑",
+      "ben_qi": "己",
+      "ben_qi_wx": "土",
+      "status": "旺",
+      "score": 100,
+      "full_table": {
+        "木": "囚",
+        "火": "休",
+        "土": "旺",
+        "金": "相",
+        "水": "死"
+      }
+    },
+    "de_di": {
+      "rule_id": "ws-02",
+      "source": "data/changsheng.csv 十二长生（火土同宫阴生阳死通行表）；藏干=data/canggan.csv；日支×2（自定口径）",
+      "alt": "阴干按本表逆行位；异文『阴干从阳』派（乙同甲、丁己同丙戊）按阳干位查表；弱地含沐浴/衰/病/死/墓=0 分，冠带/胎/养=中地 1 分为自定补充档",
+      "items": [
+        {
+          "pillar": "year支",
+          "zhi": "亥",
+          "canggan": "壬甲",
+          "stage": "绝",
+          "root": false,
+          "points": 0,
+          "weight": 1
+        },
+        {
+          "pillar": "month支",
+          "zhi": "丑",
+          "canggan": "己癸辛",
+          "stage": "养",
+          "root": true,
+          "points": 1,
+          "weight": 1
+        },
+        {
+          "pillar": "day支",
+          "zhi": "午",
+          "canggan": "丁己",
+          "stage": "帝旺",
+          "root": true,
+          "points": 4,
+          "weight": 2
+        },
+        {
+          "pillar": "hour支",
+          "zhi": "午",
+          "canggan": "丁己",
+          "stage": "帝旺",
+          "root": true,
+          "points": 2,
+          "weight": 1
+        }
+      ],
+      "score": 7,
+      "max_score": 10,
+      "score_pct": 70.0
+    },
+    "de_shi": {
+      "rule_id": "ws-03",
+      "source": "rules.py 五行关系（比劫=同、印=生我）逐干/逐藏干清点；天干每现=2、藏干每现=1（自定口径，异文：本中余气可按位降权）",
+      "stems": [
+        {
+          "pillar": "year干",
+          "gan": "乙",
+          "relation": "",
+          "points": 0
+        },
+        {
+          "pillar": "month干",
+          "gan": "己",
+          "relation": "同",
+          "points": 2
+        },
+        {
+          "pillar": "hour干",
+          "gan": "戊",
+          "relation": "同",
+          "points": 2
+        }
+      ],
+      "branches": {
+        "year支": [
+          {
+            "gan": "壬",
+            "relation": "",
+            "points": 0
+          },
+          {
+            "gan": "甲",
+            "relation": "",
+            "points": 0
+          }
+        ],
+        "month支": [
+          {
+            "gan": "己",
+            "relation": "同",
+            "points": 1
+          },
+          {
+            "gan": "癸",
+            "relation": "",
+            "points": 0
+          },
+          {
+            "gan": "辛",
+            "relation": "",
+            "points": 0
+          }
+        ],
+        "day支": [
+          {
+            "gan": "丁",
+            "relation": "生我",
+            "points": 1
+          },
+          {
+            "gan": "己",
+            "relation": "同",
+            "points": 1
+          }
+        ],
+        "hour支": [
+          {
+            "gan": "丁",
+            "relation": "生我",
+            "points": 1
+          },
+          {
+            "gan": "己",
+            "relation": "同",
+            "points": 1
+          }
+        ]
+      },
+      "score": 9,
+      "max_score": 18,
+      "score_pct": 50.0
+    },
+    "zonghe": {
+      "rule_id": "ws-04",
+      "source": "权重 得令 40/得地 35/得势 25：月令为提纲（《子平真诠》『八字用神，专求月令』）",
+      "alt": "异文权重：重令派 60/25/15（《滴天髓》『得时俱为旺』）、均权派 33/33/34",
+      "weights": {
+        "de_ling": 0.4,
+        "de_di": 0.35,
+        "de_shi": 0.25
+      },
+      "score": 77.0,
+      "level": "极旺",
+      "advice": "日主极旺，宜克泄耗（官杀/食伤/财星）抑其过强",
+      "thresholds": {
+        "极旺": "≥75",
+        "偏旺": "60-74",
+        "中和": "40-59",
+        "偏弱": "25-39",
+        "极弱": "<25"
+      }
+    }
+  },
+  "dayun": {
+    "direction": "逆",
+    "qiyun": {
+      "age": 5,
+      "month": 4,
+      "day": 13,
+      "hour": 6
+    },
+    "jie_time": "1996-01-06 09:31",
+    "jiao_time": "2001-06-04 18:10",
+    "steps": [
+      {
+        "index": 1,
+        "ganzhi": "戊子",
+        "gan": "戊",
+        "zhi": "子",
+        "god": "比肩",
+        "start_year": 2001,
+        "end_year": 2010
+      },
+      {
+        "index": 2,
+        "ganzhi": "丁亥",
+        "gan": "丁",
+        "zhi": "亥",
+        "god": "正印",
+        "start_year": 2011,
+        "end_year": 2020
+      },
+      {
+        "index": 3,
+        "ganzhi": "丙戌",
+        "gan": "丙",
+        "zhi": "戌",
+        "god": "偏印",
+        "start_year": 2021,
+        "end_year": 2030
+      },
+      {
+        "index": 4,
+        "ganzhi": "乙酉",
+        "gan": "乙",
+        "zhi": "酉",
+        "god": "正官",
+        "start_year": 2031,
+        "end_year": 2040
+      },
+      {
+        "index": 5,
+        "ganzhi": "甲申",
+        "gan": "甲",
+        "zhi": "申",
+        "god": "七杀",
+        "start_year": 2041,
+        "end_year": 2050
+      },
+      {
+        "index": 6,
+        "ganzhi": "癸未",
+        "gan": "癸",
+        "zhi": "未",
+        "god": "正财",
+        "start_year": 2051,
+        "end_year": 2060
+      },
+      {
+        "index": 7,
+        "ganzhi": "壬午",
+        "gan": "壬",
+        "zhi": "午",
+        "god": "偏财",
+        "start_year": 2061,
+        "end_year": 2070
+      },
+      {
+        "index": 8,
+        "ganzhi": "辛巳",
+        "gan": "辛",
+        "zhi": "巳",
+        "god": "伤官",
+        "start_year": 2071,
+        "end_year": 2080
+      }
+    ]
+  }
+}

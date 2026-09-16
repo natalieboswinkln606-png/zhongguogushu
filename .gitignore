@@ -4,5 +4,12 @@ __pycache__/
 # 生成型中间文件（stdout 转储等），不跟踪；审计类文件（compare_report.txt / assert_report.txt / boundary_cases.csv / SHA256SUMS.txt / errata）保留在版本库
 report/*_stdout.txt
 
-# 外部星历（NASA DE440 完整历表，约 32MB，sw-2057-09 结案独立计算用；来源 ssd.jpl.nasa.gov，入库为 de440_l4.bsp）
+# 外部星历（NASA DE440 系列，体量大不入库；来源 ssd.jpl.nasa.gov，需要时下载后置于项目根）
 de440_l4.bsp
+de440s.bsp
+
+# 测试自产中间产物（assert_l4_audit_output.py 运行时写出，每次重生成）
+temp/_assert_*.json
+
+# 爬虫/外部对拍 oracle 原始 HTML 缓存（未入库）
+data/l3_ziwei_oracle_cache/

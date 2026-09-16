@@ -1,0 +1,49 @@
+======================================================================
+动态星历与超界扩展引擎 (Ephemeris Extension) 测试报告
+======================================================================
+
+[PASS] 年份 1948 节气计算返回 24 项 | len=24
+[PASS] 1948 年 24 节气全量与 CSV 绝对偏差 <= 2 分钟 | 最大秒级差 0.50 分，舍入差 0.00 分
+[PASS] 年份 2024 节气计算返回 24 项 | len=24
+[PASS] 2024 年 24 节气全量与 CSV 绝对偏差 <= 2 分钟 | 最大秒级差 0.52 分，舍入差 1.00 分
+[PASS] 年份 2101 节气计算返回 24 项 | len=24
+[PASS] 2101 年 24 节气全量与 CSV 绝对偏差 <= 2 分钟 | 最大秒级差 0.47 分，舍入差 0.00 分
+[PASS] 1900-2100 年 100 个随机日期 JDN 干支 100% 吻合 (0 误差) | 吻合 100/100
+[PASS] JDN 边界日期 1900-01-01 干支=甲戌 | 得 甲戌
+[PASS] JDN 边界日期 2000-02-29 干支=丁巳 | 得 丁巳
+[PASS] JDN 边界日期 2024-02-29 干支=癸亥 | 得 癸亥
+[PASS] JDN 边界日期 2100-12-31 干支=丁未 | 得 丁未
+[PASS] 1644-04-25 崇祯殉国日 年柱=甲申 (立春后) | 得 甲申
+[PASS] 1644-04-25 崇祯殉国日 月柱=戊辰 (清明后) | 得 戊辰
+[PASS] 1644-04-25 崇祯殉国日 日柱=丁未 (JDN推算丁未日) | 得 丁未
+[PASS] 1644-04-25 崇祯殉国日 时柱=癸卯 (06:00卯时) | 得 癸卯
+[PASS] 1644-04-25 崇祯殉国日 血统标记=astronomical_extrapolated 且 is_extrapolated=True | prov=astronomical_extrapolated ext=True
+[PASS] 1644-04-25 崇祯殉国日 十神推演（日干丁 年正印/月伤官/时七杀） | stems={'year': '正印', 'month': '伤官', 'hour': '七杀'}
+[PASS] 1893-12-26 毛润之诞辰 年柱=癸巳 | 得 癸巳
+[PASS] 1893-12-26 毛润之诞辰 月柱=甲子 (大雪后子月，五虎遁癸年甲子) | 得 甲子
+[PASS] 1893-12-26 毛润之诞辰 日柱=丁酉 (JDN推算丁酉日) | 得 丁酉
+[PASS] 1893-12-26 毛润之诞辰 时柱=甲辰 (08:00辰时，五鼠遁丁日甲辰) | 得 甲辰
+[PASS] 1893-12-26 毛润之诞辰 血统标记=astronomical_extrapolated 且 is_extrapolated=True | prov=astronomical_extrapolated ext=True
+[PASS] 1893-12-26 毛润之诞辰 十神推演（日干丁 年七杀/月正印/时正印） | stems={'year': '七杀', 'month': '正印', 'hour': '正印'}
+[PASS] 2150-02-05 远期四柱计算成功且标记外推 | prov=astronomical_extrapolated y=庚戌
+[PASS] 2024-02-10 表内锚点与 m1.compute 四柱 100% 一致 | m1=['甲辰', '丙寅', '甲辰', '戊辰'] ext=['甲辰', '丙寅', '甲辰', '戊辰']
+[PASS] 2024-02-10 表内锚点 provenance=official_csv_anchor 且 is_extrapolated=False | prov=official_csv_anchor
+[PASS] resolve_solar_term(2024, 立春) 命中 official_csv_anchor | prov=official_csv_anchor
+[PASS] resolve_solar_term(1644, 立春) 外推 astronomical_extrapolated | prov=astronomical_extrapolated dt=1644-02-04 11:00
+[PASS] resolve_solar_term(2150, 立春) 外推 astronomical_extrapolated | prov=astronomical_extrapolated dt=2150-02-04 06:12
+[PASS] resolve_ganzhi_day(2024-02-10) 命中 official_csv_anchor | prov=official_csv_anchor
+[PASS] resolve_ganzhi_day(1644-04-25) 外推 astronomical_extrapolated | prov=astronomical_extrapolated gz=丁未
+[PASS] 2024 立春 代数求根 vs 二分求根 偏差 < 1 秒 | 差 0.0000 秒（代数 2024-02-04 16:27:07 vs 二分 2024-02-04 16:27:07）
+[PASS] 1644 清明 代数求根 vs 二分求根 偏差 < 1 秒 | 差 0.0000 秒（代数 1644-04-04 14:06:40 vs 二分 1644-04-04 14:06:40）
+[PASS] 2101 冬至 代数求根 vs 二分求根 偏差 < 1 秒 | 差 0.0000 秒（代数 2101-12-22 09:38:56 vs 二分 2101-12-22 09:38:56）
+[PASS] 1582-10-04 与 1582-10-15 儒略日数严格连续相差 1 | JDN Oct4=2299160 Oct15=2299161 diff=1
+[PASS] 1582 改历前后干支连续顺延（10-04癸酉 -> 10-15甲戌） | 10-04=癸酉, 10-15=甲戌
+[PASS] 1582-10-05 历史空缺日被安全拦截抛出 ValueError | 
+[PASS] 负年份公元前参数被安全拦截抛出 ValueError | 
+[PASS] 零年份四柱计算安全返回 error 字典而不是 500 崩溃 | 错误: 无法解析日期时间 '0000-01-01 12:00' 或年份超出公历范围 (1~9999)
+[PASS] 2025 春分 跨象限二分求根收敛且与代数解偏差 <= 2 秒 | 偏差 0.0000 秒
+[PASS] 2025 夏至 跨象限二分求根收敛且与代数解偏差 <= 2 秒 | 偏差 0.0000 秒
+[PASS] 2025 秋分 跨象限二分求根收敛且与代数解偏差 <= 2 秒 | 偏差 1.0000 秒
+[PASS] 2025 冬至 跨象限二分求根收敛且与代数解偏差 <= 2 秒 | 偏差 0.0000 秒
+
+合计 43 项，PASS 43，FAIL 0

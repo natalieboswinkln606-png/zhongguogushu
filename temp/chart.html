@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国传统术数全景排盘系统 — 2006-06-25 00:30 (女)</title>
+    <style>
+
+:root {
+    --bg-main: #f8fafc;
+    --bg-card: #ffffff;
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --border-color: #e2e8f0;
+    --primary-color: #1e293b;
+    --gold-accent: #d97706;
+    --card-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+    --hover-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.08), 0 4px 6px -4px rgb(0 0 0 / 0.05);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+    background-color: var(--bg-main);
+    color: var(--text-primary);
+    line-height: 1.5;
+    padding-bottom: 60px;
+}
+
+/* 顶部导航与英雄头 */
+.hero-header {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #f8fafc;
+    padding: 32px 24px;
+    border-bottom: 2px solid #d97706;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+.hero-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.hero-title-wrap h1 {
+    font-size: 26px;
+    font-weight: 700;
+    color: #fbbf24;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+.hero-subtitle {
+    font-size: 13px;
+    color: #94a3b8;
+}
+.hero-meta-bar {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: rgba(255,255,255,0.06);
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(255,255,255,0.1);
+    font-size: 13px;
+}
+.hero-meta-bar span strong { color: #fef08a; }
+
+/* 主体容器与导航标签 */
+.main-content {
+    max-width: 1280px;
+    margin: 24px auto;
+    padding: 0 20px;
+}
+.nav-tab-bar {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 8px;
+    overflow-x: auto;
+}
+.nav-tab-btn {
+    background: #ffffff;
+    border: 1px solid var(--border-color);
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+.nav-tab-btn:hover {
+    color: var(--gold-accent);
+    border-color: var(--gold-accent);
+}
+.nav-tab-btn.active {
+    background: #0f172a;
+    color: #fbbf24;
+    border-color: #0f172a;
+}
+
+/* 区块通用结构 */
+.section-container {
+    background: var(--bg-card);
+    border-radius: 12px;
+    box-shadow: var(--card-shadow);
+    padding: 24px;
+    margin-bottom: 32px;
+    border: 1px solid var(--border-color);
+}
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 14px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+.section-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: #0f172a;
+    border-left: 4px solid var(--gold-accent);
+    padding-left: 10px;
+}
+.section-meta {
+    font-size: 13px;
+    color: var(--text-secondary);
+}
+
+/* ================== 八字四柱与大运 ================== */
+.bazi-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+@media (max-width: 768px) {
+    .bazi-pillars-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.pillar-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease;
+}
+.pillar-card:hover {
+    transform: translateY(-2px);
+    border-color: #cbd5e1;
+}
+.pillar-badge {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    color: #475569;
+    background: #e2e8f0;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-bottom: 6px;
+}
+.stem-god-tag {
+    font-size: 14px;
+    font-weight: 600;
+    color: #0f172a;
+    min-height: 22px;
+    margin-bottom: 6px;
+}
+.char-box {
+    border: 2px solid;
+    border-radius: 8px;
+    padding: 10px 4px;
+    margin-bottom: 8px;
+    position: relative;
+}
+.char-text {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 1;
+    display: block;
+}
+.wx-subtag {
+    position: absolute;
+    bottom: 4px;
+    right: 6px;
+    color: #ffffff;
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.nayin-box {
+    background: #ffffff;
+    border: 1px dashed #cbd5e1;
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 12px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+.nayin-label { color: #64748b; }
+.nayin-val { font-weight: 600; color: #1e293b; }
+.canggan-list {
+    background: #ffffff;
+    border: 1px solid #f1f5f9;
+    border-radius: 6px;
+    padding: 6px;
+    font-size: 11px;
+}
+.cg-header {
+    color: #94a3b8;
+    font-size: 10px;
+    margin-bottom: 4px;
+    text-align: left;
+}
+.cg-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2px 4px;
+    border-bottom: 1px solid #f8fafc;
+}
+.cg-item:last-child { border-bottom: none; }
+.cg-gan { font-weight: 700; }
+.cg-god { color: #334155; }
+.cg-wx { padding: 1px 4px; border-radius: 3px; font-size: 10px; }
+
+/* 旺衰与大运分析面板 */
+.bazi-analysis-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 20px;
+}
+@media (max-width: 900px) {
+    .bazi-analysis-grid { grid-template-columns: 1fr; }
+}
+.analysis-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 18px;
+}
+.panel-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+}
+.panel-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+}
+.panel-subinfo {
+    font-size: 12px;
+    color: #64748b;
+    margin-left: auto;
+}
+.ws-score-hero {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #ffffff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 14px;
+}
+.ws-score-number {
+    font-size: 40px;
+    font-weight: 800;
+    line-height: 1;
+}
+.ws-level-badge {
+    display: inline-block;
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-bottom: 4px;
+}
+.ws-advice-text {
+    font-size: 12px;
+    color: #475569;
+}
+.ws-bars-container { display: flex; flex-direction: column; gap: 10px; }
+.ws-bar-item .bar-title {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: #334155;
+    margin-bottom: 4px;
+}
+.bar-track {
+    background: #e2e8f0;
+    height: 8px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.bar-fill { height: 100%; border-radius: 4px; }
+
+.dayun-steps-scroll {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+@media (max-width: 600px) {
+    .dayun-steps-scroll { grid-template-columns: repeat(2, 1fr); }
+}
+.dayun-step-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 10px 8px;
+    text-align: center;
+    transition: all 0.2s ease;
+}
+.dayun-step-card:hover {
+    border-color: #d97706;
+    box-shadow: 0 2px 6px rgba(217, 119, 6, 0.15);
+}
+.dy-step-idx { font-size: 11px; color: #94a3b8; margin-bottom: 2px; }
+.dy-ganzhi { font-size: 18px; font-weight: 800; margin-bottom: 2px; }
+.dy-god { font-size: 12px; font-weight: 600; color: #334155; }
+.dy-years { font-size: 11px; color: #64748b; margin-top: 4px; }
+.dy-age { font-size: 10px; color: #94a3b8; }
+
+/* ================== 紫微斗数 4x4 回字盘 ================== */
+.zw-board-wrapper {
+    overflow-x: auto;
+    padding: 6px 0;
+}
+.zw-grid-board {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(220px, 1fr));
+    grid-template-rows: repeat(4, minmax(170px, auto));
+    gap: 8px;
+    background: #e2e8f0;
+    padding: 8px;
+    border-radius: 12px;
+}
+.zw-cell {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+    position: relative;
+    cursor: pointer;
+}
+.zw-cell:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    border-color: #0284c7;
+    z-index: 10;
+}
+.zw-cell.highlight-sanfang {
+    background: #f0f9ff !important;
+    border: 2px solid #0284c7 !important;
+    box-shadow: 0 0 12px rgba(2, 132, 199, 0.3) !important;
+}
+.zw-cell.active-focus {
+    background: #fefce8 !important;
+    border: 2px solid #eab308 !important;
+}
+.zw-minggong-cell {
+    border-color: #d97706;
+}
+.zw-minggong-cell .zw-pname {
+    color: #b45309;
+    font-weight: 800;
+}
+.zw-cell-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 6px;
+    margin-bottom: 6px;
+}
+.zw-palace-title {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.zw-pname {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1e293b;
+}
+.zw-shen-tag {
+    background: #dc2626;
+    color: #ffffff;
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+.zw-ganzhi-badge {
+    font-size: 13px;
+    font-weight: 700;
+    color: #64748b;
+    background: #f1f5f9;
+    padding: 1px 6px;
+    border-radius: 4px;
+}
+.zw-stars-container {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.zw-main-stars-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+.zw-main-star {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 15px;
+    font-weight: 800;
+    color: #0f172a;
+    background: #f8fafc;
+    padding: 2px 6px;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+}
+.zw-empty-star { font-size: 12px; color: #94a3b8; font-style: italic; }
+.sihua-badge {
+    font-size: 10px;
+    font-weight: 700;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+.zw-aux-stars-group {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 12px;
+}
+.zw-ji-list { color: #16a34a; font-weight: 600; }
+.zw-sha-list { color: #dc2626; font-weight: 600; }
+.zw-cell-footer {
+    border-top: 1px solid #f1f5f9;
+    padding-top: 4px;
+    margin-top: 6px;
+    font-size: 10px;
+    color: #94a3b8;
+    text-align: right;
+}
+
+/* 紫微中心天盘 */
+.zw-center-panel {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+    color: #f8fafc;
+    border-radius: 10px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 2px solid #d97706;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.3);
+}
+.zw-center-title {
+    font-size: 22px;
+    font-weight: 800;
+    color: #fbbf24;
+    text-align: center;
+    margin-bottom: 16px;
+    letter-spacing: 1px;
+}
+.zw-center-meta-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 13px;
+}
+.center-meta-row {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    padding-bottom: 4px;
+}
+.center-meta-row span { color: #94a3b8; }
+.center-meta-row strong { color: #f1f5f9; }
+.center-sihua-box {
+    margin-top: 10px;
+    background: rgba(255,255,255,0.05);
+    padding: 10px;
+    border-radius: 6px;
+}
+.sihua-box-title { font-size: 11px; color: #cbd5e1; margin-bottom: 6px; }
+.sihua-pills-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.sihua-tag-pill {
+    color: #ffffff;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+}
+.zw-interactive-tip {
+    margin-top: 14px;
+    font-size: 11px;
+    color: #fbbf24;
+    text-align: center;
+    background: rgba(251, 191, 36, 0.1);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+/* ================== 奇门遁甲九宫 ================== */
+.qimen-layout-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 20px;
+}
+@media (max-width: 900px) {
+    .qimen-layout-grid { grid-template-columns: 1fr; }
+}
+.qm-board-panel {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px;
+}
+.qm-grid-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+}
+.qm-cell {
+    background: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 10px;
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.2s ease;
+}
+.qm-cell:hover {
+    border-color: #d97706;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.qm-zf-cell {
+    border: 2px solid #d97706;
+    background: #fffdf5;
+}
+.qm-cell-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    color: #1e293b;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 4px;
+}
+.qm-direction { font-size: 10px; color: #64748b; }
+.qm-badges-wrap { display: flex; gap: 2px; }
+.qm-role-badge {
+    color: #ffffff;
+    font-size: 10px;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+.zf-badge { background: #d97706; }
+.zs-badge { background: #2563eb; }
+.qm-god-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 600;
+}
+.qm-shen-tag { color: #9333ea; }
+.qm-star-tag { color: #0284c7; }
+.qm-gan-center {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 8px 0;
+}
+.qm-tian-gan, .qm-di-gan {
+    font-size: 12px;
+    color: #64748b;
+}
+.qm-tian-gan span, .qm-di-gan span {
+    font-size: 20px;
+    font-weight: 800;
+    color: #0f172a;
+    display: inline-block;
+    margin-left: 2px;
+}
+.qm-door-row {
+    text-align: center;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 4px;
+}
+.qm-door-tag {
+    display: inline-block;
+    font-size: 13px;
+    font-weight: 700;
+    padding: 1px 12px;
+    border-radius: 4px;
+}
+.qm-jimen { background: #f0fdf4; color: #16a34a; border: 1px solid #86efac; }
+.qm-xiongmen { background: #fef2f2; color: #dc2626; border: 1px solid #fca5a5; }
+.qm-zhongmen { background: #f8fafc; color: #475569; border: 1px solid #cbd5e1; }
+
+.qm-geju-panel {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+}
+.qm-geju-scroll {
+    max-height: 480px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-right: 4px;
+}
+.qm-geju-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    padding: 10px 12px;
+}
+.geju-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 4px;
+}
+.geju-name { font-size: 14px; font-weight: 700; color: #1e293b; }
+.geju-type-pill {
+    color: #ffffff;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 1px 6px;
+    border-radius: 3px;
+}
+.geju-palace { font-size: 11px; color: #64748b; margin-left: auto; }
+.geju-basis { font-size: 12px; color: #475569; line-height: 1.4; }
+
+/* ================== 六爻排盘 ================== */
+.ly-dual-gua-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px;
+}
+.ly-gua-header-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 16px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+.ly-header-side { text-align: center; max-width: 420px; }
+.ly-header-side h3 { font-size: 18px; font-weight: 800; color: #0f172a; margin-bottom: 4px; }
+.ly-palace-tag { display: inline-block; font-size: 12px; background: #e2e8f0; padding: 2px 8px; border-radius: 4px; color: #475569; margin-bottom: 6px; }
+.ly-guaci { font-size: 12px; color: #64748b; font-style: italic; }
+.ly-arrow { font-size: 16px; font-weight: bold; color: #d97706; }
+
+.ly-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+}
+.ly-table th {
+    background: #0f172a;
+    color: #f8fafc;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 10px 8px;
+    text-align: center;
+}
+.ly-table td {
+    padding: 10px 8px;
+    text-align: center;
+    font-size: 13px;
+    border-bottom: 1px solid #f1f5f9;
+}
+.ly-line-row:hover { background: #f8fafc; }
+.ly-dong-line { background: #fffdf5; }
+.ly-dong-marker { color: #dc2626; font-size: 10px; font-weight: bold; }
+.yao-bar {
+    width: 80px;
+    height: 12px;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+.yang-bar { background: #1e293b; }
+.yin-bar { display: flex; justify-content: space-between; }
+.yin-bar span { width: 34px; height: 100%; background: #1e293b; border-radius: 2px; }
+.ly-dong-line .yang-bar { background: #dc2626; }
+.ly-dong-line .yin-bar span { background: #dc2626; }
+.sy-badge { font-weight: bold; color: #d97706; }
+
+    </style>
+</head>
+<body>
+    <header class="hero-header">
+        <div class="hero-container">
+            <div class="hero-title-wrap">
+                <h1>中国传统术数工程化全景排盘</h1>
+                <div class="hero-subtitle">四柱八字 · 紫微斗数 · 时家奇门 · 周易六爻</div>
+            </div>
+            <div class="hero-meta-bar">
+                <span>出生时间：<strong>2006-06-25 00:30</strong></span>
+                <span>性别：<strong>女</strong></span>
+                <span>东经经度：<strong>120.0°</strong></span>
+                <span>真太阳时：<strong>2006-06-25T00:27:43</strong></span>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <nav class="nav-tab-bar">
+            <button class="nav-tab-btn active" data-target="all">全景总览 (全部)</button>
+            <button class="nav-tab-btn" data-target="bazi">八字四柱与大运</button>
+            <button class="nav-tab-btn" data-target="ziwei">紫微斗数 4x4 回字盘</button>
+            <button class="nav-tab-btn" data-target="qimen">时家奇门 3x3 洛书盘</button>
+            <button class="nav-tab-btn" data-target="liuyao">周易六爻排卦</button>
+        </nav>
+
+        
+    <section class="section-container" id="section-bazi">
+        <div class="section-header">
+            <h2 class="section-title">八字命盘与大运流转</h2>
+            <div class="section-meta">日主：<strong>乙 (木)</strong> | 综合评级：<span class="ws-tag" style="background:#7c3aed">极弱 (24.2分)</span></div>
+        </div>
+        
+        <div class="bazi-pillars-grid">
+            
+        <div class="pillar-card">
+            <div class="pillar-badge">年柱</div>
+            <div class="stem-god-tag">伤官</div>
+            <div class="char-box gan-box" style="border-color:#fca5a5; background:linear-gradient(180deg, #fef2f2 0%, #ffffff 100%);">
+                <span class="char-text" style="color:#dc2626">丙</span>
+                <span class="wx-subtag" style="background:#ef4444">火</span>
+            </div>
+            <div class="char-box zhi-box" style="border-color:#fcd34d; background:linear-gradient(180deg, #fffbeb 0%, #ffffff 100%);">
+                <span class="char-text" style="color:#b45309">戌</span>
+                <span class="wx-subtag" style="background:#d97706">土</span>
+            </div>
+            <div class="nayin-box">
+                <span class="nayin-label">纳音</span>
+                <span class="nayin-val">屋上土</span>
+            </div>
+            <div class="canggan-list">
+                <div class="cg-header">藏干十神</div>
+                
+            <div class="cg-item">
+                <span class="cg-gan" style="color:#d97706">戊</span>
+                <span class="cg-god">正财</span>
+                <span class="cg-wx" style="background:#fffbeb; color:#b45309">土</span>
+            </div>
+            
+            <div class="cg-item">
+                <span class="cg-gan" style="color:#eab308">辛</span>
+                <span class="cg-god">七杀</span>
+                <span class="cg-wx" style="background:#fefce8; color:#ca8a04">金</span>
+            </div>
+            
+            <div class="cg-item">
+                <span class="cg-gan" style="color:#ef4444">丁</span>
+                <span class="cg-god">食神</span>
+                <span class="cg-wx" style="background:#fef2f2; color:#dc2626">火</span>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="pillar-card">
+            <div class="pillar-badge">月柱</div>
+            <div class="stem-god-tag">劫财</div>
+            <div class="char-box gan-box" style="border-color:#86efac; background:linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);">
+                <span class="char-text" style="color:#16a34a">甲</span>
+                <span class="wx-subtag" style="background:#22c55e">木</span>
+            </div>
+            <div class="char-box zhi-box" style="border-color:#fca5a5; background:linear-gradient(180deg, #fef2f2 0%, #ffffff 100%);">
+                <span class="char-text" style="color:#dc2626">午</span>
+                <span class="wx-subtag" style="background:#ef4444">火</span>
+            </div>
+            <div class="nayin-box">
+                <span class="nayin-label">纳音</span>
+                <span class="nayin-val">沙中金</span>
+            </div>
+            <div class="canggan-list">
+                <div class="cg-header">藏干十神</div>
+                
+            <div class="cg-item">
+                <span class="cg-gan" style="color:#ef4444">丁</span>
+                <span class="cg-god">食神</span>
+                <span class="cg-wx" style="background:#fef2f2; color:#dc2626">火</span>
+            </div>
+            
+            <div class="cg-item">
+                <span class="cg-gan" style="color:#d97706">己</span>
+                <span class="cg-god">偏财</span>
+                <span class="cg-wx" style="background:#fffbeb; color:#b45309">土</span>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="pillar-card">
+            <div class="pillar-badge">日柱</div>
+            <div class="stem-god-tag">日元</div>
+            <div class="char-box gan-box" style="border-color:#86efac; background:linear-gradient(180deg, #f0fdf4 0%, #ffffff 100%);">
+                <span class="char-text" style="color:#16a34a">乙</span>
+                <span class="wx-subtag" style="background:#22c55e">木</span>
+            </div>
+            <div class="char-box zhi-box" style="border-color:#fde047; background:linear-gradient(180deg, #fefce8 0%, #ffffff 100%);">
+                <span class="char-text" style="color:#ca8a04">酉</span>
+                <span class="wx-subtag" style="background:#eab308">金</span>
+            </div>
+            <div class="nayin-box">
+                <span class="nayin-label">纳音</span>
+                <span class="nayin-val">泉中水</span>
+            </div>
+            <div class="canggan-list">
+                <div class="cg-header">藏干十神</div>
+                
+            <div class="cg-item">
+                <span class="cg-gan" style="color:#eab308">辛</span>
+                <span class="cg-god">七杀</span>
+                <span class="cg-wx" style="background:#fefce8; color:#ca8a04">金</span>
+            </div>
+            
+            </div>
+        </div>
+        
+        <div class="pillar-card">
+            <div class="pillar-badge">时柱</div>
+            <div class="stem-god-tag">伤官</div>
+            <div class="char-box gan-box" style="border-color:#fca5a5; background:linear-gradient(180deg, #fef2f2 0%, #ffffff 100%);">
+                <span class="char-text" style="color:#dc2626">丙</span>
+                <span class="wx-subtag" style="background:#ef4444">火</span>
+            </div>
+            <div class="char-box zhi-box" style="border-color:#93c5fd; background:linear-gradient(180deg, #eff6ff 0%, #ffffff 100%);">
+                <span class="char-text" style="color:#2563eb">子</span>
+                <span class="wx-subtag" style="background:#3b82f6">水</span>
+            </div>
+            <div class="nayin-box">
+                <span class="nayin-label">纳音</span>
+                <span class="nayin-val">涧下水</span>
+            </div>
+            <div class="canggan-list">
+                <div class="cg-header">藏干十神</div>
+                
+            <div class="cg-item">
+                <span class="cg-gan" style="color:#3b82f6">癸</span>
+                <span class="cg-god">偏印</span>
+                <span class="cg-wx" style="background:#eff6ff; color:#2563eb">水</span>
+            </div>
+            
+            </div>
+        </div>
+        
+        </div>
+
+        <div class="bazi-analysis-grid">
+            <div class="analysis-card wangshuai-panel">
+                <div class="panel-header">
+                    <span class="panel-icon">⚖️</span>
+                    <h3>日主旺衰判定（三得分析）</h3>
+                </div>
+                <div class="ws-score-hero">
+                    <div class="ws-score-number" style="color:#7c3aed">24.2</div>
+                    <div class="ws-score-details">
+                        <div class="ws-level-badge" style="background:#7c3aed">极弱</div>
+                        <div class="ws-advice-text">日主极弱，喜印比生扶；四柱无根难扶时可论从格（另设）</div>
+                    </div>
+                </div>
+                <div class="ws-bars-container">
+                    <div class="ws-bar-item">
+                        <div class="bar-title">得令 (权重 40%): <span>月支 午 (休) — 50.0分</span></div>
+                        <div class="bar-track"><div class="bar-fill" style="width:50.0%; background:#16a34a"></div></div>
+                    </div>
+                    <div class="ws-bar-item">
+                        <div class="bar-title">得地 (权重 35%): <span>分值 0/10 (0.0%)</span></div>
+                        <div class="bar-track"><div class="bar-fill" style="width:0.0%; background:#2563eb"></div></div>
+                    </div>
+                    <div class="ws-bar-item">
+                        <div class="bar-title">得势 (权重 25%): <span>分值 3/18 (16.7%)</span></div>
+                        <div class="bar-track"><div class="bar-fill" style="width:16.7%; background:#ea580c"></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="analysis-card dayun-panel">
+                <div class="panel-header">
+                    <span class="panel-icon">🔄</span>
+                    <h3>大运走势 (逆排 · 6岁3个月14天10小时起运)</h3>
+                    <span class="panel-subinfo">交运时间：2012-10-09 10:30</span>
+                </div>
+                <div class="dayun-steps-scroll">
+                    
+        <div class="dayun-step-card">
+            <div class="dy-step-idx">第 1 步</div>
+            <div class="dy-ganzhi" style="color:#2563eb">癸巳</div>
+            <div class="dy-god">偏印</div>
+            <div class="dy-years">2012 - 2021</div>
+            <div class="dy-age">6岁 ~ 15岁</div>
+        </div>
+        
+        <div class="dayun-step-card">
+            <div class="dy-step-idx">第 2 步</div>
+            <div class="dy-ganzhi" style="color:#2563eb">壬辰</div>
+            <div class="dy-god">正印</div>
+            <div class="dy-years">2022 - 2031</div>
+            <div class="dy-age">16岁 ~ 25岁</div>
+        </div>
+        
+        <div class="dayun-step-card">
+            <div class="dy-step-idx">第 3 步</div>
+            <div class="dy-ganzhi" style="color:#ca8a04">辛卯</div>
+            <div class="dy-god">七杀</div>
+            <div class="dy-years">2032 - 2041</div>
+            <div class="dy-age">26岁 ~ 35岁</div>
+        </div>
+        
+        <div class="dayun-step-card">
+            <div class="dy-step-idx">第 4 步</div>
+            <div class="dy-ganzhi" style="color:#ca8a04">庚寅</div>
+            <div class="dy-god">正官</div>
+            <div class="dy-years">2042 - 2051</div>
+            <div class="dy-age">36岁 ~ 45岁</div>
+        </div>
+        
+        <div class="dayun-step-card">
+            <div class="dy-step-idx">第 5 步</div>
+            <div class="dy-ganzhi" style="color:#b45309">己丑</div>
+            <div class="dy-god">偏财</div>
+            <div class="dy-years">2052 - 2061</div>
+            <div class="dy-age">46岁 ~ 55岁</div>
+        </div>
+        
+        <div class="dayun-step-card">
+            <div class="dy-step-idx">第 6 步</div>
+            <div class="dy-ganzhi" style="color:#b45309">戊子</div>
+            <div class="dy-god">正财</div>
+            <div class="dy-years">2062 - 2071</div>
+            <div class="dy-age">56岁 ~ 65岁</div>
+        </div>
+        
+        <div class="dayun-step-card">
+            <div class="dy-step-idx">第 7 步</div>
+            <div class="dy-ganzhi" style="color:#dc2626">丁亥</div>
+            <div class="dy-god">食神</div>
+            <div class="dy-years">2072 - 2081</div>
+            <div class="dy-age">66岁 ~ 75岁</div>
+        </div>
+        
+        <div class="dayun-step-card">
+            <div class="dy-step-idx">第 8 步</div>
+            <div class="dy-ganzhi" style="color:#dc2626">丙戌</div>
+            <div class="dy-god">伤官</div>
+            <div class="dy-years">2082 - 2091</div>
+            <div class="dy-age">76岁 ~ 85岁</div>
+        </div>
+        
+                </div>
+            </div>
+        </div>
+    </section>
+    
+        
+    <section class="section-container" id="section-ziwei">
+        <div class="section-header">
+            <h2 class="section-title">紫微斗数 4x4 回字形天盘</h2>
+            <div class="section-meta">命宫：甲午 | 五行局：金四局 | 身宫：午</div>
+        </div>
+        <div class="zw-board-wrapper">
+            <div class="zw-grid-board">
+                
+    <div class="zw-center-panel" style="grid-row: 2 / span 2; grid-column: 2 / span 2;">
+        <div class="zw-center-title">紫微斗数命盘</div>
+        <div class="zw-center-meta-list">
+            <div class="center-meta-row"><span>公历日期：</span><strong>2006-06-25 00:30</strong></div>
+            <div class="center-meta-row"><span>农历干支：</span><strong>丙戌年 五月30日 (子时)</strong></div>
+            <div class="center-meta-row"><span>五行局局：</span><strong style="color:#d97706">金四局</strong></div>
+            <div class="center-meta-row"><span>命宫地支：</span><strong>甲午</strong> | <span>身宫：</span><strong>午</strong></div>
+            <div class="center-meta-row"><span>紫微星位：</span><strong>亥宫</strong></div>
+            <div class="center-sihua-box">
+                <div class="sihua-box-title">生年四化</div>
+                <div class="sihua-pills-row"><span class='sihua-tag-pill' style='background:#16a34a'>天同·禄</span> <span class='sihua-tag-pill' style='background:#9333ea'>天机·权</span> <span class='sihua-tag-pill' style='background:#0284c7'>文昌·科</span> <span class='sihua-tag-pill' style='background:#ea580c'>廉贞·忌</span></div>
+            </div>
+        </div>
+        <div class="zw-interactive-tip">💡 悬停或点击任意宫位，即可动态高亮其「三方四正」</div>
+    </div>
+    
+                
+        <div class="zw-cell " data-zhi="巳" data-name="兄弟" data-sanfang="兄弟,疾厄,田宅,仆役" data-sanfang-zhi="巳,丑,酉,亥" style="grid-row: 1; grid-column: 1;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">兄弟</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">癸巳</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-main-star">天府</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"><span class="zw-ji-star">禄存</span></div>
+                    <div class="zw-sha-list"></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：兄弟, 疾厄, 田宅, 仆役">四正: 仆役</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell zw-minggong-cell" data-zhi="午" data-name="命宫" data-sanfang="命宫,财帛,官禄,迁移" data-sanfang-zhi="午,寅,戌,子" style="grid-row: 1; grid-column: 2;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">命宫</span>
+                    <span class="zw-shen-tag">身宫</span>
+                </div>
+                <div class="zw-ganzhi-badge">甲午</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-main-star">天同<span class="sihua-badge" style="background:#16a34a; color:#ffffff">禄</span></span><span class="zw-main-star">太阴</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"><span class="zw-ji-star">右弼</span></div>
+                    <div class="zw-sha-list"><span class="zw-sha-star">擎羊</span></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：命宫, 财帛, 官禄, 迁移">四正: 迁移</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell " data-zhi="未" data-name="父母" data-sanfang="父母,子女,仆役,疾厄" data-sanfang-zhi="未,卯,亥,丑" style="grid-row: 1; grid-column: 3;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">父母</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">乙未</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-main-star">武曲</span><span class="zw-main-star">贪狼</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"></div>
+                    <div class="zw-sha-list"></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：父母, 子女, 仆役, 疾厄">四正: 疾厄</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell " data-zhi="申" data-name="福德" data-sanfang="福德,夫妻,迁移,财帛" data-sanfang-zhi="申,辰,子,寅" style="grid-row: 1; grid-column: 4;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">福德</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">丙申</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-main-star">太阳</span><span class="zw-main-star">巨门</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"><span class="zw-ji-star">左辅</span> <span class="zw-ji-star">天马</span></div>
+                    <div class="zw-sha-list"></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：福德, 夫妻, 迁移, 财帛">四正: 财帛</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell " data-zhi="辰" data-name="夫妻" data-sanfang="夫妻,迁移,福德,官禄" data-sanfang-zhi="辰,子,申,戌" style="grid-row: 2; grid-column: 1;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">夫妻</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">壬辰</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-empty-star">无主星</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"><span class="zw-ji-star">文曲</span></div>
+                    <div class="zw-sha-list"><span class="zw-sha-star">陀罗</span></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：夫妻, 迁移, 福德, 官禄">四正: 官禄</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell " data-zhi="酉" data-name="田宅" data-sanfang="田宅,兄弟,疾厄,子女" data-sanfang-zhi="酉,巳,丑,卯" style="grid-row: 2; grid-column: 4;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">田宅</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">丁酉</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-main-star">天相</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"><span class="zw-ji-star">天钺</span></div>
+                    <div class="zw-sha-list"></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：田宅, 兄弟, 疾厄, 子女">四正: 子女</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell " data-zhi="卯" data-name="子女" data-sanfang="子女,仆役,父母,田宅" data-sanfang-zhi="卯,亥,未,酉" style="grid-row: 3; grid-column: 1;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">子女</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">辛卯</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-main-star">廉贞<span class="sihua-badge" style="background:#ea580c; color:#ffffff">忌</span></span><span class="zw-main-star">破军</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"></div>
+                    <div class="zw-sha-list"><span class="zw-sha-star">铃星</span></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：子女, 仆役, 父母, 田宅">四正: 田宅</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell " data-zhi="戌" data-name="官禄" data-sanfang="官禄,命宫,财帛,夫妻" data-sanfang-zhi="戌,午,寅,辰" style="grid-row: 3; grid-column: 4;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">官禄</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">戊戌</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-main-star">天机<span class="sihua-badge" style="background:#9333ea; color:#ffffff">权</span></span><span class="zw-main-star">天梁</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"><span class="zw-ji-star">文昌</span></div>
+                    <div class="zw-sha-list"></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：官禄, 命宫, 财帛, 夫妻">四正: 夫妻</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell " data-zhi="寅" data-name="财帛" data-sanfang="财帛,官禄,命宫,福德" data-sanfang-zhi="寅,戌,午,申" style="grid-row: 4; grid-column: 1;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">财帛</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">庚寅</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-empty-star">无主星</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"></div>
+                    <div class="zw-sha-list"></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：财帛, 官禄, 命宫, 福德">四正: 福德</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell " data-zhi="丑" data-name="疾厄" data-sanfang="疾厄,田宅,兄弟,父母" data-sanfang-zhi="丑,酉,巳,未" style="grid-row: 4; grid-column: 2;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">疾厄</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">辛丑</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-empty-star">无主星</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"></div>
+                    <div class="zw-sha-list"><span class="zw-sha-star">火星</span></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：疾厄, 田宅, 兄弟, 父母">四正: 父母</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell " data-zhi="子" data-name="迁移" data-sanfang="迁移,福德,夫妻,命宫" data-sanfang-zhi="子,申,辰,午" style="grid-row: 4; grid-column: 3;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">迁移</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">庚子</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-empty-star">无主星</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"></div>
+                    <div class="zw-sha-list"></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：迁移, 福德, 夫妻, 命宫">四正: 命宫</span>
+            </div>
+        </div>
+        
+        <div class="zw-cell " data-zhi="亥" data-name="仆役" data-sanfang="仆役,父母,子女,兄弟" data-sanfang-zhi="亥,未,卯,巳" style="grid-row: 4; grid-column: 4;">
+            <div class="zw-cell-header">
+                <div class="zw-palace-title">
+                    <span class="zw-pname">仆役</span>
+                    
+                </div>
+                <div class="zw-ganzhi-badge">己亥</div>
+            </div>
+            <div class="zw-stars-container">
+                <div class="zw-main-stars-group">
+                    <span class="zw-main-star">紫微</span><span class="zw-main-star">七杀</span>
+                </div>
+                <div class="zw-aux-stars-group">
+                    <div class="zw-ji-list"><span class="zw-ji-star">天魁</span></div>
+                    <div class="zw-sha-list"></div>
+                </div>
+            </div>
+            <div class="zw-cell-footer">
+                <span class="zw-sanfang-tip" title="三方四正：仆役, 父母, 子女, 兄弟">四正: 兄弟</span>
+            </div>
+        </div>
+        
+            </div>
+        </div>
+    </section>
+    
+        
+    <section class="section-container" id="section-qimen">
+        <div class="section-header">
+            <h2 class="section-title">时家奇门 3x3 洛书九宫盘</h2>
+            <div class="section-meta">节气：<strong>夏至</strong> | 遁元：<strong>阴遁3局 (中元)</strong> | 旬首：<strong>甲戌 (己)</strong></div>
+        </div>
+
+        <div class="qimen-layout-grid">
+            <div class="qm-board-panel">
+                <div class="qm-grid-board">
+                    
+        <div class="qm-cell " style="grid-row: 1; grid-column: 1;">
+            <div class="qm-cell-header">
+                <span class="qm-palace-num">4 巽宫</span>
+                <span class="qm-direction">东南方</span>
+                <div class="qm-badges-wrap"></div>
+            </div>
+            <div class="qm-god-row">
+                <span class="qm-shen-tag">神：太阴</span>
+                <span class="qm-star-tag">星：天辅</span>
+            </div>
+            <div class="qm-gan-center">
+                <div class="qm-tian-gan" title="天盘干">天 <span>乙</span></div>
+                <div class="qm-di-gan" title="地盘干">地 <span>乙</span></div>
+            </div>
+            <div class="qm-door-row">
+                <span class="qm-door-tag qm-zhongmen">景门</span>
+            </div>
+        </div>
+        
+        <div class="qm-cell " style="grid-row: 1; grid-column: 2;">
+            <div class="qm-cell-header">
+                <span class="qm-palace-num">9 离宫</span>
+                <span class="qm-direction">正南方</span>
+                <div class="qm-badges-wrap"><span class='qm-role-badge zs-badge'>值使</span></div>
+            </div>
+            <div class="qm-god-row">
+                <span class="qm-shen-tag">神：腾蛇</span>
+                <span class="qm-star-tag">星：天英</span>
+            </div>
+            <div class="qm-gan-center">
+                <div class="qm-tian-gan" title="天盘干">天 <span>辛</span></div>
+                <div class="qm-di-gan" title="地盘干">地 <span>辛</span></div>
+            </div>
+            <div class="qm-door-row">
+                <span class="qm-door-tag qm-xiongmen">死门</span>
+            </div>
+        </div>
+        
+        <div class="qm-cell " style="grid-row: 1; grid-column: 3;">
+            <div class="qm-cell-header">
+                <span class="qm-palace-num">2 坤宫</span>
+                <span class="qm-direction">西南方</span>
+                <div class="qm-badges-wrap"></div>
+            </div>
+            <div class="qm-god-row">
+                <span class="qm-shen-tag">神：值符</span>
+                <span class="qm-star-tag">星：天芮</span>
+            </div>
+            <div class="qm-gan-center">
+                <div class="qm-tian-gan" title="天盘干">天 <span>己丙</span></div>
+                <div class="qm-di-gan" title="地盘干">地 <span>己</span></div>
+            </div>
+            <div class="qm-door-row">
+                <span class="qm-door-tag qm-xiongmen">惊门</span>
+            </div>
+        </div>
+        
+        <div class="qm-cell " style="grid-row: 2; grid-column: 1;">
+            <div class="qm-cell-header">
+                <span class="qm-palace-num">3 震宫</span>
+                <span class="qm-direction">正东方</span>
+                <div class="qm-badges-wrap"></div>
+            </div>
+            <div class="qm-god-row">
+                <span class="qm-shen-tag">神：六合</span>
+                <span class="qm-star-tag">星：天冲</span>
+            </div>
+            <div class="qm-gan-center">
+                <div class="qm-tian-gan" title="天盘干">天 <span>戊</span></div>
+                <div class="qm-di-gan" title="地盘干">地 <span>戊</span></div>
+            </div>
+            <div class="qm-door-row">
+                <span class="qm-door-tag qm-zhongmen">杜门</span>
+            </div>
+        </div>
+        
+        <div class="qm-cell qm-zf-cell" style="grid-row: 2; grid-column: 2;">
+            <div class="qm-cell-header">
+                <span class="qm-palace-num">5 中宫</span>
+                <span class="qm-direction">中央方</span>
+                <div class="qm-badges-wrap"><span class='qm-role-badge zf-badge'>值符</span></div>
+            </div>
+            <div class="qm-god-row">
+                <span class="qm-shen-tag">神：—</span>
+                <span class="qm-star-tag">星：—</span>
+            </div>
+            <div class="qm-gan-center">
+                <div class="qm-tian-gan" title="天盘干">天 <span>丙</span></div>
+                <div class="qm-di-gan" title="地盘干">地 <span>丙</span></div>
+            </div>
+            <div class="qm-door-row">
+                <span class="qm-door-tag qm-zhongmen">—</span>
+            </div>
+        </div>
+        
+        <div class="qm-cell " style="grid-row: 2; grid-column: 3;">
+            <div class="qm-cell-header">
+                <span class="qm-palace-num">7 兑宫</span>
+                <span class="qm-direction">正西方</span>
+                <div class="qm-badges-wrap"></div>
+            </div>
+            <div class="qm-god-row">
+                <span class="qm-shen-tag">神：九天</span>
+                <span class="qm-star-tag">星：天柱</span>
+            </div>
+            <div class="qm-gan-center">
+                <div class="qm-tian-gan" title="天盘干">天 <span>癸</span></div>
+                <div class="qm-di-gan" title="地盘干">地 <span>癸</span></div>
+            </div>
+            <div class="qm-door-row">
+                <span class="qm-door-tag qm-jimen">开门</span>
+            </div>
+        </div>
+        
+        <div class="qm-cell " style="grid-row: 3; grid-column: 1;">
+            <div class="qm-cell-header">
+                <span class="qm-palace-num">8 艮宫</span>
+                <span class="qm-direction">东北方</span>
+                <div class="qm-badges-wrap"></div>
+            </div>
+            <div class="qm-god-row">
+                <span class="qm-shen-tag">神：白虎</span>
+                <span class="qm-star-tag">星：天任</span>
+            </div>
+            <div class="qm-gan-center">
+                <div class="qm-tian-gan" title="天盘干">天 <span>壬</span></div>
+                <div class="qm-di-gan" title="地盘干">地 <span>壬</span></div>
+            </div>
+            <div class="qm-door-row">
+                <span class="qm-door-tag qm-xiongmen">伤门</span>
+            </div>
+        </div>
+        
+        <div class="qm-cell " style="grid-row: 3; grid-column: 2;">
+            <div class="qm-cell-header">
+                <span class="qm-palace-num">1 坎宫</span>
+                <span class="qm-direction">正北方</span>
+                <div class="qm-badges-wrap"></div>
+            </div>
+            <div class="qm-god-row">
+                <span class="qm-shen-tag">神：玄武</span>
+                <span class="qm-star-tag">星：天蓬</span>
+            </div>
+            <div class="qm-gan-center">
+                <div class="qm-tian-gan" title="天盘干">天 <span>庚</span></div>
+                <div class="qm-di-gan" title="地盘干">地 <span>庚</span></div>
+            </div>
+            <div class="qm-door-row">
+                <span class="qm-door-tag qm-jimen">生门</span>
+            </div>
+        </div>
+        
+        <div class="qm-cell " style="grid-row: 3; grid-column: 3;">
+            <div class="qm-cell-header">
+                <span class="qm-palace-num">6 乾宫</span>
+                <span class="qm-direction">西北方</span>
+                <div class="qm-badges-wrap"></div>
+            </div>
+            <div class="qm-god-row">
+                <span class="qm-shen-tag">神：九地</span>
+                <span class="qm-star-tag">星：天心</span>
+            </div>
+            <div class="qm-gan-center">
+                <div class="qm-tian-gan" title="天盘干">天 <span>丁</span></div>
+                <div class="qm-di-gan" title="地盘干">地 <span>丁</span></div>
+            </div>
+            <div class="qm-door-row">
+                <span class="qm-door-tag qm-jimen">休门</span>
+            </div>
+        </div>
+        
+                </div>
+            </div>
+
+            <div class="qm-geju-panel">
+                <div class="panel-header">
+                    <span class="panel-icon">🚩</span>
+                    <h3>命中吉凶格局 (9 项)</h3>
+                </div>
+                <div class="qm-geju-scroll">
+                    
+        <div class="qm-geju-card" style="border-left: 4px solid #16a34a">
+            <div class="geju-title">
+                <span class="geju-name">天乙三奇</span>
+                <span class="geju-type-pill" style="background:#16a34a">吉</span>
+                <span class="geju-palace">5 宫</span>
+            </div>
+            <div class="geju-basis">值符宫天盘丙</div>
+        </div>
+        
+        <div class="qm-geju-card" style="border-left: 4px solid #16a34a">
+            <div class="geju-title">
+                <span class="geju-name">重诈</span>
+                <span class="geju-type-pill" style="background:#16a34a">吉</span>
+                <span class="geju-palace">6 宫</span>
+            </div>
+            <div class="geju-basis">三奇+休门+九地</div>
+        </div>
+        
+        <div class="qm-geju-card" style="border-left: 4px solid #dc2626">
+            <div class="geju-title">
+                <span class="geju-name">直符伏吟</span>
+                <span class="geju-type-pill" style="background:#dc2626">凶</span>
+                <span class="geju-palace">5 宫</span>
+            </div>
+            <div class="geju-basis">值符宫天盘=丙 地盘=丙</div>
+        </div>
+        
+        <div class="qm-geju-card" style="border-left: 4px solid #dc2626">
+            <div class="geju-title">
+                <span class="geju-name">六仪击刑</span>
+                <span class="geju-type-pill" style="background:#dc2626">凶</span>
+                <span class="geju-palace">2 宫</span>
+            </div>
+            <div class="geju-basis">天盘己临2宫击刑</div>
+        </div>
+        
+        <div class="qm-geju-card" style="border-left: 4px solid #dc2626">
+            <div class="geju-title">
+                <span class="geju-name">六仪击刑</span>
+                <span class="geju-type-pill" style="background:#dc2626">凶</span>
+                <span class="geju-palace">3 宫</span>
+            </div>
+            <div class="geju-basis">天盘戊临3宫击刑</div>
+        </div>
+        
+        <div class="qm-geju-card" style="border-left: 4px solid #dc2626">
+            <div class="geju-title">
+                <span class="geju-name">六仪击刑</span>
+                <span class="geju-type-pill" style="background:#dc2626">凶</span>
+                <span class="geju-palace">9 宫</span>
+            </div>
+            <div class="geju-basis">天盘辛临9宫击刑</div>
+        </div>
+        
+        <div class="qm-geju-card" style="border-left: 4px solid #dc2626">
+            <div class="geju-title">
+                <span class="geju-name">悖格</span>
+                <span class="geju-type-pill" style="background:#dc2626">凶</span>
+                <span class="geju-palace">2 宫</span>
+            </div>
+            <div class="geju-basis">宫含丙（天盘/地盘）</div>
+        </div>
+        
+        <div class="qm-geju-card" style="border-left: 4px solid #dc2626">
+            <div class="geju-title">
+                <span class="geju-name">悖格</span>
+                <span class="geju-type-pill" style="background:#dc2626">凶</span>
+                <span class="geju-palace">5 宫</span>
+            </div>
+            <div class="geju-basis">宫含丙（天盘/地盘）</div>
+        </div>
+        
+        <div class="qm-geju-card" style="border-left: 4px solid #dc2626">
+            <div class="geju-title">
+                <span class="geju-name">九星伏吟</span>
+                <span class="geju-type-pill" style="background:#dc2626">凶</span>
+                <span class="geju-palace">5 宫</span>
+            </div>
+            <div class="geju-basis">值符宫天盘=丙 地盘=丙（九星同宫）</div>
+        </div>
+        
+                </div>
+            </div>
+        </div>
+    </section>
+    
+        
+    <section class="section-container" id="section-liuyao">
+        <div class="section-header">
+            <h2 class="section-title">周易六爻排盘</h2>
+            <div class="section-meta">起卦：<strong>时间起卦·农历（梅花）</strong> | 月建：<strong>甲午</strong> | 日辰：<strong>乙酉</strong></div>
+        </div>
+
+        <div class="ly-dual-gua-card">
+            <div class="ly-gua-header-row">
+                <div class="ly-header-side">
+                    <h3>本卦：【水山蹇】</h3>
+                    <span class="ly-palace-tag">兑宫5世 (坎上艮下)</span>
+                    <p class="ly-guaci">蹇：利西南，不利东北。利见大人，贞吉。</p>
+                </div>
+                <div class="ly-header-middle">
+                    <span class="ly-arrow">➔ 变 ➔</span>
+                </div>
+                <div class="ly-header-side">
+                    <h3>变卦：【地山谦】</h3>
+                    <span class="ly-palace-tag">兑宫6世 (坤上艮下)</span>
+                    <p class="ly-guaci">谦：亨，君子有终。</p>
+                </div>
+            </div>
+
+            <table class="ly-table">
+                <thead>
+                    <tr>
+                        <th>六神</th>
+                        <th>本卦六亲</th>
+                        <th>纳甲干支</th>
+                        <th>世应</th>
+                        <th>本卦爻象</th>
+                        <th>爻位</th>
+                        <th>变卦爻象</th>
+                        <th>世应</th>
+                        <th>变卦干支</th>
+                        <th>变卦六亲</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+        <tr class="ly-line-row ">
+            <td class="ly-shen-cell">玄武</td>
+            <td class="ly-qin-cell">子孙</td>
+            <td class="ly-ganzhi-cell">戊子 (水)</td>
+            <td class="ly-shiying-cell"><span class="sy-badge"></span></td>
+            <td class="ly-bar-cell"><div class='yao-bar yin-bar'><span class='yin-l'></span><span class='yin-r'></span></div></td>
+            <td class="ly-pos-cell">上爻 </td>
+            <td class="ly-bar-cell"><div class='yao-bar yin-bar'><span class='yin-l'></span><span class='yin-r'></span></div></td>
+            <td class="ly-shiying-cell"><span class="sy-badge"></span></td>
+            <td class="ly-ganzhi-cell">癸酉 (金)</td>
+            <td class="ly-qin-cell">兄弟</td>
+        </tr>
+        
+        <tr class="ly-line-row ly-dong-line">
+            <td class="ly-shen-cell">白虎</td>
+            <td class="ly-qin-cell">父母</td>
+            <td class="ly-ganzhi-cell">戊戌 (土)</td>
+            <td class="ly-shiying-cell"><span class="sy-badge"></span></td>
+            <td class="ly-bar-cell"><div class='yao-bar yang-bar'></div></td>
+            <td class="ly-pos-cell">五爻 <span class='ly-dong-marker'>● 动</span></td>
+            <td class="ly-bar-cell"><div class='yao-bar yin-bar'><span class='yin-l'></span><span class='yin-r'></span></div></td>
+            <td class="ly-shiying-cell"><span class="sy-badge">世</span></td>
+            <td class="ly-ganzhi-cell">癸亥 (水)</td>
+            <td class="ly-qin-cell">子孙</td>
+        </tr>
+        
+        <tr class="ly-line-row ">
+            <td class="ly-shen-cell">螣蛇</td>
+            <td class="ly-qin-cell">兄弟</td>
+            <td class="ly-ganzhi-cell">戊申 (金)</td>
+            <td class="ly-shiying-cell"><span class="sy-badge">世</span></td>
+            <td class="ly-bar-cell"><div class='yao-bar yin-bar'><span class='yin-l'></span><span class='yin-r'></span></div></td>
+            <td class="ly-pos-cell">四爻 </td>
+            <td class="ly-bar-cell"><div class='yao-bar yin-bar'><span class='yin-l'></span><span class='yin-r'></span></div></td>
+            <td class="ly-shiying-cell"><span class="sy-badge"></span></td>
+            <td class="ly-ganzhi-cell">癸丑 (土)</td>
+            <td class="ly-qin-cell">父母</td>
+        </tr>
+        
+        <tr class="ly-line-row ">
+            <td class="ly-shen-cell">勾陈</td>
+            <td class="ly-qin-cell">兄弟</td>
+            <td class="ly-ganzhi-cell">丙申 (金)</td>
+            <td class="ly-shiying-cell"><span class="sy-badge"></span></td>
+            <td class="ly-bar-cell"><div class='yao-bar yang-bar'></div></td>
+            <td class="ly-pos-cell">三爻 </td>
+            <td class="ly-bar-cell"><div class='yao-bar yang-bar'></div></td>
+            <td class="ly-shiying-cell"><span class="sy-badge"></span></td>
+            <td class="ly-ganzhi-cell">丙申 (金)</td>
+            <td class="ly-qin-cell">兄弟</td>
+        </tr>
+        
+        <tr class="ly-line-row ">
+            <td class="ly-shen-cell">朱雀</td>
+            <td class="ly-qin-cell">官鬼</td>
+            <td class="ly-ganzhi-cell">丙午 (火)</td>
+            <td class="ly-shiying-cell"><span class="sy-badge"></span></td>
+            <td class="ly-bar-cell"><div class='yao-bar yin-bar'><span class='yin-l'></span><span class='yin-r'></span></div></td>
+            <td class="ly-pos-cell">二爻 </td>
+            <td class="ly-bar-cell"><div class='yao-bar yin-bar'><span class='yin-l'></span><span class='yin-r'></span></div></td>
+            <td class="ly-shiying-cell"><span class="sy-badge">应</span></td>
+            <td class="ly-ganzhi-cell">丙午 (火)</td>
+            <td class="ly-qin-cell">官鬼</td>
+        </tr>
+        
+        <tr class="ly-line-row ">
+            <td class="ly-shen-cell">青龙</td>
+            <td class="ly-qin-cell">父母</td>
+            <td class="ly-ganzhi-cell">丙辰 (土)</td>
+            <td class="ly-shiying-cell"><span class="sy-badge">应</span></td>
+            <td class="ly-bar-cell"><div class='yao-bar yin-bar'><span class='yin-l'></span><span class='yin-r'></span></div></td>
+            <td class="ly-pos-cell">初爻 </td>
+            <td class="ly-bar-cell"><div class='yao-bar yin-bar'><span class='yin-l'></span><span class='yin-r'></span></div></td>
+            <td class="ly-shiying-cell"><span class="sy-badge"></span></td>
+            <td class="ly-ganzhi-cell">丙辰 (土)</td>
+            <td class="ly-qin-cell">父母</td>
+        </tr>
+        
+                </tbody>
+            </table>
+        </div>
+    </section>
+    
+    </main>
+
+    <script>
+
+document.addEventListener('DOMContentLoaded', () => {
+    // 1. 导航标签页切换
+    const tabBtns = document.querySelectorAll('.nav-tab-btn');
+    const sections = {
+        'bazi': document.getElementById('section-bazi'),
+        'ziwei': document.getElementById('section-ziwei'),
+        'qimen': document.getElementById('section-qimen'),
+        'liuyao': document.getElementById('section-liuyao')
+    };
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const target = btn.getAttribute('data-target');
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            if (target === 'all') {
+                Object.values(sections).forEach(sec => sec.style.display = 'block');
+            } else {
+                Object.keys(sections).forEach(k => {
+                    sections[k].style.display = (k === target) ? 'block' : 'none';
+                });
+            }
+        });
+    });
+
+    // 2. 紫微斗数 4x4 回字盘 三方四正动态高亮
+    const zwCells = document.querySelectorAll('.zw-cell');
+    zwCells.forEach(cell => {
+        cell.addEventListener('mouseenter', () => {
+            const sanfangStr = cell.getAttribute('data-sanfang') || '';
+            const sanfangList = sanfangStr.split(',').map(s => s.trim());
+
+            zwCells.forEach(c => {
+                const cName = c.getAttribute('data-name');
+                if (c === cell) {
+                    c.classList.add('active-focus');
+                } else if (sanfangList.includes(cName)) {
+                    c.classList.add('highlight-sanfang');
+                } else {
+                    c.classList.remove('highlight-sanfang', 'active-focus');
+                }
+            });
+        });
+
+        cell.addEventListener('mouseleave', () => {
+            zwCells.forEach(c => c.classList.remove('highlight-sanfang', 'active-focus'));
+        });
+    });
+});
+
+    </script>
+</body>
+</html>

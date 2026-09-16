@@ -1,0 +1,914 @@
+{
+  "input": {
+    "datetime": "1996-01-22 12:10",
+    "gender": "男",
+    "longitude": 113.27
+  },
+  "lunar": {
+    "year": "乙亥",
+    "month": 12,
+    "month_name": "十二月",
+    "is_ruen": false,
+    "day": 3,
+    "rule_id": "zw-01",
+    "source": "shuowang.csv（朔日定月内日序；闰月 is_ruen；子正换日口径取真太阳时日期）",
+    "alt": "显示层纪年=乙亥（立春换年，oracle 农历显示行口径）；判定层=乙亥（民俗年，正月初一换年）"
+  },
+  "minggong": {
+    "zhi": "未",
+    "gan": "癸",
+    "rule_id": "zw-02",
+    "source": "命宫=寅起正月顺数生月、逆数生时（身宫顺数生时），oracle 对拍一致"
+  },
+  "shengong": {
+    "zhi": "未",
+    "rule_id": "zw-02"
+  },
+  "wuxing_ju": {
+    "name": "木三局",
+    "rule_id": "zw-03",
+    "source": "命宫干支 癸未 纳音 → 木（nayin.csv），oracle 对拍一致"
+  },
+  "ziwei": {
+    "zhi": "寅",
+    "rule_id": "zw-04",
+    "source": "安紫微诀（木三局，初一辰，3日进一宫；生日 3）——易安居口径",
+    "alt": "异文：一日一宫派（初一宫同，日3→按日顺一宫）"
+  },
+  "sihua": {
+    "items": [
+      {
+        "star": "天机",
+        "hua": "禄"
+      },
+      {
+        "star": "天梁",
+        "hua": "权"
+      },
+      {
+        "star": "紫微",
+        "hua": "科"
+      },
+      {
+        "star": "太阴",
+        "hua": "忌"
+      }
+    ],
+    "rule_id": "zw-07",
+    "source": "生年四化（乙 干）表，oracle 图例对拍一致"
+  },
+  "palaces": [
+    {
+      "name": "命宫",
+      "zhi": "未",
+      "gan": "癸",
+      "ganzhi": "癸未",
+      "stars": [
+        "天梁"
+      ],
+      "fuxing": [],
+      "shaxing": [],
+      "aux_all": [],
+      "sihua": [
+        "权"
+      ],
+      "shen": true
+    },
+    {
+      "name": "兄弟",
+      "zhi": "午",
+      "gan": "壬",
+      "ganzhi": "壬午",
+      "stars": [
+        "廉贞",
+        "天相"
+      ],
+      "fuxing": [],
+      "shaxing": [],
+      "aux_all": [],
+      "sihua": [],
+      "shen": false
+    },
+    {
+      "name": "夫妻",
+      "zhi": "巳",
+      "gan": "辛",
+      "ganzhi": "辛巳",
+      "stars": [
+        "巨门"
+      ],
+      "fuxing": [
+        "天马"
+      ],
+      "shaxing": [],
+      "aux_all": [
+        "天马"
+      ],
+      "sihua": [],
+      "shen": false
+    },
+    {
+      "name": "子女",
+      "zhi": "辰",
+      "gan": "庚",
+      "ganzhi": "庚辰",
+      "stars": [
+        "贪狼"
+      ],
+      "fuxing": [
+        "文昌"
+      ],
+      "shaxing": [
+        "擎羊",
+        "铃星"
+      ],
+      "aux_all": [
+        "文昌",
+        "擎羊",
+        "铃星"
+      ],
+      "sihua": [],
+      "shen": false
+    },
+    {
+      "name": "财帛",
+      "zhi": "卯",
+      "gan": "己",
+      "ganzhi": "己卯",
+      "stars": [
+        "太阴"
+      ],
+      "fuxing": [
+        "左辅",
+        "禄存"
+      ],
+      "shaxing": [
+        "火星"
+      ],
+      "aux_all": [
+        "左辅",
+        "禄存",
+        "火星"
+      ],
+      "sihua": [
+        "忌"
+      ],
+      "shen": false
+    },
+    {
+      "name": "疾厄",
+      "zhi": "寅",
+      "gan": "戊",
+      "ganzhi": "戊寅",
+      "stars": [
+        "紫微",
+        "天府"
+      ],
+      "fuxing": [],
+      "shaxing": [
+        "陀罗"
+      ],
+      "aux_all": [
+        "陀罗"
+      ],
+      "sihua": [
+        "科"
+      ],
+      "shen": false
+    },
+    {
+      "name": "迁移",
+      "zhi": "丑",
+      "gan": "己",
+      "ganzhi": "己丑",
+      "stars": [
+        "天机"
+      ],
+      "fuxing": [],
+      "shaxing": [],
+      "aux_all": [],
+      "sihua": [
+        "禄"
+      ],
+      "shen": false
+    },
+    {
+      "name": "仆役",
+      "zhi": "子",
+      "gan": "戊",
+      "ganzhi": "戊子",
+      "stars": [
+        "破军"
+      ],
+      "fuxing": [
+        "天魁"
+      ],
+      "shaxing": [],
+      "aux_all": [
+        "天魁"
+      ],
+      "sihua": [],
+      "shen": false
+    },
+    {
+      "name": "官禄",
+      "zhi": "亥",
+      "gan": "丁",
+      "ganzhi": "丁亥",
+      "stars": [
+        "太阳"
+      ],
+      "fuxing": [
+        "右弼"
+      ],
+      "shaxing": [],
+      "aux_all": [
+        "右弼"
+      ],
+      "sihua": [],
+      "shen": false
+    },
+    {
+      "name": "田宅",
+      "zhi": "戌",
+      "gan": "丙",
+      "ganzhi": "丙戌",
+      "stars": [
+        "武曲"
+      ],
+      "fuxing": [
+        "文曲"
+      ],
+      "shaxing": [],
+      "aux_all": [
+        "文曲"
+      ],
+      "sihua": [],
+      "shen": false
+    },
+    {
+      "name": "福德",
+      "zhi": "酉",
+      "gan": "乙",
+      "ganzhi": "乙酉",
+      "stars": [
+        "天同"
+      ],
+      "fuxing": [],
+      "shaxing": [],
+      "aux_all": [],
+      "sihua": [],
+      "shen": false
+    },
+    {
+      "name": "父母",
+      "zhi": "申",
+      "gan": "甲",
+      "ganzhi": "甲申",
+      "stars": [
+        "七杀"
+      ],
+      "fuxing": [
+        "天钺"
+      ],
+      "shaxing": [],
+      "aux_all": [
+        "天钺"
+      ],
+      "sihua": [],
+      "shen": false
+    }
+  ],
+  "sanfang_sizheng": {
+    "命宫": {
+      "target_palace": "命宫",
+      "scope_palaces": [
+        "命宫",
+        "财帛",
+        "迁移",
+        "官禄"
+      ],
+      "structure": {
+        "ben_gong": "命宫",
+        "dui_gong": "迁移",
+        "san_he_1": "财帛",
+        "san_he_2": "官禄"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "天梁",
+          "太阴",
+          "天机",
+          "太阳"
+        ],
+        "fuxing": [
+          "左辅",
+          "禄存",
+          "右弼"
+        ],
+        "shaxing": [
+          "火星"
+        ],
+        "sihua": [
+          "权",
+          "忌",
+          "禄"
+        ]
+      }
+    },
+    "兄弟": {
+      "target_palace": "兄弟",
+      "scope_palaces": [
+        "兄弟",
+        "疾厄",
+        "仆役",
+        "田宅"
+      ],
+      "structure": {
+        "ben_gong": "兄弟",
+        "dui_gong": "仆役",
+        "san_he_1": "疾厄",
+        "san_he_2": "田宅"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "廉贞",
+          "天相",
+          "紫微",
+          "天府",
+          "破军",
+          "武曲"
+        ],
+        "fuxing": [
+          "天魁",
+          "文曲"
+        ],
+        "shaxing": [
+          "陀罗"
+        ],
+        "sihua": [
+          "科"
+        ]
+      }
+    },
+    "夫妻": {
+      "target_palace": "夫妻",
+      "scope_palaces": [
+        "夫妻",
+        "迁移",
+        "官禄",
+        "福德"
+      ],
+      "structure": {
+        "ben_gong": "夫妻",
+        "dui_gong": "官禄",
+        "san_he_1": "迁移",
+        "san_he_2": "福德"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "巨门",
+          "天机",
+          "太阳",
+          "天同"
+        ],
+        "fuxing": [
+          "天马",
+          "右弼"
+        ],
+        "shaxing": [],
+        "sihua": [
+          "禄"
+        ]
+      }
+    },
+    "子女": {
+      "target_palace": "子女",
+      "scope_palaces": [
+        "子女",
+        "仆役",
+        "田宅",
+        "父母"
+      ],
+      "structure": {
+        "ben_gong": "子女",
+        "dui_gong": "田宅",
+        "san_he_1": "仆役",
+        "san_he_2": "父母"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "贪狼",
+          "破军",
+          "武曲",
+          "七杀"
+        ],
+        "fuxing": [
+          "文昌",
+          "天魁",
+          "文曲",
+          "天钺"
+        ],
+        "shaxing": [
+          "擎羊",
+          "铃星"
+        ],
+        "sihua": []
+      }
+    },
+    "财帛": {
+      "target_palace": "财帛",
+      "scope_palaces": [
+        "财帛",
+        "官禄",
+        "福德",
+        "命宫"
+      ],
+      "structure": {
+        "ben_gong": "财帛",
+        "dui_gong": "福德",
+        "san_he_1": "官禄",
+        "san_he_2": "命宫"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "太阴",
+          "太阳",
+          "天同",
+          "天梁"
+        ],
+        "fuxing": [
+          "左辅",
+          "禄存",
+          "右弼"
+        ],
+        "shaxing": [
+          "火星"
+        ],
+        "sihua": [
+          "忌",
+          "权"
+        ]
+      }
+    },
+    "疾厄": {
+      "target_palace": "疾厄",
+      "scope_palaces": [
+        "疾厄",
+        "田宅",
+        "父母",
+        "兄弟"
+      ],
+      "structure": {
+        "ben_gong": "疾厄",
+        "dui_gong": "父母",
+        "san_he_1": "田宅",
+        "san_he_2": "兄弟"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "紫微",
+          "天府",
+          "武曲",
+          "七杀",
+          "廉贞",
+          "天相"
+        ],
+        "fuxing": [
+          "文曲",
+          "天钺"
+        ],
+        "shaxing": [
+          "陀罗"
+        ],
+        "sihua": [
+          "科"
+        ]
+      }
+    },
+    "迁移": {
+      "target_palace": "迁移",
+      "scope_palaces": [
+        "迁移",
+        "福德",
+        "命宫",
+        "夫妻"
+      ],
+      "structure": {
+        "ben_gong": "迁移",
+        "dui_gong": "命宫",
+        "san_he_1": "福德",
+        "san_he_2": "夫妻"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "天机",
+          "天同",
+          "天梁",
+          "巨门"
+        ],
+        "fuxing": [
+          "天马"
+        ],
+        "shaxing": [],
+        "sihua": [
+          "禄",
+          "权"
+        ]
+      }
+    },
+    "仆役": {
+      "target_palace": "仆役",
+      "scope_palaces": [
+        "仆役",
+        "父母",
+        "兄弟",
+        "子女"
+      ],
+      "structure": {
+        "ben_gong": "仆役",
+        "dui_gong": "兄弟",
+        "san_he_1": "父母",
+        "san_he_2": "子女"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "破军",
+          "七杀",
+          "廉贞",
+          "天相",
+          "贪狼"
+        ],
+        "fuxing": [
+          "天魁",
+          "天钺",
+          "文昌"
+        ],
+        "shaxing": [
+          "擎羊",
+          "铃星"
+        ],
+        "sihua": []
+      }
+    },
+    "官禄": {
+      "target_palace": "官禄",
+      "scope_palaces": [
+        "官禄",
+        "命宫",
+        "夫妻",
+        "财帛"
+      ],
+      "structure": {
+        "ben_gong": "官禄",
+        "dui_gong": "夫妻",
+        "san_he_1": "命宫",
+        "san_he_2": "财帛"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "太阳",
+          "天梁",
+          "巨门",
+          "太阴"
+        ],
+        "fuxing": [
+          "右弼",
+          "天马",
+          "左辅",
+          "禄存"
+        ],
+        "shaxing": [
+          "火星"
+        ],
+        "sihua": [
+          "权",
+          "忌"
+        ]
+      }
+    },
+    "田宅": {
+      "target_palace": "田宅",
+      "scope_palaces": [
+        "田宅",
+        "兄弟",
+        "子女",
+        "疾厄"
+      ],
+      "structure": {
+        "ben_gong": "田宅",
+        "dui_gong": "子女",
+        "san_he_1": "兄弟",
+        "san_he_2": "疾厄"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "武曲",
+          "廉贞",
+          "天相",
+          "贪狼",
+          "紫微",
+          "天府"
+        ],
+        "fuxing": [
+          "文曲",
+          "文昌"
+        ],
+        "shaxing": [
+          "擎羊",
+          "铃星",
+          "陀罗"
+        ],
+        "sihua": [
+          "科"
+        ]
+      }
+    },
+    "福德": {
+      "target_palace": "福德",
+      "scope_palaces": [
+        "福德",
+        "夫妻",
+        "财帛",
+        "迁移"
+      ],
+      "structure": {
+        "ben_gong": "福德",
+        "dui_gong": "财帛",
+        "san_he_1": "夫妻",
+        "san_he_2": "迁移"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "天同",
+          "巨门",
+          "太阴",
+          "天机"
+        ],
+        "fuxing": [
+          "天马",
+          "左辅",
+          "禄存"
+        ],
+        "shaxing": [
+          "火星"
+        ],
+        "sihua": [
+          "忌",
+          "禄"
+        ]
+      }
+    },
+    "父母": {
+      "target_palace": "父母",
+      "scope_palaces": [
+        "父母",
+        "子女",
+        "疾厄",
+        "仆役"
+      ],
+      "structure": {
+        "ben_gong": "父母",
+        "dui_gong": "疾厄",
+        "san_he_1": "子女",
+        "san_he_2": "仆役"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "七杀",
+          "贪狼",
+          "紫微",
+          "天府",
+          "破军"
+        ],
+        "fuxing": [
+          "天钺",
+          "文昌",
+          "天魁"
+        ],
+        "shaxing": [
+          "擎羊",
+          "铃星",
+          "陀罗"
+        ],
+        "sihua": [
+          "科"
+        ]
+      }
+    }
+  },
+  "c_six_key_palace_sanfang_sizheng": {
+    "命宫": {
+      "target_palace": "命宫",
+      "scope_palaces": [
+        "命宫",
+        "财帛",
+        "迁移",
+        "官禄"
+      ],
+      "structure": {
+        "ben_gong": "命宫",
+        "dui_gong": "迁移",
+        "san_he_1": "财帛",
+        "san_he_2": "官禄"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "天梁",
+          "太阴",
+          "天机",
+          "太阳"
+        ],
+        "fuxing": [
+          "左辅",
+          "禄存",
+          "右弼"
+        ],
+        "shaxing": [
+          "火星"
+        ],
+        "sihua": [
+          "权",
+          "忌",
+          "禄"
+        ]
+      }
+    },
+    "夫妻": {
+      "target_palace": "夫妻",
+      "scope_palaces": [
+        "夫妻",
+        "迁移",
+        "官禄",
+        "福德"
+      ],
+      "structure": {
+        "ben_gong": "夫妻",
+        "dui_gong": "官禄",
+        "san_he_1": "迁移",
+        "san_he_2": "福德"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "巨门",
+          "天机",
+          "太阳",
+          "天同"
+        ],
+        "fuxing": [
+          "天马",
+          "右弼"
+        ],
+        "shaxing": [],
+        "sihua": [
+          "禄"
+        ]
+      }
+    },
+    "财帛": {
+      "target_palace": "财帛",
+      "scope_palaces": [
+        "财帛",
+        "官禄",
+        "福德",
+        "命宫"
+      ],
+      "structure": {
+        "ben_gong": "财帛",
+        "dui_gong": "福德",
+        "san_he_1": "官禄",
+        "san_he_2": "命宫"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "太阴",
+          "太阳",
+          "天同",
+          "天梁"
+        ],
+        "fuxing": [
+          "左辅",
+          "禄存",
+          "右弼"
+        ],
+        "shaxing": [
+          "火星"
+        ],
+        "sihua": [
+          "忌",
+          "权"
+        ]
+      }
+    },
+    "官禄": {
+      "target_palace": "官禄",
+      "scope_palaces": [
+        "官禄",
+        "命宫",
+        "夫妻",
+        "财帛"
+      ],
+      "structure": {
+        "ben_gong": "官禄",
+        "dui_gong": "夫妻",
+        "san_he_1": "命宫",
+        "san_he_2": "财帛"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "太阳",
+          "天梁",
+          "巨门",
+          "太阴"
+        ],
+        "fuxing": [
+          "右弼",
+          "天马",
+          "左辅",
+          "禄存"
+        ],
+        "shaxing": [
+          "火星"
+        ],
+        "sihua": [
+          "权",
+          "忌"
+        ]
+      }
+    },
+    "迁移": {
+      "target_palace": "迁移",
+      "scope_palaces": [
+        "迁移",
+        "福德",
+        "命宫",
+        "夫妻"
+      ],
+      "structure": {
+        "ben_gong": "迁移",
+        "dui_gong": "命宫",
+        "san_he_1": "福德",
+        "san_he_2": "夫妻"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "天机",
+          "天同",
+          "天梁",
+          "巨门"
+        ],
+        "fuxing": [
+          "天马"
+        ],
+        "shaxing": [],
+        "sihua": [
+          "禄",
+          "权"
+        ]
+      }
+    },
+    "福德": {
+      "target_palace": "福德",
+      "scope_palaces": [
+        "福德",
+        "夫妻",
+        "财帛",
+        "迁移"
+      ],
+      "structure": {
+        "ben_gong": "福德",
+        "dui_gong": "财帛",
+        "san_he_1": "夫妻",
+        "san_he_2": "迁移"
+      },
+      "stars_summary": {
+        "main_stars": [
+          "天同",
+          "巨门",
+          "太阴",
+          "天机"
+        ],
+        "fuxing": [
+          "天马",
+          "左辅",
+          "禄存"
+        ],
+        "shaxing": [
+          "火星"
+        ],
+        "sihua": [
+          "忌",
+          "禄"
+        ]
+      }
+    }
+  },
+  "ziwei_liunian": {
+    "error": "ziwei_liunian_error: compute() got an unexpected keyword argument 'gender'"
+  },
+  "notes": [
+    "真太阳时 1996-01-22T11:31:00（EOT -11.54 分）；子正换日，时辰=午时",
+    "年干项（四化/魁钺/禄存等）按民俗农历年 乙亥（正月初一换年，oracle 实测）；干支纪年 乙亥（立春换年）仅显示层参考",
+    "安紫微=中州派「局数日进一宫」（易安居 oracle 对拍口径）；异文：通行「一日一宫」派（《紫微斗数全书》系统，初一宫同为丑辰亥午酉，仅步长不同）"
+  ]
+}

@@ -62,15 +62,18 @@ def branch_gods(day_master, zhi, canggan):
     """地支十神（r5）：藏干逐个对日干取名，序与 canggan.csv 一致；日支同按藏干十神（日支=日元所坐）。"""
     return [{"gan": g, "god": ten_god(day_master, g)} for g in canggan[zhi]]
 
-def year_pillar(ts, terms):
-    """r3 立春换年：真太阳时≥当年立春→当年年干支，否则上年；年干支=(year-4)%60（甲子=0，1900=庚子）。"""
-    lc = next(r["datetime"] for r in terms if r["year"] == str(ts.year) and r["term"] == "立春")
-    y = ts.year if ts.strftime("%Y-%m-%d %H:%M") >= lc else ts.year - 1
+def year_pillar(bj, terms):
+    """r3 立春换年：判界两侧同用北京时域（bj="%Y-%m-%d %H:%M"；solar_terms.csv=UTC+8，2026-09-15 修复时制混用，
+    禁与真太阳时混比）：北京时≥当年立春→当年年干支，否则上年；年干支=(year-4)%60（甲子=0，1900=庚子）。"""
+    y0 = int(bj[:4])
+    lc = next(r["datetime"] for r in terms if r["year"] == bj[:4] and r["term"] == "立春")
+    y = y0 if bj >= lc else y0 - 1
     return GAN[(y - 4) % 10] + ZHI[(y - 4) % 12]
 
-def month_pillar(ts, terms, year_gan):
-    """r4 节换月：datetime≤ts 的最近上一 12 节（二分）→ 月支序 m（寅=0…丑=11）；月干五虎遁=(2·年干+2+m)%10。"""
-    i = bisect.bisect_right([r["datetime"] for r in terms], ts.strftime("%Y-%m-%d %H:%M")) - 1
+def month_pillar(bj, terms, year_gan):
+    """r4 节换月：datetime≤bj 的最近上一 12 节（二分）→ 月支序 m（寅=0…丑=11）；判界同 r3 用北京时域；
+    月干五虎遁=(2·年干+2+m)%10。"""
+    i = bisect.bisect_right([r["datetime"] for r in terms], bj) - 1
     m = JIE.index(terms[i]["term"])
     return GAN[(2 * year_gan + 2 + m) % 10] + ZHI[(2 + m) % 12]
 
@@ -89,8 +92,8 @@ def compute(dt, lon, days=None):
     if ds not in days:
         return {"error": f"错误: 真太阳时 {ds} 落 ganzhi_days 表外 1900-01-01~2100-12-31（out_of_range）"}
     terms = load_terms()
-    ygz = year_pillar(ts, terms)
-    mgz = month_pillar(ts, terms, GAN.index(ygz[0]))
+    ygz = year_pillar(s, terms)    # r3 判界=北京时域（solar_terms.csv 同域；真太阳时仅用于日/时柱）
+    mgz = month_pillar(s, terms, GAN.index(ygz[0]))
     dgz = days[ds]
     hgz = hour_pillar(dgz, ts.hour)
     cg = load_canggan()

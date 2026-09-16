@@ -206,5 +206,22 @@ check("my_side xing_pairs：hp-r16 案例寅巳入刑集、六害空（oracle �
       frozenset("寅巳") in _ms3["xing_pairs"] and _ms3["hai"] == set(),
       str(_ms3["xing_pairs"]) + " hai=" + str(_ms3["hai"]))
 
+# ============================ 7. F2 修复回归（2026-09-15）：生肖 sheng_xiao 三刑环 ============================
+# 修复前链：六合>自刑>三合>六冲>六害，缺三刑 → 生肖子卯落"无特殊"漏报。
+# 甲子年×丁卯年（子卯无礼之刑，两字即成立，与 hp-01/ri_zhi 口径一致）。
+r_sx = h.compute("1984-06-15 10:00", "1987-06-15 10:00")
+check("HP3 sheng_xiao 三刑环：甲子年×丁卯年 生肖子卯相刑（无礼之刑）",
+      r_sx["hp-03"]["sheng_xiao"]["relation"] == "三刑" and "无礼之刑" in r_sx["hp-03"]["sheng_xiao"]["note"],
+      r_sx["hp-03"]["sheng_xiao"]["relation"] + " | " + r_sx["hp-03"]["sheng_xiao"]["note"])
+# 生肖链三字俱全专项（2026-09-15 第三方复验补）：两字按相害、三字俱全按刑（与 hp-01/ri_zhi 同口径）
+r_sx2 = h.compute("1974-07-05 22:13", "1989-06-15 10:00")  # 寅巳两字，两人四支池无申
+check("HP3 sheng_xiao 寅巳两字（池无申）：判相害不判三刑（生肖链三字俱全口径）",
+      r_sx2["hp-03"]["sheng_xiao"]["relation"] == "相害",
+      r_sx2["hp-03"]["sheng_xiao"]["relation"] + " | " + r_sx2["hp-03"]["sheng_xiao"]["note"])
+r_sx3 = h.compute("1974-07-05 22:13", "1989-08-15 16:00")  # 巳年申月 → 池含申
+check("HP3 sheng_xiao 寅巳两字+池含申：判三刑（无恩之刑，三字俱全）",
+      r_sx3["hp-03"]["sheng_xiao"]["relation"] == "三刑" and "无恩" in r_sx3["hp-03"]["sheng_xiao"]["note"],
+      r_sx3["hp-03"]["sheng_xiao"]["relation"] + " | " + r_sx3["hp-03"]["sheng_xiao"]["note"])
+
 print(f"\n断言汇总：{TOTAL} 条，PASS {TOTAL - FAILED}，FAIL {FAILED}")
 sys.exit(1 if FAILED else 0)

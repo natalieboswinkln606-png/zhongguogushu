@@ -1,0 +1,497 @@
+{
+  "matched": [
+    {
+      "kind": "ganzhi",
+      "value": "甲寅",
+      "found_in": "四柱·year柱"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "庚午",
+      "found_in": "四柱·month柱"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "丁未",
+      "found_in": "四柱·day柱"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "庚戌",
+      "found_in": "四柱·hour柱"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "己巳",
+      "found_in": "大运步骤"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "戊辰",
+      "found_in": "大运步骤"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "丁卯",
+      "found_in": "大运步骤"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "丙寅",
+      "found_in": "大运步骤"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "乙丑",
+      "found_in": "大运步骤"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "甲子",
+      "found_in": "大运步骤"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "癸亥",
+      "found_in": "大运步骤"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "壬戌",
+      "found_in": "大运步骤"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "壬申",
+      "found_in": "紫微宫干支"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "辛未",
+      "found_in": "紫微宫干支"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "丁丑",
+      "found_in": "紫微宫干支"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "丙子",
+      "found_in": "紫微宫干支"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "乙亥",
+      "found_in": "紫微宫干支"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "甲戌",
+      "found_in": "紫微宫干支"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "癸酉",
+      "found_in": "紫微宫干支"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "丙午",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "甲辰",
+      "found_in": "流年"
+    },
+    {
+      "kind": "dayun_range",
+      "value": "乙丑(2024-2033)",
+      "step": {
+        "index": 5,
+        "ganzhi": "乙丑",
+        "start_year": 2024,
+        "end_year": 2033,
+        "god": "偏印"
+      }
+    },
+    {
+      "kind": "ganzhi",
+      "value": "乙巳",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "戊申",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "己酉",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "辛亥",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "壬子",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "癸丑",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "乙卯",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "丙辰",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "丁巳",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "戊午",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "己未",
+      "found_in": "流年"
+    },
+    {
+      "kind": "ganzhi",
+      "value": "庚申",
+      "found_in": "流年"
+    },
+    {
+      "kind": "year",
+      "value": "1974"
+    },
+    {
+      "kind": "year",
+      "value": "2026"
+    },
+    {
+      "kind": "year",
+      "value": "1984"
+    },
+    {
+      "kind": "year",
+      "value": "1993"
+    },
+    {
+      "kind": "year",
+      "value": "1994"
+    },
+    {
+      "kind": "year",
+      "value": "2003"
+    },
+    {
+      "kind": "year",
+      "value": "2004"
+    },
+    {
+      "kind": "year",
+      "value": "2013"
+    },
+    {
+      "kind": "year",
+      "value": "2014"
+    },
+    {
+      "kind": "year",
+      "value": "2023"
+    },
+    {
+      "kind": "year",
+      "value": "2024"
+    },
+    {
+      "kind": "year",
+      "value": "2033"
+    },
+    {
+      "kind": "year",
+      "value": "2034"
+    },
+    {
+      "kind": "year",
+      "value": "2043"
+    },
+    {
+      "kind": "year",
+      "value": "2044"
+    },
+    {
+      "kind": "year",
+      "value": "2053"
+    },
+    {
+      "kind": "year",
+      "value": "2054"
+    },
+    {
+      "kind": "year",
+      "value": "2063"
+    },
+    {
+      "kind": "year",
+      "value": "2025"
+    },
+    {
+      "kind": "year",
+      "value": "2027"
+    },
+    {
+      "kind": "year",
+      "value": "2028"
+    },
+    {
+      "kind": "year",
+      "value": "2029"
+    },
+    {
+      "kind": "year",
+      "value": "2030"
+    },
+    {
+      "kind": "year",
+      "value": "2031"
+    },
+    {
+      "kind": "year",
+      "value": "2032"
+    },
+    {
+      "kind": "year",
+      "value": "2035"
+    },
+    {
+      "kind": "year",
+      "value": "2036"
+    },
+    {
+      "kind": "year",
+      "value": "2037"
+    },
+    {
+      "kind": "year",
+      "value": "2038"
+    },
+    {
+      "kind": "year",
+      "value": "2039"
+    },
+    {
+      "kind": "year",
+      "value": "2040"
+    },
+    {
+      "kind": "word:十神",
+      "value": "比肩"
+    },
+    {
+      "kind": "word:十神",
+      "value": "劫财"
+    },
+    {
+      "kind": "word:十神",
+      "value": "食神"
+    },
+    {
+      "kind": "word:十神",
+      "value": "伤官"
+    },
+    {
+      "kind": "word:十神",
+      "value": "偏财"
+    },
+    {
+      "kind": "word:十神",
+      "value": "正财"
+    },
+    {
+      "kind": "word:十神",
+      "value": "七杀"
+    },
+    {
+      "kind": "word:十神",
+      "value": "正官"
+    },
+    {
+      "kind": "word:十神",
+      "value": "偏印"
+    },
+    {
+      "kind": "word:十神",
+      "value": "正印"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "紫微"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "天机"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "太阳"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "武曲"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "天同"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "廉贞"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "天府"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "太阴"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "贪狼"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "巨门"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "天相"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "天梁"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "七杀"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "破军"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "左辅"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "右弼"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "文昌"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "文曲"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "天魁"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "天钺"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "禄存"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "擎羊"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "陀罗"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "火星"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "铃星"
+    },
+    {
+      "kind": "word:紫微星",
+      "value": "天马"
+    },
+    {
+      "kind": "word:八门",
+      "value": "死门"
+    },
+    {
+      "kind": "word:九星",
+      "value": "天芮"
+    },
+    {
+      "kind": "word:八神",
+      "value": "值符"
+    },
+    {
+      "kind": "word:八神",
+      "value": "太阴"
+    }
+  ],
+  "unverified": [
+    {
+      "kind": "ganzhi",
+      "value": "己卯",
+      "context": "六神、世应、变爻）6 爻明细见快照（已搬运样本：初爻=子孙·己卯木·应位·朱雀）（数据底座：snap.liuyao.line",
+      "reason": "快照全集（四柱/大运/流年/紫微宫干支/奇门旬首）中不存在"
+    },
+    {
+      "kind": "year",
+      "value": "1979",
+      "context": "rs\": 6, \"start\": 1974, \"end\": 1979}, {\"pos\": 5, \"yao\": \"九五\", \"gu",
+      "reason": "快照流年范围/大运起止年/出生年之外，无法机械溯源"
+    },
+    {
+      "kind": "year",
+      "value": "1980",
+      "context": ": \"地水师\", \"years\": 9, \"start\": 1980, \"end\": 1988}, {\"pos\": 4, \"ya",
+      "reason": "快照流年范围/大运起止年/出生年之外，无法机械溯源"
+    },
+    {
+      "kind": "year",
+      "value": "1988",
+      "context": "rs\": 9, \"start\": 1980, \"end\": 1988}, {\"pos\": 4, \"yao\": \"六四\", \"gu",
+      "reason": "快照流年范围/大运起止年/出生年之外，无法机械溯源"
+    },
+    {
+      "kind": "year",
+      "value": "1989",
+      "context": ": \"泽水困\", \"years\": 6, \"start\": 1989, \"end\": 1994}, {\"pos\": 3, \"ya",
+      "reason": "快照流年范围/大运起止年/出生年之外，无法机械溯源"
+    }
+  ],
+  "conflicts": []
+}

@@ -1,0 +1,45 @@
+{
+  "target_time": {
+    "year_ganzhi": "丙午",
+    "lunar_month": 1,
+    "lunar_day": 1,
+    "query_hour": "子"
+  },
+  "limits": {
+    "doujun": "丑",
+    "liunian_ming": "午",
+    "liuyue_ming": "丑",
+    "liuri_ming": "丑",
+    "liushi_ming": "丑"
+  },
+  "liuyao": {
+    "liunian_lucun": "巳",
+    "liunian_qingyang": "午",
+    "liunian_tuoluo": "辰",
+    "liunian_tiankui": "亥",
+    "liunian_tianyue": "酉",
+    "liunian_hongluan": "酉",
+    "liunian_tianxi": "卯",
+    "liunian_tianma": "申",
+    "liunian_wenchang": "申",
+    "liunian_wenqu": "寅",
+    "liunian_sihua": {
+      "化禄": "天同",
+      "化权": "天机",
+      "化科": "文昌",
+      "化忌": "廉贞"
+    }
+  },
+  "source": "《紫微斗数全书》流曜运限卷",
+  "birth_info": {
+    "solar_datetime": "1996-01-22 12:10",
+    "birth_four_pillars": [
+      "乙亥",
+      "己丑",
+      "戊午",
+      "戊午"
+    ],
+    "birth_lunar_month": 12,
+    "birth_hour_zhi": "午"
+  }
+}

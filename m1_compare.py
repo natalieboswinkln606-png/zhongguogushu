@@ -30,10 +30,11 @@ def my(t, lon):  # 自研 → (日柱, 时柱, 真太阳时串)；内核层不�
     dg = DAYS[ts.date().isoformat()]
     return dg, m1.hour_pillar(dg, ts.hour), ts.strftime("%Y-%m-%dT%H:%M")
 
-def my_ym(t, lon):  # 自研 → (年柱, 月柱, 真太阳时串)（r3 立春换年 / r4 节换月，solar_terms 权威）
+def my_ym(t, lon):  # 自研 → (年柱, 月柱, 真太阳时串)（r3 立春换年 / r4 节换月，solar_terms 权威；判界=北京时域）
     ts = m1.true_solar(datetime(*t), lon)
-    yg = m1.year_pillar(ts, TERMS)
-    return yg, m1.month_pillar(ts, TERMS, GAN.index(yg[0])), ts.strftime("%Y-%m-%dT%H:%M")
+    bj = "%04d-%02d-%02d %02d:%02d" % t
+    yg = m1.year_pillar(bj, TERMS)
+    return yg, m1.month_pillar(bj, TERMS, GAN.index(yg[0])), ts.strftime("%Y-%m-%dT%H:%M")
 
 # --- 手算锚点断言（preregister 紫台快照互校；1900-01-01 00:30 低于输入下限 03:30 属 CLI 闸门，内核层算） ---
 for t, lon, ed, eh in [((2000, 1, 1, 12, 0), 120, "戊午", "戊午"),  # 戊癸日壬子起，午时=戊午
@@ -151,14 +152,14 @@ for cid, cat, sdate, t in stb_all:
     exp, act = f"年={oy} 月={om}", f"年={sy} 月={sm}（真太阳时 {sts}）"
     ok = (sy, sm) == (oy, om)
     note = "两口径一致" if ok else (
-        "判界口径差异：oracle 年柱按立春日整天换年（立春当日即新年），自研按真太阳时时刻≥立春时刻（EOT±16 分内）"
+        "判界口径差异：oracle 年柱按立春日整天换年（立春当日即新年），自研按北京时时刻≥立春时刻（时刻粒度）"
         if cat == "立春边界" else
-        "真太阳时口径差异：EOT±16 分修正致真太阳时跨节时刻，月柱归属不同（自研真太阳时 vs oracle 北京时）")
+        "判界口径差异：月柱时刻粒度 vs oracle 日粒度（自研已统一北京时域判界，2026-09-15）")
     st = "pass" if ok else "arbitrated"
     brows_all.append([cid, cat, sdate, exp, act, st, note])
     if not ok:
         arbs_all.append([cid, "年柱/月柱", act, exp, "复核者", "alt",
-                         f"{note}。年柱月柱按契约用真太阳时判界（preregister M1 输入语义）；lunar 仅对拍 oracle 不作权威",
+                         f"{note}。年柱月柱按契约用北京时时刻判界（solar_terms.csv=UTC+8 同域，2026-09-15 修复时制混用后）；lunar 仅对拍 oracle 不作权威",
                          "oracle 对拍", "lunar-python（生成源）", "HKO 官方（互校源）"])
 
 def existing_ids(path):
@@ -230,8 +231,8 @@ nsp = sum(1 for b in brows_all[20:] if b[5] == "pass")
 sp_ids = ",".join(b[0].split("-", 1)[1] for b in brows_all[20:] if b[5] == "pass")
 sa_ids = ",".join(b[0].split("-", 1)[1] for b in brows_all[20:] if b[5] != "pass")
 lines += [f"边界统计（stb-001..020）：pass {nsp}/20、arbitrated {20 - nsp}/20（pass={sp_ids}；arbitrated={sa_ids}）",
-          "结论：非边界年份全一致；边界差异集中在两处既定口径分歧——1) oracle 年柱按立春日整天换年 vs 自研按真太阳时时刻≥立春时刻（EOT±16 分窗口）；"
-          "2) EOT 修正致真太阳时跨节时刻 vs oracle 北京时判界。均如实申报挂 arbitration_log（decision=alt），不掩盖。",
+          "结论：非边界年份全一致；边界差异全为既定口径分歧——oracle 年/月柱按日粒度换柱 vs 自研按北京时时刻粒度"
+          "（solar_terms.csv=UTC+8 同域判界，2026-09-15 修复 r3/r4 时制混用后 EOT 窗口分歧已消除）。均如实申报挂 arbitration_log（decision=alt），不掩盖。",
           "发现的坑：① lunar-python 无 getMonthInGanZhiByJieQi，月柱节气口径实为 getMonthInGanZhiExact；"
           "② oracle 年柱按立春日粒度整天换年（非时刻），边界日与自研时刻粒度分歧；"
           "③ 1949-10-01 月柱手算复核：契约月支序酉=7（白露→酉，寒露→戌=8），初稿误用 9；月干=(2×5+2+7)%10=癸 → 癸酉月；"

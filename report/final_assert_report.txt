@@ -1,5 +1,5 @@
 shushu 全量最终断言报告
-生成时间：2026-08-16（UTC+8）
+生成时间：2026-08-16（v1.0 结案）/ 2026-09-15（v1.1 增补；F1/F2/qiyun 三轮修复后复跑同步）
 执行方式：逐脚本独立运行，PYTHONIOENCODING=utf-8
 
 一、基座（M0）
@@ -7,13 +7,14 @@ shushu 全量最终断言报告
   validate.py       problems: 0（校验通过）
   assert_tables.py  PASS 94 / FAIL 0（8 张基座表 + 十神锚点）
 
-二、L2 层（十神/大运流年/旺衰/神煞）
+二、L2 层（十神/大运流年/旺衰/神煞/流日）
   脚本                      断言数  PASS  FAIL  SKIP
-  assert_l3_bazi_daliu.py   35      35    0     0   大运流年（顺逆/起运/流年）
+  assert_l3_bazi_daliu.py   37      37    0     0   大运流年（顺逆/起运北京时口径/流年；含 F1 判界时制回归 m01/m02）
   assert_l3_wangshuai.py    10      10    0     0   五行旺衰（月令/季节/状态）
   assert_l3_shensha.py      31      31    0     0   神煞（5 锚点全命中 + 规则边界）
+  assert_l3_bazi_liuri.py   13      13    0     0   流日（正午反解/关系层 hp-01 口径含同支自刑四支与半合归局/黄历层双源同值）
 
-三、L3 术种层（12 术种断言脚本）
+三、L3 术种层（12 术种 + 铁板条文层断言脚本）
   脚本                        断言数  PASS  FAIL  SKIP  说明
   assert_l3_ziwei.py          16      16    0     0    紫微斗数排盘
   assert_l3_ziwei_liunian.py  16      16    0     0    紫微大限/小限/流年/斗君
@@ -22,19 +23,41 @@ shushu 全量最终断言报告
   assert_l3_qimen.py          28      28    0     0    奇门排盘（转盘法/拆补定局）
   assert_l3_qimen_duanju.py   27      27    0     0    奇门断局（用神/格局/吉凶）
   assert_l3_huangli.py        27      27    0     0    黄历择吉
-  assert_l3_hepan.py          48      48    0     0    人际合盘
+  assert_l3_hepan.py          51      51    0     0    人际合盘（含 F2 生肖三刑环回归 + 两字/三字俱全口径专项）
   assert_l3_heluolishu.py     13      13    0     0    河洛理数（网传太玄数派口径如实声明）
   assert_l3_meihua.py         23      23    0     0    梅花易数
   assert_l3_xiaoliuren.py     10      10    0     0    小六壬
   assert_l3_chenggu.py        65      65    0     0    称骨（《称骨歌》异文口径）
   assert_l3_wuyunliuqi.py     12      12    0     0    五运六气
+  assert_l3_tieban.py         10      10    0     0    铁板条文层（太玄数键/一时八刻/百刻制/考刻-验证回路/warnings 外显）
 
 四、L4 审计层
-  l4_audit.py                 160     160   0     0    端到端抽查（六壬/合盘/奇门/梅花/小六壬/称骨/紫微等全链路）+ Rule-ID 注册表双向校验（174 条）+ 申报编号载体复核 + 归档抽查（l4_audit_ziwei.py 独立解析、奇门定局 18 例手工核对）
+  l4_audit.py                 198     198   0     0    端到端抽查（六壬/合盘/奇门/梅花/小六壬/称骨/紫微/流日/铁板等全链路）+ Rule-ID 注册表双向校验（181 条）+ 申报编号载体复核 + CSV 表结构锁（arbitration_log 10 列 / registry 4 列）+ 归档抽查（l4_audit_ziwei.py 独立解析、奇门定局 18 例手工核对）
 
 五、汇总
-  全部脚本 PASS 787 / FAIL 0 / SKIP 0
+  全部脚本 PASS 853 / FAIL 0 / SKIP 0
+  分节和自检：一 94 + 二 91 + 三 470 + 四 198 = 853（=总计，防数字漂移）
   未入库临时产物（_*.html、temp/、oracle 缓存等）不参与断言
 
 六、结案声明
-  sw-2057-09 已结案；m1.py 与 l3_*.py 冻结；SHA256SUMS.txt 最终重签见该文件头部时间戳。
+  sw-2057-09 已结案；m1.py 与 l3_*.py（v1.0 部分）冻结；SHA256SUMS.txt 最终重签见该文件头部时间戳
+  （文本按 LF 归一取哈希，与 .gitattributes eol=lf 对称，防 CRLF 检出伪失配）。
+  v1.1 增补（2026-09-15）：新增 l3_bazi_liuri.py（流日 lr-01..03）、l3_tieban.py（铁板条文层 tb-01..04）及对应断言脚本；
+  注册表 174→181；端到端 161→198；全量 788→848（其中修复轮新增检错断言 4 条：流日同支口径 +1、铁板 warnings/positioning +2、CSV 表结构锁 +1）。
+  修复打回项（2026-09-15 复核）：arbitration_log.csv mh-b02 行 reason 未转义半角逗号致 11 列，已逐字重建为 10 列；README 行数口径明示（记录条数 / 物理行数）。
+  F1/F2/qiyun 修复轮（2026-09-15 段 2 打回后修复，本报告数字已按修复后复跑同步）：
+    F1 判界时制——m1 r3/r4 年/月柱判界两侧统一北京时域（与 solar_terms.csv 同域；真太阳时仅日/时柱），daliu 新增 m01/m02 回归（+2）；
+    F2 生肖三刑环——l3_hepan hp-03 sheng_xiao 链补三刑（三字俱全口径：自刑两字/子卯两字/寅巳申丑戌未三字俱全），hepan 新增第 7 节回归（+1）；
+    qiyun 起运时制——起运间隔=出生到节气绝对时长、两侧同域相减（原单边真太阳时口径把 (lon−120)×4 分+EOT 伪差计入间隔）；
+    对拍 25 例：15 same / 10 天差 / 0 分歧；lunar-python 25/25（岁/月/天对拍字段口径）一致、skyfield DE440s 天文真值 ≤2 分；
+    10 例天差经四阶段实证为第三 oracle（易安居）远期节表偏离天文真值 ±5~14 分 × 余分距 12 分/天边界敏感（非本引擎缺陷）。
+    申报链：bd-a05（F1 消解）/bd-q01（qiyun 消解）追加结案行；bd-q02（第三 oracle 局限）新申报至 arbitrated；
+    旧申报行保留不删（hp-x03 先例，新增申报行说明）。断言 +3（daliu 35→37 / hepan 48→49），全量 848→851。
+  双路第三方复验（2026-09-15，数据抄写+术理）：总论均放行；8 条低危 findings 全部修正——
+    bd-q02 申报文字 overclaim 订正（"重算全等"→"9/10 例 + bd-r06 反例说明"，l3_bazi_daliu.py 与两表同步）、
+    daliu 报告偏差基线注明（skyfield/自表两基线互差 ±1~2 分）、手工复算 M3 页口径 14:45 说明、
+    k01 断言描述去真太阳时残留、hepan 生肖链三字俱全专项断言 +2（49→51）、
+    report/errata/2026-09-15-qiyun-fix.md 建档、docs/preregister.md 判界时域/起运同域口径成文。
+    断言 +2（hepan），全量 851→853。
+  v1.0 结案数（788 / 174 / 161）为该版本历史记录——原 v1.0 文档写 787/160 系文档自身误差 1（同期 l4 报告已写 161），
+  2026-09-15 第三方数据抄写审查勘正。

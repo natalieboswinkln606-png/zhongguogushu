@@ -24,7 +24,7 @@ hp-03,l3_hepan.py,《渊海子平》《三命通会》婚配口诀 + nayin.csv,�
 hp-04,l3_hepan.py,四场景规则（婚姻/事业/合作/健康）,四场景合盘评估
 hp-05,l3_hepan.py,流年干支引动（hp-01 规则+桃花红鸾天喜）,流年合盘：应期窗口
 hp-06,l3_hepan.py,l3_liuyao 六爻测事（官鬼/妻财/兄弟用神）,六爻测事接线（代占）
-hp-07,l3_hepan.py,单盘代占（对象八字未知）,《渊海子平》用神表,代占直断（单盘）
+hp-07,l3_hepan.py,"单盘代占（对象八字未知）,《渊海子平》用神表",代占直断（单盘）
 hl-01,l3_huangli.py,《协纪辨方书》卷三建除（节气月建）,建除十二神（节气月建口径）
 hl-02,l3_huangli.py,《协纪辨方书》卷五黄黑道引《考原》,日黄黑道值神（青龙…勾陈）
 hl-02b,l3_huangli.py,《协纪辨方书》卷七按语（除危定执成开为黄道）,建除配黄黑道（与值神并存）
@@ -154,7 +154,7 @@ ws-02,l3_wangshuai.py,data/changsheng.csv 十二长生表,得地：四支十二�
 ws-03,l3_wangshuai.py,rules.py 五行关系（比劫=同、印=生我）,得势：天干+藏干清点
 ws-04,l3_wangshuai.py,权重 得令40/得地35/得势25（《子平真诠》专求月令）,综合五级判定+扶抑结论
 wylq-01,l3_wuyunliuqi.py,《素问·天元纪大论》天干化运+《五常政大论》十纪,岁运（中运）：天干化运与太过不及
-wylq-02,l3_wuyunliuqi.py,《六微旨大论》六步,《类经》注初之气起于大寒,主气六步
+wylq-02,l3_wuyunliuqi.py,"《六微旨大论》六步,《类经》注初之气起于大寒",主气六步
 wylq-03,l3_wuyunliuqi.py,《五运行大论》地支化气（司天在泉）,客气六步：司天/在泉
 wylq-04,l3_wuyunliuqi.py,《素问·六微旨大论》天符/岁会/太一天符+《六元正纪大论》同天符/同岁会,运气相合
 wylq-05,l3_wuyunliuqi.py,solar_terms.csv 定气中气时刻,六气节点（大寒/春分/小满/大暑/秋分/小雪）
@@ -173,3 +173,10 @@ zl-01,l3_ziwei_liunian.py,《紫微斗数全书》大限起法（阳男阴女顺
 zl-02,l3_ziwei_liunian.py,小限起法（男寅午戌…），斗君前一年,小限
 zl-03,l3_ziwei_liunian.py,流年干支（shuowang.csv 年号+m1 立春）,流年干支与四化
 zl-04,l3_ziwei_liunian.py,《紫微斗数全书》卷二·安斗君诀,斗君（流年正月建）
+lr-01,l3_bazi_liuri.py,ganzhi_days.csv 日柱序列（r1）+m1 真太阳时正午反解,流日三柱序列（年/月/日；非经典层级·随件声明）
+lr-02,l3_bazi_liuri.py,合冲刑害表复用（l3_hepan，hp-01 三字俱全口径）,流日对原局/流年/流月/大运关系层
+lr-03,l3_bazi_liuri.py,l3_huangli.daily（hl-01..03b 子项引用）,流日黄历/建除/神煞层
+tb-01,l3_tieban.py,太玄数表 import 自 l3_heluolishu（hlyl-01 同源）+固定值断言锁,四柱八数结构键
+tb-02,l3_tieban.py,一时八刻（96 刻制）/古百刻制 alt；每刻窗起点+1 分钟取样,刻候选枚举与刻位反推
+tb-03,l3_tieban.py,外部条文库 id 列（引擎不自造传本编号）,条文键匹配（空=通配）
+tb-04,l3_tieban.py,考刻-验证交互回路（用已知事实拟合刻数，拟合≠预测验证）,候选刻计分排序
