@@ -2,6 +2,8 @@
 ### 中国传统文化术数高精度计算、对账与全谱推演系统
 *Precision Chinese Metaphysics Computation & Cross-Verification Engine*
 
+简体中文 | [English](README_EN.md)
+
 **定位**：纯开源、可复现、零漂移的中国传统术数精密数据基座与全谱引擎。数据落静态表与 CSV、算法单一真相源、支持 16 个标准化 MCP (Model Context Protocol) 工具接口，100% 自动化断言回归闭环。
 
 **核心承诺：差异无处藏身**——所有推演均带 `source_ref` 经典古籍溯源；跨流派分歧按四类严格分类（转录错/底本错/算法分歧/范围外）；争议统一归入 `arbitration_log.csv` 仲裁；古籍异文录入白名单与防御拦截。

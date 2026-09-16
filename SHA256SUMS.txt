@@ -1,4 +1,4 @@
-# generated: 2026-09-16T10:08:50Z
+# generated: 2026-09-16T10:20:50Z
 # L4 重签：M0-M3 全部冻结文件（git ls-files 全量，排除未入库临时产物）
 # hash: sha256，文本按 LF 归一（与 .gitattributes eol=lf 对称）
 # signature: pending
@@ -6,8 +6,9 @@
 3a82ca0891679d6466b3907569b50535220bd7f521b2d7a8c992a1ebc636bf15 *.gitignore
 d842d7aaf0267a6bf2df5499fdb12e61fef3c9023eabf3240b5355bab4981751 *CLAUDE.md
 a1e571422aa6d9f49d543174f8cb9d07d635370cfe66f0bf8b0401ed17524fbf *LICENSE
-f37823f9f7601713ec600c672a4875bf59d81feeadd4b37ba8ba262af1ed81d0 *README.md
-754523250a1ca99cd88594547f3a015b8f49a51e4d7024a64ee388bd9fbcf017 *SHA256SUMS.txt
+f4c0578033c319805331c11310d26d7a9ddab61fb1224125f5f582f7cae8862b *README.md
+8273df96fd8b81d173fd34fae9b411b31613ab6b1d4d2425c7d818d68bc1c203 *README_EN.md
+372c2e3fe820d4489d96fbf7267898503920384a2ba3dba64786d3bc8bacf771 *SHA256SUMS.txt
 089729865f898d423bb65c47697c35bf72b90c2b2e2b2df0df05aa06d1ef9e0f *_ly_oracle_cache.json
 fe4f62c0c23f803365c142a2b217cac678a4bf22427ce222d6e096e2809bad0e *_nr_probe.html
 3e1341849e89dbfb02776d887f7a15a524673c416b21f1dda8efc8456b62ef35 *_zw_oracle_probe.py
