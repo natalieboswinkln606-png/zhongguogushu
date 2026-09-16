@@ -582,12 +582,35 @@ def reconcile_with_snap(text, snap_path):
         os.remove(tmp_out)
     except OSError:
         pass
+# ================================================================= 10. 反谄媚与反迷信门禁
+BANNED_FLATTERY_WORDS = [
+    "贵公子", "大富大贵", "必定名扬天下", "倾国倾城", "天生神将",
+    "算无遗策", "命中注定富甲一方", "必成大器万无一失"
+]
+
+
+def check_anti_flattery(text):
+    """规则 10：反谄媚与反迷信虚假承诺门禁。
+    严禁出现江湖套路夸大吹捧，强制推行客观理性与辩证表达。
+    """
+    violations = []
+    lines = text.splitlines()
+    for idx, line in enumerate(lines, start=1):
+        for w in BANNED_FLATTERY_WORDS:
+            if w in line:
+                violations.append({
+                    "line": idx,
+                    "kind": "flattery_banned",
+                    "snippet": line.strip()[:60],
+                    "word": w,
+                    "suggest": "废除廉价谄媚词汇，改用客观辩证之心理学/系统论语言"
+                })
     return violations
 
 
 # ================================================================= 主流程
 def run_all_checks(text_path, snap_path=None):
-    """对单份报告跑 9 项防御检查。
+    """对单份报告跑 10 项防御检查。
     返回 {"summary": {...}, "violations": {...}, "verdict": "PASS|FAIL"}
     """
     if not os.path.exists(text_path):
@@ -620,6 +643,8 @@ def run_all_checks(text_path, snap_path=None):
     v8 = reconcile_with_snap(text, snap_path) if snap_path else []
     # 规则 9：年龄-年份一致性（流年→岁数手推自相矛盾检测）
     v9 = check_age_year_consistency(text, snap_path)
+    # 规则 10：反谄媚与反迷信门禁
+    v10 = check_anti_flattery(text)
 
     out["violations"] = {
         "rule1_snap_ref": v1,
@@ -631,8 +656,9 @@ def run_all_checks(text_path, snap_path=None):
         "rule7_strict_basics": v7,
         "rule8_reconcile": v8,
         "rule9_age_year": v9,
+        "rule10_anti_flattery": v10,
     }
-    n_total = len(v1) + len(v3) + len(v4) + len(v5) + len(v6) + len(v7) + len(v8) + len(v9)
+    n_total = len(v1) + len(v3) + len(v4) + len(v5) + len(v6) + len(v7) + len(v8) + len(v9) + len(v10)
     out["summary"] = {
         "n_violations": n_total,
         "n_l3_modules_hit": n_l3_hit,

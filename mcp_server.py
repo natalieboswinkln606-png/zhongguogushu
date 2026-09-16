@@ -608,6 +608,25 @@ def shushu_tieban(datetime_str: str = None, four_pillars: list = None, ke: int =
 
 
 # ================================================================
+# Tool 17: shushu_decision_simulate
+# ================================================================
+def shushu_decision_simulate(datetime_str: str, scenario: str = "career_track", profession_stage: str = "未定/通用", education_level: str = "高等教育/在读", gender: str = "男", longitude: float = 120.0):
+    """现代战略决策树与心理原型推演：彻底废除封建迷信单点盲猜，基于三层能量释放管道评估体制大平台、商业创业与硬核技术等不同路径的契合度与致命陷阱。"""
+    import l3_decision_tree as DT
+    ctx = ShushuContext.build(datetime_str, longitude=longitude, gender=gender)
+    anchor = {
+        "profession_stage": profession_stage,
+        "education_level": education_level,
+    }
+    if scenario == "relationship_strategy":
+        return DT.simulate_relationship_dynamics(ctx.pillars.day.ganzhi, ctx.pillars.hour.ganzhi, gender)
+    elif scenario == "archetype_spectrum":
+        return DT.evaluate_archetype_spectrum(ctx.pillars.to_full_dict())
+    else:  # career_track
+        return DT.simulate_career_decision(ctx.pillars.to_list(), ctx.pillars.day_master, anchor)
+
+
+# ================================================================
 # MCP Tool 注册表定义
 # ================================================================
 TOOLS_REGISTRY = {
@@ -1070,6 +1089,47 @@ TOOLS_REGISTRY = {
             },
         },
     },
+    "shushu_decision_simulate": {
+        "func": shushu_decision_simulate,
+        "description": "现代战略决策树与心理原型推演：彻底废除封建迷信单点盲猜，基于三层能量释放管道评估体制大平台、商业创业与硬核技术等不同路径的契合度与致命陷阱。",
+        "inputSchema": {
+            "type": "object",
+            "properties": {
+                "datetime_str": {
+                    "type": "string",
+                    "description": "出生北京时间 'YYYY-MM-DD HH:MM'",
+                },
+                "scenario": {
+                    "type": "string",
+                    "enum": ["career_track", "relationship_strategy", "archetype_spectrum"],
+                    "default": "career_track",
+                    "description": "模拟场景：职业赛道(career_track)、亲密关系(relationship_strategy)、心理原型矩阵(archetype_spectrum)",
+                },
+                "profession_stage": {
+                    "type": "string",
+                    "default": "未定/通用",
+                    "description": "现实职业状态基线（如 '在读学生', '体制内/公职', '企业员工', '自由职业/创业'）",
+                },
+                "education_level": {
+                    "type": "string",
+                    "default": "高等教育/在读",
+                    "description": "教育背景基线（如 '本科在读', '硕博深造', '已步入社会'）",
+                },
+                "gender": {
+                    "type": "string",
+                    "enum": ["男", "女"],
+                    "default": "男",
+                    "description": "性别",
+                },
+                "longitude": {
+                    "type": "number",
+                    "default": 120.0,
+                    "description": "经度，默认 120.0",
+                },
+            },
+            "required": ["datetime_str"],
+        },
+    },
 }
 
 
@@ -1388,7 +1448,16 @@ def run_cli_test():
     except Exception as e:
         t_assert(False, "Tool 16: shushu_tieban 异常", str(e))
 
-    # 17. JSON-RPC 协议测试 (initialize, tools/list, tools/call)
+    # 17. shushu_decision_simulate 测试
+    try:
+        dt_res = shushu_decision_simulate(datetime_str=dt_anchor, scenario="career_track")
+        t_assert("pathways" in dt_res and "path_A_institutional" in dt_res["pathways"],
+                 "Tool 17: shushu_decision_simulate 决策树推演",
+                 f"体制契合度={dt_res['pathways']['path_A_institutional']['fit_score']}%")
+    except Exception as e:
+        t_assert(False, "Tool 17: shushu_decision_simulate 异常", str(e))
+
+    # 18. JSON-RPC 协议测试 (initialize, tools/list, tools/call)
     try:
         init_req = {"jsonrpc": "2.0", "id": 1, "method": "initialize", "params": {}}
         init_resp = handle_jsonrpc_request(init_req)
@@ -1397,8 +1466,8 @@ def run_cli_test():
 
         list_req = {"jsonrpc": "2.0", "id": 2, "method": "tools/list"}
         list_resp = handle_jsonrpc_request(list_req)
-        t_assert(len(list_resp.get("result", {}).get("tools", [])) == 16,
-                 "JSON-RPC: tools/list 包含全部 16 个工具")
+        t_assert(len(list_resp.get("result", {}).get("tools", [])) == 17,
+                 "JSON-RPC: tools/list 包含全部 17 个工具")
 
         call_req = {
             "jsonrpc": "2.0",

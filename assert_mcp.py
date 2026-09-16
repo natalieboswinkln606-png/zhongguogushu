@@ -263,6 +263,10 @@ def main():
     tb = M.shushu_tieban(datetime_str=DT_A, ke=1)
     check("tieban_result", "taixuan_total" in tb and len(tb.get("deduced_items", [])) == 5, f"铁板神数八刻滚盘: 太玄数={tb['taixuan_total']}")
 
+    # Tool 17: shushu_decision_simulate
+    dt_res = M.shushu_decision_simulate(datetime_str=DT_A, scenario="career_track")
+    check("decision_tree_result", "pathways" in dt_res and "path_A_institutional" in dt_res["pathways"], "战略决策树与能量管道推演成功")
+
     # ================================================================
     # 八、JSON-RPC 2.0 协议层深度测试
     # ================================================================
@@ -285,12 +289,13 @@ def main():
     tl_res = M.handle_jsonrpc_request({"jsonrpc": "2.0", "id": 100, "method": "tools/list"})
     tools = tl_res.get("result", {}).get("tools", [])
     tool_names = [t["name"] for t in tools]
-    check("rpc_tools_count", len(tools) == 16, f"tools/list 包含 16 个工具 (实际 {len(tools)})")
+    check("rpc_tools_count", len(tools) == 17, f"tools/list 包含 17 个工具 (实际 {len(tools)})")
     check("rpc_tools_names", set(tool_names) == {
         "shushu_snapshot", "shushu_bazi", "shushu_ziwei", "shushu_qimen",
         "shushu_liuyao", "shushu_hepan", "shushu_reconcile",
         "shushu_bazi_geju", "shushu_jieqi_query", "shushu_calendar_convert", "shushu_timezone",
-        "shushu_jinkoujue", "shushu_qizheng", "shushu_ziwei_yunxian", "shushu_shensha_ext", "shushu_tieban"
+        "shushu_jinkoujue", "shushu_qizheng", "shushu_ziwei_yunxian", "shushu_shensha_ext", "shushu_tieban",
+        "shushu_decision_simulate"
     }, f"工具清单全匹配: {tool_names}")
     for t in tools:
         check(f"tool_schema_{t['name']}", "inputSchema" in t and "description" in t, f"{t['name']} 具备 schema 与 description")
@@ -362,7 +367,7 @@ def main():
     cmd_test = [sys.executable, os.path.join(BASE, "mcp_server.py"), "--test"]
     p_test = subprocess.run(cmd_test, capture_output=True, text=True, encoding="utf-8")
     check("cli_test_exit_0", p_test.returncode == 0, f"CLI --test 退出码为 0（stdout 包含 '{p_test.stdout.strip()[-30:]}'）")
-    check("cli_test_output_pass", "20/20 PASS" in p_test.stdout, "CLI --test 输出包含 20/20 PASS")
+    check("cli_test_output_pass", "21/21 PASS" in p_test.stdout, "CLI --test 输出包含 21/21 PASS")
 
     # 2. 测试真实 stdio 管道交互（模拟真实 MCP Client 连接）
     p_stdio = subprocess.Popen(

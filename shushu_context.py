@@ -159,6 +159,16 @@ class SchoolConfig:
 
 
 @dataclass(frozen=True)
+class UserRealityContext:
+    """现实基线与历史锚点上下文 (Reality Anchor & Calibration, Immutable)"""
+    profession_stage: str = "未定/通用"       # "学生", "体制内/公职", "企业/市场", "自由职业/创业"
+    education_level: str = "高等教育/在读"     # "基础教育", "本科在读", "硕博深造", "已步入社会"
+    past_stability: str = "平稳有序"           # "平稳有序", "中度折腾", "重大挫折/动荡"
+    health_baseline: str = "基本良好"          # "基本良好", "呼吸道敏感", "神经衰弱/失眠", "慢性病灶"
+    primary_concern: str = "综合发展"          # "学业升学", "职业定向", "财富规划", "情感婚姻", "健康调理"
+
+
+@dataclass(frozen=True)
 class ShushuContext:
     """统一全息时空上下文容器 (Single Source of Truth, Immutable)"""
     wall_time: datetime
@@ -175,6 +185,7 @@ class ShushuContext:
     solar_term: SolarTermInfo
     lunar_date: LunarInfo
     school_config: SchoolConfig
+    reality_context: UserRealityContext = field(default_factory=UserRealityContext)
 
     @classmethod
     def build(
@@ -185,6 +196,7 @@ class ShushuContext:
         gender: str = "男",
         tz_name: str = "Asia/Shanghai",
         school_config: Optional[SchoolConfig] = None,
+        reality_context: Optional[UserRealityContext] = None,
     ) -> "ShushuContext":
         """
         统一上下文构建工厂。
@@ -307,6 +319,7 @@ class ShushuContext:
             solar_term=solar_term,
             lunar_date=lunar_date,
             school_config=school_config,
+            reality_context=reality_context if reality_context is not None else UserRealityContext(),
         )
 
     @classmethod

@@ -39,7 +39,7 @@ description: "中国传统术数智能助手技能规范：指导 AI Agent 通�
 
 ## 2. MCP Tools 快速参考表
 
-MCP Server (`mcp_server.py`) 提供了 16 个官方标准 Tools：
+MCP Server (`mcp_server.py`) 提供了 17 个官方标准 Tools：
 
 | 工具名称 | 输入参数 | 核心输出内容 | 适用场景 |
 | :--- | :--- | :--- | :--- |
@@ -59,6 +59,7 @@ MCP Server (`mcp_server.py`) 提供了 16 个官方标准 Tools：
 | `shushu_ziwei_yunxian`| `datetime_str`, `target_year`, `target_lunar_month=1`, `target_lunar_day=1`, `target_hour_zhi="子"` | 紫微斗数多级运限：流年斗君起正月、流月/流日/流时命宫、流年九大流曜飞星与流年四化 | 流年运程详批、流月流日细断 |
 | `shushu_shensha_ext`| `datetime_str=None`, `four_pillars=None`, `lunar_month=None`, `gender="男"` | 50+ 扩展商业与经典神煞：三奇贵人紧贴判定、太极、天赦、天医、十恶大败、阴阳差错、孤鸾煞、金神等 | 命理全谱神煞检索与吉凶格局补正 |
 | `shushu_tieban`| `datetime_str=None`, `four_pillars=None`, `ke=1`, `longitude=120.0` | 邵子神数 / 铁板神数算盘八刻滚盘取数：四柱太玄数、考八刻分、考父母配偶兄弟功名寿元定数条文检索 | 铁板神数考刻分、条文数理推导 |
+| `shushu_decision_simulate`| `datetime_str`, `scenario="career_track"`, `profession_stage="未定/通用"`, `education_level="高等教育/在读"`, `gender="男"`, `longitude=120.0` | 现代战略决策树与能量释放管道推演：十神心理原型能级测定、三大核心路径（体制/创业/技术）场景分支模拟、亲密关系张力演化、破局策略 | 职业生涯抉择、合伙创业博弈、人际婚恋战略规划 |
 
 ---
 

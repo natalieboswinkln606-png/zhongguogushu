@@ -5,7 +5,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
-[![MCP Ready](https://img.shields.io/badge/MCP-16%20Tools-brightgreen.svg)](https://modelcontextprotocol.io/)
+[![MCP Ready](https://img.shields.io/badge/MCP-17%20Tools-brightgreen.svg)](https://modelcontextprotocol.io/)
 [![Audit: L4 Cryptographic](https://img.shields.io/badge/Audit-L4%20Verified%20(215%20files)-success.svg)](file:///SHA256SUMS.txt)
 [![Tests: 35/35 Passing](https://img.shields.io/badge/Tests-35%2F35%20Passed-brightgreen.svg)](file:///temp/run_all_assertions.py)
 
@@ -15,7 +15,7 @@
 
 **ZhongGuoGuShu (中国古术)** is an open-source, strictly auditable, zero-drift computing engine and data foundation for traditional Chinese metaphysics (*Shushu*, 术数). 
 
-Engineered with the rigor of modern astronomical software and cryptographic traceability, it unifies **15+ classical metaphysical schools**—including BaZi (Four Pillars), Ziwei Dou Shu, Da Liuren, Jinkoujue, Qimen Dunjia, Liuyao, Qizheng Siyu (Seven Governors & Four Extras), Tieban Shenshu, and more—under an immutable spatiotemporal coordinate system and **16 standardized MCP (Model Context Protocol) tools**.
+Engineered with the rigor of modern astronomical software and cryptographic traceability, it unifies **15+ classical metaphysical schools**—including BaZi (Four Pillars), Ziwei Dou Shu, Da Liuren, Jinkoujue, Qimen Dunjia, Liuyao, Qizheng Siyu (Seven Governors & Four Extras), Tieban Shenshu, and more—under an immutable spatiotemporal coordinate system and **17 standardized MCP (Model Context Protocol) tools**.
 
 ### Core Tenet: *Discrepancy Has Nowhere to Hide (差异无处藏身)*
 * **Zero Arbitrary Guesswork**: Every algorithm and calculation has a definitive classical bibliographic source (`source_ref`), strictly referenced to classical canons (*Ziping Zhenquan*, *Sanming Tonghui*, *Ditian Sui*, *Yuanhai Ziping*, *Ziwei Doushu Quanshu*, *Gu Lao Xing Zong*, *Da Liuren Daquan*, *Jinkoujue Daquan*, *Xieji Bianfang Shu*).
